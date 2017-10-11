@@ -1,0 +1,10 @@
+<?php
+
+$files = [
+	"init/error_handler.php",
+	"init/start.php"
+];
+
+foreach ($files as $val) {
+	require __DIR__."/".$val;
+}

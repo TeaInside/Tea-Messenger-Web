@@ -1,0 +1,32 @@
+{
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ammar Faizi",
+            "email": "ammarfaizi2@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^6.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "":"src/",
+            "App\\":"app/",
+            "Console\\":"src/Console/",
+            "System\\":"src/System/",
+            "Handler\\":"src/Handler/"
+        },
+        "files": [
+            "config.php",
+            "src/sys.vendor/helpers/rstr.php",
+            "src/sys.vendor/helpers/encryption.php",
+            "src/sys.vendor/helpers/system.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-0": {
+            "tests":"tests/"
+        }
+    }
+}
