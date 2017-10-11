@@ -4,9 +4,14 @@
  * Pengaturan router.
  */
 
-Route::get("/", "ContohController@index");
+Route::get("/", "HomeController@index");
 
 
+
+
+
+
+/*
 Route::get("/test_closure", function(){
 	echo "Test Closure sukses !";
 });
@@ -24,3 +29,4 @@ Route::get("/test_model", "ContohController@testModel");
 Route::get("/test_encryption", "ContohController@testEncrypt");
 Route::get("/test_random_string", "ContohController@testRandomString");
 
+*/

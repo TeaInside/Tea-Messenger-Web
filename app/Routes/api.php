@@ -1,5 +1,0 @@
-<?php
-
-/**
- * Belum tersedia.
- */

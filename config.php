@@ -22,3 +22,6 @@ define("DBPORT", "3306");
 $baseurl = "http".(isset($_SERVER['HTTPS']) ? "s" : "")."://".(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : "localhost");
 define("BASEURL", $baseurl);
 define("ROUTER_FILE", false);
+
+
+define("ASSETS_URL", BASEURL."/assets");

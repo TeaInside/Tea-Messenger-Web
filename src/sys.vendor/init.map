@@ -1,5 +1,14 @@
 <?php
 
+
+// Load helpers
+$scan = scandir(__DIR__."/helpers");
+unset($scan[0], $scan[1]);
+
+foreach ($scan as $val) {
+	require __DIR__."/helpers/".$val;
+}
+
 $files = [
 	"init/error_handler.php",
 	"init/start.php"
@@ -8,3 +17,4 @@ $files = [
 foreach ($files as $val) {
 	require __DIR__."/".$val;
 }
+
