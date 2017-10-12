@@ -5,7 +5,7 @@
  */
 
 Route::get("/", "HomeController@index");
-
+Route::get("/register", "RegisterController@index");
 
 
 
