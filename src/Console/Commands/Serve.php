@@ -37,7 +37,7 @@ class Serve extends ConsoleCommand
 
     public function execute()
     {
-        print shell_exec($_SERVER['_']." -S localhost:8000 -t ".BASEPATH."/public --file index.php 2>&1");
+        print shell_exec("php -S localhost:8000 -t ".BASEPATH."/public --file index.php 2>&1");
     }
 
     private function make_controller($name)
