@@ -41,6 +41,20 @@ class register
 				 * 2. Username maksimal 32 karakter
 				 * 3. Username hanya boleh terdiri dari karakter A-Z a-z 0-9 dan underscore
 				 */
+				if(str.length < 4) {
+					alert("Username too short, please provide password more than 3 chars!");
+					return false;
+				}
+				if(str.length > 32) {
+					alert("Username too long, please provide password not more than 32 chars!");
+					return false;
+				}
+				if(!str.match(/^[a-zA-Z0-9_]+$/)){
+					alert("Username can only contains alphanumeric and underscores");
+					return false;
+				}
+
+
 				return true;
 			},
 			"password": function(str){
@@ -55,6 +69,15 @@ class register
 				 */
 				// alert("Password too short, please provide password more than 5 digit chars!");
 				// alert("Invalid password, non printable chars are not allowed!");
+				if(str.length < 6) {
+					alert("Password too short, please provide password more than 5 digit chars!");
+					return false;
+				}
+				if(ord(str) < 32 || ord(str) > 127){
+					alert("Invalid password, non printable chars are not allowed!");
+					return false;
+				}
+
 				return true;
 			},
 			"cpassword": function(str){
