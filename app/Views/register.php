@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Register Tea Messenger</title>
 	<script src="<?php print js("base64"); ?>" type="text/javascript"></script>
 	<script src="<?php print js("helpers"); ?>" type="text/javascript"></script>
 	<script src="<?php print js("IceCrypt"); ?>" type="text/javascript"></script>
 	<script src="<?php print js("register"); ?>" type="text/javascript"></script>
+	<script src="<?php print js("jquery"); ?>" type="text/javascript"></script>
+	<script src="<?php print js("bootstrap"); ?>" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="<?php print css("bootstrap"); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php print css("normalize"); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php print css("fontawesome"); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php print css("register"); ?>">
 </head>
 <body>
@@ -17,46 +25,63 @@
 	   Gambar	public/assets/img
 	   Lainnya	public/assets/{buat folder sendiri}
 	-->
-	<center>
-	<div id="frcg">
-		<form method="post" action="javascript:void(0);" id="fr">
-			<table>
-				<thead>
-					<tr><th colspan="3" align="center">Register Tea Messenger</th></tr>
-				</thead>
-				<tbody>
-					<tr><td>First name</td><td>:</td><td><input type="text" name="fn" id="first_name"></td></tr>
-					<tr><td>Last name</td><td>:</td><td><input type="text" name="ln" id="last_name"></td></tr>
-					<tr><td>E-Mail</td><td>:</td><td><input type="email" name="e" id="email"></td></tr>
-					<tr><td>Phone</td><td>:</td><td><input type="text" name="p" id="phone"></td></tr>
-					<tr><td>Gender</td><td>:</td><td>
-						<input type="radio" name="g" id="g1" value="male"> Male
-						<input type="radio" name="g" id="g2" value="female"> Female
-					</td></tr>
-				</tbody>
-				<thead>
-					<tr><th colspan="3" align="center">Create Username</th></tr>
-				</thead>
-				<tbody>
-					<tr><td>Username</td><td>:</td><td><input type="text" name="u" id="username"></td></tr>
-					<tr><td>Password</td><td>:</td><td><input type="password" name="p" id="password"></td></tr>
-					<tr><td>Confirm Password</td><td>:</td><td><input type="password" name="cp" id="cpassword"></td></tr>
-				</tbody>
-				<tfoot>
-					<tr><td colspan="3" align="center">
-						<div>
-							<p>Captcha</p>
-							<!-- Nantinya disini kita kasih captcha -->
-						</div>
-					</td></tr>
-					<tr><td colspan="3" align="center">
-						<button id="sbt">Register</button>
-					</td></tr>
-				</tfoot>
-			</table>
-		</form>
+	<!-- <center> -->
+	<div class="container">
+			<div id="frcg">
+				<div class="panel panel-default">
+					<div class="panel-heading text-center">
+						<h3 class="panel-title">Register Tea Messenger</h3>
+					</div>
+					<div class="panel-body">
+						<form method="post" action="javascript:void(0);" id="fr">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-fw">FN</i></span>
+								<input class="form-control" type="text" name="fn" id="first_name" placeholder="First Name">
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-fw">LN</i></span>
+								<input class="form-control" type="text" name="ln" id="last_name" placeholder="Last Name">
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></span>
+								<input class="form-control" type="email" name="e" id="email" placeholder="E-Mail">
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-fw fa-phone"></i></span>
+								<input class="form-control" type="text" name="p" id="phone" placeholder="Phone Number">
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-fw fa-venus-mars"></i></span>
+								<select class="form-control" style="font-family: 'FontAwesome', Helvetica;">
+									<option name="g" id="g1" value="male">&#xf221; Male</option>
+									<option name="g" id="g2" value="female">&#xf222; Female</option>
+								</select>
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
+								<input class="form-control" type="text" name="u" id="username" placeholder="Username">
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-fw fa-key"></i></span>
+								<input class="form-control" type="password" name="p" id="password" placeholder="Password">
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-fw fa-key"></i></span>
+								<input class="form-control" type="password" name="cp" id="cpassword" placeholder="Confirm Password">
+							</div>
+							<!-- captcha ini cuma mockup -->
+							<img src="https://i.amz.mshcdn.com/5mfJr_n0-7H7kquE4C89u2ffiPg=/1200x627/2013%2F04%2F18%2F70%2Fcaptcha.ba000.jpg" class="img-responsive center-block" alt="Image" style="width:250px;padding:1em 0 1em 0;">							
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-fw fa-check"></i></span>
+								<input class="form-control" placeholder="Captcha">
+							</div>
+							<button type="button" class="btn btn-primary btn-login" id="sbt">Sign Up</button>
+						</form>
+					</div>
+				</div>
+			</div>
 	</div>
-	</center>
+	<!-- </center> -->
 	<script type="text/javascript">
 		document.getElementById('fr').addEventListener("submit", function(){
 			var q = new register();
