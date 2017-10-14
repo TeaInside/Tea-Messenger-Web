@@ -73,9 +73,12 @@ class register
 					alert("Password too short, please provide password more than 5 digit chars!");
 					return false;
 				}
-				if(ord(str) < 32 || ord(str) > 127){
-					alert("Invalid password, non printable chars are not allowed!");
-					return false;
+				var arr= str.split("");
+				for (let i=0; i<arr.length; i++) {
+					if(ord(arr[i]) < 32 || ord(arr[i]) > 127){
+						alert("Invalid password, non printable chars are not allowed!");
+						return false;
+					}
 				}
 
 				return true;
