@@ -106,12 +106,7 @@ class register
 			"email": 		this.gv("email"), 
 			"phone":		this.gv("phone"),
 			"gender":		(function(){
-								if (document.getElementById('g1').checked) {
-  									return document.getElementById('g1').value;
-								} else if(document.getElementById('g2').checked) {
-									return document.getElementById('g2').value;
-								}
-								return null;
+								return document.getElementById("g").options[document.getElementById("g").selectedIndex].value;
 							})(),
 			"username":		this.gv("username"),
 			"password":		this.gv("password"),
