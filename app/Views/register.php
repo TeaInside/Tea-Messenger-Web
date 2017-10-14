@@ -52,7 +52,7 @@
 							</div>
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-fw fa-venus-mars"></i></span>
-								<select class="form-control" style="font-family: 'FontAwesome', Helvetica;">
+								<select class="form-control" style="font-family: 'FontAwesome', Helvetica;" id="g">
 									<option name="g" id="g1" value="male">&#xf221; Male</option>
 									<option name="g" id="g2" value="female">&#xf222; Female</option>
 								</select>
@@ -75,7 +75,7 @@
 								<span class="input-group-addon"><i class="fa fa-fw fa-check"></i></span>
 								<input class="form-control" placeholder="Captcha">
 							</div>
-							<button type="button" class="btn btn-primary btn-login" id="sbt">Sign Up</button>
+							<input type="submit" value="Sign Up" class="btn btn-primary btn-login" id="sbt"/>
 						</form>
 					</div>
 				</div>
