@@ -42,11 +42,11 @@ class register
 				 * 3. Username hanya boleh terdiri dari karakter A-Z a-z 0-9 dan underscore
 				 */
 				if(str.length < 4) {
-					alert("Username too short, please provide password more than 3 chars!");
+					alert("Username too short, please provide username more than 3 chars!");
 					return false;
 				}
 				if(str.length > 32) {
-					alert("Username too long, please provide password not more than 32 chars!");
+					alert("Username too long, please provide username not more than 32 chars!");
 					return false;
 				}
 				if(!str.match(/^[a-zA-Z0-9_]+$/)){
