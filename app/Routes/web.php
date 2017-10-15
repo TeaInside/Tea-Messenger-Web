@@ -7,6 +7,9 @@
 Route::get("/", "HomeController@index");
 Route::get("/register", "RegisterController@index");
 Route::get("/login", "LoginController@index");
+Route::get("/forgot-password", function(){
+	echo "Under development";
+});
 
 
 
