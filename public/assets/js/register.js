@@ -139,6 +139,10 @@ class register
 		for(; __ < 32; __++) keybin+= _[rand(0,_.length)];
 		this.data = JSON.stringify({
 			"key": encrypt(keybin, "icetea"),
+			"csrf": {
+				"valid_compare": this.gv("validator"),
+				"token": this.gv("csrf")
+			},
 			"data": encrypt(JSON.stringify(this.input), keybin)
 		});
 	}
