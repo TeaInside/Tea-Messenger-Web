@@ -78,6 +78,7 @@ class Router
                     if (isset($action[$_SERVER['REQUEST_METHOD']])) {
                         if ($action[$_SERVER['REQUEST_METHOD']] instanceof Closure) {
                             $action[$_SERVER['REQUEST_METHOD']]($param);
+                            return true;
                         } else {
                             $act = explode("@", $action[$_SERVER['REQUEST_METHOD']]);
                             $app = "\\App\\Controllers\\".$act[0];
@@ -111,7 +112,8 @@ class Router
     private static function __run($action, $param = [null])
     {
         if ($action instanceof Closure) {
-            return $action();
+            $action();
+            return true;
         } else {
             $act = explode("@", $action);
             $app = "\\App\\Controllers\\".$act[0];
