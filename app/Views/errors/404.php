@@ -3,6 +3,6 @@
 <title>404 Not Found</title>
 </head><body>
 <h1>Not Found</h1>
-<p>The requested URL /qweqwe was not found on this server.</p>
+<p>The requested URL <?php print isset($route) ? $route : $_SERVER['REQUEST_URI']; ?> was not found on this server.</p>
 <hr>
 </body></html>
