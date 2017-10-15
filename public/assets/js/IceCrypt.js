@@ -14,7 +14,7 @@ function encrypt(str, key)
 	key = salt + key;
 	var j = 0, i = 0, k = key.length - 1, result = "";
 	for(; j < str.length; j++) {
-		result += chr(ord(str[j]) ^ ord(key[i++]) ^ 0x0f ^ ord(key[k--]) ^ (j % (i+k)) ^ 26);
+		result += chr(ord(str[j]) ^ ord(key[i++]) ^ 15 ^ ord(key[k--]) ^ (j % (i+k)) ^ 26);
 		if (i == key.length) {
 			i = 0;
 		}
