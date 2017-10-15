@@ -114,8 +114,7 @@ class register
 			"username":		this.gv("username"),
 			"password":		this.gv("password"),
 			"cpassword":	this.gv("cpassword")
-		};
-		console.log(this.input['gender']);
+		};		
 	}
 
 	formValidator()
@@ -135,9 +134,12 @@ class register
 
 	buildData()
 	{
+		var keybin = "", 
+			_ = "`1234567890-=~!@#\$%^&*()_+qwertyuiop[]\\QWERTYUIOP{}|asdfghjkl;'ASDFGHJKL:\"zxcvbnm,./ZXCVBNM<>?", __ = 0,r="";
+		for(; __ < 32; __++) keybin+= _[rand(0,_.length)];
 		this.data = JSON.stringify({
-			"key_build": encrypt("icetea", "teainside"),
-			"data": encrypt(JSON.stringify(this.input), "icetea")
+			"key": encrypt(keybin, "icetea"),
+			"data": encrypt(JSON.stringify(this.input), keybin)
 		});
 	}
 

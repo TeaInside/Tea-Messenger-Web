@@ -76,6 +76,7 @@
 								<span class="input-group-addon"><i class="fa fa-fw fa-check"></i></span>
 								<input class="form-control" placeholder="Captcha">
 							</div>
+							<div id="csrf_altar"></div>
 							<input type="submit" value="Sign Up" class="btn btn-primary btn-login" id="sbt"/>
 						</form>
 					</div>
@@ -84,27 +85,27 @@
 	</div>
 	<!-- </center> -->
 	<script type="text/javascript">
+		var wq = new XMLHttpRequest();
+		wq.onreadystatechange = function(){
+			if (this.readyState == 4) {
+				try {
+					var wd = JSON.parse(this.responseText);
+					document.getElementById("csrf_altar").innerHTML += '<input type="hidden" name="_csrf" value="' + wd['csrf'] + '" id="csrf">' + "\n" + '<input type="hidden" name="_valid_compare" value="' + wd['v_compare'] + '" id="validator">';
+				} catch (e) {
+					alert("Error CSRF : " + e.message);
+					window.location = "";
+				}
+			}
+		}
+		wq.open("GET", "http://api.teainside.dev/csrf.php");
+		wq.send(null);
 		document.getElementById('fr').addEventListener("submit", function(){
 			var q = new register();
 			q.getInput();
 			if (q.formValidator()) {
 				q.buildData();
 				q.send("http://api.teainside.dev/register.php", function(res){
-					try {
-						res = JSON.parse(res);
-						if (typeof res['error_message'] == undefined && res['status'] == true) {
-							alert(res['message']);
-							window.location = res['redirect_to'];
-						} else if(typeof res['error_message'] != undefined) {
-							alert(res['error_message']);
-						} else {
-							alert("Unknown error!");
-							window.location = "";
-						}
-					} catch (e) {
-						alert("Error : " + e.message);
-						window.location = "";
-					}
+					console.log(res);
 				});
 			}
 		});
