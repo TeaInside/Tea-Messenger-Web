@@ -21,6 +21,7 @@
 				<div><input type="text" name="username" id="password"></div>
 			</div>
 			<div class="icg">
+				<div id="csrf_field"></div>
 				<div><input type="submit" name="submit" value="Login"></div>
 			</div>
 			<a href="/forgot-password">Forgot Password</a>
