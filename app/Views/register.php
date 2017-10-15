@@ -30,29 +30,30 @@
 			<div id="frcg">
 				<div class="panel panel-default">
 					<div class="panel-heading text-center">
-						<h3 class="panel-title">Register Tea Messenger</h3>
+						<h1 class="panel-title">Register Tea Messenger</h3>
 					</div>
 					<div class="panel-body">
 						<form method="post" action="javascript:void(0);" id="fr">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-fw">FN</i></span>
-								<input class="form-control" type="text" name="fn" id="first_name" placeholder="First Name">
+								<input class="form-control" type="text" name="fn" id="first_name" placeholder="First Name" required>
 							</div>
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-fw">LN</i></span>
-								<input class="form-control" type="text" name="ln" id="last_name" placeholder="Last Name">
+								<input class="form-control" type="text" name="ln" id="last_name" placeholder="Last Name" required>
 							</div>
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></span>
-								<input class="form-control" type="email" name="e" id="email" placeholder="E-Mail">
+								<input class="form-control" type="email" name="e" id="email" placeholder="E-Mail" required>
 							</div>
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-fw fa-phone"></i></span>
-								<input class="form-control" type="text" name="p" id="phone" placeholder="Phone Number">
+								<input class="form-control" type="text" name="p" id="phone" placeholder="Phone Number" required>
 							</div>
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-fw fa-venus-mars"></i></span>
-								<select class="form-control" style="font-family: 'FontAwesome', Helvetica;" id="g">
+								<select class="form-control" style="font-family: 'FontAwesome', Helvetica;" id="g" required>
+									<option value=""></option>
 									<option name="g" id="g1" value="male">&#xf221; Male</option>
 									<option name="g" id="g2" value="female">&#xf222; Female</option>
 								</select>
@@ -63,11 +64,11 @@
 							</div>
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-fw fa-key"></i></span>
-								<input class="form-control" type="password" name="p" id="password" placeholder="Password">
+								<input class="form-control" type="password" name="p" id="password" placeholder="Password" required>
 							</div>
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-fw fa-key"></i></span>
-								<input class="form-control" type="password" name="cp" id="cpassword" placeholder="Confirm Password">
+								<input class="form-control" type="password" name="cp" id="cpassword" placeholder="Confirm Password" required>
 							</div>
 							<!-- captcha ini cuma mockup -->
 							<img src="https://i.amz.mshcdn.com/5mfJr_n0-7H7kquE4C89u2ffiPg=/1200x627/2013%2F04%2F18%2F70%2Fcaptcha.ba000.jpg" class="img-responsive center-block" alt="Image" style="width:250px;padding:1em 0 1em 0;">							

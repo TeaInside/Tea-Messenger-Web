@@ -16,8 +16,12 @@
     color:rgba(51, 51, 51, 0.7) !important;
 }
 body {
-    background: #adbf50 !important;/* For browsers that do not support gradients */
+    background: #636A16 !important;/* For browsers that do not support gradients */
     height: 100%;
+}
+#frcg {
+    background-color: #1FB627;
+    border-radius: 5px;
 }
 .container-fluid {
     padding: 0;
@@ -30,7 +34,8 @@ body {
     margin-top: 1.5em;
 }
 .panel-title {
-    font-size: 2em;
+    font-weight: bold;
+    font-size: 2.8em;
     color: #fff !important;
     margin-top: 0.5em;
     /* font-weight: bold; */
