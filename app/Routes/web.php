@@ -5,7 +5,11 @@
  */
 
 Route::get("/", function(){
-	return view("welcome");
+	return view("welcome", 
+		[
+			"title" => "Test"
+		]
+	);
 });
 Route::get("/register", "RegisterController@index");
 Route::get("/login", "LoginController@index");
