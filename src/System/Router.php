@@ -48,6 +48,8 @@ class Router
     public static function action($key, $action)
     {
         $ins = self::getInstance();
+        $ins->uri = explode("?", $ins->uri, 2);
+        $ins->uri = $ins->uri[0];
         if ($key === $ins->uri) {
             if (isset($action[$_SERVER['REQUEST_METHOD']])) {
                 return self::__run($action[$_SERVER['REQUEST_METHOD']]);
