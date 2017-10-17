@@ -97,14 +97,14 @@
 				}
 			}
 		}
-		wq.open("GET", "http://api.teainside.dev/csrf.php");
+		wq.open("GET", "<?php print API_URL; ?>/csrf.php");
 		wq.send(null);
 		document.getElementById('fr').addEventListener("submit", function(){
 			var q = new register();
 			q.getInput();
 			if (q.formValidator()) {
 				q.buildData();
-				q.send("http://api.teainside.dev/register.php", function(res){
+				q.send("<?php print API_URL; ?>/register.php", function(res){
 					console.log(res);
 				});
 			}

@@ -25,3 +25,5 @@ define("ROUTER_FILE", false);
 
 
 define("ASSETS_URL", BASEURL."/assets");
+
+define("API_URL", "http://api.teainside.dev");
