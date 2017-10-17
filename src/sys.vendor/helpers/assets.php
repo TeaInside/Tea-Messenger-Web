@@ -2,10 +2,10 @@
 
 function js($filename)
 {
-    return ASSETS_URL."/js/".trim($filename, "/").".js";
+    return \Config::get("js_url")."/".trim($filename, "/").".js";
 }
 
 function css($filename)
 {
-    return ASSETS_URL."/css/".trim($filename, "/").".css";
+    return \Config::get("css_url")."/".trim($filename, "/").".css";
 }

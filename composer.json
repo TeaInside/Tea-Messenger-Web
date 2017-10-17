@@ -16,10 +16,7 @@
             "Console\\":"src/Console/",
             "System\\":"src/System/",
             "Handler\\":"src/Handler/"
-        },
-        "files": [
-            "config.php"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-0": {

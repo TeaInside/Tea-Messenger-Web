@@ -23,3 +23,8 @@ function dd()
         print "\n\n";
     }
 }
+
+function _i(&$a)
+{
+    return $a;
+}

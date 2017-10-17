@@ -166,7 +166,7 @@ class Router
      */
     private function getUri()
     {
-        if (!ROUTER_FILE) {
+        if (!\Config::get("router_file", "index.php")) {
             $a = explode($_SERVER['DOCUMENT_ROOT'], $_SERVER['SCRIPT_FILENAME']);
             $a = explode("/", end($a), -1);
             if (isset($a[1])) {

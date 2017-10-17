@@ -17,8 +17,8 @@ final class IceTea
             }
         }
         if (! $not_found) {
-        	http_response_code(404);
-        	return view("errors/404");
+            http_response_code(404);
+            return view("errors/404");
         }
     }
 }

@@ -1,21 +1,9 @@
 <?php
 
-require __DIR__."/sys.vendor/init.map";
-
 /**
  * If running without composer.
  */
 if (! file_exists(__DIR__."/../vendor/autoload.php")) {
-    /**
-     * Load config.
-     */
-    require __DIR__."/../config.php";
-    /**
-     * Load helpers.
-     */
-    require __DIR__."/sys.vendor/helpers/rstr.php";
-    require __DIR__."/sys.vendor/helpers/system.php";
-    require __DIR__."/sys.vendor/helpers/encryption.php";
     /**
      * Class loader.
      */
@@ -32,5 +20,6 @@ if (! file_exists(__DIR__."/../vendor/autoload.php")) {
 } else {
     require __DIR__."/../vendor/autoload.php";
 }
-
+require __DIR__."/sys.vendor/init.map";
+\Config::init();
 __icetea_start();

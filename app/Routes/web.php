@@ -11,6 +11,7 @@ Route::get("/", function(){
 		]
 	);
 });
+Route::get("/home", "HomeController@index");
 Route::get("/register", "RegisterController@index");
 Route::get("/login", "LoginController@index");
 Route::get("/forgot-password", function(){

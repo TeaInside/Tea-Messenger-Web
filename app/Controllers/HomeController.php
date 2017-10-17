@@ -11,6 +11,7 @@ namespace App\Controllers;
 
 use Error;
 use Exception;
+use System\Database\DB;
 use Handler\IceTeaController;
 
 class HomeController extends IceTeaController
@@ -25,6 +26,10 @@ class HomeController extends IceTeaController
 
 	public function index()
 	{
+		DB::table()->insert([]);
+		die;
+		$a = \Config::get("database");
+		var_dump($a);
 		return view("home");
 	}
 }

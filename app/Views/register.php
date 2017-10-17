@@ -26,7 +26,7 @@
 	   Lainnya	public/assets/{buat folder sendiri}
 	-->
 	<!-- <center> -->
-	<div class="container">
+	<div class="container" style="width:40%;">
 			<div id="frcg">
 				<div class="panel panel-default">
 					<div class="panel-heading text-center">
