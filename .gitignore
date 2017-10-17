@@ -5,3 +5,4 @@
 /.php_cs.cache
 /composer.phar
 /.phpintel/
+/config.php
