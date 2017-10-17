@@ -34,6 +34,7 @@ final class Config
 			"base_url" 	=> $url['base_url'],
 			"js_url"   	=> $url['js_url'],
 			"css_url"  	=> $url['css_url'],
+			"img_url"  	=> $url['img_url'],
 			"environment" => $env,
 			"app_key"     => _i($app['key']),
 			"router_file" => $router_file

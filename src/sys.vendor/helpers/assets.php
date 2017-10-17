@@ -12,5 +12,5 @@ function css($filename)
 
 function img($filename)
 {
-    return ASSETS_URL."/img/".trim($filename, "/").".png";
+    return \Config::get("img_url")."/".trim($filename, "/").".png";
 }
