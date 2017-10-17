@@ -1,29 +1,34 @@
 <?php
 
 /**
- * IceTea Framework.
+ * IceTea Framework Configuration.
  */
-
 ini_set("display_errors", true);
 define("BASEPATH", __DIR__);
+
+
+$env = "development";
 
 /**
  * Database.
  */
-define("DBHOST", "localhost");
-define("DBUSER", "debian-sys-maint");
-define("DBPASS", "");
-define("DBNAME", "icetea");
-define("DBPORT", "3306");
+$db = [
+	"driver" 	=> "mysql",
+	"host"   	=> "localhost",
+	"port"	 	=> 3306,
+	"dbname"	=> "teamess",
+	"user"		=> "debian-sys-maint",
+	"pass"		=> ""
+];
 
 /**
- * Base URL.
+ * URL
  */
-$baseurl = "http".(isset($_SERVER['HTTPS']) ? "s" : "")."://".(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : "localhost");
-define("BASEURL", $baseurl);
-define("ROUTER_FILE", false);
+$url = [
+	"base_url" => "http://"._i($_SERVER['HTTP_HOST']),
+	"js_url"   => "http://"._i($_SERVER['HTTP_HOST'])."/assets/js",
+	"css_url"  => "http://"._i($_SERVER['HTTP_HOST'])."/assets/css",
+	"img_url"  => "http://"._i($_SERVER['HTTP_HOST'])."/assets/img",
+];
 
-
-define("ASSETS_URL", BASEURL."/assets");
-
-define("API_URL", "http://api.teainside.dev");
+$router_file = ""; // index.php
