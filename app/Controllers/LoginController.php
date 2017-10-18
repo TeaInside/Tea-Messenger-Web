@@ -27,4 +27,9 @@ class LoginController extends IceTeaController
     {
         return view("login");
     }
+
+    public function forgot()
+    {
+        return view("forgotpassword");
+    }
 }

@@ -53,7 +53,7 @@
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-fw fa-venus-mars"></i></span>
 								<select class="form-control" style="font-family: 'FontAwesome', Helvetica;" id="g" required>
-									<option value=""></option>
+									<option value="">Choose</option>
 									<option name="g" id="g1" value="male">&#xf221; Male</option>
 									<option name="g" id="g2" value="female">&#xf222; Female</option>
 								</select>
@@ -78,6 +78,9 @@
 							</div>
 							<div id="csrf_field"></div>
 							<input type="submit" value="Sign Up" class="btn btn-primary btn-login" id="sbt"/>
+							<span>
+								<center> Already have account ? <a href="./">Sign in</a>. </center>
+							</span>
 						</form>
 					</div>
 				</div>

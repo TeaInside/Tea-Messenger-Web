@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Tea Messenger</title>
+	<title>Tea Messenger - Login</title>
     <link rel="stylesheet" href="<?php print css("bootstrap"); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php print css("login"); ?>">
 </head>
@@ -17,24 +17,19 @@
                <div class="login-wall">
                   <div class="col-md-12">
                      <img class="profile-img" src="<?php print img("logo-ice-tea"); ?>" alt="">
-                     <!-- <p class="text-center ice-tea">Sign in</p> -->
+                     <p class="text-center ice-tea">Forgot Password</p>
                   </div>
                   <form method="post" action="javascript:void(0);" id="form-login" class="form-horizontal form-signin">
 			         <div class="form-group">
 				        <input type="text" name="username" id="username" class="form-control" placeholder="Username">
 			         </div>
 			         <div class="form-group">
-				        <input type="text" name="username" id="password" class="form-control" placeholder="Password">
-			         </div>
-			         <div class="form-group">
 				        <div id="csrf_field"></div>
-				        <input type="submit" name="submit" value="Sign In" class="btn btn-lg btn-primary btn-block">
+				        <input type="submit" name="submit" value="Check" class="btn btn-lg btn-primary btn-block">
 			         </div>
                      <p class="text-center">
-			            <a href="/forgotPassword">Forgot Password</a>
-						<br>
 						<span>
-							Need an account? <a href="/register">Sign up.</a>
+							Already have account? <a href="./">Sign in.</a>
 						</span>
                      </p>
 		          </form>
@@ -43,8 +38,16 @@
 		</div>
    </div>
 <script type="text/javascript">
+    var username = document.getElementById('username');
 	document.getElementById('form-login').addEventListener("submit", function(){
-		alert("Coming soon!");
+		//alert("Coming soon!");
+        // alert(username.value);
+        if(username.value == 'admin'){
+            alert("Email reset password telah dikirim ke email "+ username.value +"@etdah.com anda.");
+        }
+        else {
+            alert("Username tidak terdaftar.");
+        }
 	});
 </script>
 </body>
