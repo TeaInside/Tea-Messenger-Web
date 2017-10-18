@@ -38,10 +38,10 @@ class Fixer extends ConsoleCommand
     public function execute()
     {
         print "Fixing...\n";
-        print shell_exec(BASEPATH."/src/sys.vendor/bin/phpcbf ".BASEPATH."/app --standard=PSR2 >> /dev/null &");
-        print shell_exec(BASEPATH."/src/sys.vendor/bin/phpcbf ".BASEPATH."/tests --standard=PSR2 >> /dev/null &");
-        print shell_exec(BASEPATH."/src/sys.vendor/bin/phpcbf ".BASEPATH."/public --standard=PSR2  >> /dev/null &");
-        print shell_exec(BASEPATH."/src/sys.vendor/bin/phpcbf ".BASEPATH."/src --standard=PSR2 >> /dev/null &");
+        print shell_exec("cd ".BASEPATH."/app && ".BASEPATH."/src/sys.vendor/bin/phpcbf . --standard=PSR2 >> /dev/null &");
+        print shell_exec("cd ".BASEPATH."/tests && ".BASEPATH."/src/sys.vendor/bin/phpcbf . --standard=PSR2 >> /dev/null &");
+        print shell_exec("cd ".BASEPATH."/public && ".BASEPATH."/src/sys.vendor/bin/phpcbf . --standard=PSR2 >> /dev/null &");
+        print shell_exec("cd ".BASEPATH."/src && ".BASEPATH."/src/sys.vendor/bin/phpcbf . --standard=PSR2 >> /dev/null &");
         print "\nFixed!";
         die("\n");
     }

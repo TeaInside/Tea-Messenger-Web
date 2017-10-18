@@ -11,8 +11,8 @@ use Handler\IceTeaModel;
 
 class ContohModel extends IceTeaModel
 {
-public function test()
-{
-echo "TestModel sukses!";
-}
+    public function test()
+    {
+        echo "TestModel sukses!";
+    }
 }
