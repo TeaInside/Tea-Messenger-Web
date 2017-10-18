@@ -29,7 +29,7 @@
 			         <div class="form-group">
 				        <div id="csrf_field"></div>
 				        <input type="submit" name="submit" value="Login" class="btn btn-lg btn-primary btn-block">
-			         </div>  
+			         </div>
                      <p class="text-center">
 			            <a href="/forgot-password">Forgot Password</a>
                      </p>
