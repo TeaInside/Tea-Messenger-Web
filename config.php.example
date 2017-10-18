@@ -31,4 +31,4 @@ $url = [
 	"img_url"  => "http://"._i($_SERVER['HTTP_HOST'])."/assets/img",
 ];
 
-$router_file = ""; // index.php
+$router_file = "index.php"; // index.php
