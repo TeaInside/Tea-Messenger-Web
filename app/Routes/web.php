@@ -4,13 +4,7 @@
  * Pengaturan router.
  */
 
-Route::get("/", function(){
-	return view("welcome", 
-		[
-			"title" => "Test"
-		]
-	);
-});
+Route::get("/", "LoginController@index");
 Route::get("/home", "HomeController@index");
 Route::get("/register", "RegisterController@index");
 Route::get("/login", "LoginController@index");
