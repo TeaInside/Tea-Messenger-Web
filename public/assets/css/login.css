@@ -41,7 +41,7 @@ body {
 }
 
 .login-title {
-   margin-top: 60px;
+   margin-top: 80px;
    color: #ffffff;
    font-size: 20px;
    font-weight: 400px;
@@ -61,6 +61,16 @@ body {
    display: block;
    margin: 0 auto 10px;
 }
+
+.btn-block {
+   background: #afdd5a;
+   background-color :#afdd5a; 
+}
+
+.btn-block:hover {
+   background: #afdd5a;
+}
+
 
 .icg {
 	margin-top: 1%;
