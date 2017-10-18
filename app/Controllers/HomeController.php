@@ -16,20 +16,20 @@ use Handler\IceTeaController;
 
 class HomeController extends IceTeaController
 {
-	/**
-	 * Constructor.
-	 */
-	public function __construct()
-	{
-		parent::__construct();
-	}
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
-	public function index()
-	{
-		DB::table()->insert([]);
-		die;
-		$a = \Config::get("database");
-		var_dump($a);
-		return view("home");
-	}
+    public function index()
+    {
+        DB::table()->insert([]);
+        die;
+        $a = \Config::get("database");
+        var_dump($a);
+        return view("home");
+    }
 }

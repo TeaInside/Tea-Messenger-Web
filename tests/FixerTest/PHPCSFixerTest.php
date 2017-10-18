@@ -8,7 +8,7 @@ class PHPCSFixerTest extends TestCase
 {
     public function testFirst()
     {
-    	$a = shell_exec(BASEPATH."/src/sys.vendor/bin/fixer fix ".BASEPATH."/src");
-    	$this->assertTrue(!empty($a));
+        $a = shell_exec(BASEPATH."/src/sys.vendor/bin/fixer fix ".BASEPATH."/src");
+        $this->assertTrue(!empty($a));
     }
 }

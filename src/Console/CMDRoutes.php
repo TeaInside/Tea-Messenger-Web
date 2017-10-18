@@ -14,6 +14,8 @@ class CMDRoutes
         "serve" => "\\Console\\Commands\\Serve",
         "delete" => "\\Console\\Commands\\Delete",
         "export" => "\\Console\\Commands\\Export",
-        "import" => "\\Console\\Commands\\Import"
+        "import" => "\\Console\\Commands\\Import",
+        "check"  => "\\Console\\Commands\\Check",
+        "fixer"  => "\\Console\\Commands\\Fixer"
     ];
 }

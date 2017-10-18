@@ -27,7 +27,7 @@ class Make extends ConsoleCommand
     public function input($param)
     {
         if (!isset($param[0])) {
-            # code...
+            // code...
         } else {
             $this->what = strtolower($param[0]);
             array_shift($param);
@@ -39,10 +39,10 @@ class Make extends ConsoleCommand
     {
         switch ($this->what) {
             case 'controller':
-                    $this->make_controller(...$this->param);
+                $this->make_controller(...$this->param);
                 break;
             case 'model':
-                    $this->make_model(...$this->param);
+                $this->make_model(...$this->param);
                 break;
 
             default:

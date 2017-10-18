@@ -142,9 +142,9 @@ class Router
     }
 
     /**
-     * @param string            $route
-     * @param string|Closure    $action
-     * @param string            $method
+     * @param string         $route
+     * @param string|Closure $action
+     * @param string         $method
      */
     public static function addRoute($route, $action, $method)
     {
@@ -152,9 +152,9 @@ class Router
     }
 
     /**
-     * @param string            $route
-     * @param string|Closure    $action
-     * @param string            $method
+     * @param string         $route
+     * @param string|Closure $action
+     * @param string         $method
      */
     private function __addRoute($route, $action, $method)
     {

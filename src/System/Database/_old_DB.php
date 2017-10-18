@@ -278,39 +278,40 @@ class DB extends DatabaseFactory implements QueryBuilder
                 ];
 
 
-        $where = $self->makeWhere(
+                $where = $self->makeWhere(
                     $make['parameter'],
                     $make['column'],
                     $make['operator'],
                     $make['value']
                 );
 
-        $whereData = $self->makeOptionWhere(
+                $whereData = $self->makeOptionWhere(
                     $make['parameter'],
                     $make['column'],
                     $make['operator'],
                     $make['value']
                 );
 
-        array_push($self->optionWhere, $type.$where);
+                array_push($self->optionWhere, $type.$where);
 
-        $self->optionWhereData = array_merge(
+                $self->optionWhereData = array_merge(
                     $self->optionWhereData,
                     [":where_{$make['parameter']}" => $whereData]
                 );
-        endforeach; else :
+            endforeach;
+        else :
             foreach ($array as $a => $v) :
                 $param     = str_replace(".", "_", $a);
-        $where     = $self->makeWhere($param, $a, '=', $v);
-        $whereData = $self->makeOptionWhere($param, $a, '=', $v);
+                $where     = $self->makeWhere($param, $a, '=', $v);
+                $whereData = $self->makeOptionWhere($param, $a, '=', $v);
 
-        array_push($self->optionWhere, $type.$where);
-        $self->optionWhereData = array_merge($self->optionWhereData, [":where_{$param}" => $whereData]);
-        endforeach;
+                array_push($self->optionWhere, $type.$where);
+                $self->optionWhereData = array_merge($self->optionWhereData, [":where_{$param}" => $whereData]);
+            endforeach;
 
         endif;
 
-        return $self;
+            return $self;
     }
 
     /**
