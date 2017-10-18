@@ -37,9 +37,8 @@ class Serve extends ConsoleCommand
 
     public function execute()
     {
-        print "IceTea Framework Development Started\n\n";
-        print "localhost:8000\n";
-        print exec("php -S localhost:8000 -t ".BASEPATH."/public");
+        print \Console\Colors\Color::clr("IceTea Framework development server started:", "green")." <http://127.0.0.1:8000>\n";
+        print exec("php -S 127.0.0.1:8000 -t ".BASEPATH."/public &");
     }
 
     private function make_controller($name)

@@ -27,7 +27,7 @@
 - `git commit -m "<pesan>"`
 - `git checkout master`
 - `git pull origin master`
-- buka halaman `https://github.com/TeaInside/Tea-Messenger-Web.git` dan klik `membuat pull request`
+- Buka halaman `https://github.com/TeaInside/Tea-Messenger-Web.git` dan klik `membuat pull request`
 
 ##### Penggunaan :
 - `composer install --verbose`
