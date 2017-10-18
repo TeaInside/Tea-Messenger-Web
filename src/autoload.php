@@ -11,9 +11,9 @@ if (! file_exists(__DIR__."/../vendor/autoload.php")) {
     {
         $a = explode("\\", $class, 2);
         if ($a[0] == "App") {
-            include BASEPATH."/app/".str_replace("\\", "/", $a[1]).".php";
+            include __DIR__."/../app/".str_replace("\\", "/", $a[1]).".php";
         } else {
-            include BASEPATH."/src/".str_replace("\\", "/", $class).".php";
+            include __DIR__."/../src/".str_replace("\\", "/", $class).".php";
         }
     }
     spl_autoload_register("___load_class");
