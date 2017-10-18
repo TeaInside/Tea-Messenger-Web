@@ -39,7 +39,7 @@
 		</div>
    </div>
 <script type="text/javascript">
-	document.getElementById('fr').addEventListener("submit", function(){
+	document.getElementById('form-login').addEventListener("submit", function(){
 		alert("Coming soon!");
 	});
 </script>
