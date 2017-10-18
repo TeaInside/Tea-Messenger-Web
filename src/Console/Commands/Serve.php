@@ -27,7 +27,7 @@ class Serve extends ConsoleCommand
     public function input($param)
     {
         if (!isset($param[0])) {
-            # code...
+            // code...
         } else {
             $this->what = strtolower($param[0]);
             array_shift($param);

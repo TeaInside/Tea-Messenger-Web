@@ -15,16 +15,16 @@ use Handler\IceTeaController;
 
 class RegisterController extends IceTeaController
 {
-	/**
-	 * Constructor.
-	 */
-	public function __construct()
-	{
-		parent::__construct();
-	}
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
-	public function index()
-	{
-		return view("register");
-	}
+    public function index()
+    {
+        return view("register");
+    }
 }

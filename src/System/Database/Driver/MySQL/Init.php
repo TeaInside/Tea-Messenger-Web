@@ -7,12 +7,12 @@ use Config;
 
 class Init
 {
-	public static function pdo($cfg)
-	{
-		return new PDO(
-			"mysql:host=".$cfg['host'].";dbname=".$cfg['dbname'].";port=".$cfg['port'], 
-			$cfg['user'], 
-			$cfg['pass']
-		);
-	}
+    public static function pdo($cfg)
+    {
+        return new PDO(
+            "mysql:host=".$cfg['host'].";dbname=".$cfg['dbname'].";port=".$cfg['port'],
+            $cfg['user'],
+            $cfg['pass']
+        );
+    }
 }

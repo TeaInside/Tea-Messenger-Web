@@ -15,16 +15,16 @@ use Handler\IceTeaController;
 
 class LoginController extends IceTeaController
 {
-	/**
-	 * Constructor.
-	 */
-	public function __construct()
-	{
-		parent::__construct();
-	}
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
-	public function index()
-	{
-		return view("login");
-	}
+    public function index()
+    {
+        return view("login");
+    }
 }

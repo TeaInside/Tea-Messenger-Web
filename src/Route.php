@@ -13,9 +13,9 @@ final class Route
     use Singleton;
 
     /**
-     * @param string            $route
-     * @param string|Closure    $action
-     * @param string            $method
+     * @param string         $route
+     * @param string|Closure $action
+     * @param string         $method
      */
     public static function custom($route, $action, $method)
     {
@@ -23,8 +23,8 @@ final class Route
     }
 
     /**
-     * @param string            $route
-     * @param string|Closure    $action
+     * @param string         $route
+     * @param string|Closure $action
      */
     public static function postget($route, $action)
     {
@@ -34,8 +34,8 @@ final class Route
     }
 
     /**
-     * @param string            $route
-     * @param string|Closure    $action
+     * @param string         $route
+     * @param string|Closure $action
      */
     public static function get($route, $action)
     {
@@ -43,8 +43,8 @@ final class Route
     }
 
     /**
-     * @param string            $route
-     * @param string|Closure    $action
+     * @param string         $route
+     * @param string|Closure $action
      */
     public static function post($route, $action)
     {
@@ -52,9 +52,9 @@ final class Route
     }
 
     /**
-     * @param string            $route
-     * @param string|Closure    $action
-     * @param string            $method
+     * @param string         $route
+     * @param string|Closure $action
+     * @param string         $method
      */
     private function set_route($route, $action, $method = "GET")
     {
