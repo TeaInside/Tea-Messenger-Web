@@ -65,13 +65,19 @@ body {
 .btn-block {
    background: #afdd5a;
    background-color :#afdd5a;
+   border: #afdd52;
+}
+
+.btn-block:focus {
+   background: #afdd10;
+   background-color :#afdd10;
+   border: #afdd10;
 }
 
 .btn-block:hover {
    background: #afdd5a;
+   border: #afdd5a;
 }
-
-
 .icg {
     margin-top: 1%;
     margin-bottom: 1%;
