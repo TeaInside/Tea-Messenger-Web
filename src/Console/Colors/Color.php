@@ -1,6 +1,8 @@
 <?php
 
-class Colors
+namespace Console\Colors;
+
+class Color
 {
     private $foreground_colors = array();
     private $background_colors = array();
@@ -64,5 +66,11 @@ class Colors
     public function getBackgroundColors()
     {
         return array_keys($this->background_colors);
+    }
+
+    public static function clr($str, $fg = null, $bg = null)
+    {
+        $st = new self;
+        return $st->getColoredString($str, $fg, $bg);
     }
 }
