@@ -23,7 +23,7 @@ include_once('layouts/header.php');
 				        <input type="submit" name="submit" value="Sign In" class="btn btn-lg btn-primary btn-block">
 			         </div>
                      <p class="text-center">
-			            <a href="/forgotPassword">Forgot Password</a>
+			            <a href="/forgotpassword">Forgot Password</a>
 						<br>
 						<span>
 							Need an account? <a href="/register">Sign up.</a>
