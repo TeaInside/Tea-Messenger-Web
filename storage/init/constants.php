@@ -1,3 +1,3 @@
 <?php
 
-define("API_URL", "http://api.telegram.org");
+define("API_URL", "http://api.teainside.dev");

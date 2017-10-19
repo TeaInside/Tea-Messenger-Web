@@ -108,7 +108,23 @@
 			if (q.formValidator()) {
 				q.buildData();
 				q.send("<?php print API_URL; ?>/register.php", function(res){
-					console.log(res);
+					try {
+						var q = JSON.parse(res);
+						console.log(typeof q['error']);
+						if (typeof q['error'] != 'undefined') {
+							alert("Error ("+q['error']+") : "+q['message']);
+						} else if (
+							typeof q['message']  != 'undefined' &&
+							typeof q['redirect'] != 'undefined'
+						){
+							alert(q['message']);
+							window.location = q['redirect'];
+						} else {
+							alert("Unknown error : " + JSON.stringify(q));
+						}
+					} catch (e) {
+						alert("Error " + e.message);
+					}
 				});
 			}
 		});
