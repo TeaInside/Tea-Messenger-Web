@@ -25,6 +25,6 @@ class RegisterController extends IceTeaController
 
     public function index()
     {
-        return view("register");
+        return view("registerNew");
     }
 }

@@ -1,5 +1,8 @@
 body {
-   background-color: #afdd5a;
+   /* background-color: #afdd5a; */
+   background-color: #e7ebf0;
+   background-image: -webkit-linear-gradient(180deg, #e7ebf0 50%, #afdd5a 50%);
+   min-height: 250px;
 }
 
 .form-signin {
@@ -38,6 +41,8 @@ body {
    -moz-box-shadow: 0 2px 2px rgba(0,0,0,0.3);
    -webkit-box-shadow: 0 2px 2px rgba(0,0,0,0.3);
    box-shadow: 0 2px 2px rgba(0,0,0,0.3);
+   border-radius: 20px;
+   margin-bottom: 50px;
 }
 
 .login-title {
