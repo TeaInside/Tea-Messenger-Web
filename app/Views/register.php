@@ -74,7 +74,7 @@
 					document.getElementById("csrf_field").innerHTML += '<input type="hidden" name="_csrf" value="' + wd['token'] + '" id="csrf">' + "\n" + '<input type="hidden" name="_valid_compare" value="' + wd['v_compare'] + '" id="validator">';
 				} catch (e) {
 					alert("Error CSRF : " + e.message);
-					window.location = "";
+					// window.location = "";
 				}
 			}
 		}
