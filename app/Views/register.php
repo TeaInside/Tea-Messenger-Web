@@ -13,38 +13,38 @@
                   <form method="post" action="javascript:void(0);" id="form-login" class="form-horizontal form-signin">
 			         <div class="form-group">
 					 	<label>First Name</label>
-				        <input type="text" name="firstName" id="first_name" class="form-control" placeholder="First Name">
+				        <input type="text" name="firstName" id="first_name" class="form-control" placeholder="First Name" required>
 					 </div>
 					 <div class="form-group">
 					 	<label>Last Name</label>
-				        <input type="text" name="lastName" id="last_name" class="form-control" placeholder="Last Name">
+				        <input type="text" name="lastName" id="last_name" class="form-control" placeholder="Last Name" required>
 					 </div>
 					 <div class="form-group">
 					 	<label>Email</label>
-				        <input type="text" name="email" id="email" class="form-control" placeholder="email@domain.com">
+				        <input type="text" name="email" id="email" class="form-control" placeholder="email@domain.com" required>
 					 </div>
 					 <div class="form-group">
 					 	<label>Phone Number</label>
-				        <input type="text" name="phoneNumber" id="phone" class="form-control" placeholder="Phone number">
+				        <input type="text" name="phoneNumber" id="phone" class="form-control" placeholder="Phone number" required>
 					 </div>
 					 <div class="form-group">
 						<label>Gender</label>
-						<select name="" id="g" class="form-control">
+						<select name="" id="g" class="form-control" required>
 							<option value="male">Male</option>
 							<option value="female">Female</option>
 						</select>
 					 </div>
 					 <div class="form-group">
 					 	<label>Username</label>
-				        <input type="text" name="username" id="username" class="form-control" placeholder="Username">
+				        <input type="text" name="username" id="username" class="form-control" placeholder="Username" required>
 					 </div>
 					 <div class="form-group">
 					 	<label>Password</label>
-				        <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+				        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
 					 </div>
 					 <div class="form-group">
 					 	<label>Confirm Password</label>
-				        <input type="password" name="confPassword" id="cpassword" class="form-control" placeholder="Confirm Password">
+				        <input type="password" name="confPassword" id="cpassword" class="form-control" placeholder="Confirm Password" required>
 					 </div>
 					 <div class="form-group">
 					 <img src="https://i.amz.mshcdn.com/5mfJr_n0-7H7kquE4C89u2ffiPg=/1200x627/2013%2F04%2F18%2F70%2Fcaptcha.ba000.jpg" class="img-responsive center-block" alt="Captcha" style="width:120px;padding:1em 0 1em 0;">
