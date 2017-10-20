@@ -7,10 +7,10 @@ function __icetea_start()
     System\Router::apiFlag();
     include BASEPATH."/app/Routes/api.php";
     if (is_dir(BASEPATH."/storage/init")) {
-    	$scan = scandir(BASEPATH."/storage/init");
-    	unset($scan[0], $scan[1]);
-    	foreach ($scan as $val) {
-    		require BASEPATH."/storage/init/".$val;
-    	}
+        $scan = scandir(BASEPATH."/storage/init");
+        unset($scan[0], $scan[1]);
+        foreach ($scan as $val) {
+            require BASEPATH."/storage/init/".$val;
+        }
     }
 }
