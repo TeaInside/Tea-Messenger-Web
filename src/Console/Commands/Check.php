@@ -39,7 +39,7 @@ class Check extends ConsoleCommand
     {
         print "Checking syntax...\n";
         $err = [];
-        $verbose = strpos(implode(" ", $_SERVER['argv']), "--verbose");
+        $verbose = strpos(implode(" ", $_SERVER['argv']), "--verbose") || strpos(implode(" ", $_SERVER['argv']), "-v");
         foreach (explode("\n", shell_exec("cd ".BASEPATH." && find | grep \".php\"")) as $val) {
             $a = explode(".", $val);
             if (/*substr($val, 0, 9) != "./vendor/" && */strtolower(end($a)) === "php") {
