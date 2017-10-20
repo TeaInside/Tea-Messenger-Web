@@ -71,21 +71,21 @@
 			if (this.readyState == 4) {
 				try {
 					var wd = JSON.parse(this.responseText);
-					document.getElementById("csrf_field").innerHTML += '<input type="hidden" name="_csrf" value="' + wd['csrf'] + '" id="csrf">' + "\n" + '<input type="hidden" name="_valid_compare" value="' + wd['v_compare'] + '" id="validator">';
+					document.getElementById("csrf_field").innerHTML += '<input type="hidden" name="_csrf" value="' + wd['token'] + '" id="csrf">' + "\n" + '<input type="hidden" name="_valid_compare" value="' + wd['v_compare'] + '" id="validator">';
 				} catch (e) {
 					alert("Error CSRF : " + e.message);
 					window.location = "";
 				}
 			}
 		}
-		wq.open("GET", "<?php print API_URL; ?>/csrf.php");
+		wq.open("GET", "<?php print API_URL; ?>/csrf");
 		wq.send(null);
 		document.getElementById('form-login').addEventListener("submit", function(){
 			var q = new register();
 			q.getInput();
 			if (q.formValidator()) {
 				q.buildData();
-				q.send("<?php print API_URL; ?>/register.php", function(res){
+				q.send("<?php print API_URL; ?>/register", function(res){
 					try {
 						var q = JSON.parse(res);
 						console.log(typeof q['error']);
