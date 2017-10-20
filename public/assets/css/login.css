@@ -1,7 +1,7 @@
 body {
    /* background-color: #afdd5a; */
-   background-color: #e7ebf0;
-   background-image: -webkit-linear-gradient(180deg, #e7ebf0 50%, #afdd5a 50%);
+   background-color: #efece7;
+   background-image: -webkit-linear-gradient(180deg, #efece7 50%, #478262 50%);
    min-height: 250px;
 }
 
@@ -68,20 +68,20 @@ body {
 }
 
 .btn-block {
-   background: #afdd5a;
-   background-color :#afdd5a;
-   border: #afdd52;
+   background: #478262;
+   background-color :#478262;
+   border: #478262;
 }
 
 .btn-block:focus {
-   background: #afdd10;
-   background-color :#afdd10;
-   border: #afdd10;
+   background: #478262;
+   background-color :#478262;
+   border: #478262;
 }
 
 .btn-block:hover {
-   background: #afdd5a;
-   border: #afdd5a;
+   background: #478262;
+   border: #478262;
 }
 .icg {
     margin-top: 1%;
