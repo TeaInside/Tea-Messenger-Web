@@ -15,6 +15,6 @@
 	<script src="<?php print js("bootstrap"); ?>" type="text/javascript"></script>
     <!-- CSS -->
     <link rel="stylesheet" href="<?php print css("bootstrap"); ?>">
-    <link rel="stylesheet" type="text/css" href="<?php print css("fontawesome"); ?>">
     <link rel="stylesheet" type="text/css" href="<?php print css("normalize"); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php print css("fontawesome"); ?>">
     <link rel="stylesheet" type="text/css" href="<?php print css("main"); ?>">

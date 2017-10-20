@@ -1,17 +1,51 @@
 body {
     background-color: #efece7;
-    height: 100%;
-    position: fixed;
+    /* height: 100%;
+    position: fixed; */
     /* background-image: -webkit-linear-gradient(180deg, #efece7 50%, #478262 50%); */
     /* min-height: 250px; */
 }
 .colchatlist {
-    background-color:#333;
+    background-color:#333 !important;
     position: fixed;
     overflow-y: auto;
+    height: 100%;
+    left: 0;
+    padding: 0;
+    margin: 0;
+}
+.colchatlist .panelchatlist {
+    border: 0;
+    border-radius: 0;
 }
 .colchatcontent {
-    background-color:#478262;
-    position: absolute;
+    background-color:#478262 !important;
+    position: fixed;
     overflow-y: auto;
+    height: 100%;
+    right: 0;
+}
+.btnmenu,
+.btnmenu:hover,
+.btnmenu:focus {
+    border: 0 !important;
+    border-radius: 0 !important;
+    background-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+.formsearch,
+.formsearch:hover,
+.formsearch:focus,
+{
+    background-color: #478262 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+.formsearch::-webkit-input-placeholder,
+.formsearch:-moz-placeholder,
+.formsearch::-moz-placeholder,
+.formsearch:-ms-input-placeholder,
+.formsearch::-ms-input-placeholder {
+    color: #fff;
 }
