@@ -1,0 +1,17 @@
+body {
+    background-color: #efece7;
+    height: 100%;
+    position: fixed;
+    /* background-image: -webkit-linear-gradient(180deg, #efece7 50%, #478262 50%); */
+    /* min-height: 250px; */
+}
+.colchatlist {
+    background-color:#333;
+    position: fixed;
+    overflow-y: auto;
+}
+.colchatcontent {
+    background-color:#478262;
+    position: absolute;
+    overflow-y: auto;
+}
