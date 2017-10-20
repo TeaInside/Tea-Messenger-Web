@@ -40,11 +40,11 @@
 					 </div>
 					 <div class="form-group">
 					 	<label>Password</label>
-				        <input type="text" name="password" id="password" class="form-control" placeholder="Password">
+				        <input type="password" name="password" id="password" class="form-control" placeholder="Password">
 					 </div>
 					 <div class="form-group">
 					 	<label>Confirm Password</label>
-				        <input type="text" name="confPassword" id="cpassword" class="form-control" placeholder="Confirm Password">
+				        <input type="password" name="confPassword" id="cpassword" class="form-control" placeholder="Confirm Password">
 					 </div>
 					 <div class="form-group">
 					 <img src="https://i.amz.mshcdn.com/5mfJr_n0-7H7kquE4C89u2ffiPg=/1200x627/2013%2F04%2F18%2F70%2Fcaptcha.ba000.jpg" class="img-responsive center-block" alt="Captcha" style="width:120px;padding:1em 0 1em 0;">
