@@ -4,9 +4,8 @@ include_once('layouts/header.php');
 	<div class="container">
 		<div class="row">
             <div class="col-sm-6 col-md-4 col-md-offset-4">
-			   <h2 class="text-center login-tile">Tea Messenger</h2>
-               <hr>
                <div class="login-wall">
+				<h2 class="text-center login-tile">Tea Messenger</h2>
                   <div class="col-md-12">
                      <img class="profile-img" src="<?php print img("logo-ice-tea"); ?>" alt="">
                      <!-- <p class="text-center ice-tea">Sign in</p> -->
