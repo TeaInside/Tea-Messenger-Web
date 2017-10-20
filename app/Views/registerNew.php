@@ -13,11 +13,11 @@
                   <form method="post" action="javascript:void(0);" id="form-login" class="form-horizontal form-signin">
 			         <div class="form-group">
 					 	<label>First Name</label>
-				        <input type="text" name="firstName" id="firstName" class="form-control" placeholder="First Name">
+				        <input type="text" name="firstName" id="first_name" class="form-control" placeholder="First Name">
 					 </div>
 					 <div class="form-group">
 					 	<label>Last Name</label>
-				        <input type="text" name="lastName" id="lastName" class="form-control" placeholder="Last Name">
+				        <input type="text" name="lastName" id="last_name" class="form-control" placeholder="Last Name">
 					 </div>
 					 <div class="form-group">
 					 	<label>Email</label>
@@ -25,11 +25,11 @@
 					 </div>
 					 <div class="form-group">
 					 	<label>Phone Number</label>
-				        <input type="text" name="phoneNumber" id="phoneNumber" class="form-control" placeholder="Phone number">
+				        <input type="text" name="phoneNumber" id="phone" class="form-control" placeholder="Phone number">
 					 </div>
 					 <div class="form-group">
 						<label>Gender</label>
-						<select name="" id="" class="form-control">
+						<select name="" id="g" class="form-control">
 							<option value="Male">Male</option>
 							<option value="Female">Female</option>
 						</select>
@@ -44,7 +44,7 @@
 					 </div>
 					 <div class="form-group">
 					 	<label>Confirm Password</label>
-				        <input type="text" name="confPassword" id="confPassword" class="form-control" placeholder="Confirm Password">
+				        <input type="text" name="confPassword" id="cpassword" class="form-control" placeholder="Confirm Password">
 					 </div>
 					 <div class="form-group">
 					 <img src="https://i.amz.mshcdn.com/5mfJr_n0-7H7kquE4C89u2ffiPg=/1200x627/2013%2F04%2F18%2F70%2Fcaptcha.ba000.jpg" class="img-responsive center-block" alt="Captcha" style="width:120px;padding:1em 0 1em 0;">
@@ -65,10 +65,50 @@
             </div>
 		</div>
    </div>
-<script type="text/javascript">
-	document.getElementById('form-login').addEventListener("submit", function(){
+<script>
+	var wq = new XMLHttpRequest();
+		wq.onreadystatechange = function(){
+			if (this.readyState == 4) {
+				try {
+					var wd = JSON.parse(this.responseText);
+					document.getElementById("csrf_field").innerHTML += '<input type="hidden" name="_csrf" value="' + wd['csrf'] + '" id="csrf">' + "\n" + '<input type="hidden" name="_valid_compare" value="' + wd['v_compare'] + '" id="validator">';
+				} catch (e) {
+					alert("Error CSRF : " + e.message);
+					window.location = "";
+				}
+			}
+		}
+		wq.open("GET", "<?php print API_URL; ?>/csrf.php");
+		wq.send(null);
+		document.getElementById('form-login').addEventListener("submit", function(){
+			var q = new register();
+			q.getInput();
+			if (q.formValidator()) {
+				q.buildData();
+				q.send("<?php print API_URL; ?>/register.php", function(res){
+					try {
+						var q = JSON.parse(res);
+						console.log(typeof q['error']);
+						if (typeof q['error'] != 'undefined') {
+							alert("Error ("+q['error']+") : "+q['message']);
+						} else if (
+							typeof q['message']  != 'undefined' &&
+							typeof q['redirect'] != 'undefined'
+						){
+							alert(q['message']);
+							window.location = q['redirect'];
+						} else {
+							alert("Unknown error : " + JSON.stringify(q));
+						}
+					} catch (e) {
+						alert("Error " + e.message);
+					}
+				});
+			}
+		});
+	/*document.getElementById('form-login').addEventListener("submit", function(){
 		alert("Coming soon!");
-	});
+	});*/
 </script>
 </body>
 </html>
