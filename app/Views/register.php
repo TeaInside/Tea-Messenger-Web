@@ -21,7 +21,7 @@
 					 </div>
 					 <div class="form-group">
 					 	<label>Email</label>
-				        <input type="text" name="email" id="email" class="form-control" placeholder="tole@mail.com">
+				        <input type="text" name="email" id="email" class="form-control" placeholder="email@domain.com">
 					 </div>
 					 <div class="form-group">
 					 	<label>Phone Number</label>
@@ -30,8 +30,8 @@
 					 <div class="form-group">
 						<label>Gender</label>
 						<select name="" id="g" class="form-control">
-							<option value="Male">Male</option>
-							<option value="Female">Female</option>
+							<option value="male">Male</option>
+							<option value="female">Female</option>
 						</select>
 					 </div>
 					 <div class="form-group">
