@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Tea Messenger</title>
-    <link rel="stylesheet" href="<?php print css("bootstrap"); ?>">
-	<link rel="stylesheet" type="text/css" href="<?php print css("login"); ?>">
-</head>
-<body>
+<?php
+include_once('layouts/header.php');
+?>
 	<div class="container">
 		<div class="row">
             <div class="col-sm-6 col-md-4 col-md-offset-4">
-			   <h2 class="text-center login-tile">Tea Messenger</h2>
-               <hr>
                <div class="login-wall">
+				<h2 class="text-center login-tile">Tea Messenger</h2>
                   <div class="col-md-12">
                      <img class="profile-img" src="<?php print img("logo-ice-tea"); ?>" alt="">
                      <!-- <p class="text-center ice-tea">Sign in</p> -->
@@ -31,7 +22,7 @@
 				        <input type="submit" name="submit" value="Sign In" class="btn btn-lg btn-primary btn-block">
 			         </div>
                      <p class="text-center">
-			            <a href="/forgotPassword">Forgot Password</a>
+			            <a href="/forgotpassword">Forgot Password</a>
 						<br>
 						<span>
 							Need an account? <a href="/register">Sign up.</a>

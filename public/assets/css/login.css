@@ -1,5 +1,8 @@
 body {
-   background-color: #afdd5a;
+   /* background-color: #afdd5a; */
+   background-color: #efece7;
+   background-image: -webkit-linear-gradient(180deg, #efece7 50%, #478262 50%);
+   min-height: 250px;
 }
 
 .form-signin {
@@ -32,16 +35,18 @@ body {
 }
 
 .login-wall {
-   margin-top: 20px;
-   padding: 40px 0 20px 0;
+   margin-top: 50px;
+   padding: 20px 0 20px 0;
    background-color: #f7f7f7;
    -moz-box-shadow: 0 2px 2px rgba(0,0,0,0.3);
    -webkit-box-shadow: 0 2px 2px rgba(0,0,0,0.3);
    box-shadow: 0 2px 2px rgba(0,0,0,0.3);
+   border-radius: 20px;
+   margin-bottom: 50px;
 }
 
 .login-title {
-   margin-top: 80px;
+   margin-top: 10px;
    color: #ffffff;
    font-size: 20px;
    font-weight: 400px;
@@ -63,20 +68,20 @@ body {
 }
 
 .btn-block {
-   background: #afdd5a;
-   background-color :#afdd5a;
-   border: #afdd52;
+   background: #478262;
+   background-color :#478262;
+   border: #478262;
 }
 
 .btn-block:focus {
-   background: #afdd10;
-   background-color :#afdd10;
-   border: #afdd10;
+   background: #478262;
+   background-color :#478262;
+   border: #478262;
 }
 
 .btn-block:hover {
-   background: #afdd5a;
-   border: #afdd5a;
+   background: #478262;
+   border: #478262;
 }
 .icg {
     margin-top: 1%;

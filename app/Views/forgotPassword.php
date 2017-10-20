@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Tea Messenger - Login</title>
-    <link rel="stylesheet" href="<?php print css("bootstrap"); ?>">
-	<link rel="stylesheet" type="text/css" href="<?php print css("login"); ?>">
-</head>
-<body>
+<?php
+include_once('layouts/header.php');
+?>
 	<div class="container">
 		<div class="row">
             <div class="col-sm-6 col-md-4 col-md-offset-4">
-			   <h2 class="text-center login-tile">Tea Messenger</h2>
-               <hr>
                <div class="login-wall">
+               <h2 class="text-center login-tile">Tea Messenger</h2>
                   <div class="col-md-12">
                      <img class="profile-img" src="<?php print img("logo-ice-tea"); ?>" alt="">
                      <p class="text-center ice-tea">Forgot Password</p>
@@ -25,13 +16,14 @@
 			         </div>
 			         <div class="form-group">
 				        <div id="csrf_field"></div>
-				        <input type="submit" name="submit" value="Check" class="btn btn-lg btn-primary btn-block">
+				        <input type="submit" name="submit" value="Reset" class="btn btn-lg btn-primary btn-block">
+                        <br>
+                        <span>
+                            <center>
+                                <a href="./">Back</a>
+                            </center>
+                        </span>
 			         </div>
-                     <p class="text-center">
-						<span>
-							Already have account? <a href="./">Sign in.</a>
-						</span>
-                     </p>
 		          </form>
                </div>
             </div>
