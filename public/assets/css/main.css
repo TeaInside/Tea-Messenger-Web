@@ -6,7 +6,7 @@ body {
     /* min-height: 250px; */
 }
 .colchatlist {
-    background-color:#333 !important;
+    /* background-color:#333 !important; */
     position: fixed;
     overflow-y: auto;
     height: 100%;
@@ -36,16 +36,109 @@ body {
 }
 .formsearch,
 .formsearch:hover,
-.formsearch:focus,
+.formsearch:focus
 {
     background-color: #478262 !important;
     outline: none !important;
     box-shadow: none !important;
-}
-.formsearch::-webkit-input-placeholder,
-.formsearch:-moz-placeholder,
-.formsearch::-moz-placeholder,
-.formsearch:-ms-input-placeholder,
-.formsearch::-ms-input-placeholder {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
     color: #fff;
+}
+.formsearch::-webkit-input-placeholder {
+    color: white !important
+}
+.formsearch:-moz-placeholder {
+    color: white !important;
+}
+.formsearch::-moz-placeholder {
+    color: white!important;
+}
+.formsearch:-ms-input-placeholder {
+    color: white !important;
+}
+.formsearch::-ms-input-placeholder {
+    color: white !important;
+}
+.panellistuserchat {
+    /* background-color: red!important; */
+    overflow-y: auto;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+}
+.listuserchat, .listuserchat .container-fluid{
+    padding: 0;
+    margin: 0;
+}
+.listuserchat .list-group-item {
+    border-radius: 0;
+    padding: 1em;
+}
+.listuserchat .list-group-item .ratio {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.listuserchat .list-group-item .img-circle {
+    border-radius: 50%;
+}
+.listuserchat .list-group-item .img-responsive {
+    display: block;
+    /* height: auto; */
+    /* max-width: 100%; */
+    /* border-radius: 50% !important; */
+    border: 0.1em solid rgba(0, 0, 0, 0.1);
+    max-width: 3.5em !important;
+    height: 3.5em !important;
+}
+.listuserchat .list-group-item .coluser {
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    text-align: left;
+}
+.listuserchat .list-group-item .chatcontent {
+    padding: 0;
+    margin: 0;
+    text-align: left !important;
+}
+.colchatcontent {
+    padding: 0;
+    margin: 0;
+}
+.colchatcontent .panelchatperson {
+    border-radius: 0;
+}
+.colchatcontent .panelchatperson .panel-heading {
+    padding: 0.4em;
+    /* padding: 0 1em 0 1em; */
+    text-align: left;
+}
+.colchatcontent .namauser {
+    font-weight:  bold;
+    font-size: 1.2em;
+}
+.colchatcontent .ketdatetime {
+    font-size: 1em;
+}
+.colchatcontent .panelchatperson .panel-body{
+    /* height: 100% !important; */
+    /* height: 85vh !important; */
+    background-image: url("http://www.planwallpaper.com/static/images/Nature-Background-Wallpapers-8_gxwmqmj.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+.colchatcontent .panelchatperson .panel-footer {
+    margin: 0;
+    padding: 0;
+    position: relative;
 }
