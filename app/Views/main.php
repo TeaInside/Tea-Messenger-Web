@@ -3,7 +3,7 @@
     ?>
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3 col-md-3 col-lg-3 colchatlist">                
                 <div class="panel panel-default panelchatlist">
@@ -132,7 +132,10 @@
                     </div>
                     <div class="panel-body">asad</div>
                     <div class="panel-footer">
-                        a
+                        <div class="row">
+                            <div class="col-sm-2 col-md-2 col-lg-2">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
