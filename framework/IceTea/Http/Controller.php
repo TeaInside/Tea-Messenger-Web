@@ -9,6 +9,10 @@ class Controller extends BaseController
 {
 
 
+    public function __construct()
+    {
+    }
+
     /**
      * Handle calls to missing methods on the controller.
      *
