@@ -2,6 +2,8 @@
 
 namespace IceTea\View\Compilers;
 
+use IceTea\View\Compilers\Components\Layout;
+
 final class TeaCompiler
 {
     private $file;
@@ -36,15 +38,16 @@ final class TeaCompiler
 
     private function layoutState(&$v)
     {
-        $a = trim($v);
-        if (substr($a, 0, 9) === "@layout(\"") {
-            $a = explode("@layout(\"", $a, 2);
-            if (isset($a[1])) {
-                $a = explode("\"", $a[1], 2);
-                $v = $this->getContent();
-            } else {
-                throw new \Exception("Invalid layout syntax");
-            }
+        $a = trim($v);        
+        if (substr($a, 0, 9) === "@layout(\"" && substr($a, -2) === "\")") {
+            $ly = new Layout($a);
+            $ly->build();
+            $v = $ly->getResult();
         }
+    }
+
+    public function getContent()
+    {
+
     }
 }
