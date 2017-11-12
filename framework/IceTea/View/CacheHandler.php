@@ -33,6 +33,8 @@ class CacheHandler
 		$this->skeleton->buildBody();
 		$this->component = $this->skeleton->getComponent();
 		$this->selfhash  = $this->skeleton->getSelfHash();
+		$content = $this->skeleton->getContent();
+		var_dump($content);die;
 	}
 
 	public function getCacheFileName()

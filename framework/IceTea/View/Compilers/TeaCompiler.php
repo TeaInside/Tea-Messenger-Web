@@ -15,17 +15,36 @@ class TeaCompiler
         $this->file = $file;
     }
 
-    public function compile()
+    public function compile($content = null)
     {
-    	$this->buildContent();
-    	foreach ($this->content as $k => $v) {
-    		var_dump($v);
-    	}die;
+    	if ($content) {
+    		$this->content = explode("\n", $content);
+    	} else {
+    		$this->buildContent();
+    	}
+    	foreach ($this->content as $k => &$v) {
+    		$this->buildLayout($v, $k);
+    	}
     }
 
     private function buildContent()
     {
     	$this->content = explode("\n", file_get_contents($this->file));
+    }
+
+    private function buildLayout(&$v, $k)
+    {
+ 		$a = trim($v);
+ 		if (substr($a, 0, 9) === "@layout(\"" && substr($a, -2) === "\")") {
+ 			$layout = new Layout(substr($a, 9, -2));
+ 			$layout->build();
+ 			$v = $layout;
+ 		}
+    }
+
+    public function getContent()
+    {
+    	return implode("\n", $this->content);
     }
 
     public function getComponent()

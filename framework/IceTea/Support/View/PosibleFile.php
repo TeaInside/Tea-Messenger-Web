@@ -6,7 +6,7 @@ trait PosibleFile
 {
 	private function teaFile()
 	{
-		return 
+		return
 			file_exists($file = basepath("app/Views/".$this->name.".tea.php")) ?
 				$file : false;
 	}

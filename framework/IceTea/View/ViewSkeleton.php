@@ -67,7 +67,7 @@ class ViewSkeleton
 	 */
 	public function __call($method, $param)
 	{
-		$this->compiler->{$method}(...$param);
+		return $this->compiler->{$method}(...$param);
 	}
 
 	/**
