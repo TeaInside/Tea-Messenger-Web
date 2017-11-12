@@ -4,6 +4,7 @@ namespace IceTea\View\Compilers\Components;
 
 use IceTea\Support\View\PosibleFile;
 use IceTea\View\Compilers\TeaCompiler;
+use IceTea\View\Compilers\ComponentState;
 
 class Layout
 {
@@ -30,6 +31,7 @@ class Layout
     {
         $this->fileHandle();
         $this->compiler = new TeaCompiler(null);
+        ComponentState::setState($this->file, sha1_file($this->file));
         $this->compiler->compile(file_get_contents($this->file));
         $this->fixedContent = $this->compiler->getContent();
     }

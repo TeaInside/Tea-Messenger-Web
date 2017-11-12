@@ -13,6 +13,8 @@ class ComponentState
      */
     private $state = [];
 
+    private $mainState = [];
+
     /**
      * Save filename and hash.
      *
@@ -29,7 +31,11 @@ class ComponentState
      */
     public static function getState()
     {
-        return self::getInstance()->state;
+        $ins = self::getInstance();
+        return [
+            "main" => $ins->mainState,
+            "sub" => $ins->state
+        ];
     }
 
     /**
@@ -40,7 +46,17 @@ class ComponentState
      */
     public static function setState($file, $hash)
     {
+        $ins = self::getInstance();
+        $ins->state[$file] = $hash;
+    }
 
+    public static function setMainState($file, $hash)
+    {
+        $ins = self::getInstance();
+        $ins->mainState = [
+            "file" => $file,
+            "hash" => $hash
+        ];
     }
 
     /**
@@ -53,6 +69,7 @@ class ComponentState
 
     private function __forgetState()
     {
+        $this->mainState = [];
         $this->state = [];
     }
 }

@@ -2,6 +2,8 @@
 
 namespace IceTea\View;
 
+use IceTea\View\Compilers\ComponentState;
+
 class CacheHandler
 {
 
@@ -9,6 +11,10 @@ class CacheHandler
      * @var \IceTea\View\ViewSkeleton
      */
     private $skeleton;
+
+    private $state = [];
+
+    private $content;
 
     /**
      * Constructor.
@@ -33,9 +39,31 @@ class CacheHandler
         $this->skeleton->buildBody();
         $this->component = $this->skeleton->getComponent();
         $this->selfhash  = $this->skeleton->getSelfHash();
-        $content = $this->skeleton->getContent();
-        var_dump($content);
-        die;
+        $this->content = $this->skeleton->getContent();
+        $this->state = ComponentState::getState();
+        $this->writeCacheInfo();
+        $this->writeCacheData();
+    }
+
+    private function writeCacheInfo()
+    {
+        if (file_exists($infofile = basepath("storage/framework/handler/view.map"))) {
+            $info = json_decode(file_get_contents($infofile), true);
+            $info = is_array($info) ? $info : [];
+        }
+        $info[$this->state['main']['file']] = $this->state['sub'];
+        $handle = fopen($infofile, "w");
+        flock($handle, LOCK_EX);
+        fwrite($handle, json_encode($info));
+        fclose($handle);
+    }
+
+    private function writeCacheData()
+    {
+        $handle = fopen(basepath("storage/framework/views/".$this->state['main']['hash'].".php"), "w");
+        flock($handle, LOCK_EX);
+        fwrite($handle, $this->content);
+        fclose($handle);
     }
 
     public function getCacheFileName()

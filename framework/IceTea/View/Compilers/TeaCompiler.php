@@ -13,6 +13,9 @@ class TeaCompiler
     public function __construct($file)
     {
         $this->file = $file;
+        if ($file) {
+            ComponentState::setMainState($this->file, sha1_file($this->file));
+        }
     }
 
     public function compile($content = null)
