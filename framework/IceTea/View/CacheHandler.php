@@ -31,5 +31,7 @@ class CacheHandler
 	public function makeCache()
 	{
 		$this->skeleton->buildBody();
+		$this->component = $this->skeleton->getComponent();
+		$this->selfhash  = $this->skeleton->getSelfHash();
 	}
 }

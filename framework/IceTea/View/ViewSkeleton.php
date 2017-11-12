@@ -2,10 +2,15 @@
 
 namespace IceTea\View;
 
+use InvalidArgumentException;
+use IceTea\Support\View\PosibleFile;
 use IceTea\View\Compilers\TeaCompiler;
 
 class ViewSkeleton
 {
+
+	use PosibleFile;
+
 	/**
 	 * @var string
 	 */
@@ -22,6 +27,11 @@ class ViewSkeleton
 	private $compiler;
 
 	/**
+	 * @var string
+	 */
+	private $file;
+
+	/**
 	 * Constructor.
 	 *
 	 * @param string $name
@@ -30,17 +40,54 @@ class ViewSkeleton
 	public function __construct($name, $variables)
 	{
 		$this->name = $name;
+		$this->filename = "/".$name.".php";
 		$this->variables = $variables;
-		$this->compiler = new TeaCompiler($this->name);
+		$this->compiler = new TeaCompiler($this->file = $this->findFile());
 	}
 
+	/**
+	 *
+	 */
+	public function findFile()
+	{
+		if ($file = $this->found()) {
+			return $file;
+		}
+		
+
+
+		throw new InvalidArgumentException("View [$this->name] not found.", 1);
+	}
+
+	/**
+	 * Compiler handle.
+	 *
+	 * @param string $mehtod
+	 * @param array  $param
+	 */
+	public function __call($method, $param)
+	{
+		$this->compiler->{$method}(...$param);
+	}
+
+	/**
+	 * Build view.
+	 *
+	 */
 	public function buildBody()
 	{
 		$this->compiler->compile();
 	}
 
-	public function __call($method, $param)
+	private function found()
 	{
-		return $this->compiler->{$method}(...$param);
+		if ($file = $this->teaFile()) {
+			return $file;
+		} elseif ($file = $this->bladeFile()) {
+			return $file;
+		} elseif ($file = $this->nativePhpFile()) {
+			return $file;
+		}
+		return false;
 	}
 }

@@ -10,4 +10,23 @@ class TeaCompiler
     {
         $this->name = $name;
     }
+
+    public function compile()
+    {
+    	$this->buildContent();
+    }
+
+    private function buildContent()
+    { 	
+    }
+
+    public function getComponent()
+    {
+
+    }
+
+    public function getSelfHash()
+    {
+
+    }
 }
