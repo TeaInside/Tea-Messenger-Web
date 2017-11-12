@@ -11,7 +11,7 @@ trait Singleton
     /**
      * Get self instance staticaly.
      */
-    public static function getInstance()
+    public static function getInstance(...$param)
     {
         if (self::$__instance === null) {
             self::$__instance = new self(...$param);

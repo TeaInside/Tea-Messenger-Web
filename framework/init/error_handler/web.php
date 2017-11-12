@@ -1,6 +1,6 @@
 <?php
 
-if (defined('__COMPOSER_AUTOLOAD_DIR__')) {
+if (defined('__COMPOSER_AUTOLOAD__')) {
     $whoops = new \Whoops\Run;
     $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
     $whoops->register();
