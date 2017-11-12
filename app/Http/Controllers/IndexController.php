@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 use IceTea\Http\Controller;
+use App\Http\Controllers\Auth\LoginController;
 
 class IndexController extends Controller
 {
@@ -20,5 +21,15 @@ class IndexController extends Controller
     public function index()
     {
     	//
+    	if ($this->checkSession()) {
+    	} else {
+    		$login = new LoginController();
+    		return $login->loginPage();
+    	}
+    }
+
+    private function checkSession()
+    {
+    	return false;
     }
 }

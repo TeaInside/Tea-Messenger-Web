@@ -7,7 +7,6 @@ if (file_exists(__DIR__.'/../vendor/autoload.php')) {
     include __COMPOSER_AUTOLOAD__;
 } else {
 
-
     function ___loadClass($class)
     {
         $ex = explode('\\', $class, 2);
