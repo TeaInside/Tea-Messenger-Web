@@ -7,7 +7,12 @@
 Route::get("/", "LoginController@index");
 Route::get("/home", "HomeController@index");
 Route::get("/register", "RegisterController@index");
+<<<<<<< HEAD
 Route::get("/forgot-password", "LoginController@forgot");
+=======
+Route::get("/forgotpassword", "LoginController@forgot");
+Route::get("/main", "MainController@index");
+>>>>>>> c8cad9148b2b822dfbf505370a4cbb3c3f691894
 //Route::get("/login", "LoginController@index"); cukup 1 aja untuk ininya
 // Route::get(
 //     "/forgot-password",
