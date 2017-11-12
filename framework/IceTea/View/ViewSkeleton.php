@@ -11,6 +11,11 @@ final class ViewSkeleton
 	/**
 	 * @var string
 	 */
+	private $name;
+
+	/**
+	 * @var string
+	 */
 	private $file;
 
 	/**
@@ -26,24 +31,24 @@ final class ViewSkeleton
 	/**
 	 * Constructor.
 	 *
-	 * @param string $file
+	 * @param string $name
 	 * @param array  $variables
 	 */
-	public function __construct($file, $variables = [])
+	public function __construct($name, $variables = [])
 	{
-		$this->file = $file;
+		$this->name = $name;
 		$this->variables = $variables;	
-		$this->compiler = new TeaCompiler($this->findFile());
+		$this->compiler = new TeaCompiler($this->file = $this->findFile());
 	}
 
 	private function findFile()
 	{
-		if (file_exists($file = basepath("app/Views/".$this->file.".tea.php"))) {
+		if (file_exists($file = basepath("app/Views/".$this->name.".tea.php"))) {
 			return $file;
-		} elseif (file_exists($file = basepath("app/Views/".$this->file.".php"))) {
+		} elseif (file_exists($file = basepath("app/Views/".$this->name.".php"))) {
 			return $file;
 		}
-		throw new InvalidArgumentException("View");
+		throw new InvalidArgumentException("View [$this->name] not found.");
 	}
 
 	public function buildBody()

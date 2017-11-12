@@ -20,4 +20,31 @@ final class TeaCompiler
     {
 
     }
+
+    public function compile()
+    {
+        $this->explodeContent();
+        foreach ($this->content as $k => &$v) {
+            $this->layoutState($v);
+        }
+    }
+
+    private function explodeContent()
+    {
+        $this->content = explode("\n", $this->content);
+    }
+
+    private function layoutState(&$v)
+    {
+        $a = trim($v);
+        if (substr($a, 0, 9) === "@layout(\"") {
+            $a = explode("@layout(\"", $a, 2);
+            if (isset($a[1])) {
+                $a = explode("\"", $a[1], 2);
+                $v = $this->getContent();
+            } else {
+                throw new \Exception("Invalid layout syntax");
+            }
+        }
+    }
 }

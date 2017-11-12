@@ -23,4 +23,9 @@ class CacheHandler
 	{
 
 	}
+
+	public function isCached()
+	{
+		
+	}
 }
