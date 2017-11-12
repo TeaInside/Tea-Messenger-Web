@@ -10,7 +10,7 @@ function __icetea_start()
         $scan = scandir(BASEPATH."/storage/init");
         unset($scan[0], $scan[1]);
         foreach ($scan as $val) {
-            require BASEPATH."/storage/init/".$val;
+            include BASEPATH."/storage/init/".$val;
         }
     }
 }

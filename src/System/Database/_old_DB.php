@@ -534,9 +534,10 @@ class DB extends DatabaseFactory implements QueryBuilder
 
     /**
      * Limit Option
-     * @param   string || integer $limit
-     * @param   string || integer $offset
-     * @return  Instance
+     *
+     * @param  string || integer $limit
+     * @param  string || integer $offset
+     * @return Instance
      */
     public function limit($limit, $offset = null)
     {
@@ -549,8 +550,9 @@ class DB extends DatabaseFactory implements QueryBuilder
 
     /**
      * Offset Option
-     * @param   string || integer $offset
-     * @return  Instance
+     *
+     * @param  string || integer $offset
+     * @return Instance
      */
     public function offset($offset)
     {
@@ -562,9 +564,10 @@ class DB extends DatabaseFactory implements QueryBuilder
 
     /**
      * Order By Column Option
-     * @param   string || integer $column
-     * @param   string || integer $sort
-     * @return  Instance
+     *
+     * @param  string || integer $column
+     * @param  string || integer $sort
+     * @return Instance
      */
     public function orderBy($column, $sort)
     {
@@ -576,7 +579,8 @@ class DB extends DatabaseFactory implements QueryBuilder
 
     /**
      * Select Option
-     * @return  Instance
+     *
+     * @return Instance
      */
     public static function select()
     {
@@ -588,7 +592,8 @@ class DB extends DatabaseFactory implements QueryBuilder
 
     /**
      * Get All Record
-     * @return  Array
+     *
+     * @return Array
      */
     public static function get()
     {
@@ -602,7 +607,8 @@ class DB extends DatabaseFactory implements QueryBuilder
 
     /**
      * Get All Record Alias
-     * @return  Array
+     *
+     * @return Array
      */
     public static function all()
     {
@@ -611,7 +617,8 @@ class DB extends DatabaseFactory implements QueryBuilder
 
     /**
      * Get First Record
-     * @return  Array
+     *
+     * @return Array
      */
     public static function first()
     {
@@ -625,7 +632,8 @@ class DB extends DatabaseFactory implements QueryBuilder
 
     /**
      * Count Record
-     * @return  Array
+     *
+     * @return Array
      */
     public static function count()
     {
@@ -639,7 +647,8 @@ class DB extends DatabaseFactory implements QueryBuilder
 
     /**
      * Max Record
-     * @return  StdClass
+     *
+     * @return StdClass
      */
     public static function max($column)
     {
@@ -660,7 +669,8 @@ class DB extends DatabaseFactory implements QueryBuilder
 
     /**
      * Min Record
-     * @return  StdClass
+     *
+     * @return StdClass
      */
     public static function min($column)
     {
@@ -681,7 +691,8 @@ class DB extends DatabaseFactory implements QueryBuilder
 
     /**
      * Avg Record
-     * @return  StdClass
+     *
+     * @return StdClass
      */
     public static function avg($column)
     {
@@ -702,7 +713,8 @@ class DB extends DatabaseFactory implements QueryBuilder
 
     /**
      * Get Last Insert ID
-     * @return  Integer
+     *
+     * @return Integer
      */
     public function lastId()
     {

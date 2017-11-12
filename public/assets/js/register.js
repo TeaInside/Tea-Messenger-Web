@@ -144,8 +144,8 @@ class register
                 "valid_compare": this.gv("validator"),
                 "token": this.gv("csrf")
             },
-        "data": encrypt(JSON.stringify(this.input), keybin)
-            }
+            "data": encrypt(JSON.stringify(this.input), keybin)
+        }
         );
     }
 

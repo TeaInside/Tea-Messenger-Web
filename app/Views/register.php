@@ -1,5 +1,5 @@
 <?php
-    include_once('layouts/header.php');
+    require_once 'layouts/header.php';
 ?>
 	<div class="container">
 		<div class="row">
