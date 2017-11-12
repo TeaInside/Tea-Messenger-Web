@@ -34,4 +34,9 @@ class CacheHandler
 		$this->component = $this->skeleton->getComponent();
 		$this->selfhash  = $this->skeleton->getSelfHash();
 	}
+
+	public function getCacheFileName()
+	{
+		return " ";
+	}
 }
