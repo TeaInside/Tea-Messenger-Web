@@ -1,9 +1,4 @@
+/.env
 *.tmp
 *.lock
-/icedev
 /vendor/
-/.php_cs.cache
-/composer.phar
-/.phpintel/
-/config.php
-/qwe
