@@ -2,24 +2,20 @@
 
 namespace IceTea\View;
 
-final class View
+class View
 {
-
-    public static function make(ViewSkeleton $instance)
+    public static function buildView($name, $variables)
     {
-        $cache = new CacheHandler($instance->getFileName(), $selfHash = $instance->getSelfHash());
-        if ($cache->isCached() && $cache->isPerfectCache()) {
-            return include basepath("storage/framework/views/" . $selfHash . ".php");            
-        } else {
-            $instance->buildBody();
-            $cache->makeCache($instance->getCompiledContent(), $instance->getCompiledComponent());
+        return new ViewSkeleton($name, $variables);
+    }
+
+    public static function make(ViewSkeleton $skeleton)
+    {
+        $cache = new CacheHandler($skeleton);
+        if (! $cache->isCached() && ! $cache->isPerfectCache()) {
+            $cache->makeCache();
         }
+
+        return include $cache->getCacheFileName();
     }
-
-
-    public static function buildView($file, $variables = [])
-    {
-        return new ViewSkeleton($file, $variables);
-    }
-
-}//end class
+}

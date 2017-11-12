@@ -4,28 +4,32 @@ namespace IceTea\View;
 
 class CacheHandler
 {
+
 	/**
-	 * @var array
+	 * @var \IceTea\View\ViewSkeleton
 	 */
-	private $selfHash = [];
+	private $skeleton;
 
 	/**
 	 * Constructor.
 	 *
-	 * @param array $selfHash
+	 * @param \IceTea\View\ViewSkeleton $skeleton
 	 */
-	public function __construct($selfHash)
+	public function __construct(ViewSkeleton $skeleton)
 	{
-		$this->selfHash = $selfHash;
-	}
-
-	public function handle()
-	{
-
+		$this->skeleton = $skeleton;
 	}
 
 	public function isCached()
 	{
-		
+	}
+
+	public function isPerfectCache()
+	{
+	}
+
+	public function makeCache()
+	{
+		$this->skeleton->buildBody();
 	}
 }
