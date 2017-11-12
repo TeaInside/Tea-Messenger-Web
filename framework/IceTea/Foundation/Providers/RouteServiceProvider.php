@@ -19,5 +19,4 @@ class RouteServiceProvider
         return $this->namespace;
 
     }//end getControllerNamespace()
-
 }//end class

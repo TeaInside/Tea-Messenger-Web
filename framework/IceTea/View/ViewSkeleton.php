@@ -9,85 +9,85 @@ use IceTea\View\Compilers\TeaCompiler;
 class ViewSkeleton
 {
 
-	use PosibleFile;
+    use PosibleFile;
 
-	/**
-	 * @var string
-	 */
-	private $name;
+    /**
+     * @var string
+     */
+    private $name;
 
-	/**
-	 * @var array
-	 */
-	private $variables = [];
+    /**
+     * @var array
+     */
+    private $variables = [];
 
-	/**
-	 * @var \IceTea\View\Compilers\TeaCompiler
-	 */
-	private $compiler;
+    /**
+     * @var \IceTea\View\Compilers\TeaCompiler
+     */
+    private $compiler;
 
-	/**
-	 * @var string
-	 */
-	private $file;
+    /**
+     * @var string
+     */
+    private $file;
 
-	/**
-	 * Constructor.
-	 *
-	 * @param string $name
-	 * @param array  $variables
-	 */
-	public function __construct($name, $variables)
-	{
-		$this->name = $name;
-		$this->filename = "/".$name.".php";
-		$this->variables = $variables;
-		$this->compiler = new TeaCompiler($this->file = $this->findFile());
-	}
+    /**
+     * Constructor.
+     *
+     * @param string $name
+     * @param array  $variables
+     */
+    public function __construct($name, $variables)
+    {
+        $this->name = $name;
+        $this->filename = "/".$name.".php";
+        $this->variables = $variables;
+        $this->compiler = new TeaCompiler($this->file = $this->findFile());
+    }
 
-	/**
-	 *
-	 */
-	public function findFile()
-	{
-		if ($file = $this->found()) {
-			return $file;
-		}
-		
+    /**
+     *
+     */
+    public function findFile()
+    {
+        if ($file = $this->found()) {
+            return $file;
+        }
+        
 
 
-		throw new InvalidArgumentException("View [$this->name] not found.", 1);
-	}
+        throw new InvalidArgumentException("View [$this->name] not found.", 1);
+    }
 
-	/**
-	 * Compiler handle.
-	 *
-	 * @param string $mehtod
-	 * @param array  $param
-	 */
-	public function __call($method, $param)
-	{
-		return $this->compiler->{$method}(...$param);
-	}
+    /**
+     * Compiler handle.
+     *
+     * @param string $mehtod
+     * @param array  $param
+     */
+    public function __call($method, $param)
+    {
+        return $this->compiler->{$method}(...$param);
+    }
 
-	/**
-	 * Build view.
-	 *
-	 */
-	public function buildBody()
-	{
-		$this->compiler->compile();
-	}
+    /**
+     * Build view.
+     *
+     */
+    public function buildBody()
+    {
+        $this->compiler->compile();
+    }
 
-	private function found()
-	{
-		if ($file = $this->teaFile()) {
-			return $file;
-		} elseif ($file = $this->bladeFile()) {
-			return $file;
-		} elseif ($file = $this->nativePhpFile()) {
-			return $file;
-		}
-		return false;
-	}
+    private function found()
+    {
+        if ($file = $this->teaFile()) {
+            return $file;
+        } elseif ($file = $this->bladeFile()) {
+            return $file;
+        } elseif ($file = $this->nativePhpFile()) {
+            return $file;
+        }
+        return false;
+    }
 }

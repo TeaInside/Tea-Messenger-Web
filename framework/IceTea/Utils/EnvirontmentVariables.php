@@ -64,12 +64,10 @@ final class EnvirontmentVariables
      * @param  string $def
      * @return mixed
      */
-    public static function get($key, $def=null)
+    public static function get($key, $def = null)
     {
         $ins = self::getInstance();
         return isset($ins->env[$key]) ? $ins->env[$key] : $def;
 
     }//end get()
-
-
 }//end class

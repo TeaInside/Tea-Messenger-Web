@@ -66,6 +66,4 @@ final class Intro
         return $st;
 
     }//end avaiableCommand()
-
-
 }//end class

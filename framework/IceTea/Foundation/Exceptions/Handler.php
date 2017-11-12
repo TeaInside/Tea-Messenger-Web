@@ -73,6 +73,4 @@ class Handler
         return in_array($this->name, InternalExceptionList::$list);
 
     }//end isInternalException()
-
-
 }//end class

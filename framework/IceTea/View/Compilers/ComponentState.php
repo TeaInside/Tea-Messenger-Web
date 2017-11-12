@@ -6,53 +6,53 @@ use IceTea\Hub\Singleton;
 
 class ComponentState
 {
-	use Singleton;
+    use Singleton;
 
-	/**
-	 * @var array
-	 */
-	private $state = [];
+    /**
+     * @var array
+     */
+    private $state = [];
 
-	/**
-	 * Save filename and hash.
-	 *
-	 * @param string $file
-	 * @param string $hash
-	 */
-	private function saveHash($file, $hash)
-	{
-		$this->state[$file] = $hash;
-	}
+    /**
+     * Save filename and hash.
+     *
+     * @param string $file
+     * @param string $hash
+     */
+    private function saveHash($file, $hash)
+    {
+        $this->state[$file] = $hash;
+    }
 
-	/**
-	 * Get state.
-	 */
-	public static function getState()
-	{
-		return self::getInstance()->state;
-	}
+    /**
+     * Get state.
+     */
+    public static function getState()
+    {
+        return self::getInstance()->state;
+    }
 
-	/**
-	 * Set state
-	 *
-	 * @param string $file
-	 * @param string $hash
-	 */
-	public static function setState($file, $hash)
-	{
+    /**
+     * Set state
+     *
+     * @param string $file
+     * @param string $hash
+     */
+    public static function setState($file, $hash)
+    {
 
-	}
+    }
 
-	/**
-	 * Forget state.
-	 */
-	public static function forgetState()
-	{
-		return self::getInstance()->__forgetState();
-	}
+    /**
+     * Forget state.
+     */
+    public static function forgetState()
+    {
+        return self::getInstance()->__forgetState();
+    }
 
-	private function __forgetState()
-	{
-		$this->state = [];
-	}
+    private function __forgetState()
+    {
+        $this->state = [];
+    }
 }

@@ -64,6 +64,4 @@ class OptionalArguments extends Input implements InputContract
         return $this->result;
 
     }//end getParseResult()
-
-
 }//end class

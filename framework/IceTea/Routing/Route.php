@@ -49,6 +49,4 @@ class Route
         Collector::collect($route, $action, true);
 
     }//end any()
-
-
 }//end class

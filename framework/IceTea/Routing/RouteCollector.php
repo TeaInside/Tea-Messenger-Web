@@ -96,6 +96,4 @@ class RouteCollector
         unset($ins->providerInstance, $ins->routes);
 
     }//end destroy()
-
-
 }//end class

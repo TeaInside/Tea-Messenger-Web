@@ -55,6 +55,4 @@ final class RouteBinding
         $ins->binded = [];
 
     }//end destroy()
-
-
 }//end class

@@ -1,4 +1,3 @@
-@layout("test")
 <!DOCTYPE html>
 <html>
 <head>

@@ -13,6 +13,4 @@ interface Input
 
 
     public function getParseResult();
-
-
 }//end interface

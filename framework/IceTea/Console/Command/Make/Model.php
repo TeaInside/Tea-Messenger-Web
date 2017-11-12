@@ -12,13 +12,13 @@ use App\Providers\RouteServiceProvider;
  */
 class Model extends Make
 {
-	private $name;
+    private $name;
 
     private $namespace;
 
     private $absoluteNamespace;
 
-	private $run = [];
+    private $run = [];
 
     private $path;
 
@@ -31,20 +31,20 @@ class Model extends Make
 
     public function buildContext()
     {
-    	$this->getName(); // Not enough arguments (missing: "name").
+        $this->getName(); // Not enough arguments (missing: "name").
         $this->getNamespace();
         $this->makeAbsoluteNamespace();
     }
 
     private function getName()
     {
-    	if (isset($this->run['parameter'])) {
-    		foreach ($this->run['parameter'] as $val) {
-    			if ($val['type'] === "name") {
-    				$this->name = $val['data'];
-    			}
-    		}
-    	}
+        if (isset($this->run['parameter'])) {
+            foreach ($this->run['parameter'] as $val) {
+                if ($val['type'] === "name") {
+                    $this->name = $val['data'];
+                }
+            }
+        }
     }
 
     private function getNamespace()
@@ -65,7 +65,8 @@ class Model extends Make
         if ($a[0] === "App") {
             $a[0] = strtolower($a[0]);
         }
-        $count = count($a) - 1; $path = "";
+        $count = count($a) - 1;
+        $path = "";
         for ($i=0; $i < $count; $i++) {
             if (! is_dir(basepath($path .= $a[$i]."/"))) {
                 mkdir($path);
@@ -75,13 +76,14 @@ class Model extends Make
         $this->name = end($a);
     }
 
-	public function run()
-	{
+    public function run()
+    {
         $file = $this->path.$this->name.".php";
         if (!file_exists($file) || $this->isForced()) {
             $handle     = fopen($stub = __DIR__."/stubs/model.php.stub", "r");
             $handle2    = fopen($file, "w");
-            fwrite($handle2, 
+            fwrite(
+                $handle2,
                 $this->stubCreateContext(fread($handle, filesize($stub)))
             );
             fclose($handle);
@@ -94,9 +96,9 @@ class Model extends Make
                 
             }
         } else {
-            print Color::clr("Model already exists!", "dark_grey", "red") . PHP_EOL;            
+            print Color::clr("Model already exists!", "dark_grey", "red") . PHP_EOL;
         }
-	}
+    }
 
     private function isForced()
     {
@@ -125,7 +127,7 @@ class Model extends Make
                 "{{__DATE__}}",
                 "{{NAME}}",
                 "{{__NAMESPACE__}}"
-            ], 
+            ],
             [
                 ICETEA_VERSION,
                 date('Y-m-d H:i:s'),

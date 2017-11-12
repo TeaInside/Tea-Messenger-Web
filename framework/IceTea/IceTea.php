@@ -27,6 +27,4 @@ class IceTea
     {
 
     }//end build()
-
-
 }//end class

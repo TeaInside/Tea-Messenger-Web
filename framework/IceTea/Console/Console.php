@@ -97,6 +97,4 @@ final class Console
     {
 
     }//end terminate()
-
-
 }//end class

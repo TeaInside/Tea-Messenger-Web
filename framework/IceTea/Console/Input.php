@@ -14,6 +14,4 @@ class Input
     {
 
     }//end __construct()
-
-
 }//end class

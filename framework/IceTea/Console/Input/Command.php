@@ -60,21 +60,20 @@ class Command extends Input implements InputContract
                                        ];
             }
         } else {
-             if (
-                !isset($this->result['cmd'])
+            if (!isset($this->result['cmd'])
                 && isset(InternalRoutes::$routes['normal'][$ex[0]])
             ) {
                 $this->result['cmd'] = [
-                                        'action' => InternalRoutes::$routes['normal'][$ex[0]],
-                                        'type'   => 'colon-separated',
-                                        'offset' => $offset,
-                                       ];
+                                       'action' => InternalRoutes::$routes['normal'][$ex[0]],
+                                       'type'   => 'colon-separated',
+                                       'offset' => $offset,
+                                      ];
             } else {
                 $this->result['parameter'][] = [
-                                            'data'   => $context,
-                                            'type'   => $this->typeGenerator($offset),
-                                            'offset' => $offset,
-                                           ];
+                                           'data'   => $context,
+                                           'type'   => $this->typeGenerator($offset),
+                                           'offset' => $offset,
+                                          ];
             }
         }
 
@@ -97,6 +96,4 @@ class Command extends Input implements InputContract
         return $this->result;
 
     }//end getParseResult()
-
-
 }//end class

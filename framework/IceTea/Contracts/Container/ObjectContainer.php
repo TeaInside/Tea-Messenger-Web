@@ -17,6 +17,4 @@ interface ObjectContainer
      * Build object.
      */
     public function build();
-
-
 }//end interface

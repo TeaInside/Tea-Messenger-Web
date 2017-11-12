@@ -37,7 +37,7 @@ final class Web
         RouteBinding::destroy();
         if ($action instanceof ViewSkeleton) {
             View::make($action);
-        } else if ($action instanceof ExceptionHandler) {
+        } elseif ($action instanceof ExceptionHandler) {
             $action->report();
         }
 
@@ -50,6 +50,4 @@ final class Web
     {
 
     }//end terminate()
-
-
 }//end class

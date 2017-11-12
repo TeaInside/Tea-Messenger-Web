@@ -60,6 +60,4 @@ class Arguments extends Input implements InputContract
         return $this->result;
 
     }//end getParseResult()
-
-
 }//end class

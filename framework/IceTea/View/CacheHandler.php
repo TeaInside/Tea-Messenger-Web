@@ -5,40 +5,41 @@ namespace IceTea\View;
 class CacheHandler
 {
 
-	/**
-	 * @var \IceTea\View\ViewSkeleton
-	 */
-	private $skeleton;
+    /**
+     * @var \IceTea\View\ViewSkeleton
+     */
+    private $skeleton;
 
-	/**
-	 * Constructor.
-	 *
-	 * @param \IceTea\View\ViewSkeleton $skeleton
-	 */
-	public function __construct(ViewSkeleton $skeleton)
-	{
-		$this->skeleton = $skeleton;
-	}
+    /**
+     * Constructor.
+     *
+     * @param \IceTea\View\ViewSkeleton $skeleton
+     */
+    public function __construct(ViewSkeleton $skeleton)
+    {
+        $this->skeleton = $skeleton;
+    }
 
-	public function isCached()
-	{
-	}
+    public function isCached()
+    {
+    }
 
-	public function isPerfectCache()
-	{
-	}
+    public function isPerfectCache()
+    {
+    }
 
-	public function makeCache()
-	{
-		$this->skeleton->buildBody();
-		$this->component = $this->skeleton->getComponent();
-		$this->selfhash  = $this->skeleton->getSelfHash();
-		$content = $this->skeleton->getContent();
-		var_dump($content);die;
-	}
+    public function makeCache()
+    {
+        $this->skeleton->buildBody();
+        $this->component = $this->skeleton->getComponent();
+        $this->selfhash  = $this->skeleton->getSelfHash();
+        $content = $this->skeleton->getContent();
+        var_dump($content);
+        die;
+    }
 
-	public function getCacheFileName()
-	{
-		return " ";
-	}
+    public function getCacheFileName()
+    {
+        return " ";
+    }
 }

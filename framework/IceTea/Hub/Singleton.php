@@ -30,6 +30,4 @@ trait Singleton
         throw new \Exception('Cannot clone instance with Singleton pattern.', 1);
 
     }//end __clone()
-
-
 }

@@ -38,6 +38,4 @@ class AvailableCommand
   '.Color::clr('make:model', 'green').'           Create a new model class'.PHP_EOL;
 
     }//end make()
-
-
 }//end class

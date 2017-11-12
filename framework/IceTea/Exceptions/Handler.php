@@ -35,6 +35,4 @@ class Handler
         }
 
     }//end terminate()
-
-
 }//end class

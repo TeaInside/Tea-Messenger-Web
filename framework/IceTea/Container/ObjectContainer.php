@@ -33,6 +33,4 @@ class ObjectContainer implements ObjectContainerContract
         return new ReleflectionClass($this->objectName);
 
     }//end buildClass()
-
-
 }//end class

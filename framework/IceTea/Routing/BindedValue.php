@@ -100,6 +100,4 @@ class BindedValue implements ArrayAccess
         return $this->container;
 
     }//end __debugInfo()
-
-
 }//end class

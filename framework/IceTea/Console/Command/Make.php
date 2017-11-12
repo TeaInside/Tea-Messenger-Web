@@ -24,8 +24,6 @@ class Make extends ConsoleCommand
 
     public function run()
     {
-        throw new \Exception("Must override!", 1);	
+        throw new \Exception("Must override!", 1);
     }
-
-
 }//end class
