@@ -5,37 +5,21 @@ namespace IceTea\View;
 final class View
 {
 
-
-    public static function staticMaker()
+    public static function make(ViewSkeleton $instance)
     {
-
-    }//end staticMaker()
-
-
-    public static function buildView($file, $variable)
-    {
-        return new ViewFoundation($file, $variable);
-
-    }//end buildView()
-
-
-    public static function make(ViewFoundation $view)
-    {
-        $st = new CacheHandler(
-            $view->getViewFileName(),
-            $view->getViewFile()
-        );
-        if (! $st->isCached()) {
-            $st->makeCache();
+        $cache = new CacheHandler($instance->getFileName(), $selfHash = $instance->getSelfHash());
+        if ($cache->isCached() && $cache->isPerfectCache()) {
+            return include basepath("storage/framework/views/" . $selfHash . ".php");            
+        } else {
+            $instance->buildBody();
+            $cache->makeCache($instance->getCompiledContent(), $instance->getCompiledComponent());
         }
+    }
 
-        unset($content);
-        ___viewIsolator(
-            $st->getCacheFileName(),
-            $view->getVariables()
-        );
 
-    }//end make()
-
+    public static function buildView($file, $variables = [])
+    {
+        return new ViewSkeleton($file, $variables);
+    }
 
 }//end class

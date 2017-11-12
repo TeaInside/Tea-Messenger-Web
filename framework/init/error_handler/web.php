@@ -1,7 +1,6 @@
 <?php
 
 if (defined('__COMPOSER_AUTOLOAD__')) {
-    var_dump(123);
     $whoops = new \Whoops\Run;
     $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
     $whoops->register();

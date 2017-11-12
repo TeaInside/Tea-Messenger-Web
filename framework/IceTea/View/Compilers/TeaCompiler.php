@@ -2,35 +2,22 @@
 
 namespace IceTea\View\Compilers;
 
-use IceTea\View\View;
-
-class TeaCompiler
+final class TeaCompiler
 {
+    private $file;
 
-    /**
-     * View instance.
-     *
-     * @var \Icetea\View\View
-     */
-    private $view;
+    private $content;
 
+    private $hash;
 
-    /**
-     * Constructor.
-     *
-     * @param \Icetea\View\View $view
-     */
-    public function __construct(View $view)
+    public function __construct($file)
     {
-        $this->view = $view;
+        $this->file = $file;
+        $this->content = file_get_contents($file);
+    }
 
-    }//end __construct()
-
-
-    public function compile()
+    public function selfHash()
     {
 
-    }//end compile()
-
-
-}//end class
+    }
+}
