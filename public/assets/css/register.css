@@ -1,0 +1,97 @@
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:rgba(51, 51, 51, 0.7) !important;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:rgba(51, 51, 51, 0.7) !important;
+    opacity:  1 !important;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:rgba(51, 51, 51, 0.7) !important;
+    opacity:  1 !important;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:rgba(51, 51, 51, 0.7) !important;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+    color:rgba(51, 51, 51, 0.7) !important;
+}
+body {
+    background: #C7DF2A !important;/* For browsers that do not support gradients */
+    height: 100%;
+}
+#frcg {
+    background-color: #1FB627;
+    border-radius: 5px;
+}
+.container-fluid {
+    padding: 0;
+}
+.panel {
+    background: rgba(255, 255, 255, 0.2) !important;
+    /* background: rgba(0, 0, 0, 0.2) !important; */
+    border: 0;
+    padding: 0;
+    margin-top: 1.5em;
+}
+.panel-title {
+    font-weight: bold;
+    font-size: 2.0em;
+    color: #fff !important;
+    margin-top: 0.5em;
+    /* font-weight: bold; */
+}
+.panel-heading {
+    background-color: rgba(255, 255, 255, 0) !important;
+    border: 0;
+}
+.form-control {
+    background-color: #edf99d;
+    color:rgba(51, 51, 51, 0.7) !important;
+}
+textarea:focus,
+input:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus,
+select {
+    border: rgba(237, 249, 157, 0.8) !important;
+    border-color: rgba(237, 249, 157, 0.8) !important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset,
+    0 0 8px rgba(237, 249, 157, 0.8) !important;
+    outline: 0 none !important;
+}
+.input-group {
+    margin-top: 0.7em;
+    /* margin-bottom: 0.2em; */
+}
+.input-group-addon {
+    color: #fff;
+    font-size: 1em;
+    background-color: #adbf50;
+    border-color: #adbf50;
+}
+.input-group-addon:hover, .input-group-addon:focus, .input-group-addon:active {
+    border-color: #adbf50;
+}
+.btn-login {
+    width: 100%;
+    margin-top: 1em;
+    background-color: #adbf50;
+    border-color: #adbf50;
+}
+.btn-login:hover, .btn-login:focus, .btn-login:active{
+    background-color: #3f6335;
+    border-color: #3f6335;
+}
