@@ -52,10 +52,10 @@ if (! function_exists('basepath')) {
 
 }
 
-if (! function_exists('assets')) {
+if (! function_exists('asset')) {
 
 
-    function assets($assetsFile = '')
+    function asset($assetsFile = '')
     {
         return trim(\IceTea\Utils\Config::get('assets').'/'.$assetsFile, '/');
 

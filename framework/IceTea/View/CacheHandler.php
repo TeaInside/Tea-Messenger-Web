@@ -16,6 +16,8 @@ class CacheHandler
 
     private $content;
 
+    private $filename;
+
     /**
      * Constructor.
      *
@@ -60,7 +62,10 @@ class CacheHandler
 
     private function writeCacheData()
     {
-        $handle = fopen(basepath("storage/framework/views/".$this->state['main']['hash'].".php"), "w");
+        $handle = fopen(
+            $this->filename = basepath("storage/framework/views/".$this->state['main']['hash'].".php"), 
+            "w"
+        );
         flock($handle, LOCK_EX);
         fwrite($handle, $this->content);
         fclose($handle);
@@ -68,6 +73,6 @@ class CacheHandler
 
     public function getCacheFileName()
     {
-        return " ";
+        return $this->filename;
     }
 }
