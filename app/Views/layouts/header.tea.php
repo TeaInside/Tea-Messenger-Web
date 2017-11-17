@@ -8,16 +8,16 @@
     <link rel="shortcut icon" href="<?php print asset("assets/img/logo-ice-tea"); ?>" />
     
     <!-- CSS -->
-    <link rel="stylesheet" href="<?php print asset("css/bootstrap"); ?>">
-    <link rel="stylesheet" type="text/css" href="<?php print asset("css/fontawesome"); ?>">
-    <link rel="stylesheet" type="text/css" href="<?php print asset("css/login"); ?>">
+    <link rel="stylesheet" href="<?php print asset("assets/css/bootstrap.css"); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php print asset("assets/css/fontawesome.css"); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php print asset("assets/css/login.css"); ?>">
     
     <!-- javascript -->
-    <script src="<?php print asset("js/base64"); ?>" type="text/javascript"></script>
-	<script src="<?php print asset("js/helpers"); ?>" type="text/javascript"></script>
-	<script src="<?php print asset("js/IceCrypt"); ?>" type="text/javascript"></script>
-	<script src="<?php print asset("js/register"); ?>" type="text/javascript"></script>
-	<script src="<?php print asset("js/jquery"); ?>" type="text/javascript"></script>
-	<script src="<?php print asset("js/bootstrap"); ?>" type="text/javascript"></script>
+    <script src="<?php print asset("assets/js/base64.js"); ?>" type="text/javascript"></script>
+	<script src="<?php print asset("assets/js/helpers.js"); ?>" type="text/javascript"></script>
+	<script src="<?php print asset("assets/js/IceCrypt.js"); ?>" type="text/javascript"></script>
+	<script src="<?php print asset("assets/js/register.js"); ?>" type="text/javascript"></script>
+	<script src="<?php print asset("assets/js/jquery.js"); ?>" type="text/javascript"></script>
+	<script src="<?php print asset("assets/js/bootstrap.js"); ?>" type="text/javascript"></script>
 </head>
 <body>

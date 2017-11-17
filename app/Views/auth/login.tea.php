@@ -5,7 +5,7 @@
                <div class="login-wall">
 				<h2 class="text-center login-tile">Tea Messenger</h2>
                   <div class="col-md-12">
-                     <img class="profile-img" src="<?php print asset("assets/img/logo-ice-tea"); ?>" alt="">
+                     <img class="profile-img" src="<?php print asset("assets/img/logo-ice-tea.png"); ?>" alt="">
                      <!-- <p class="text-center ice-tea">Sign in</p> -->
                   </div>
                   <form method="post" action="javascript:void(0);" id="form-login" class="form-horizontal form-signin">
