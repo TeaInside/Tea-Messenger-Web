@@ -13,7 +13,7 @@
 				        <input type="text" name="username" id="username" class="form-control" placeholder="Username">
 			         </div>
 			         <div class="form-group">
-				        <input type="text" name="username" id="password" class="form-control" placeholder="Password">
+				        <input type="password" name="username" id="password" class="form-control" placeholder="Password">
 			         </div>
 			         <div class="form-group">
 				        <div id="csrf_field"></div>
