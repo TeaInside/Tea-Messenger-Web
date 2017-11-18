@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tea Messenger</title>
-    <link rel="shortcut icon" href="<?php print asset("assets/img/logo-ice-tea"); ?>" />
+    <link rel="shortcut icon" href="<?php print asset("assets/img/logo-ice-tea.png"); ?>" />
     
     <!-- CSS -->
     <link rel="stylesheet" href="<?php print asset("assets/css/bootstrap.css"); ?>">
