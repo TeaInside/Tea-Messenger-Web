@@ -80,10 +80,10 @@
 				return false;
 			}
 		}
-		if (l['password']!=l['cpassword']) {
+		/*if (l['password']!=l['cpassword']) {
 			alert("Confirm password does not match!");
 			return false;
-		}
+		}*/
 		return JSON.stringify(l);
 	}
 	window.onload = function(){
@@ -95,7 +95,7 @@
 					var a = JSON.parse(this.responseText);
 					document.getElementById('csrf_field').innerHTML = '<input type="hidden" name="_csrf" id="_csrf" value="'+a['csrf']+'"><input type="hidden" name="_key" id="_key" value="'+a['key']+'">';
 				} catch (e) {
-					alert(e.getMessage);
+					alert(e.getMessage());
 				}
 			}
 		};
@@ -108,7 +108,17 @@
 			a.open("POST", "<?php print env("API_URL"); ?>/register.php");
 			a.onreadystatechange = function(){
 				if (this.readyState === 4) {
-					alert(this.responseText);
+					try	{
+						var a = JSON.parse(this.responseText);
+						if (a['status'] === "error") {
+							alert(a['message']);
+						}
+						if (a['redirect']) {
+							window.location = a['redirect'];
+						}
+					} catch (e) {
+						alert(e.getMessage());
+					}
 				}
 			};
 			a.send(context);
