@@ -2,6 +2,7 @@
 
 namespace IceTea\View\Compilers\Components;
 
+use InvalidArgumentException;
 use IceTea\Support\View\PosibleFile;
 use IceTea\View\Compilers\TeaCompiler;
 use IceTea\View\Compilers\ComponentState;

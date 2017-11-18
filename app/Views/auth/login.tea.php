@@ -1,4 +1,4 @@
-@layout("header")
+@layout("header_1")
 	<div class="container">
 		<div class="row">
             <div class="col-sm-6 col-md-4 col-md-offset-4">

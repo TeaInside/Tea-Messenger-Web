@@ -1,4 +1,4 @@
-@layout("header")
+@layout("header_1")
 <div class="container">
 		<div class="row">
             <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -42,3 +42,78 @@
             </div>
 		</div>
    </div>
+<script type="text/javascript">
+	function buildContext(){
+		var l = {
+			'first_name': function(a){
+				var q = false;
+				if (a.length === 0) q = "Empty first name!";
+				return q;
+			},
+			'last_name': function(){return false;},
+			'email': function(a){
+				var q = "";
+				if (a.length === 0) q = "Empty email!";
+				return q;
+			},
+			'username': function(a){
+				var q = "";
+				if (a.length === 0) q = "Empty username!";
+				return q;
+			},
+			'password':function(a){
+				var q = "";
+				if (a.length < 6) q = "Please provide password more than 5 characters";
+				return q;
+			},
+			'cpassword':function(){return false;},
+			'_csrf':function(){return false;},
+			'_key':function(){return false;}
+		}; var v = "", r = "";
+		for(x in l) {
+			v = document.getElementById(x).value;
+			r = l[x](v);
+			if (!r) {
+				l[x] = v;
+			} else {
+				alert(r);
+				return false;
+			}
+		}
+		if (l['password']!=l['cpassword']) {
+			alert("Confirm password does not match!");
+			return false;
+		}
+		return JSON.stringify(l);
+	}
+	window.onload = function(){
+		var a = new XMLHttpRequest();
+		a.open("GET", "<?php print env("API_URL"); ?>/register.php");
+		a.onreadystatechange = function(){
+			if (this.readyState === 4) {
+				try	{
+					var a = JSON.parse(this.responseText);
+					document.getElementById('csrf_field').innerHTML = '<input type="hidden" name="_csrf" id="_csrf" value="'+a['csrf']+'"><input type="hidden" name="_key" id="_key" value="'+a['key']+'">';
+				} catch (e) {
+					alert(e.getMessage);
+				}
+			}
+		};
+		a.send(null);
+	};
+	document.getElementById('form-register').addEventListener("submit", function(){
+		var context = buildContext();
+		if (context !== false) {
+			var a = new XMLHttpRequest();
+			a.open("POST", "<?php print env("API_URL"); ?>/register.php");
+			a.onreadystatechange = function(){
+				if (this.readyState === 4) {
+					alert(this.responseText);
+				}
+			};
+			a.send(context);
+		}
+	});
+</script>
+</body>
+</html>
