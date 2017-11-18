@@ -16,6 +16,6 @@ class View
             $cache->makeCache();
         }
 
-        return include $cache->getCacheFileName();
+        return ___viewIsolator($cache->getCacheFileName(), $skeleton->getVariables());
     }
 }

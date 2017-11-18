@@ -45,6 +45,11 @@ class ViewSkeleton
         $this->compiler = new TeaCompiler($this->file = $this->findFile());
     }
 
+    public function getVariables()
+    {
+        return $this->variables;
+    }
+
     /**
      *
      */
