@@ -16,7 +16,8 @@
 				        <input type="password" name="username" id="password" class="form-control" placeholder="Password">
 			         </div>
 			         <div class="form-group">
-				        <div id="csrf_field"></div>
+				        <div id="csrf_field">
+				        </div>
 				        <input type="submit" name="submit" value="Sign In" class="btn btn-lg btn-primary btn-block">
 			         </div>
                      <p class="text-center">
@@ -32,8 +33,61 @@
 		</div>
    </div>
 <script type="text/javascript">
+	function buildContext(){
+		var u = document.getElementById("username").value,
+			p =	document.getElementById("password").value
+			c = document.getElementById("_csrf").value,
+			k = document.getElementById("_key").value;
+		if (u == "") {
+			alert("Empty username!");
+			return false;
+		}
+		if (p == "") {
+			alert("Empty password!");
+			return false;
+		}
+		if (c == "") {
+			alert("Empty csrf!");
+			window.location = "";
+			return false;
+		}
+		if (k == "") {
+			alert("Empty key!");
+			window.location = "";
+			return false;
+		}
+		return JSON.stringify({
+			"username":u,
+			"password":p,
+			"_csrf":c,
+			"_key":k
+		});
+	}
+	window.onload = function(){
+		var a = new XMLHttpRequest();
+		a.open("GET", "<?php print env("API_URL"); ?>/login.php");
+		a.onreadystatechange = function(){
+			if (this.readyState === 4) {
+				try	{
+					var a = JSON.parse(this.responseText);
+					document.getElementById('csrf_field').innerHTML = '<input type="hidden" name="_csrf" id="_csrf" value="'+a['csrf']+'"><input type="hidden" name="_key" id="_key" value="'+a['key']+'">';
+				} catch (e) {
+					alert(e.getMessage);
+				}
+			}
+		};
+		a.send(null);
+	};
 	document.getElementById('form-login').addEventListener("submit", function(){
-		alert("Coming soon!");
+		var context = buildContext();
+		if (context !== false) {
+			var a = new XMLHttpRequest();
+			a.open("POST", "<?php print env("API_URL"); ?>/login.php");
+			a.onreadystatechange = function(){
+
+			};
+			a.send(context);
+		}
 	});
 </script>
 </body>
