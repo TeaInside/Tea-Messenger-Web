@@ -63,7 +63,7 @@
 			},
 			'password':function(a){
 				var q = "";
-				if (a.length < 6) q = "Please provide password more than 5 characters";
+				if (a.length < 6) q = "Password too short, please provide password more than 5 characters";
 				return q;
 			},
 			'cpassword':function(){return false;},
@@ -73,7 +73,7 @@
 		for(x in l) {
 			v = document.getElementById(x).value;
 			r = l[x](v);
-			if (!r) {
+			if (!r || true) {
 				l[x] = v;
 			} else {
 				alert(r);
