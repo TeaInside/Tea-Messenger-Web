@@ -25,7 +25,12 @@
 			         <div class="form-group">
 				        <input type="password" name="cpassword" id="cpassword" class="form-control" placeholder="Confirm password">
 			         </div>
-			         <div class="form-group">
+			         <div id="captcha_field">
+			         	<center>
+			         		<img src="" height="60" width="150">
+			         	</center>
+			         </div>
+			         <div class="form-group" style="margin-top:5%;">
 				        <div id="csrf_field">
 				        </div>
 				        <input type="submit" name="submit" value="Sign Up" class="btn btn-lg btn-primary btn-block">
