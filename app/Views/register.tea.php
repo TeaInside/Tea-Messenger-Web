@@ -78,17 +78,17 @@
 		for(x in l) {
 			v = document.getElementById(x).value;
 			r = l[x](v);
-			if (!r || true) {
+			if (!r) {
 				l[x] = v;
 			} else {
 				alert(r);
 				return false;
 			}
 		}
-		/*if (l['password']!=l['cpassword']) {
+		if (l['password']!=l['cpassword']) {
 			alert("Confirm password does not match!");
 			return false;
-		}*/
+		}
 		return JSON.stringify(l);
 	}
 	window.onload = function(){

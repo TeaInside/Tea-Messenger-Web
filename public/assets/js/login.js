@@ -1,9 +1,0 @@
-
-
-class Login
-{
-    constructor()
-    {
-        
-    }
-}
