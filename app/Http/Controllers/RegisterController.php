@@ -23,9 +23,10 @@ class RegisterController extends Controller
 
     public function success()
     {
-        if ($this->isRegisterdCookie()) {
+        if ($id = $this->isRegisterdCookie()) {
             setcookie("registered", null, 0);
-            return view("register_success");
+            $info = User::getInfo($id, "user_id");
+            return view("auth/register_success", compact('info'));
         } else {
             abort(404);
         }
