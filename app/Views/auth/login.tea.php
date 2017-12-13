@@ -1,4 +1,4 @@
-@layout("header_1")
+  @layout("header_1")
 	<div class="container">
 		<div class="row">
             <div class="col-sm-6 col-md-4 col-md-offset-4">
@@ -21,7 +21,7 @@
 				        <input type="submit" name="submit" value="Sign In" class="btn btn-lg btn-primary btn-block">
 			         </div>
                      <p class="text-center">
-			            <a href="/forgotpassword">Forgot Password</a>
+			            <a href="{{'fer'}}"></a><a href="{{'forgot'}}">Forgot Password</a>
 						<br>
 						<span>
 							Need an account? <a href="/register">Sign up.</a>
@@ -33,7 +33,7 @@
 		</div>
    </div>
 <script type="text/javascript">
-	function buildContext(){
+	/*function buildContext(){
 		var u = document.getElementById("username").value,
 			p =	document.getElementById("password").value
 			c = document.getElementById("_csrf").value,
@@ -88,7 +88,7 @@
 			};
 			a.send(context);
 		}
-	});
+	});*/
 </script>
 </body>
 </html>

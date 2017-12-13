@@ -2,26 +2,43 @@
 
 namespace IceTea\Support\View;
 
+use IceTea\Utils\Config;
+
 trait PosibleFile
 {
-    private function teaFile()
+    /**
+     * @param string $file
+     * @return mixed
+     */
+    private function teaFile($file)
     {
-        return
-            file_exists($file = basepath("app/Views/".$this->name.".tea.php")) ?
-                $file : false;
+        if (file_exists($file = Config::get("views_dir")."/".$file.".tea.php")) {
+            return $file;
+        }
+        return false;
     }
 
-    private function bladeFile()
+    /**
+     * @param string $file
+     * @return mixed
+     */
+    private function bladeFile($file)
     {
-        return
-            file_exists($file = basepath("app/Views/".$this->name.".blade.php")) ?
-                $file : false;
+        if (file_exists($file = Config::get("views_dir")."/".$file.".blade.php")) {
+            return $file;
+        }
+        return false;
     }
 
-    private function nativePhpFile()
+    /**
+     * @param string $file
+     * @return mixed
+     */
+    private function phpNativeFile($file)
     {
-        return
-            file_exists($file = basepath("app/Views/".$this->name.".php")) ?
-                $file : false;
+        if (file_exists($file = Config::get("views_dir")."/".$file.".php")) {
+            return $file;
+        }
+        return false;
     }
 }

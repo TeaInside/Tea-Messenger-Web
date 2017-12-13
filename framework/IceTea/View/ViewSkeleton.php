@@ -2,97 +2,81 @@
 
 namespace IceTea\View;
 
-use InvalidArgumentException;
-use IceTea\Support\View\PosibleFile;
-use IceTea\View\Compilers\TeaCompiler;
+use IceTea\Hub\Singleton;
+use IceTea\View\ViewVariables;
 
 class ViewSkeleton
 {
+	use Singleton;
 
-    use PosibleFile;
+	/**
+	 * @var string
+	 */
+	private $rawfile;
 
-    /**
-     * @var string
-     */
-    private $name;
+	/**
+	 * @var \IceTea\ViewVariables
+	 */
+	private $variables;
 
-    /**
-     * @var array
-     */
-    private $variables = [];
+	/**
+	 * @var string
+	 */
+	private $name;
 
-    /**
-     * @var \IceTea\View\Compilers\TeaCompiler
-     */
-    private $compiler;
+	/**
+	 * @param string			    $rawfile
+	 * @param \IceTea\ViewVariables $variables
+	 */
+	public function __construct($rawfile, ViewVariables $variables, $name)
+	{
+		$this->rawfile = $rawfile;
+		$this->variables = $variables;
+		$this->name = $name;
+	}
 
-    /**
-     * @var string
-     */
-    private $file;
+	/**
+	 * @return string
+	 */
+	public function getRaw()
+	{
+		return $this->rawfile;
+	}
 
-    /**
-     * Constructor.
-     *
-     * @param string $name
-     * @param array  $variables
-     */
-    public function __construct($name, $variables)
-    {
-        $this->name = $name;
-        $this->filename = "/".$name.".php";
-        $this->variables = $variables;
-        $this->compiler = new TeaCompiler($this->file = $this->findFile());
-    }
+	/**
+	 * @param string
+	 */
+	public function setRaw($string)
+	{
+		$this->rawfile = $string;
+	}
 
-    public function getVariables()
-    {
-        return $this->variables;
-    }
+	/**
+	 * @return self
+	 */
+	public static function build(...$parameters)
+	{
+		return self::getInstance(...$parameters);
+	}
 
-    /**
-     *
-     */
-    public function findFile()
-    {
-        if ($file = $this->found()) {
-            return $file;
-        }
-        
+	/**
+	 * @return string
+	 */
+	public function __toString()
+	{
+		return self::getInstance()->rawfile;
+	}
 
+	/**
+	 * @return string
+	 */
+	public function getName()
+	{
+		return $this->name;
+	}
 
-        throw new InvalidArgumentException("View [$this->name] not found.", 1);
-    }
-
-    /**
-     * Compiler handle.
-     *
-     * @param string $mehtod
-     * @param array  $param
-     */
-    public function __call($method, $param)
-    {
-        return $this->compiler->{$method}(...$param);
-    }
-
-    /**
-     * Build view.
-     *
-     */
-    public function buildBody()
-    {
-        $this->compiler->compile();
-    }
-
-    private function found()
-    {
-        if ($file = $this->teaFile()) {
-            return $file;
-        } elseif ($file = $this->bladeFile()) {
-            return $file;
-        } elseif ($file = $this->nativePhpFile()) {
-            return $file;
-        }
-        return false;
-    }
+	public function variables()
+	{
+		return $this->variables;
+	}
 }
