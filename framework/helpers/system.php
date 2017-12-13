@@ -54,3 +54,11 @@ if (! function_exists('pc')) {
         }
     }
 }
+
+if (! function_exists('abort')) {
+    function abort($httpCode)
+    {
+        View::make(view('errors/'.$httpCode));
+        exit($httpCode);
+    }
+}
