@@ -42,7 +42,7 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		var rg = new register("/register");
+		var rg = new register("/register/success");
 			rg.listen();
 	</script>
 </body>
