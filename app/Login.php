@@ -10,21 +10,60 @@ namespace App;
 
 use PDO;
 use IceTea\Database\DB;
+use IceTea\Hub\Singleton;
 use IceTea\Support\Model;
 
 class Login extends Model
 {
-	public function __construct()
+
+	private $session_id;
+
+	private $session_key;
+
+	private $user_id;
+
+	use Singleton;
+
+	public static function getSessionId()
 	{
-		parent::__construct();
+		$ins = self::getInstance();
+		return $ins->user_id;
 	}
 
-	public function isLoggedIn()
+	public static function getSessionKey()
 	{
-
+		$ins = self::getInstance();
+		return $ins->session_key;
 	}
 
-	public function validateCredentials($identity, $password)
+	public static function getUserId()
+	{
+		$ins = self::getInstance();
+		return $ins->user_id;	
+	}
+
+	public static function isLoggedIn()
+	{
+		if (isset($_COOKIE['session_id'], $_COOKIE['session_key'], $_COOKIE['user_id'])) {
+			$ins = self::getInstance();
+			$ins->session_key = ice_decrypt($_COOKIE['session_key'], "tea_messenger123");
+			$ins->session_id  = ice_decrypt($_COOKIE['session_id'], $ins->session_key);
+			$ins->user_id	  = ice_decrypt($_COOKIE['user_id'], $ins->session_key);
+			$st = DB::prepare("SELECT `expired_at` FROM `sessions` WHERE `session_id`=:session_id AND `user_id`=:user_id LIMIT 1;");
+			pc($st->execute(
+				[
+					":session_id" => $ins->session_id,
+					":user_id"	  => $ins->user_id
+				]
+			), $st);
+			if ($st = $st->fetch(PDO::FETCH_NUM)) {
+				return strtotime($st[0]) > time();
+			}
+		}
+		return false;
+	}
+
+	public static function validateCredentials($identity, $password)
 	{
 		$field = filter_var($identity, FILTER_VALIDATE_EMAIL) ? "email" : (is_numeric($identity) ? "user_id" : "username");
 		$st = DB::prepare("SELECT `password`,`user_id` FROM `users` WHERE `{$field}`=:bind LIMIT 1;");
