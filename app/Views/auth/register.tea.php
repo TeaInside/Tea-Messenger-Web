@@ -32,7 +32,6 @@
 						<div class="form-group"><input type="text" name="username" id="uname" class="form-control" placeholder="Username"></div>
 						<div class="form-group"><input type="password" name="password" id="pass" class="form-control" placeholder="Password"></div>
 						<div class="form-group"><input type="password" name="cpassword" id="cpass" class="form-control" placeholder="Confirm password"></div>
-						<div id="captcha_field"><center><img src="" height="60" width="150"></center></div>
 						<div class="form-group" style="margin-top:5%;">
 							<input type="submit" name="submit" value="Sign Up" class="btn btn-lg btn-primary btn-block">
 						</div>
