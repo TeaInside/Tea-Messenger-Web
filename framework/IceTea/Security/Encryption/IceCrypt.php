@@ -22,10 +22,10 @@ class IceCrypt
 		$r = "";
 		for ($i=0; $i < $slen; $i++) { 
 			$r .= chr(
-				ord($str[$i]) ^ ord($key[$j]) ^ ord($key[$k]) ^ ord($key[$i % $h])
+				ord($str[$i]) ^ ord($key[$j]) ^ ord($key[$k]) ^ ($i | ($k & $j))
 			);
 			$j++; $k--; $h--;
-			if ($j === $k) {
+			if ($j === $klen) {
 				$j = 0;
 			}
 			if ($k === -1) {
@@ -61,10 +61,10 @@ class IceCrypt
 		$r = "";
 		for ($i=0; $i < $slen; $i++) { 
 			$r .= chr(
-				ord($str[$i]) ^ ord($key[$j]) ^ ord($key[$k]) ^ ord($key[$i % $h])
+				ord($str[$i]) ^ ord($key[$j]) ^ ord($key[$k]) ^ ($i | ($k & $j))
 			);
 			$j++; $k--; $h--;
-			if ($j === $k) {
+			if ($j === $klen) {
 				$j = 0;
 			}
 			if ($k === -1) {
