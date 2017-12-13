@@ -88,7 +88,7 @@ class RegisterController extends Controller
             [
                 "status"    => "ok",
                 "message"   => $msg,
-                "redirect"  => "/register"
+                "redirect"  => "/register/success"
             ]
         ));
     }

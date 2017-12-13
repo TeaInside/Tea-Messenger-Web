@@ -47,6 +47,6 @@ class Register extends Model
 				":last_name"	=> $input['last_name']
 			]
 		), $st);
-		return $id;
+		return $id[0];
 	}
 }
