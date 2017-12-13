@@ -13,7 +13,7 @@ class IceCrypt
 	{
 		$key = (string) $key;
 		$salt = self::makeSalt();
-		$key  = $salt.$key.$salt;
+		$key  = sha1($key.$salt);
 		$klen = strlen($key);
 		$slen = strlen($str);
 		$k = $klen - 1;
@@ -52,7 +52,7 @@ class IceCrypt
 		}
 		$salt = substr($str, -5); 
 		$str  = substr($str, 0, -5);
-		$key  = $salt.$key.$salt;
+		$key  = sha1($key.$salt);
 		$klen = strlen($key);
 		$slen = strlen($str);
 		$k = $klen - 1;
