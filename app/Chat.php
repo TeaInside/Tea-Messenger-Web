@@ -36,6 +36,9 @@ class Chat extends Model
 
 	public static function getChatRoom($self, $username)
 	{
-		$st = DB::prepare("SELECT ");
+		// $st = DB::prepare("SELECT ");
+		return [
+			// ["ammarfaizi2", "halo"]
+		];
 	}
 }

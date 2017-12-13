@@ -34,6 +34,7 @@ class ChatController extends Controller
 
 	public function get($par)
 	{
-		Chat::getChatRoom(Login::getUserId(), $par['username']);
+		header("Content-type:application/json");
+		print json_encode(Chat::getChatRoom(Login::getUserId(), $par['username']));
 	}
 }

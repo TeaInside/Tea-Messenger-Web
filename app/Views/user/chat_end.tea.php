@@ -11,10 +11,13 @@
 <center>
 	<div class="main-cage">
 		<div class="banner">
-			<div class="pp"><img src="{{ (! empty($info['photo']) ? assets('assets/img/users/'.$info['photo']) : '') }}" width="50" height="50"></div>
+			<div class="pp"><img src="{{ (! empty($info['photo']) ? assets('assets/img/users/'.$info['photo']) : '') }}" width="50" height="50" style="border-radius:100%;"></div>
 			<div class="name"><p>{{ $name }}</p></div>
 		</div>
 		<div class="main-chat" id="main-chat">
+			<div>
+				
+			</div>
 		</div>
 		<div class="input">
 			<form method="post" action="javascript:void(0);">
