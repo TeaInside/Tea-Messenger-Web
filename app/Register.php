@@ -28,12 +28,13 @@ class Register extends Model
 
 	public static function insert($input)
 	{
-		$st = DB::prepare("INSERT INTO `users` (`username`, `email`, `password`) VALUES (:username, :email, :password);");
+		$st = DB::prepare("INSERT INTO `users` (`username`, `email`, `password`, `registered_at`) VALUES (:username, :email, :password, :registered_at);");
 		pc($st->execute(
 			[
 				":username" => $input['username'],
 				":email"	=> $input['email'],
-				":password"	=> $input['password']
+				":password"	=> $input['password'],
+				":registered_at" => date("Y-m-d H:i:s")
 			]
 		), $st);
 		$st = DB::prepare("SELECT `user_id` FROM `users` WHERE `username`=:username LIMIT 1;");
