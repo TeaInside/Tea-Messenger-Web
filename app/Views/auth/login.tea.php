@@ -12,10 +12,12 @@
     <meta property="og:description" content="Tea Messenger, encrypted chat for everyone.">
     <meta property="og:image:secure_url" content="{{ asset('assets/img/logo-ice-tea.png') }}">
 	<title>Tea Messenger</title>
-	<link rel="shortcut icon" href="{{ asset('assets/img/logo-ice-tea.png') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/fontawesome.css') }}">
+	<link rel="shortcut icon" href="{{ asset('assets/img/logo-ice-tea.png') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/login.css') }}">
+	<script type="text/javascript" src="{{ asset('assets/js/utils/dom.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/js/auth/login.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/js/auth/cookies.js') }}"></script>
 </head>
 <body>
 	<div class="container">
@@ -28,8 +30,8 @@
                  		<p class="text-center ice-tea">Sign in</p>
 					</div>
 					<form method="post" action="javascript:void(0);" id="form-login" class="form-horizontal form-signin">
-						<div class="form-group"><input type="text" name="username" id="username" class="form-control" placeholder="Username"></div>
-						<div class="form-group"><input type="password" name="username" id="password" class="form-control" placeholder="Password"></div>
+						<div class="form-group"><input type="text" name="username" id="uname" class="form-control" placeholder="Username"></div>
+						<div class="form-group"><input type="password" name="username" id="pass" class="form-control" placeholder="Password"></div>
 						<div class="form-group"><input type="submit" name="submit" value="Sign In" class="btn btn-lg btn-primary btn-block"></div>
 						<p class="text-center">
 							<a href="/forgot-password">Forgot Password</a><br>
@@ -41,6 +43,8 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+		var lg = new login("http://api.teainside.dev");
+			lg.listen();
 	</script>
 </body>
 </html>
