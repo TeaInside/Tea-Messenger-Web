@@ -7,6 +7,13 @@ if (file_exists(__DIR__.'/../vendor/autoload.php')) {
     include __COMPOSER_AUTOLOAD__;
 } else {
 
+    // Load helpers
+    $scan = scandir(__DIR__.'/helpers');
+    unset($scan[0], $scan[1]);
+    foreach ($scan as $file) {
+        include __DIR__.'/helpers/'.$file;
+    }
+
     function ___loadClass($class)
     {
         $ex = explode('\\', $class, 2);
@@ -17,17 +24,9 @@ if (file_exists(__DIR__.'/../vendor/autoload.php')) {
         }
 
     }
-
-
     spl_autoload_register('___loadClass');
 }
 
-// Load helpers
-$scan = scandir(__DIR__.'/helpers');
-unset($scan[0], $scan[1]);
-foreach ($scan as $file) {
-    include __DIR__.'/helpers/'.$file;
-}
 
 $app = new IceTea\IceTea();
 $app->build();

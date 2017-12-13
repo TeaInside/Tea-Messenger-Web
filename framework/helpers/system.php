@@ -50,7 +50,7 @@ if (! function_exists('pc')) {
     function pc($exe, $st)
     {
         if (! $exe) {
-            throw new \Exception(get_class($st).": ".$st->errorInfo(), 1);
+            throw new \Exception(get_class($st).": ".json_encode($st->errorInfo()), 1);
         }
     }
 }
@@ -73,5 +73,19 @@ if (! function_exists('rstr')) {
             $q .= $l[rand(0, $len)];
         }
         return $q;
+    }
+}
+
+if (! function_exists('ice_encrypt')) {
+    function ice_encrypt($str, $key)
+    {
+        return \IceTea\Security\Encryption\IceCrypt::encrypt($str, $key);
+    }
+}
+
+if (! function_exists('ice_decrypt')) {
+    function ice_decrypt($str, $key)
+    {
+        return \IceTea\Security\Encryption\IceCrypt::decrypt($str, $key);
     }
 }

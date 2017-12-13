@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Register;
 use IceTea\Http\Controller;
 
@@ -19,6 +20,29 @@ class RegisterController extends Controller
     public function index()
     {
         return view("auth/register");
+    }
+
+    public function success()
+    {
+        if ($id = $this->isRegisterdCookie()) {
+            setcookie("registered", null, 0);
+            $info = User::getInfo($id, "a.user_id");
+            return view("auth/register_success", compact('info'));
+        } else {
+            abort(404);
+        }
+    }
+
+    private function isRegisterdCookie()
+    {
+        if (isset($_COOKIE['registered']) and 
+            $id = json_decode(base64_decode(strrev($_COOKIE['registered'])), true) and 
+            isset($id['id']) and 
+            Register::check($id['id'], "user_id")
+        ) {
+            return $id['id'];
+        }
+        return false;
     }
 
     /**
@@ -83,7 +107,15 @@ class RegisterController extends Controller
     private function suc($msg, $reg)
     {
         http_response_code(200);
-        setcookie("registered", strrev(base64_encode($reg)), time()+300);
+        setcookie(
+            "registered", 
+            strrev(base64_encode(json_encode(
+                [
+                    "id" => $reg,
+                    "rd" => rstr(32)
+                ]
+            ))),
+            time()+3600);
         exit($this->buildJson(
             [
                 "status"    => "ok",
