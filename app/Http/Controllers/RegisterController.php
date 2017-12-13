@@ -12,13 +12,19 @@ use IceTea\Http\Controller;
 
 class RegisterController extends Controller
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
+    /**
+     * Show register view.
+     */
     public function index()
     {
         return view("auth/register");
+    }
+
+    /**
+     * Action
+     */
+    public function action()
+    {
+    	
     }
 }
