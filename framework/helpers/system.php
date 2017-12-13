@@ -76,15 +76,15 @@ if (! function_exists('rstr')) {
     }
 }
 
-if (! function_exists('ice_ecrypt')) {
-    function icecrypt($str, $key)
+if (! function_exists('ice_encrypt')) {
+    function ice_encrypt($str, $key)
     {
         return \IceTea\Security\Encryption\IceCrypt::encrypt($str, $key);
     }
 }
 
 if (! function_exists('ice_decrypt')) {
-    function icedecrypt($str, $key)
+    function ice_decrypt($str, $key)
     {
         return \IceTea\Security\Encryption\IceCrypt::decrypt($str, $key);
     }
