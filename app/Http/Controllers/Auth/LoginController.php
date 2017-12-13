@@ -8,10 +8,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Login;
 use IceTea\Http\Controller;
 
 class LoginController extends Controller
 {
+    private $token;
+
     public function __construct()
     {
         parent::__construct();
@@ -27,14 +30,16 @@ class LoginController extends Controller
         return ice_encrypt(
             json_encode(
                 [
-                    "expired" => time() + 3600
+                    "expired" => time() + 300,
+                    "token"   => $this->token
                 ]
-            ), "teamessenger123"
+            ), "tea_messenger123"
         );
     }
 
     public function loginPage()
     {
+        setcookie("token", $this->token = rstr(32), time() + 300);
         return view("auth/login", ["that" => $this]);
     }
 
@@ -51,7 +56,51 @@ class LoginController extends Controller
             $input['password'],
             $input['csrf']
         )) {
-            
+            header("Content-type:application/json");
+            if (! $this->csrfValidation($input['csrf'])) {
+                $this->err("Token mismatch!");
+            }
+            if ($cred = Login::validateCredentials($input['username'], $input['password'])) {
+                $_14 = time() + 3600 * 24 * 14;
+                setcookie("session_id", ice_encrypt($cred['session_id'], $cred['key']), $_14);
+                setcookie("user_id", ice_encrypt($cred['user_id'], $cred['key']), $_14);
+                setcookie("session_key",ice_encrypt($cred['key'], "tea_messenger123"), $_14);
+                exit($this->buildJson(
+                    [
+                        "status"   => "ok",
+                        "message"  => "",
+                        "redirect" => "?ref=login&w=".urlencode(rstr(64))
+                    ]
+                ));
+            }
+        } else {
+            abort(404);
         }
+    }
+
+    private function csrfValidation($csrf)
+    {
+        $csrf = json_decode(ice_decrypt($csrf, "tea_messenger123"), true);
+        return 
+            isset($csrf['token'], $csrf['expired'], $_COOKIE['token']) &&
+                $csrf['expired'] > time() &&
+                    $csrf['token'] === $_COOKIE['token'];
+    }
+
+    private function err($msg, $url = null)
+    {
+        http_response_code(400);
+        exit($this->buildJson(
+            [
+                "status"   => "error",
+                "message"  => $msg,
+                "redirect" => $url
+            ]
+        ));
+    }
+
+    private function buildJson($data)
+    {
+        return json_encode($data, JSON_UNESCAPED_SLASHES);
     }
 }
