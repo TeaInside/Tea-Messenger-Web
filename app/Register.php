@@ -8,6 +8,7 @@
 
 namespace App;
 
+use PDO;
 use IceTea\Database\DB;
 use IceTea\Support\Model;
 
@@ -17,4 +18,35 @@ class Register extends Model
 	{
 		parent::__construct();
 	}
+
+	public static function check($value, $field, $table = "users")
+	{
+		$st = DB::prepare("SELECT `{$field}` FROM `{$table}` WHERE `{$field}`=:bind LIMIT 1;");
+		pc($st->execute([":bind" => $value]), $st);
+		return (bool) $st->fetch(PDO::FETCH_NUM);
+	}
+
+	public static function insert($input)
+	{
+		$st = DB::prepare("INSERT INTO `users` (`username`, `email`, `password`) VALUES (:username, :email, :password);");
+		pc($st->execute(
+			[
+				":username" => $input['username'],
+				":email"	=> $input['email'],
+				":password"	=> $input['password']
+			]
+		), $st);
+		$st = DB::prepare("SELECT `user_id` FROM `users` WHERE `username`=:username LIMIT 1;");
+		pc($st->execute([':username' => $input['username']]), $st);
+		$id = $st->fetch(PDO::FETCH_NUM);
+		$st = DB::prepare("INSERT INTO `users_info` (`user_id`, `first_name`, `last_name`, `photo`, `bio`) VALUES (:id, :first_name, :last_name, NULL, NULL);");
+		pc($st->execute(
+			[
+				":id" 			=> $id,
+				":first_name"	=> $input['first_name'],
+				":last_name"	=> $input['last_name']
+			]
+		), $st);
+	}
+
 }
