@@ -5,6 +5,7 @@ namespace IceTea\View\Compilers;
 use IceTea\Utils\Config;
 use IceTea\View\ViewSkeleton;
 use IceTea\View\Compilers\Components\Layout;
+use IceTea\View\Compilers\Components\CurlyInvoker;
 
 class TeaTemplateCompiler
 {
@@ -45,8 +46,12 @@ class TeaTemplateCompiler
 		$this->rawViewFileHash = sha1($skeleton->__toString());
 		$this->mapFile  = Config::get("views_cache_map");
 		$this->cacheDir = Config::get("views_cache_dir");
-		$this->map 	    = json_decode(file_get_contents($this->mapFile), true);
-		$this->map 	    = is_array($this->map) ? $this->map : [];
+		if (file_exists($this->mapFile)) {
+			$this->map 	    = json_decode(file_get_contents($this->mapFile), true);
+			$this->map 	    = is_array($this->map) ? $this->map : [];
+		} else {
+			$this->map 		= [];
+		}
 	}
 
 	/**
@@ -92,6 +97,8 @@ class TeaTemplateCompiler
 		$comp = new Layout($this->skeleton);
 		$comp->compile();
 		$this->skeleton = $comp->getSkeleton();
-
+		$comp = new CurlyInvoker($this->skeleton);
+		$comp->compile();
+		$this->skeleton = $comp->getSkeleton();
 	}
 }
