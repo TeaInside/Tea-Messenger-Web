@@ -2,6 +2,7 @@
 
 namespace IceTea\Database;
 
+use PDO;
 use IceTea\Utils\Config;
 use IceTea\Hub\Singleton;
 
