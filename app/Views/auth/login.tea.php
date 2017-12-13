@@ -13,7 +13,7 @@
     <meta property="og:image:secure_url" content="{{ asset('assets/img/logo-ice-tea.png') }}">
 	<title>Tea Messenger</title>
 	<link rel="shortcut icon" href="{{ asset('assets/img/logo-ice-tea.png') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/login.css') }}">
 	<script type="text/javascript" src="{{ asset('assets/js/utils/dom.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('assets/js/auth/login.js') }}"></script>
