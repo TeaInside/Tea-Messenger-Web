@@ -7,6 +7,7 @@ use IceTea\View\ViewSkeleton;
 use IceTea\View\ViewVariables;
 use IceTea\Support\View\PosibleFile;
 use IceTea\Exceptions\ViewException;
+use IceTea\View\Compilers\TeaTemplateCompiler;
 
 class View
 {
@@ -29,7 +30,14 @@ class View
 	 */
 	public static function make(ViewSkeleton $skeleton)
 	{
-		
+		$compiler = new TeaTemplateCompiler($skeleton);
+		if ($compiler->isIceTeaHasCompiledViewPerfectly()) {
+			
+		} else {
+			$compiler->compile();
+			$compiler->writeMap();
+			$compiler->isolator();
+		}
 	}
 
 	/**
