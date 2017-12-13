@@ -17,6 +17,10 @@ class LoginController extends Controller
 
     public function __construct()
     {
+        if (Login::isLoggedIn()) {
+            header("location:/");
+            exit();
+        }
         parent::__construct();
     }
 
