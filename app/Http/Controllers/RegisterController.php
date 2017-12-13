@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Register;
 use IceTea\Http\Controller;
 
@@ -25,7 +26,7 @@ class RegisterController extends Controller
     {
         if ($id = $this->isRegisterdCookie()) {
             setcookie("registered", null, 0);
-            $info = User::getInfo($id, "user_id");
+            $info = User::getInfo($id, "a.user_id");
             return view("auth/register_success", compact('info'));
         } else {
             abort(404);
