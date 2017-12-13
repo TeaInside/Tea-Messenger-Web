@@ -21,7 +21,7 @@ class Layout extends ComponentFoundation implements Component
 				substr($_val, 0, 8) === "@layout(" &&
 				substr($_val, -1) === ")"
 			) {
-				$val = "<?php \IceTea\View\QuickMake::make('".substr($_val, 9, -2)."', \IceTea\View\ViewVariables::getInstance());?>";
+				$val = "<?php require \IceTea\View\QuickMake::make('".substr($_val, 9, -2)."', \IceTea\View\ViewVariables::getInstance());?>";
 			}
 		}
 		$this->skeleton->setRaw(implode("\n", $tmp));
