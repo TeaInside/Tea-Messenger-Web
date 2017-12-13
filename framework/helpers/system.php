@@ -27,9 +27,9 @@ if (! function_exists('view')) {
 if (! function_exists('___viewIsolator')) {
 
 
-    function ___viewIsolator($____file, $____variable = [])
+    function ___viewIsolator($____file, $____variables = [])
     {
-        foreach ($____variable as $____key => $____value) {
+        foreach ($____variables as $____key => $____value) {
             $$____key = $____value;
         }
 
@@ -62,4 +62,12 @@ if (! function_exists('asset')) {
     }
 
 
+}
+
+if (! function_exists('e')) {
+    function e($str = "'")
+    {
+        print $str = htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+        return $str;
+    }
 }
