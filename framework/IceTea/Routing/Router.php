@@ -62,7 +62,6 @@ class Router
                                 return $controller->{$a[1]}(
                                         RouteBinding::getBindedValue()
                                     );
-                                var_dump(123);
                             } else {
                                 throw new \Exception("Class {$controller} does not exist", 1);
                             }
