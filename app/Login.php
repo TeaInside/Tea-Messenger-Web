@@ -19,13 +19,31 @@ class Login extends Model
 		parent::__construct();
 	}
 
+	public function isLoggedIn()
+	{
+
+	}
+
 	public function validateCredentials($identity, $password)
 	{
 		$field = filter_var($identity, FILTER_VALIDATE_EMAIL) ? "email" : (is_numeric($identity) ? "user_id" : "username");
-		$st = DB::prepare("SELECT `password` FROM `users` WHERE `{$field}`=:bind LIMIT 1;");
+		$st = DB::prepare("SELECT `password`,`user_id` FROM `users` WHERE `{$field}`=:bind LIMIT 1;");
 		pc($st->execute([":bind" => $identity]), $st);
 		if ($st = $st->fetch(PDO::FETCH_NUM)) {
-			return password_verify($password, $st[0]);
+			if (password_verify($password, $st[0])) {
+				$dt = [
+					"user_id"	 => $st[1],
+					"session_id" => rstr(121),
+					"key"		 => rstr(64),
+					"user_agent" => (isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : ""),
+					"remote_addr"=> (isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : ""),
+					"expired_at" => date("Y-m-d H:i:s", time() + (3600 * 24 * 14)),
+					"created_at" => date("Y-m-d H:i:s")
+				];
+				$st = DB::prepare("INSERT INTO `sessions` (`user_id`, `session_id`, `key`, `user_agent`, `remote_addr`, `expired_at`, `created_at`) VALUES (:user_id, :session_id, :key, :user_agent, :remote_addr, :expired_at, :created_at);");
+				pc($st->execute($dt), $st);
+				return $dt;
+			}
 		}
 		return false;
 	}
