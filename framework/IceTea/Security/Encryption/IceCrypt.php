@@ -22,7 +22,7 @@ class IceCrypt
 		$r = "";
 		for ($i=0; $i < $slen; $i++) { 
 			$r .= chr(
-				ord($str[$i]) ^ ord($key[$j]) ^ ord($key[$k]) ^ ($i | ($k & $j))
+				ord($str[$i]) ^ ord($key[$j]) ^ ord($key[$k]) ^ ($i | ($k & $j) ^ $h)
 			);
 			$j++; $k--; $h--;
 			if ($j === $klen) {
@@ -61,7 +61,7 @@ class IceCrypt
 		$r = "";
 		for ($i=0; $i < $slen; $i++) { 
 			$r .= chr(
-				ord($str[$i]) ^ ord($key[$j]) ^ ord($key[$k]) ^ ($i | ($k & $j))
+				ord($str[$i]) ^ ord($key[$j]) ^ ord($key[$k]) ^ ($i | ($k & $j) ^ $h)
 			);
 			$j++; $k--; $h--;
 			if ($j === $klen) {
