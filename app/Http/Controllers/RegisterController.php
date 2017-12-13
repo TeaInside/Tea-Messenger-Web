@@ -35,7 +35,7 @@ class RegisterController extends Controller
             $input['password'],
             $input['confirm_password']
         ) && $this->isValidDevice()) {
-            # code...
+            $this->validator($input);
         } else {
             abort(404);
         }
@@ -44,5 +44,10 @@ class RegisterController extends Controller
     private function isValidDevice()
     {
         return true;
+    }
+
+    private function validator($input)
+    {
+        var_dump($input);
     }
 }
