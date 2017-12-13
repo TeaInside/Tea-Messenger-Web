@@ -47,6 +47,15 @@ class Register extends Model
 				":last_name"	=> $input['last_name']
 			]
 		), $st);
+		$st = DB::prepare("INSERT INTO `verification` (`user_id`, `token`, `expired_at`) VALUES (:user_id, :token, :expired_at);");
+		$token = rstr(64);
+		pc($st->execute(
+			[
+				":user_id" => $id[0],
+				":token"   => $token,
+				":expired_at" => date("Y-m-d H:i:s", time() + (3600*24))
+			]
+		), $st);
 		return $id[0];
 	}
 }
