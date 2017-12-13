@@ -8,6 +8,7 @@
 
 namespace App;
 
+use IceTea\Database\DB;
 use IceTea\Support\Model;
 
 class Register extends Model
