@@ -69,6 +69,19 @@ class Login extends Model
 		return $ins->isLoggedIn;
 	}
 
+	public static function logout()
+	{
+		$ins = self::getInstance();
+		$st = DB::prepare("DELETE FROM `sessions` WHERE `user_id`=:user_id AND `session_id`=:session_id LIMIT 1;");
+		pc($st->execute(
+			[
+				":user_id" 		=> $ins->user_id,
+				":session_id"	=> $ins->session_id
+			]
+		), $st);
+		return true;
+	}
+
 	public static function validateCredentials($identity, $password)
 	{
 		$field = filter_var($identity, FILTER_VALIDATE_EMAIL) ? "email" : (is_numeric($identity) ? "user_id" : "username");

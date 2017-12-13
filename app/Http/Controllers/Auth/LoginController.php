@@ -17,10 +17,7 @@ class LoginController extends Controller
 
     public function __construct()
     {
-        if (Login::isLoggedIn()) {
-            header("location:/");
-            exit();
-        }
+        
         parent::__construct();
     }
 
@@ -55,6 +52,10 @@ class LoginController extends Controller
 
     public function loginPage()
     {
+        if (Login::isLoggedIn()) {
+            header("location:/");
+            exit();
+        }
         setcookie("token", $this->token = rstr(32), time() + 300);
         return view("auth/login", ["that" => $this]);
     }
@@ -84,7 +85,7 @@ class LoginController extends Controller
                 exit($this->buildJson(
                     [
                         "status"   => "ok",
-                        "message"  => "",
+                        "message"  => null,
                         "redirect" => "?ref=login&w=".urlencode(base64_encode(rstr(64)))
                     ]
                 ));

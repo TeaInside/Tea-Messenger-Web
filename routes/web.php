@@ -16,4 +16,4 @@ Route::get("/login", "Auth\\LoginController@indexLogin");
 Route::get("/register", "RegisterController@index");
 Route::post("/register", "RegisterController@action");
 Route::get("/register/success", "RegisterController@success");
-Route::get("/logout", "LoginController@logout");
+Route::get("/logout", "Auth\\LoginController@logout");
