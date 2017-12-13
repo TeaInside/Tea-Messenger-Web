@@ -11,6 +11,9 @@ CREATE TABLE `users` (
   `username` varchar(255) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `verified` enum('true','false') NOT NULL DEFAULT 'false',
+  `status` enum('banned','active') NOT NULL DEFAULT 'active',
+  `registered_at` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -29,4 +32,14 @@ CREATE TABLE `users_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
--- 2017-12-13 08:32:53
+DROP TABLE IF EXISTS `verification`;
+CREATE TABLE `verification` (
+  `user_id` bigint(20) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `expired_at` datetime NOT NULL,
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `verification_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- 2017-12-13 10:17:13
