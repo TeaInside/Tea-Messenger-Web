@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Register;
 use IceTea\Http\Controller;
 
 class RegisterController extends Controller
@@ -57,13 +58,29 @@ class RegisterController extends Controller
         $len = strlen($input['password']);
         $len > 6 or $this->err("Password too short, please provide password more than 6 characters!");
         (!preg_match("#[^[:print:]]#", $input['password'])) or $this->err("Password must not contains unprintable chars!");
-        
-
+        if ($reg = Register::input($input)) {
+            $this->suc("Register success!", $reg);
+        } else {
+            $this->err("Internal error!");
+        }
     }
 
     private function err($msg)
     {
         http_response_code(400);
         exit($msg);
+    }
+
+    private function suc($msg, $reg)
+    {
+        http_response_code(200);
+        setcookie("registered", base64_encode(json_encode($reg)), time()+300);
+        exit($this->buildJson(
+            [
+                "status"    => "ok",
+                "message"   => $msg,
+                "redirect"  => "/register"
+            ]
+        ));
     }
 }
