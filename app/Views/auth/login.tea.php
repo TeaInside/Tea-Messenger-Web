@@ -14,7 +14,7 @@
 	<title>Tea Messenger</title>
 	<link rel="shortcut icon" href="{{ asset('assets/img/logo-ice-tea.png') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/login.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/authmain.css') }}">
 	<script type="text/javascript" src="{{ asset('assets/js/utils/dom.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('assets/js/auth/login.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('assets/js/auth/cookies.js') }}"></script>
