@@ -26,12 +26,12 @@
 					<div class="col-md-12">
 					</div>
 					<form method="post" action="javascript:void(0);" id="form-register" class="form-horizontal form-signin">
-						<div class="form-group"><input type="text" name="first_name" id="first_name" class="form-control" placeholder="First name"></div>
-						<div class="form-group"><input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last name"></div>
+						<div class="form-group"><input type="text" name="first_name" id="fn" class="form-control" placeholder="First name"></div>
+						<div class="form-group"><input type="text" name="last_name" id="ln" class="form-control" placeholder="Last name"></div>
 						<div class="form-group"><input type="email" name="email" id="email" class="form-control" placeholder="E-Mail"></div>
-						<div class="form-group"><input type="text" name="username" id="username" class="form-control" placeholder="Username"></div>
-						<div class="form-group"><input type="password" name="password" id="password" class="form-control" placeholder="Password"></div>
-						<div class="form-group"><input type="password" name="cpassword" id="cpassword" class="form-control" placeholder="Confirm password"></div>
+						<div class="form-group"><input type="text" name="username" id="uname" class="form-control" placeholder="Username"></div>
+						<div class="form-group"><input type="password" name="password" id="pass" class="form-control" placeholder="Password"></div>
+						<div class="form-group"><input type="password" name="cpassword" id="cpass" class="form-control" placeholder="Confirm password"></div>
 						<div id="captcha_field"><center><img src="" height="60" width="150"></center></div>
 						<div class="form-group" style="margin-top:5%;">
 							<input type="submit" name="submit" value="Sign Up" class="btn btn-lg btn-primary btn-block">
