@@ -10,7 +10,7 @@ class login
 	}
 	listen()
 	{
-		that = this;
+		var that = this;
 		domId('form-login').addEventListener('submit', function () {
 			var uname = domId('uname').value,
 				pass  = domId('pass').value;
@@ -24,7 +24,7 @@ class login
 		var ch = new XMLHttpRequest();
 			ch.onreadystatechange = function () {
 				if (this.readyState === 4) {
-
+					alert(this.responseText);
 				}
 			};
 			ch.open("GET", this.apiurl);

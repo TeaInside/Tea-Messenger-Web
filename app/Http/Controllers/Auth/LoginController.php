@@ -22,9 +22,20 @@ class LoginController extends Controller
         //
     }
 
+    public function csrf_token()
+    {
+        return ice_encrypt(
+            json_encode(
+                [
+                    "expired" => time() + 3600
+                ]
+            ), "teamessenger123"
+        );
+    }
+
     public function loginPage()
     {
-        return view("auth/login");
+        return view("auth/login", ["that" => $this]);
     }
 
     public function indexLogin()
