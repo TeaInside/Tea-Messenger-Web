@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/login.css') }}">
 </head>
 <body>
-<div class="container">
+	<div class="container">
 		<div class="row">
             <div class="col-sm-6 col-md-4 col-md-offset-4">
                <div class="login-wall">
@@ -44,7 +44,7 @@
             </div>
 		</div>
    </div>
-<script type="text/javascript">
-</script>
+	<script type="text/javascript">
+	</script>
 </body>
 </html>
