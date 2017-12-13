@@ -1,0 +1,42 @@
+* {
+	font-family: Helvetica;
+}
+.main-cage {
+	border: 2px solid black;
+	width: 50%;
+	height: 550px;
+}
+.main-chat {
+	background-color: #ede6e6;
+	height: 390px;
+	overflow-x: scroll;
+}
+.banner {
+	border-bottom: 2px solid black;
+}
+.name {
+	margin-top: -1.9%;
+	margin-right: 82%;
+}
+.pp {
+	margin-top: 1%;
+	margin-right: 88%;
+}
+.sb {
+	margin-left: 1%;
+	background-color: #c1ed31;
+	border-radius: 4%;
+	border: 2px solid #c1ed31;
+	padding: 1% 2% 1% 2%;
+	cursor: pointer;
+}
+
+.sb:hover {
+	background-color: #abd61d;
+	border: 2px solid #abd61d;
+}
+
+.sb:active {
+	background-color: #91b512;
+	border: 2px solid #91b512;
+}
