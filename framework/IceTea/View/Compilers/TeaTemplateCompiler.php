@@ -2,6 +2,7 @@
 
 namespace IceTea\View\Compilers;
 
+use IceTea\Utils\Config;
 use IceTea\View\ViewSkeleton;
 use IceTea\View\Compilers\Components\Layout;
 
@@ -19,6 +20,21 @@ class TeaTemplateCompiler
 	private $rawViewFileHash;
 
 	/**
+	 * @var string
+	 */
+	private $mapFile;
+
+	/**
+	 * @var array
+	 */
+	private $map = [];
+
+	/**
+	 * @var string
+	 */
+	private $name;
+
+	/**
 	 * Constructor.
 	 *
 	 * @param \IceTea\View\ViewSkeleton $skeleton
@@ -27,6 +43,10 @@ class TeaTemplateCompiler
 	{
 		$this->skeleton = $skeleton;
 		$this->rawViewFileHash = sha1($skeleton->__toString());
+		$this->mapFile  = Config::get("views_cache_map");
+		$this->cacheDir = Config::get("views_cache_dir");
+		$this->map 	    = json_decode($this->mapFile, true);
+		$this->map 	    = is_array($this->map) ? $this->map : [];
 	}
 
 	/**
@@ -34,6 +54,7 @@ class TeaTemplateCompiler
 	 */
 	public function isIceTeaHasCompiledViewPerfectly()
 	{
+		return isset($this->map[$this->name = $this->skeleton->getName()]) && $this->map[$this->name] === $this->rawViewFileHash;
 	}
 
 	/**
@@ -44,8 +65,30 @@ class TeaTemplateCompiler
 		$this->buildComponent();
 	}
 
+	public function writeMap()
+	{
+		$this->map[$this->name] = $this->rawViewFileHash;
+		file_put_contents($this->mapFile, json_encode($this->map, JSON_UNESCAPED_SLASHES));
+	}
+
+	public function writeCache()
+	{
+		$handle = fopen($this->cacheDir."/".$this->rawViewFileHash.".php", "w");
+		flock($handle, LOCK_EX);
+		fwrite($handle, $this->skeleton->getRaw());
+		fclose($handle);
+	}
+
+	public function compact()
+	{
+		___viewIsolator($this->cacheDir."/".$this->rawViewFileHash.".php", $this->skeleton->variables()->toArray());
+	}
+
 	private function buildComponent()
 	{
 		$comp = new Layout($this->skeleton);
+		$comp->compile();
+		$this->skeleton = $comp->getSkeleton();
+
 	}
 }

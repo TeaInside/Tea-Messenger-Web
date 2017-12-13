@@ -20,4 +20,12 @@ abstract class ComponentFoundation
 	{
 		$this->skeleton = $skeleton;
 	}
+
+	/**
+	 * @return \IceTea\View\ViewSkeleton
+	 */
+	final public function getSkeleton()
+	{
+		return $this->skeleton;
+	}
 }

@@ -22,7 +22,7 @@ class View
 	public static function buildView($file, $variables)
 	{
 		$ins = self::getInstance();
-		return ViewSkeleton::build($ins->getRawFile($file), ViewVariables::build($variables));
+		return ViewSkeleton::build($ins->getRawFile($file), ViewVariables::build($variables), $file);
 	}
 
 	/**
@@ -31,13 +31,12 @@ class View
 	public static function make(ViewSkeleton $skeleton)
 	{
 		$compiler = new TeaTemplateCompiler($skeleton);
-		if ($compiler->isIceTeaHasCompiledViewPerfectly()) {
-			
-		} else {
+		if (! $compiler->isIceTeaHasCompiledViewPerfectly()) {
 			$compiler->compile();
 			$compiler->writeMap();
-			$compiler->isolator();
+			$compiler->writeCache();
 		}
+		$compiler->compact();
 	}
 
 	/**

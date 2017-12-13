@@ -20,8 +20,13 @@ class ViewVariables implements ArrayAccess
 	 * @param array $variables
 	 */
 	public function __construct($variables)
-	{
+	{		
 		$this->containter = $variables;
+	}
+
+	public function toArray()
+	{
+		return $this->containter;
 	}
 
 	/**
