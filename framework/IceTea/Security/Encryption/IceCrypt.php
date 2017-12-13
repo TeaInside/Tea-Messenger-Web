@@ -13,7 +13,7 @@ class IceCrypt
 	{
 		$key = (string) $key;
 		$salt = self::makeSalt();
-		$key  = $key.$salt;
+		$key  = $salt.$key.$salt;
 		$klen = strlen($key);
 		$slen = strlen($str);
 		$k = $klen - 1;
@@ -22,7 +22,7 @@ class IceCrypt
 		$r = "";
 		for ($i=0; $i < $slen; $i++) { 
 			$r .= chr(
-				ord($str[$i]) ^ ord($key[$j]) ^ ord($key[$k]) ^ ($i | ($k & $j) ^ $h)
+				ord($str[$i]) ^ ($posibly = ord($key[$j])) ^ ($cost = ord($key[$k])) ^ ($i | (($k & $j) ^ $h)) ^ (($i + $k + $j + $h) % 2) ^ ($cost % 2) ^ ($posibly ^ 2) ^ (($posibly + $cost) % 3) ^ (abs(~$cost + $posibly) % 2)
 			);
 			$j++; $k--; $h--;
 			if ($j === $klen) {
@@ -52,7 +52,7 @@ class IceCrypt
 		}
 		$salt = substr($str, -5); 
 		$str  = substr($str, 0, -5);
-		$key  = $key.$salt;
+		$key  = $salt.$key.$salt;
 		$klen = strlen($key);
 		$slen = strlen($str);
 		$k = $klen - 1;
@@ -61,7 +61,7 @@ class IceCrypt
 		$r = "";
 		for ($i=0; $i < $slen; $i++) { 
 			$r .= chr(
-				ord($str[$i]) ^ ord($key[$j]) ^ ord($key[$k]) ^ ($i | ($k & $j) ^ $h)
+				ord($str[$i]) ^ ($posibly = ord($key[$j])) ^ ($cost = ord($key[$k])) ^ ($i | (($k & $j) ^ $h)) ^ (($i + $k + $j + $h) % 2) ^ ($cost % 2) ^ ($posibly ^ 2) ^ (($posibly + $cost) % 3) ^ (abs(~$cost + $posibly) % 2)
 			);
 			$j++; $k--; $h--;
 			if ($j === $klen) {

@@ -53,7 +53,7 @@ class EncryptionTest extends TestCase
 
 	public function testRandomAbsolute()
 	{
-		for ($i=0; $i < 100; $i++) { 
+		for ($i=0; $i < 1000; $i++) { 
 			$string = rstr(rand(1, 100), $this->r);
 			$key    = rstr(rand(1, 100), $this->r);
 
