@@ -50,7 +50,7 @@ if (! function_exists('pc')) {
     function pc($exe, $st)
     {
         if (! $exe) {
-            throw new \Exception(get_class($st).": ".$st->errorInfo(), 1);
+            throw new \Exception(get_class($st).": ".json_encode($st->errorInfo()), 1);
         }
     }
 }
