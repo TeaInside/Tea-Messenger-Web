@@ -29,6 +29,18 @@ class LoginController extends Controller
         //
     }
 
+    public function logout()
+    {
+        if (Login::isLoggedIn()) {
+            Login::logout();
+            setcookie("session_id", null, 0);
+            setcookie("session_key", null, 0);
+            setcookie("user_id", null, 0);
+            header("location:/?ref=logout&w=".urlencode(base64_encode(rstr(64))));
+            exit();
+        }
+    }
+
     public function csrf_token()
     {
         return ice_encrypt(
@@ -73,7 +85,7 @@ class LoginController extends Controller
                     [
                         "status"   => "ok",
                         "message"  => "",
-                        "redirect" => "?ref=login&w=".urlencode(rstr(64))
+                        "redirect" => "?ref=login&w=".urlencode(base64_encode(rstr(64)))
                     ]
                 ));
             }

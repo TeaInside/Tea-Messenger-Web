@@ -11,6 +11,7 @@
 <body>
 <center>
 	<h1>Welcome to Tea Messenger</h1>
+	<a href="/logout"><h2>Log out</h2></a>
 </center>
 </body>
 </html>

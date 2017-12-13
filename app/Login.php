@@ -22,6 +22,8 @@ class Login extends Model
 
 	private $user_id;
 
+	private $isLoggedIn;
+
 	use Singleton;
 
 	public static function getSessionId()
@@ -44,23 +46,27 @@ class Login extends Model
 
 	public static function isLoggedIn()
 	{
-		if (isset($_COOKIE['session_id'], $_COOKIE['session_key'], $_COOKIE['user_id'])) {
-			$ins = self::getInstance();
-			$ins->session_key = ice_decrypt($_COOKIE['session_key'], "tea_messenger123");
-			$ins->session_id  = ice_decrypt($_COOKIE['session_id'], $ins->session_key);
-			$ins->user_id	  = ice_decrypt($_COOKIE['user_id'], $ins->session_key);
-			$st = DB::prepare("SELECT `expired_at` FROM `sessions` WHERE `session_id`=:session_id AND `user_id`=:user_id LIMIT 1;");
-			pc($st->execute(
-				[
-					":session_id" => $ins->session_id,
-					":user_id"	  => $ins->user_id
-				]
-			), $st);
-			if ($st = $st->fetch(PDO::FETCH_NUM)) {
-				return strtotime($st[0]) > time();
+		$ins = self::getInstance();
+		if ($ins->isLoggedIn === null) {
+			if (isset($_COOKIE['session_id'], $_COOKIE['session_key'], $_COOKIE['user_id'])) {	
+				$ins->session_key = ice_decrypt($_COOKIE['session_key'], "tea_messenger123");
+				$ins->session_id  = ice_decrypt($_COOKIE['session_id'], $ins->session_key);
+				$ins->user_id	  = ice_decrypt($_COOKIE['user_id'], $ins->session_key);
+				$st = DB::prepare("SELECT `expired_at` FROM `sessions` WHERE `session_id`=:session_id AND `user_id`=:user_id LIMIT 1;");
+				pc($st->execute(
+					[
+						":session_id" => $ins->session_id,
+						":user_id"	  => $ins->user_id
+					]
+				), $st);
+				if ($st = $st->fetch(PDO::FETCH_NUM)) {
+					$ins->isLoggedIn = strtotime($st[0]) > time();
+					return $ins->isLoggedIn;
+				}
 			}
+			return false;
 		}
-		return false;
+		return $ins->isLoggedIn;
 	}
 
 	public static function validateCredentials($identity, $password)
