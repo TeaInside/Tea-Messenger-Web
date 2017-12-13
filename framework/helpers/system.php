@@ -75,3 +75,17 @@ if (! function_exists('rstr')) {
         return $q;
     }
 }
+
+if (! function_exists('ice_ecrypt')) {
+    function icecrypt($str, $key)
+    {
+        return \IceTea\Security\Encryption\IceCrypt::encrypt($str, $key);
+    }
+}
+
+if (! function_exists('ice_decrypt')) {
+    function icedecrypt($str, $key)
+    {
+        return \IceTea\Security\Encryption\IceCrypt::decrypt($str, $key);
+    }
+}
