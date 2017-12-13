@@ -8,6 +8,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Login;
 use IceTea\Http\Controller;
 use App\Http\Controllers\Auth\LoginController;
 
@@ -20,16 +22,13 @@ class IndexController extends Controller
 
     public function index()
     {
-        //
-        if ($this->checkSession()) {
+        if (Login::isLoggedIn()) {
+            return view('user/home', [
+                "info" => User::getInfo(Login::getUserId(), "a.user_id")
+            ]);
         } else {
             $login = new LoginController();
             return $login->loginPage();
         }
-    }
-
-    private function checkSession()
-    {
-        return false;
     }
 }

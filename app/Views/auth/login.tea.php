@@ -30,9 +30,13 @@
                  		<p class="text-center ice-tea">Sign in</p>
 					</div>
 					<form method="post" action="javascript:void(0);" id="form-login" class="form-horizontal form-signin">
-						<div class="form-group"><input type="text" name="username" id="uname" class="form-control" placeholder="Username"></div>
-						<div class="form-group"><input type="password" name="username" id="pass" class="form-control" placeholder="Password"></div>
+						<div class="form-group"><input type="text" name="username" id="uname" class="form-control" placeholder="Username" required></div>
+						<div class="form-group"><input type="password" name="username" id="pass" class="form-control" placeholder="Password" required></div>
 						<div class="form-group"><input type="submit" name="submit" value="Sign In" class="btn btn-lg btn-primary btn-block"></div>
+						<div>
+							<input type="hidden" name="_csrf" value="{{ $that->csrf_token() }}" id="csrf">
+							<input type="hidden" name="cost" value="{{ rstr(32) }}" id="cost">
+						</div>
 						<p class="text-center">
 							<a href="/forgot-password">Forgot Password</a><br>
 							<span>Need an account? <a href="/register">Sign up.</a></span>
@@ -43,8 +47,9 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		var lg = new login("http://api.teainside.dev");
+		var lg = new login("/login");
 			lg.listen();
 	</script>
 </body>
 </html>
+ 
