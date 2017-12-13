@@ -21,6 +21,16 @@ class RegisterController extends Controller
         return view("auth/register");
     }
 
+    public function success()
+    {
+        
+    }
+
+    private function isRegisterdCookie()
+    {
+        return isset($_COOKIE['registered'] and Register::check(base64_decode(strrev($_COOKIE['registered'])));
+    }
+
     /**
      * Action
      */
