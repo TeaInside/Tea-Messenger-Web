@@ -7,12 +7,22 @@ use IceTea\Security\Encryption\IceCrypt;
 
 class EncryptionTest extends TestCase
 {
+	private $r;
+
+	public function setup()
+	{
+		$this->r = "";
+		for ($i=1; $i < 255; $i++) { 
+			$this->r .= chr($i);
+		}
+	}
+
 	public function testConstantString()
 	{
 		$string = "Hello World";
 		for ($i=0; $i < 200; $i++) { 
 			// generate random key
-			$key = rstr(32);
+			$key = rstr(32, $this->r);
 
 			$encrypted = IceCrypt::encrypt($string, $key);
 			$this->assertEquals(
@@ -25,16 +35,12 @@ class EncryptionTest extends TestCase
 	public function testRandomString()
 	{
 		for ($l=0; $l < 5; $l++) { 
-			$r = "";
-			for ($i=1; $i < 255; $i++) { 
-				$r .= chr($i);
-			}
 			// generate random string
-			$string = rstr(32, $r);
+			$string = rstr(32, $this->r);
 
 			for ($i=0; $i < 200; $i++) { 
 				// generate random key
-				$key = rstr(32, $r);
+				$key = rstr(32, $this->r);
 
 				$encrypted = IceCrypt::encrypt($string, $key);
 				$this->assertEquals(
@@ -42,6 +48,20 @@ class EncryptionTest extends TestCase
 					$string
 				);
 			}
+		}
+	}
+
+	public function testRandomAbsolute()
+	{
+		for ($i=0; $i < 100; $i++) { 
+			$string = rstr(rand(1, 100), $this->r);
+			$key    = rstr(rand(1, 100), $this->r);
+
+			$encrypted = IceCrypt::encrypt($string, $key);
+			$this->assertEquals(
+				IceCrypt::decrypt($encrypted, $key),
+				$string
+			);
 		}
 	}
 }
