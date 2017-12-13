@@ -34,4 +34,12 @@ class TeaTemplateCompiler
 	public function isIceTeaHasCompiledViewPerfectly()
 	{
 	}
+
+	/**
+	 * @return bool
+	 */
+	public function compile()
+	{
+		
+	}
 }
