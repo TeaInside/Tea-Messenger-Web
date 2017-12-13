@@ -29,4 +29,16 @@ trait PosibleFile
         }
         return false;
     }
+
+    /**
+     * @param string $file
+     * @return mixed
+     */
+    private function phpNativeFile($file)
+    {
+        if (file_exists($file = Config::get("views_cache_dir")."/".$file.".php")) {
+            return $file;
+        }
+        return false;
+    }
 }
