@@ -83,7 +83,7 @@ class RegisterController extends Controller
     private function suc($msg, $reg)
     {
         http_response_code(200);
-        setcookie("registered", base64_encode(json_encode($reg)), time()+300);
+        setcookie("registered", strrev(base64_encode($reg)), time()+300);
         exit($this->buildJson(
             [
                 "status"    => "ok",

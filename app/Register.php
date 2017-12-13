@@ -42,11 +42,11 @@ class Register extends Model
 		$st = DB::prepare("INSERT INTO `users_info` (`user_id`, `first_name`, `last_name`, `photo`, `bio`) VALUES (:id, :first_name, :last_name, NULL, NULL);");
 		pc($st->execute(
 			[
-				":id" 			=> $id,
+				":id" 			=> $id[0],
 				":first_name"	=> $input['first_name'],
 				":last_name"	=> $input['last_name']
 			]
 		), $st);
+		return $id;
 	}
-
 }
