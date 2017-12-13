@@ -33,7 +33,7 @@
 		</div>
    </div>
 <script type="text/javascript">
-	function buildContext(){
+	/*function buildContext(){
 		var u = document.getElementById("username").value,
 			p =	document.getElementById("password").value
 			c = document.getElementById("_csrf").value,
@@ -88,7 +88,7 @@
 			};
 			a.send(context);
 		}
-	});
+	});*/
 </script>
 </body>
 </html>

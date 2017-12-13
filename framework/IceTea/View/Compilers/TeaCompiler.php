@@ -52,11 +52,9 @@ class TeaCompiler
 
     public function getComponent()
     {
-
     }
 
     public function getSelfHash()
     {
-
     }
 }
