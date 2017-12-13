@@ -23,12 +23,24 @@ class RegisterController extends Controller
 
     public function success()
     {
-        
+        if ($this->isRegisterdCookie()) {
+            setcookie("registered", null, 0);
+            return view("register_success");
+        } else {
+            abort(404);
+        }
     }
 
     private function isRegisterdCookie()
     {
-        return isset($_COOKIE['registered'] and Register::check(base64_decode(strrev($_COOKIE['registered'])));
+        if (isset($_COOKIE['registered']) and 
+            $id = json_decode(base64_decode(strrev($_COOKIE['registered'])), true) and 
+            isset($id['id']) and 
+            Register::check($id['id'], "user_id")
+        ) {
+            return $id['id'];
+        }
+        return false;
     }
 
     /**
@@ -93,7 +105,15 @@ class RegisterController extends Controller
     private function suc($msg, $reg)
     {
         http_response_code(200);
-        setcookie("registered", strrev(base64_encode($reg)), time()+300);
+        setcookie(
+            "registered", 
+            strrev(base64_encode(json_encode(
+                [
+                    "id" => $reg,
+                    "rd" => rstr(32)
+                ]
+            ))),
+            time()+3600);
         exit($this->buildJson(
             [
                 "status"    => "ok",
