@@ -8,6 +8,7 @@
 
 namespace {{__NAMESPACE__}};
 
+use IceTea\Database\DB;
 use IceTea\Support\Model;
 
 class {{NAME}} extends Model
