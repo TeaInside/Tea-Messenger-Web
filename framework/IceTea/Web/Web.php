@@ -42,12 +42,10 @@ final class Web
         }
 
         RouteCollector::destroy();
-
     }
 
 
     public function terminate()
     {
-
     }
 }
