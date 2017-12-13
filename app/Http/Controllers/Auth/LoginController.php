@@ -31,4 +31,16 @@ class LoginController extends Controller
     {
         return $this->loginPage();
     }
+
+    public function action()
+    {
+        $input = json_decode(file_get_contents("php://input"), true);
+        if (isset(
+            $input['username'],
+            $input['password'],
+            $input['csrf']
+        )) {
+            
+        }
+    }
 }
