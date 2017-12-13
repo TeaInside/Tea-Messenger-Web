@@ -33,7 +33,7 @@ class RegisterController extends Controller
             $input['email'],
             $input['username'],
             $input['password'],
-            $input['confirm_password']
+            $input['cpassword']
         ) && $this->isValidDevice()) {
             $this->validator($input);
         } else {

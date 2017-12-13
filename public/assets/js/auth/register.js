@@ -38,6 +38,7 @@ class register
 		if (q['password']!==q['cpassword']) {
 			alert("Confirm password does not match!");
 			return false;
-		}		
+		}
+		return JSON.stringify(q);
 	}
 }
