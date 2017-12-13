@@ -11,7 +11,7 @@ dependencies:
   override: 
     - composer install --prefer-source --no-interaction -vvv
   post: 
-    - php icetea
+    - php icetea serve &
 test: 
   override: 
     - phpunit
