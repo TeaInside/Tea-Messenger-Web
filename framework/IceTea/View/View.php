@@ -4,18 +4,14 @@ namespace IceTea\View;
 
 class View
 {
-    public static function buildView($name, $variables)
-    {
-        return new ViewSkeleton($name, $variables);
-    }
 
-    public static function make(ViewSkeleton $skeleton)
-    {
-        $cache = new CacheHandler($skeleton);
-        if (! $cache->isCached() && ! $cache->isPerfectCache()) {
-            $cache->makeCache();
-        }
-
-        return ___viewIsolator($cache->getCacheFileName(), $skeleton->getVariables());
-    }
+	/**
+	 * @param string $file
+	 * @param array  $variables
+	 * @return \IceTea\View\ViewSkeleton
+	 */
+	public static function buildView($file, $variables)
+	{
+		
+	}
 }

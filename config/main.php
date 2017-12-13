@@ -9,5 +9,7 @@ return [
 		"port"	 => env("DB_PORT", "3306"),
 		"dbname" => env("DB_DATABASE", "")
 	],
-	"assets" => env("APP_URL")
+	"assets" => env("APP_URL"),
+	"views_cache_dir" 	=> basepath("storage/framework/views"),
+	"views_cache_map"	=> basepath("storage/framework/handler/view.map")
 ];
