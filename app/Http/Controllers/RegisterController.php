@@ -92,4 +92,9 @@ class RegisterController extends Controller
             ]
         ));
     }
+
+    private function buildJson($data)
+    {
+        return json_encode($data);
+    }
 }
