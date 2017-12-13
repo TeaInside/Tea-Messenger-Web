@@ -48,6 +48,22 @@ class RegisterController extends Controller
 
     private function validator($input)
     {
-        var_dump($input);
+        header("Content-type:application/json");
+        filter_var($input['email'], FILTER_VALIDATE_EMAIL) or $this->err("Invalid email!");
+        $len = strlen($input['username']);
+        $len > 3  or $this->err("Username too short, please provide username more than 4 characters!");
+        $len < 33 or $this->err("Username too long, please provide username less than 32 characters!");
+        $input['password'] === $input['cpassword'] or $this->err("Confirm password does not match!");
+        $len = strlen($input['password']);
+        $len > 6 or $this->err("Password too short, please provide password more than 6 characters!");
+        (!preg_match("#[^[:print:]]#", $input['password'])) or $this->err("Password must not contains unprintable chars!");
+        
+
+    }
+
+    private function err($msg)
+    {
+        http_response_code(400);
+        exit($msg);
     }
 }
