@@ -25,6 +25,24 @@ class RegisterController extends Controller
      */
     public function action()
     {
-    	
+    	$input = file_get_contents("php://input");
+        $input = json_decode($input, true);
+        if (isset(
+            $input['first_name'], 
+            $input['last_name'], 
+            $input['email'],
+            $input['username'],
+            $input['password'],
+            $input['confirm_password']
+        ) && $this->isValidDevice()) {
+            # code...
+        } else {
+            abort(404);
+        }
+    }
+
+    private function isValidDevice()
+    {
+        return true;
     }
 }
