@@ -45,7 +45,7 @@ class TeaTemplateCompiler
 		$this->rawViewFileHash = sha1($skeleton->__toString());
 		$this->mapFile  = Config::get("views_cache_map");
 		$this->cacheDir = Config::get("views_cache_dir");
-		$this->map 	    = json_decode($this->mapFile, true);
+		$this->map 	    = json_decode(file_get_contents($this->mapFile), true);
 		$this->map 	    = is_array($this->map) ? $this->map : [];
 	}
 
@@ -67,6 +67,9 @@ class TeaTemplateCompiler
 
 	public function writeMap()
 	{
+		if (isset($this->map[$this->name]) && file_exists($oldFile = $this->cacheDir."/".$this->map[$this->name].".php")) {
+			unlink($oldFile);
+		}
 		$this->map[$this->name] = $this->rawViewFileHash;
 		file_put_contents($this->mapFile, json_encode($this->map, JSON_UNESCAPED_SLASHES));
 	}
