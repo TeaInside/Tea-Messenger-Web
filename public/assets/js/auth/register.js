@@ -18,7 +18,17 @@ class register
 		var ch = new XMLHttpRequest();
 			ch.onreadystatechange = function () {
 				if (this.readyState === 4) {
-					alert(this.responseText);
+					try	{
+						var q = JSON.parse(this.responseText);
+						if (q['message'] !== null) {
+							alert(q['message']);
+						}
+						if (q['redirect'] !== null) {
+							window.location = q['redirect'];
+						}
+					} catch (e) {
+						alert(this.responseText);
+					}
 				}
 			};
 			ch.withCredentials = true;
