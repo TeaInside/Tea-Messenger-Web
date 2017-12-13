@@ -36,4 +36,12 @@ class ViewSkeleton
 	{
 		return self::getInstance(...$parameters);
 	}
+
+	/**
+	 * @return string
+	 */
+	public function __toString()
+	{
+		return self::getInstance()->rawfile;
+	}
 }
