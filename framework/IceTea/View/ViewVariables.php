@@ -3,9 +3,11 @@
 namespace IceTea\View;
 
 use ArrayAccess;
+use IceTea\Hub\Singleton;
 
 class ViewVariables implements ArrayAccess
 {
+	use Singleton;
 
 	/**
 	 * @var array
@@ -20,6 +22,14 @@ class ViewVariables implements ArrayAccess
 	public function __construct($variables)
 	{
 		$this->containter = $variables;
+	}
+
+	/**
+	 * Build
+	 */
+	public static function build(...$parameters)
+	{
+		return self::getInstance(...$parameters);
 	}
 
 	/**

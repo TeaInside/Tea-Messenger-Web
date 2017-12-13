@@ -12,7 +12,7 @@ trait PosibleFile
      */
     private function teaFile($file)
     {
-        if (file_exists($file = Config::get("views_cache_dir")."/".$file.".tea.php")) {
+        if (file_exists($file = Config::get("views_dir")."/".$file.".tea.php")) {
             return $file;
         }
         return false;
@@ -24,7 +24,7 @@ trait PosibleFile
      */
     private function bladeFile($file)
     {
-        if (file_exists($file = Config::get("views_cache_dir")."/".$file.".blade.php")) {
+        if (file_exists($file = Config::get("views_dir")."/".$file.".blade.php")) {
             return $file;
         }
         return false;
@@ -36,7 +36,7 @@ trait PosibleFile
      */
     private function phpNativeFile($file)
     {
-        if (file_exists($file = Config::get("views_cache_dir")."/".$file.".php")) {
+        if (file_exists($file = Config::get("views_dir")."/".$file.".php")) {
             return $file;
         }
         return false;

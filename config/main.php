@@ -10,6 +10,7 @@ return [
 		"dbname" => env("DB_DATABASE", "")
 	],
 	"assets" => env("APP_URL"),
+	"views_dir"			=> basepath("app/Views"),
 	"views_cache_dir" 	=> basepath("storage/framework/views"),
 	"views_cache_map"	=> basepath("storage/framework/handler/view.map")
 ];
