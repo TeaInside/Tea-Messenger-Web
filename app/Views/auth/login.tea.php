@@ -3,17 +3,17 @@
 <head>
 	<meta charset="utf-8">
 	<meta property="og:type" content="website">
+	<meta property="og:title" content="Tea Messenger">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta property="og:site_name" content="Tea Messenger">
-	<meta property="og:title" content="Tea Messenger, Encrypted Chat">
     <meta property="og:url" content="https://messenger.teainside.ga">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:image" content="{{ asset('assets/img/logo-ice-tea.png') }}">
     <meta property="og:description" content="Tea Messenger, encrypted chat for everyone.">
     <meta property="og:image:secure_url" content="{{ asset('assets/img/logo-ice-tea.png') }}">
 	<title>Tea Messenger</title>
-	<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
 	<link rel="shortcut icon" href="{{ asset('assets/img/logo-ice-tea.png') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/login.css') }}">
 	<script type="text/javascript" src="{{ asset('assets/js/utils/dom.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('assets/js/auth/login.js') }}"></script>

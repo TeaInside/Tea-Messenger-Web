@@ -24,6 +24,6 @@ class LoginController extends Controller
 
     public function loginPage()
     {
-    	return view("auth/login", ["a" => 1]);
+    	return view("auth/login");
     }
 }
