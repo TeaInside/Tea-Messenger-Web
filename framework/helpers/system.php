@@ -27,10 +27,9 @@ if (! function_exists('view')) {
 if (! function_exists('___viewIsolator')) {
 
 
-    function ___viewIsolator($____file, $____variable = [])
+    function ___viewIsolator($____file, $____variables = [])
     {
-        var_dump($____variable);
-        foreach ($____variable as $____key => $____value) {
+        foreach ($____variables as $____key => $____value) {
             $$____key = $____value;
         }
 
