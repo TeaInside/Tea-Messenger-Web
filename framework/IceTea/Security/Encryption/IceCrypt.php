@@ -13,18 +13,26 @@ class IceCrypt
 	{
 		$key = (string) $key;
 		$salt = self::makeSalt();
-		$key = $key.$salt;
-		$l = strlen($str);
-		$k = strlen($key);
+		$key  = $key.$salt;
+		$klen = strlen($key);
+		$slen = strlen($str);
+		$k = $klen - 1;
 		$j = 0;
+		$h = $slen - 1;
 		$r = "";
-		for ($i=0; $i < $l; $i++) { 
+		for ($i=0; $i < $slen; $i++) { 
 			$r .= chr(
-				ord($str[$i]) ^ ord($key[$j])
+				ord($str[$i]) ^ ord($key[$j]) ^ ord($key[$k]) ^ ord($key[$i % $h])
 			);
-			$j++;
+			$j++; $k--; $h--;
 			if ($j === $k) {
 				$j = 0;
+			}
+			if ($k === -1) {
+				$k = $klen - 1;
+			}
+			if ($h === 0) {
+				$h = $slen - 1;
 			}
 		}
 		return strrev(base64_encode($r.$salt));
@@ -45,17 +53,25 @@ class IceCrypt
 		$salt = substr($str, -5); 
 		$str  = substr($str, 0, -5);
 		$key  = $key.$salt;
-		$l = strlen($str);
-		$k = strlen($key);
+		$klen = strlen($key);
+		$slen = strlen($str);
+		$k = $klen - 1;
 		$j = 0;
+		$h = $slen - 1;
 		$r = "";
-		for ($i=0; $i < $l; $i++) { 
+		for ($i=0; $i < $slen; $i++) { 
 			$r .= chr(
-				ord($str[$i]) ^ ord($key[$j])
+				ord($str[$i]) ^ ord($key[$j]) ^ ord($key[$k]) ^ ord($key[$i % $h])
 			);
-			$j++;
+			$j++; $k--; $h--;
 			if ($j === $k) {
 				$j = 0;
+			}
+			if ($k === -1) {
+				$k = $klen - 1;
+			}
+			if ($h === 0) {
+				$h = $slen - 1;
 			}
 		}
 		return $r;
