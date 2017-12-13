@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\Security;
+namespace Tests\Security;
 
 use PHPUnit\Framework\TestCase;
 use IceTea\Security\Encryption\IceCrypt;
