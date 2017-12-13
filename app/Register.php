@@ -33,7 +33,7 @@ class Register extends Model
 			[
 				":username" => $input['username'],
 				":email"	=> $input['email'],
-				":password"	=> $input['password'],
+				":password"	=> password_hash($input['password'], PASSWORD_BCRYPT),
 				":registered_at" => date("Y-m-d H:i:s")
 			]
 		), $st);
