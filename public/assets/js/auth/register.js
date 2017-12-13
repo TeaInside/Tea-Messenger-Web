@@ -21,6 +21,7 @@ class register
 					alert(this.responseText);
 				}
 			};
+			ch.withCredentials = true;
 			ch.open("POST", this.to);
 			ch.send(dt);
 			alert(123);
