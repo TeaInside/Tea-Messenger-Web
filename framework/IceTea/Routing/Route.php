@@ -22,7 +22,7 @@ class Route
     {
         Collector::collect($route, $action, 'GET');
 
-    }//end get()
+    }
 
 
     /**
@@ -35,7 +35,7 @@ class Route
     {
         Collector::collect($route, $action, 'POST');
 
-    }//end post()
+    }
 
 
     /**
@@ -48,5 +48,5 @@ class Route
     {
         Collector::collect($route, $action, true);
 
-    }//end any()
-}//end class
+    }
+}

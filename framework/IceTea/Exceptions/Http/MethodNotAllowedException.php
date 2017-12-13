@@ -6,4 +6,4 @@ use IceTea\Exceptions\Http;
 
 class MethodNotAllowedException extends Http
 {
-}//end class
+}

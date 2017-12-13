@@ -25,12 +25,12 @@ class ObjectContainer implements ObjectContainerContract
     {
         $this->objectName = $objectName;
 
-    }//end __construct()
+    }
 
 
     public function buildClass()
     {
         return new ReleflectionClass($this->objectName);
 
-    }//end buildClass()
-}//end class
+    }
+}

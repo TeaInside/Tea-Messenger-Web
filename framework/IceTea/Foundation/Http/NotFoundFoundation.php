@@ -6,4 +6,4 @@ use IceTea\Foundation\Http;
 
 class NotFoundFoundation extends Http
 {
-}//end class
+}

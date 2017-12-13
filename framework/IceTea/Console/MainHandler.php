@@ -9,7 +9,7 @@ final class MainHandler
     public function __construct($run)
     {
         $this->run = $run;
-    }//end __construct()
+    }
 
     public function __invoke()
     {
@@ -20,4 +20,4 @@ final class MainHandler
             $console->run();
         }
     }
-}//end class
+}

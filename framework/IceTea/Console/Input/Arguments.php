@@ -25,7 +25,7 @@ class Arguments extends Input implements InputContract
         $this->run    = $run;
         $this->result = [];
 
-    }//end __construct()
+    }
 
 
     public function buildContext()
@@ -34,7 +34,7 @@ class Arguments extends Input implements InputContract
             $this->parseContext($v, $k);
         }
 
-    }//end buildContext()
+    }
 
 
     private function parseContext($context, $offset)
@@ -52,12 +52,12 @@ class Arguments extends Input implements InputContract
             }
         }
 
-    }//end parseContext()
+    }
 
 
     public function getParseResult()
     {
         return $this->result;
 
-    }//end getParseResult()
-}//end class
+    }
+}

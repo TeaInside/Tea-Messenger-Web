@@ -16,7 +16,7 @@ class Serve extends ConsoleCommand
     public function __construct()
     {
 
-    }//end __construct()
+    }
 
     public function buildContext()
     {
@@ -27,4 +27,4 @@ class Serve extends ConsoleCommand
         print Color::clr("IceTea development server started:", "green"). " <http://127.0.0.1:8000>" . PHP_EOL;
         shell_exec(PHP_BINARY." -S 127.0.0.1:8000 -t ".basepath("public"));
     }
-}//end class
+}

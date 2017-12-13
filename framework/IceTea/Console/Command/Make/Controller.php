@@ -26,7 +26,7 @@ class Controller extends Make
     {
         parent::__construct();
         $this->run = $run;
-    }//end __construct()
+    }
 
 
     public function buildContext()
@@ -139,4 +139,4 @@ class Controller extends Make
             $str
         );
     }
-}//end class
+}

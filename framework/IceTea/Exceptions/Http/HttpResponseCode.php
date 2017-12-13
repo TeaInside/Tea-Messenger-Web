@@ -13,4 +13,4 @@ class HttpResponseCode extends ExceptionInfo
                            NotFoundHttpException::class     => 404,
                            MethodNotAllowedException::class => 405,
                           ];
-}//end class
+}

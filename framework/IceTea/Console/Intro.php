@@ -21,28 +21,28 @@ final class Intro
         $this->show .= PHP_EOL.$this->optionInfo();
         $this->show .= PHP_EOL.$this->avaiableCommand();
 
-    }//end buildContext()
+    }
 
 
     public function show()
     {
         print $this->show;
 
-    }//end show()
+    }
 
 
     private function frameworkVersion()
     {
         return 'IceTea Framework '.Color::clr(ICETEA_VERSION, 'green').PHP_EOL;
 
-    }//end frameworkVersion()
+    }
 
 
     private function usageInfo()
     {
         return Color::clr('Usage:', 'brown').PHP_EOL.'  command [options] [arguments]'.PHP_EOL;
 
-    }//end usageInfo()
+    }
 
 
     private function optionInfo()
@@ -56,7 +56,7 @@ final class Intro
       '.Color::clr('--env[=ENV]', 'green').'       The environment the command should run under
   '.Color::clr('-v|vv|vvv, --verbose', 'green').'  Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug'.PHP_EOL;
 
-    }//end optionInfo()
+    }
 
 
     private function avaiableCommand()
@@ -65,5 +65,5 @@ final class Intro
         $st->buildContext();
         return $st;
 
-    }//end avaiableCommand()
-}//end class
+    }
+}

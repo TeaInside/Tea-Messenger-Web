@@ -26,7 +26,7 @@ final class Config
         );
         $this->cfg = $cfg;
 
-    }//end __construct()
+    }
 
 
     /**
@@ -41,5 +41,5 @@ final class Config
         $ins = self::getInstance();
         return isset($ins->cfg[$key]) ? $ins->cfg[$key] : $def;
 
-    }//end get()
-}//end class
+    }
+}

@@ -36,13 +36,13 @@ if (defined('__COMPOSER_AUTOLOAD__')) {
             default:
                 echo "Unknown error type: [$errno] $errstr<br />\n";
                 break;
-        }//end switch
+        }
 
         // Don't execute PHP internal error handler
         return true;
 
-    }//end ___IceTeaErrorHandler()
+    }
 
 
     set_error_handler('___IceTeaErrorHandler');
-}//end if
+}

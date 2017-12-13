@@ -26,7 +26,7 @@ class BindedValue implements ArrayAccess
     {
         $this->container = $data;
 
-    }//end __construct()
+    }
 
 
     /**
@@ -38,7 +38,7 @@ class BindedValue implements ArrayAccess
     {
         return (array) $this->container;
 
-    }//end toArray()
+    }
 
 
     /**
@@ -54,7 +54,7 @@ class BindedValue implements ArrayAccess
             $this->container[$offset] = $value;
         }
 
-    }//end offsetSet()
+    }
 
 
     /**
@@ -65,7 +65,7 @@ class BindedValue implements ArrayAccess
     {
         return isset($this->container[$offset]);
 
-    }//end offsetExists()
+    }
 
 
     /**
@@ -76,7 +76,7 @@ class BindedValue implements ArrayAccess
     {
         unset($this->container[$offset]);
 
-    }//end offsetUnset()
+    }
 
 
     /**
@@ -87,7 +87,7 @@ class BindedValue implements ArrayAccess
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
 
-    }//end offsetGet()
+    }
 
 
     /**
@@ -99,5 +99,5 @@ class BindedValue implements ArrayAccess
     {
         return $this->container;
 
-    }//end __debugInfo()
-}//end class
+    }
+}

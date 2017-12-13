@@ -13,5 +13,5 @@ class Input
     public function __construct()
     {
 
-    }//end __construct()
-}//end class
+    }
+}

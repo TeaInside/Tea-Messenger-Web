@@ -14,14 +14,14 @@ class Handler
     {
         $this->e = $e;
 
-    }//end __construct()
+    }
 
 
     public function report()
     {
         $this->terminate();
 
-    }//end report()
+    }
 
 
     public function terminate()
@@ -34,5 +34,5 @@ class Handler
         } else {
         }
 
-    }//end terminate()
-}//end class
+    }
+}

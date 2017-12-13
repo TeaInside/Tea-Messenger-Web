@@ -6,4 +6,4 @@ use Exception;
 
 class Http extends Exception
 {
-}//end class
+}

@@ -16,4 +16,4 @@ final class InternalRoutes
                 ],
             ],
     ];
-}//end class
+}

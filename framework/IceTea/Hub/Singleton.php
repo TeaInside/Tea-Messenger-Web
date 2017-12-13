@@ -19,7 +19,7 @@ trait Singleton
 
         return self::$__instance;
 
-    }//end getInstance()
+    }
 
 
     /**
@@ -29,5 +29,5 @@ trait Singleton
     {
         throw new \Exception('Cannot clone instance with Singleton pattern.', 1);
 
-    }//end __clone()
+    }
 }

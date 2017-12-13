@@ -25,7 +25,7 @@ final class EnvirontmentVariables
     {
         $this->parseEnvFile();
 
-    }//end __construct()
+    }
 
 
     /**
@@ -54,7 +54,7 @@ final class EnvirontmentVariables
             throw new \Exception('.env not set', 1);
         }
 
-    }//end parseEnvFile()
+    }
 
 
     /**
@@ -69,5 +69,5 @@ final class EnvirontmentVariables
         $ins = self::getInstance();
         return isset($ins->env[$key]) ? $ins->env[$key] : $def;
 
-    }//end get()
-}//end class
+    }
+}

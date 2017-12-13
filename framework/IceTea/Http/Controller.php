@@ -25,5 +25,5 @@ class Controller extends BaseController
     {
         throw new BadMethodCallException("Method [{$method}] does not exist.");
 
-    }//end __call()
-}//end class
+    }
+}

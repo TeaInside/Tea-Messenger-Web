@@ -31,7 +31,7 @@ final class Console
             $this->__run();
         }
 
-    }//end run()
+    }
 
 
     private function parseCommand()
@@ -40,7 +40,7 @@ final class Console
         $parser->buildContext();
         $this->run = array_merge($this->run, $parser->getParseResult());
 
-    }//end parseCommand()
+    }
 
 
     private function parseArguments()
@@ -49,7 +49,7 @@ final class Console
         $parser->buildContext();
         $this->run = array_merge($this->run, $parser->getParseResult());
 
-    }//end parseArguments()
+    }
 
 
     private function parseOptionalArguments()
@@ -58,7 +58,7 @@ final class Console
         $parser->buildContext();
         $this->run = array_merge($this->run, $parser->getParseResult());
 
-    }//end parseOptionalArguments()
+    }
 
 
     private function __run()
@@ -66,7 +66,7 @@ final class Console
         $console = new MainHandler($this->run);
         return $console();
 
-    }//end __run()
+    }
 
 
     private function parseInput()
@@ -81,7 +81,7 @@ final class Console
         $this->argv = $argv;
         return true;
 
-    }//end parseInput()
+    }
 
 
     private function intro()
@@ -90,11 +90,11 @@ final class Console
         $intro->buildContext();
         $intro->show();
 
-    }//end intro()
+    }
 
 
     public function terminate()
     {
 
-    }//end terminate()
-}//end class
+    }
+}

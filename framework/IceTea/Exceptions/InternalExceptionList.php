@@ -9,4 +9,4 @@ class InternalExceptionList
                            \IceTea\Exceptions\Http\NotFoundHttpException::class,
                            \IceTea\Exceptions\Http\MethodNotAllowedException::class,
                           ];
-}//end class
+}

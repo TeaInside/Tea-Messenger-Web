@@ -28,7 +28,7 @@ class Command extends Input implements InputContract
         $this->pointer = 0;
         $this->run     = $run;
 
-    }//end __construct()
+    }
 
 
     public function buildContext()
@@ -37,7 +37,7 @@ class Command extends Input implements InputContract
             $this->parseContext($v, $k);
         }
 
-    }//end buildContext()
+    }
 
 
     private function parseContext($context, $offset)
@@ -77,7 +77,7 @@ class Command extends Input implements InputContract
             }
         }
 
-    }//end parseContext()
+    }
 
 
     private function typeGenerator($offset)
@@ -88,12 +88,12 @@ class Command extends Input implements InputContract
             return 'normal';
         }
 
-    }//end typeGenerator()
+    }
 
 
     public function getParseResult()
     {
         return $this->result;
 
-    }//end getParseResult()
-}//end class
+    }
+}

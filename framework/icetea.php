@@ -16,11 +16,11 @@ if (file_exists(__DIR__.'/../vendor/autoload.php')) {
             include __DIR__.'/'.str_replace('\\', '/', $class).'.php';
         }
 
-    }//end ___loadClass()
+    }
 
 
     spl_autoload_register('___loadClass');
-}//end if
+}
 
 // Load helpers
 $scan = scandir(__DIR__.'/helpers');

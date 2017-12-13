@@ -35,7 +35,7 @@ class Handler
         $this->exception = $e;
         $this->name      = get_class($this->exception);
 
-    }//end __construct()
+    }
 
 
     public function report()
@@ -51,26 +51,26 @@ class Handler
             $handler->report();
         }
 
-    }//end report()
+    }
 
 
     protected function shouldntReport()
     {
         return in_array($this->name, $this->dontReport);
 
-    }//end shouldntReport()
+    }
 
 
     protected function buildReportContext()
     {
         $this->dontReport = array_merge(InternalExceptionList::$list, $this->dontReport);
 
-    }//end buildReportContext()
+    }
 
 
     protected function isInternalException()
     {
         return in_array($this->name, InternalExceptionList::$list);
 
-    }//end isInternalException()
-}//end class
+    }
+}

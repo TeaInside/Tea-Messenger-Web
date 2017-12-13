@@ -21,7 +21,7 @@ final class RouteBinding
     public function __construct()
     {
 
-    }//end __construct()
+    }
 
 
     /**
@@ -33,7 +33,7 @@ final class RouteBinding
         $ins               = self::getInstance();
         $ins->binded[$key] = $val;
 
-    }//end bind()
+    }
 
 
     /**
@@ -43,7 +43,7 @@ final class RouteBinding
     {
         return new BindedValue(self::getInstance()->binded);
 
-    }//end getBindedValue()
+    }
 
 
     /**
@@ -54,5 +54,5 @@ final class RouteBinding
         $ins         = self::getInstance();
         $ins->binded = [];
 
-    }//end destroy()
-}//end class
+    }
+}

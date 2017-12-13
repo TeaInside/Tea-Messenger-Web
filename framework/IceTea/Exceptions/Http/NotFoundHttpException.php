@@ -6,4 +6,4 @@ use IceTea\Exceptions\Http;
 
 class NotFoundHttpException extends Http
 {
-}//end class
+}

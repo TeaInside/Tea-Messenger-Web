@@ -6,4 +6,4 @@ use Exception;
 
 class BadMethodCallException extends Exception
 {
-}//end class
+}

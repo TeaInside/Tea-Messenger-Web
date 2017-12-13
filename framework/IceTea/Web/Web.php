@@ -21,7 +21,7 @@ final class Web
     public function __construct()
     {
 
-    }//end __construct()
+    }
 
 
     public function routeHandle()
@@ -43,11 +43,11 @@ final class Web
 
         RouteCollector::destroy();
 
-    }//end routeHandle()
+    }
 
 
     public function terminate()
     {
 
-    }//end terminate()
-}//end class
+    }
+}

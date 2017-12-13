@@ -31,7 +31,7 @@ class RouteCollector
     public function __construct()
     {
 
-    }//end __construct()
+    }
 
 
     /**
@@ -44,7 +44,7 @@ class RouteCollector
         $ins = self::getInstance();
         $ins->routes[$route][$method] = $action;
 
-    }//end collect()
+    }
 
 
     /**
@@ -60,7 +60,7 @@ class RouteCollector
         $app->map();
         $ins->providerInstance = $app;
 
-    }//end loadRoutes()
+    }
 
 
     /**
@@ -72,7 +72,7 @@ class RouteCollector
     {
         return self::getInstance()->routes;
 
-    }//end getRoutes()
+    }
 
 
     /**
@@ -84,7 +84,7 @@ class RouteCollector
     {
         return self::getInstance()->providerInstance;
 
-    }//end getProviderInstance()
+    }
 
 
     /**
@@ -95,5 +95,5 @@ class RouteCollector
         $ins = self::getInstance();
         unset($ins->providerInstance, $ins->routes);
 
-    }//end destroy()
-}//end class
+    }
+}
