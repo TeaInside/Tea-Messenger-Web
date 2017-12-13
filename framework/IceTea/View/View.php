@@ -2,6 +2,9 @@
 
 namespace IceTea\View;
 
+use IceTea\View\ViewSkeleton;
+use IceTea\View\ViewVariables;
+
 class View
 {
 
@@ -12,6 +15,6 @@ class View
 	 */
 	public static function buildView($file, $variables)
 	{
-		
+		ViewSkeleton::build($file, ViewVariables::build($variables));
 	}
 }
