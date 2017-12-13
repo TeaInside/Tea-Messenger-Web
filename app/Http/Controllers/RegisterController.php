@@ -59,7 +59,9 @@ class RegisterController extends Controller
         $len = strlen($input['password']);
         $len > 6 or $this->err("Password too short, please provide password more than 6 characters!");
         (!preg_match("#[^[:print:]]#", $input['password'])) or $this->err("Password must not contains unprintable chars!");
-        if ($reg = Register::input($input)) {
+        Register::check($input['email'], "email") and $this->err("Email has registered, please provide more email!");
+        Register::check($input['username'], "username") and $this->err("Username has registered, please provide more username!");
+        if ($reg = Register::insert($input)) {
             $this->suc("Register success!", $reg);
         } else {
             $this->err("Internal error!");
@@ -69,7 +71,13 @@ class RegisterController extends Controller
     private function err($msg)
     {
         http_response_code(400);
-        exit($msg);
+        exit($this->buildJson(
+            [
+                "status"    => "error",
+                "message"   => $msg,
+                "redirect"  => null
+            ]
+        ));
     }
 
     private function suc($msg, $reg)
