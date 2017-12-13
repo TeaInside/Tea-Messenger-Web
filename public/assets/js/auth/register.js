@@ -24,7 +24,6 @@ class register
 			ch.withCredentials = true;
 			ch.open("POST", this.to);
 			ch.send(dt);
-			alert(123);
 	}
 	buildContext()
 	{

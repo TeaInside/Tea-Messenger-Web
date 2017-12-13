@@ -50,6 +50,7 @@ class RegisterController extends Controller
     private function validator($input)
     {
         header("Content-type:application/json");
+        empty($input['name']) and $this->err("Invalid first name!");
         filter_var($input['email'], FILTER_VALIDATE_EMAIL) or $this->err("Invalid email!");
         $len = strlen($input['username']);
         $len > 3  or $this->err("Username too short, please provide username more than 4 characters!");
