@@ -11,7 +11,10 @@ use IceTea\Routing\Route;
 */
 
 Route::get("/", "IndexController@index");
+Route::post("/login", "Auth\\LoginController@action");
 Route::get("/login", "Auth\\LoginController@indexLogin");
+
 Route::get("/register", "RegisterController@index");
 Route::post("/register", "RegisterController@action");
+
 Route::get("/register/success", "RegisterController@success");
