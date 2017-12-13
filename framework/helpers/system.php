@@ -63,3 +63,11 @@ if (! function_exists('asset')) {
 
 
 }
+
+if (! function_exists('e')) {
+    function e($str = "'")
+    {
+        print $str = htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+        return $str;
+    }
+}

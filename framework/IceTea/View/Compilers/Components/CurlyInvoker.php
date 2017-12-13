@@ -14,5 +14,21 @@ class CurlyInvoker extends ComponentFoundation implements Component
 
 	private function createCurlyBoundary()
 	{
+		$tmp = explode("\n", $this->skeleton->getRaw());
+		foreach ($tmp as $key => &$val) {
+			$_val = explode("{{", $val);
+			if (sizeof($_val) > 1) {
+				foreach ($_val as $k => &$v) {
+					if ($k > 0) {
+						$a = explode("}}", $v, 2);
+						if (sizeof($a) > 1) {
+							$v = "<?php e(".$a[0].");?>".$a[1];
+						}
+					}
+				}
+				$val = implode("", $_val);
+			}
+		}
+		$this->skeleton->setRaw(implode("\n", $tmp));
 	}
 }

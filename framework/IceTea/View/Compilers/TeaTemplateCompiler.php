@@ -59,7 +59,7 @@ class TeaTemplateCompiler
 	 */
 	public function isIceTeaHasCompiledViewPerfectly()
 	{
-		return isset($this->map[$this->name = $this->skeleton->getName()]) && $this->map[$this->name] === $this->rawViewFileHash;
+		return isset($this->map[$this->name = $this->skeleton->getName()]) && $this->map[$this->name] === $this->rawViewFileHash && file_exists($this->cacheDir."/".$this->rawViewFileHash.".php");
 	}
 
 	/**
