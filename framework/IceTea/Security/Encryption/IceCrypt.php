@@ -38,6 +38,27 @@ class IceCrypt
 	public static function decrypt($str, $key)
 	{
 		$key = (string) $key;
+		$str = base64_decode(strrev($str));
+		if (strlen($str) < 6) {
+			return false;
+		}
+		$salt = substr($str, -5); 
+		$str  = substr($str, 0, -5);
+		$key  = $key.$salt;
+		$l = strlen($str);
+		$k = strlen($key);
+		$j = 0;
+		$r = "";
+		for ($i=0; $i < $l; $i++) { 
+			$r .= chr(
+				ord($str[$i]) ^ ord($key[$j])
+			);
+			$j++;
+			if ($j === $k) {
+				$j = 0;
+			}
+		}
+		return $r;
 	}
 
 	private static function makeSalt()
