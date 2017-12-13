@@ -18,14 +18,12 @@ final class Config
      */
     public function __construct()
     {
-        $cfg       = ___viewIsolator(
+        $this->cfg = ___viewIsolator(
             basepath(
                 'config/main.php',
                 ['that' => $this]
             )
         );
-        $this->cfg = $cfg;
-
     }
 
 
