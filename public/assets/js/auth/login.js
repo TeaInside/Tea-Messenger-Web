@@ -30,4 +30,4 @@ class login
 			ch.open("GET", this.apiurl);
 			ch.send(null);
 	}
-}
+} 
