@@ -3,6 +3,7 @@
 namespace IceTea\View\Compilers;
 
 use IceTea\View\ViewSkeleton;
+use IceTea\View\Compilers\Components\Layout;
 
 class TeaTemplateCompiler
 {
@@ -40,6 +41,11 @@ class TeaTemplateCompiler
 	 */
 	public function compile()
 	{
-		
+		$this->buildComponent();
+	}
+
+	private function buildComponent()
+	{
+		$comp = new Layout($this->skeleton);
 	}
 }
