@@ -20,8 +20,6 @@ class RegisterController extends Controller
     public function index()
     {
     	//
-    	return view("register", [
-    		"title" => "Register Tea Inside"
-    	]);
+    	return view("auth/register");
     }
 }
