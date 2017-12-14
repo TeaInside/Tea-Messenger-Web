@@ -22,10 +22,11 @@
 					<tr><td>Account Status</td><td>:</td><td>{{ ucwords($info['status']).' '.($info['verified'] === 'false' ? '(Not Verified)' : '<p>(Verified)<p>')}}</td></tr>
 				</tbody>
 				<tfoot>
-					<tr><td align="center" colspan="3"><a href="#change_profile" class="linker" id="achange"><span class="change">Change profile info</span></a></td></tr>
+					<tr><td align="center" colspan="3"><a href="#change_profile_info" class="linker" id="achange"><span class="change">Change profile info</span></a></td></tr>
+					<tr><td align="center" colspan="3"><a href="#change_password" class="linker" id="achange_p"><span class="change">Change password</span></a></td></tr>
 				</tfoot>
 			</table>
-			<form action="javascript:void(0);" id="edit-info">
+			<form method="post" action="javascript:void(0);" id="edit-info">
 				<table id="edit-info-table" style="display:none;">
 					<thead>
 						<tr>
@@ -44,11 +45,31 @@
 					</tbody>
 					<tfoot>
 						<tr><td>
-							<input type="hidden" name="_csrf" id="_csrf" value="{{ $that->csrf_token() }}">
-							<input type="hidden" name="cost" id="cost" value="{{ rstr(32) }}">
+							<input type="hidden" name="_csrf" id="_csrf" value="{{ $csrf = $that->csrf_token() }}">
+							<input type="hidden" name="cost" id="cost" value="{{ $cost = rstr(32) }}">
 						</td></tr>
 						<tr><td align="center" colspan="3"><button type="submit" id="sv" class="wqb">Save change</button></td></tr>
 						<tr><td align="center" colspan="3"><button type="button" id="cn" class="wqb">Cancel</button></td></tr>
+					</tfoot>
+				</table>
+			</form>
+			<form method="post" action="javascript:void(0);" id="edit-password">
+				<table id="edit-password-table" style="display:none;">
+					<thead>
+						<tr><th colspan="3" align="center">Change password</th></tr>
+					</thead>
+					<tbody>
+						<tr><td>Old Password</td><td>:</td><td><input type="password" name="old_pwd" id="old_pwd"></td></tr>
+						<tr><td>New Password</td><td>:</td><td><input type="password" name="new_pwd" id="new_pwd"></td></tr>
+						<tr><td>New Password Confirm</td><td>:</td><td><input type="password" name="new_cpwd" id="new_cpwd"></td></tr>
+					</tbody>
+					<tfoot>
+						<tr><td>
+							<input type="hidden" name="_csrf" id="_csrf" value="{{ $csrf }}">
+							<input type="hidden" name="cost" id="cost" value="{{ $cost }}">
+						</td></tr>
+						<tr><td align="center" colspan="3"><button type="submit" id="sv_pwd" class="wqb">Save change</button></td></tr>
+						<tr><td align="center" colspan="3"><button type="button" id="cn_pwd" class="wqb">Cancel</button></td></tr>
 					</tfoot>
 				</table>
 			</form>
@@ -58,10 +79,22 @@
 			domId('achange').addEventListener('click', function () {
 				domId('user-info-table').style.display = 'none';
 				domId('edit-info-table').style.display = '';
+				domId('edit-password-table').style.display = 'none';
+			});
+			domId('achange_p').addEventListener('click', function () {
+				domId('user-info-table').style.display = 'none';
+				domId('edit-info-table').style.display = 'none';
+				domId('edit-password-table').style.display = '';
 			});
 			domId('cn').addEventListener('click', function () {
 				domId('user-info-table').style.display = '';
 				domId('edit-info-table').style.display = 'none';
+				domId('edit-password-table').style.display = 'none';
+			});
+			domId('cn_pwd').addEventListener('click', function () {
+				domId('user-info-table').style.display = '';
+				domId('edit-info-table').style.display = 'none';
+				domId('edit-password-table').style.display = 'none';
 			});
 			domId('edit-info').addEventListener('submit', function () {
 				pr.saveChange();
