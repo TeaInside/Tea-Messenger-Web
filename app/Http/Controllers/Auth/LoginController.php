@@ -14,7 +14,7 @@ use App\Http\Controllers\Auth\CSRFToken;
 
 class LoginController extends Controller
 {
-    use CSRFToken;
+    use CSRFToken, JSONResponse;
 
     private $token;
 
@@ -40,8 +40,6 @@ class LoginController extends Controller
             exit();
         }
     }
-
-    
 
     public function loginPage()
     {
@@ -82,26 +80,11 @@ class LoginController extends Controller
                         "redirect" => "?ref=login&w=".urlencode(base64_encode(rstr(64)))
                     ]
                 ));
+            } else {
+                $this->err("Wrong username or password!");
             }
         } else {
             abort(404);
         }
-    }
-
-    private function err($msg, $url = null)
-    {
-        http_response_code(400);
-        exit($this->buildJson(
-            [
-                "status"   => "error",
-                "message"  => $msg,
-                "redirect" => $url
-            ]
-        ));
-    }
-
-    private function buildJson($data)
-    {
-        return json_encode($data, JSON_UNESCAPED_SLASHES);
     }
 }
