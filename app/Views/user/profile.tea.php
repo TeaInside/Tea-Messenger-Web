@@ -59,9 +59,9 @@
 						<tr><th colspan="3" align="center">Change password</th></tr>
 					</thead>
 					<tbody>
-						<tr><td>Old Password</td><td>:</td><td><input type="password" name="old_pwd" id="old_pwd"></td></tr>
-						<tr><td>New Password</td><td>:</td><td><input type="password" name="new_pwd" id="new_pwd"></td></tr>
-						<tr><td>New Password Confirm</td><td>:</td><td><input type="password" name="new_cpwd" id="new_cpwd"></td></tr>
+						<tr><td>Old Password</td><td>:</td><td><input type="password" name="old_pwd" id="old_pwd" required></td></tr>
+						<tr><td>New Password</td><td>:</td><td><input type="password" name="new_pwd" id="new_pwd" required></td></tr>
+						<tr><td>New Password Confirm</td><td>:</td><td><input type="password" name="new_cpwd" id="new_cpwd" required></td></tr>
 					</tbody>
 					<tfoot>
 						<tr><td>
