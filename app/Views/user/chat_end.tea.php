@@ -43,6 +43,7 @@
 		var ch = new chat("{{ $info['username'] }}", {{ $selfinfo['user_id'] }});
 			ch.get();
 			ch.listen();
+			setInterval(function(){ ch.get() }, 2000);
 	</script>
 </center>
 </body>
