@@ -16,7 +16,6 @@
 		</div>
 		<div class="main-chat" id="main-chat">
 			<div>
-				
 			</div>
 		</div>
 		<div class="input">

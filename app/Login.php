@@ -16,6 +16,8 @@ use IceTea\Support\Model;
 class Login extends Model
 {
 
+	use Singleton;
+
 	private $session_id;
 
 	private $session_key;
@@ -23,8 +25,6 @@ class Login extends Model
 	private $user_id;
 
 	private $isLoggedIn;
-
-	use Singleton;
 
 	public static function getSessionId()
 	{
@@ -42,6 +42,19 @@ class Login extends Model
 	{
 		$ins = self::getInstance();
 		return $ins->user_id;	
+	}
+
+	public static function logout()
+	{
+		$ins = self::getInstance();
+		$st = DB::prepare("DELETE FROM `sessions` WHERE `user_id`=:user_id AND `session_id`=:session_id LIMIT 1;");
+		pc($st->execute(
+			[
+				":user_id" 		=> $ins->user_id,
+				":session_id"	=> $ins->session_id
+			]
+		), $st);
+		return true;
 	}
 
 	public static function isLoggedIn()
@@ -67,19 +80,6 @@ class Login extends Model
 			return false;
 		}
 		return $ins->isLoggedIn;
-	}
-
-	public static function logout()
-	{
-		$ins = self::getInstance();
-		$st = DB::prepare("DELETE FROM `sessions` WHERE `user_id`=:user_id AND `session_id`=:session_id LIMIT 1;");
-		pc($st->execute(
-			[
-				":user_id" 		=> $ins->user_id,
-				":session_id"	=> $ins->session_id
-			]
-		), $st);
-		return true;
 	}
 
 	public static function validateCredentials($identity, $password)
