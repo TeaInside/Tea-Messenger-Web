@@ -15,6 +15,7 @@ use App\Http\Controllers\Auth\CSRFToken;
 use App\Http\Controllers\Auth\Authenticated;
 use App\Http\Controllers\Profile\ChangeInfo;
 use App\Http\Controllers\Profile\ChangePhoto;
+use App\Http\Controllers\Profile\ChangePassword;
 
 class ProfileController extends Controller
 {
@@ -56,6 +57,13 @@ class ProfileController extends Controller
     {
         Authenticated::login();
         $subController = new ChangePhoto();
+        $subController->run();
+    }
+
+    public function changePassword()
+    {
+        Authenticated::login();
+        $subController = new ChangePassword();
         $subController->run();
     }
 }
