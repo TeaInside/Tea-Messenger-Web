@@ -72,7 +72,7 @@ class LoginController extends Controller
                 $_14 = time() + 3600 * 24 * 14;
                 setcookie("session_id", ice_encrypt($cred['session_id'], $cred['key']), $_14);
                 setcookie("user_id", ice_encrypt($cred['user_id'], $cred['key']), $_14);
-                setcookie("session_key",ice_encrypt($cred['key'], "tea_messenger123"), $_14);
+                setcookie("session_key", ice_encrypt($cred['key'], "tea_messenger123"), $_14);
                 exit($this->buildJson(
                     [
                         "status"   => "ok",
