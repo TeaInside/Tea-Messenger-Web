@@ -12,7 +12,7 @@
 	<div class="main-cage">
 		<div class="banner">
 			<div class="pp" align="left">
-				<img src="{{ (! empty($info['photo']) ? asset('assets/img/users/'.$info['photo']) : '') }}" width="50" height="50" style="border-radius:100%;margin-left:2%;"><br>
+				<img src="{{ (! empty($info['photo']) ? asset('assets/img/users/'.$info['photo']) : asset('assets/img/user.png')) }}" width="50" height="50" style="border-radius:100%;margin-left:2%;"><br>
 				<span>{{ $name }} (Online)</span>
 			</div>
 		</div>
