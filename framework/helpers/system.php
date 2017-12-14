@@ -69,7 +69,7 @@ if (! function_exists('rstr')) {
         $q = "";
         $l = is_string($l) ? $l : "_____1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
         $len = strlen($l) - 1;
-        for ($i=0; $i < $n; $i++) { 
+        for ($i=0; $i < $n; $i++) {
             $q .= $l[rand(0, $len)];
         }
         return $q;
