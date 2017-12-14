@@ -24,3 +24,4 @@ Route::get("/profile", "ProfileController@index");
 Route::post("/profile/change_info", "ProfileController@changeInfo");
 Route::get("/profile/change_photo", "ProfileController@changePhotoPage");
 Route::post("/profile/change_photo", "ProfileController@changePhoto");
+Route::post("/profile/change_password", "ProfileController@changePassword");

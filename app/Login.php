@@ -86,12 +86,9 @@ class Login extends Model
         return $ins->isLoggedIn;
     }
 
-    public static function validateCredentials($identity, $password)
+    public static function setSessionWithValidationCredentials($identity, $password)
     {
-        $field = filter_var($identity, FILTER_VALIDATE_EMAIL) ? "email" : (is_numeric($identity) ? "user_id" : "username");
-        $st = DB::prepare("SELECT `password`,`user_id` FROM `users` WHERE `{$field}`=:bind LIMIT 1;");
-        pc($st->execute([":bind" => $identity]), $st);
-        if ($st = $st->fetch(PDO::FETCH_NUM)) {
+        if ($st = self::getBcryptHash($identity)) {
             if (password_verify($password, $st[0])) {
                 $dt = [
                     "user_id"    => $st[1],
@@ -108,5 +105,13 @@ class Login extends Model
             }
         }
         return false;
+    }
+
+    public static function getBcryptHash($identity)
+    {
+        $field = filter_var($identity, FILTER_VALIDATE_EMAIL) ? "email" : (is_numeric($identity) ? "user_id" : "username");
+        $st = DB::prepare("SELECT `password`,`user_id` FROM `users` WHERE `{$field}`=:bind LIMIT 1;");
+        pc($st->execute([":bind" => $identity]), $st);
+        return $st->fetch(PDO::FETCH_NUM);
     }
 }

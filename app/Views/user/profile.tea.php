@@ -7,6 +7,7 @@
 	<script type="text/javascript" src="{{ asset('assets/js/auth/profile.js') }}"></script>
 </head>
 <body>
+	<a href="/" class="linker">Home</a>
 	<center>
 		<div class="pp_cage">
 			<img src="{{ asset(empty($info['photo']) ? 'assets/img/user.png' : 'assets/img/users/' . $info['photo']) }}" class="pp">
@@ -97,7 +98,10 @@
 				domId('edit-password-table').style.display = 'none';
 			});
 			domId('edit-info').addEventListener('submit', function () {
-				pr.saveChange();
+				pr.saveInfoChange();
+			});
+			domId('edit-password').addEventListener('submit', function () {
+				pr.savePasswordChange();
 			});
 		</script>
 	</center>
