@@ -11,9 +11,13 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Login;
 use IceTea\Http\Controller;
+use App\Http\Controllers\Auth\CSRFToken;
+use App\Http\Controllers\Profile\ChangeInfo;
 
 class ProfileController extends Controller
 {
+	use CSRFToken;
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -21,8 +25,16 @@ class ProfileController extends Controller
 
     public function index()
     {
+    	$this->makeCSRF(600);
     	return view('user/profile', [
-    		"info" => User::getInfo(Login::getUserId(), "a.user_id")
+    		"info" => User::getInfo(Login::getUserId(), "a.user_id"),
+    		"that" => $this
     	]);
+    }
+
+    public function changeInfo()
+    {
+    	$subController = new ChangeInfo();
+    	$subController->run();
     }
 }

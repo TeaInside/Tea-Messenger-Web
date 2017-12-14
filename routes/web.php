@@ -21,3 +21,4 @@ Route::get("/chat", "ChatController@index");
 Route::get("/chat/{username}", "ChatController@to");
 Route::get("/chat/{username}/get", "ChatController@get");
 Route::get("/profile", "ProfileController@index");
+Route::post("/profile/change_info", "ProfileController@changeInfo");

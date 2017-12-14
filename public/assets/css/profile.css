@@ -6,11 +6,11 @@
 	width: 200px;
 	height: 200px;
 }
-.achange {
+.linker {
 	text-decoration: none;
 	color: blue;
 }
-.achange:hover {
+.linker:hover {
 	text-decoration: underline;
 }
 .change {

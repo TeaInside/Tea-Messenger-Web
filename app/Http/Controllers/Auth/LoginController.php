@@ -10,9 +10,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Login;
 use IceTea\Http\Controller;
+use App\Http\Controllers\Auth\CSRFToken;
 
 class LoginController extends Controller
 {
+    use CSRFToken;
+
     private $token;
 
     public function __construct()
@@ -38,17 +41,7 @@ class LoginController extends Controller
         }
     }
 
-    public function csrf_token()
-    {
-        return ice_encrypt(
-            json_encode(
-                [
-                    "expired" => time() + 300,
-                    "token"   => $this->token
-                ]
-            ), "tea_messenger123"
-        );
-    }
+    
 
     public function loginPage()
     {
@@ -56,7 +49,7 @@ class LoginController extends Controller
             header("location:/");
             exit();
         }
-        setcookie("token", $this->token = rstr(32), time() + 300);
+        $this->makeCSRF();
         return view("auth/login", ["that" => $this]);
     }
 
@@ -75,7 +68,7 @@ class LoginController extends Controller
         )) {
             header("Content-type:application/json");
             if (! $this->csrfValidation($input['csrf'])) {
-                $this->err("Token mismatch!");
+                $this->err("Token mismatch!", "?err=token_mismatch&w=".urlencode(rstr(64)));
             }
             if ($cred = Login::validateCredentials($input['username'], $input['password'])) {
                 $_14 = time() + 3600 * 24 * 14;
@@ -93,15 +86,6 @@ class LoginController extends Controller
         } else {
             abort(404);
         }
-    }
-
-    private function csrfValidation($csrf)
-    {
-        $csrf = json_decode(ice_decrypt($csrf, "tea_messenger123"), true);
-        return 
-            isset($csrf['token'], $csrf['expired'], $_COOKIE['token']) &&
-                $csrf['expired'] > time() &&
-                    $csrf['token'] === $_COOKIE['token'];
     }
 
     private function err($msg, $url = null)
