@@ -49,6 +49,8 @@ class chat
 					ch.onreadystatechange = function () {
 						if (this.readyState === 4) {
 							that.get();
+							var elem = domId('main-chat');
+							elem.scrollTop = elem.scrollHeight;
 						}
 					};
 					ch.withCredentials = true;
