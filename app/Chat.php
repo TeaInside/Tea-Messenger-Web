@@ -71,6 +71,12 @@ class Chat extends Model
                 ":user_2" => $user2
             ]
         ), $st);
-        return $st->fetchAll(PDO::FETCH_ASSOC);
+        $st =  $st->fetchAll(PDO::FETCH_ASSOC);
+        if ($st !== false) {
+            array_walk($st, function (&$a) {
+                $a['text'] = htmlspecialchars($a['text']);
+            });
+            return $st;
+        }
     }
 }
