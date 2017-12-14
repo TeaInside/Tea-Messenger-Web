@@ -20,6 +20,21 @@ class User extends Model
         parent::__construct();
     }
 
+    public static function getUserId($identity)
+    {
+        $field = filter_var($identity, FILTER_VALIDATE_EMAIL) ? "email" : "username";
+        $st = DB::prepare("SELECT `user_id` FROM `users` WHERE `{$field}`=:bind LIMIT 1;");
+        pc($st->execute(
+            [
+                ":bind" => $identity
+            ]
+        ), $st);
+        if ($st = $st->fetch(PDO::FETCH_NUM) and isset($st[0])) {
+            return $st[0];
+        }
+        return false;
+    }
+
     public static function getInfo($value, $field, $table = "users")
     {
         $st = DB::prepare("SELECT `a`.`user_id`,`a`.`username`,`a`.`email`,`a`.`verified`,`a`.`status`,`a`.`registered_at`,`b`.`first_name`,`b`.`last_name`,`b`.`photo`,`b`.`bio` FROM `users` AS `a` INNER JOIN `users_info` AS `b` ON `a`.`user_id`=`b`.`user_id` WHERE {$field} = :bind LIMIT 1;");
