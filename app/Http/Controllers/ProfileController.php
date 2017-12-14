@@ -12,6 +12,7 @@ use App\User;
 use App\Login;
 use IceTea\Http\Controller;
 use App\Http\Controllers\Auth\CSRFToken;
+use App\Http\Controllers\Auth\Authenticated;
 use App\Http\Controllers\Profile\ChangeInfo;
 
 class ProfileController extends Controller
@@ -25,6 +26,7 @@ class ProfileController extends Controller
 
     public function index()
     {
+        Authenticated::login();
     	$this->makeCSRF(600);
     	return view('user/profile', [
     		"info" => User::getInfo(Login::getUserId(), "a.user_id"),
@@ -34,7 +36,8 @@ class ProfileController extends Controller
 
     public function changeInfo()
     {
-    	$subController = new ChangeInfo();
-    	$subController->run();
+        Authenticated::login();
+        $subController = new ChangeInfo();
+        $subController->run();
     }
 }
