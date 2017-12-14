@@ -67,7 +67,7 @@ if (! function_exists('rstr')) {
     function rstr($n = 32, $l = null)
     {
         $q = "";
-        $l = is_string($l) ? $l : "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+        $l = is_string($l) ? $l : "_____1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
         $len = strlen($l) - 1;
         for ($i=0; $i < $n; $i++) { 
             $q .= $l[rand(0, $len)];
