@@ -63,4 +63,16 @@ class User extends Model
         ), $st);
         return true;
     }
+
+    public static function changePassword($userid, $new_password)
+    {
+        $st = DB::prepare("UPDATE `users` SET `password`=:new_password WHERE `user_id`=:user_id LIMIT 1;");
+        pc($st->execute(
+            [
+                ":new_password" => password_hash($new_password, PASSWORD_BCRYPT),
+                ":user_id"   => $userid
+            ]
+        ), $st);
+        return true;
+    }
 }
