@@ -27,6 +27,7 @@ class ChatController extends Controller
 
     public function to($par)
 	{
+		Authenticated::login();
 		return view('user/chat_end', [
 			"info" => Chat::getChatInfo(Login::getUserId(), $par['username'])
 		]);
@@ -34,6 +35,7 @@ class ChatController extends Controller
 
 	public function get($par)
 	{
+		Authenticated::login();
 		header("Content-type:application/json");
 		print json_encode(Chat::getChatRoom(Login::getUserId(), $par['username']));
 	}
