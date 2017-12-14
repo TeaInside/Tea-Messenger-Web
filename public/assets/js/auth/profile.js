@@ -28,14 +28,33 @@ class profile
 	}
 	changeInfo(dt)
 	{
-		var ch = new XMLHttpRequest();
+		this.disableForm();
+		var ch = new XMLHttpRequest(), that = this;
 			ch.onreadystatechange = function () {
 				if (this.readyState === 4) {
-					alert(this.responseText);
+					try	{
+						var a = JSON.parse(this.responseText);
+						if (a['message']!==null) {alert(a['message']);}
+						if (a['redirect']!==null) {window.location=a['redirect']} else {
+							that.enableForm();
+						}
+					} catch (e) {
+						alert(this.responseText);
+					}
 				}
 			}
 			ch.withCredentials = true;
 			ch.open("POST", "/profile/change_info");
 			ch.send(dt);
+	}
+	disableForm()
+	{
+		var x, d = ['fn','ln','uname','email'];
+		for (x in d) domId(d[x]).disabled = 1;
+	}
+	enableForm()
+	{
+		var x, d = ['fn','ln','uname','email'];
+		for (x in d) domId(d[x]).disabled = '';
 	}
 }
