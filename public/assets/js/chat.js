@@ -15,8 +15,9 @@ class chat
 	{
 		this.bound = JSON.parse(decodeURIComponent(domId('bound').value));
 		var x;
+		domId('main-chat').innerHTML = "";
 		for(x in data) {
-			// domId('main-chat').innerHTML+="<div><span>"+this.bound[data[x]['sender']]+"</span>";
+			 domId('main-chat').innerHTML += (this.bound[data[x]['sender']]['status'] === "self" ? '<div class="brg"><div class="wfg gfn"><span>'+this.bound[data[x]['sender']]['name']+'</span><img src="/assets/img/users/'+this.bound[data[x]['sender']]['photo']+'" style="width:50px;border-radius:100%;"></div><div class="wfg gra"><p align="left">'+data[x]['text']+'</p></div></div>' : '<div class="brg"><div class="wfg nfg"><span>'+this.bound[data[x]['sender']]['name']+'</span><img src="/assets/img/users/'+this.bound[data[x]['sender']]['photo']+'" style="width:50px;border-radius:100%;"></div><div class="wfg arg"><p align="left">'+data[x]['text']+'</p></div></div>');
 		}
 	}
 
@@ -29,7 +30,7 @@ class chat
 						var a = JSON.parse(this.responseText);
 						if (a == "") {that.noMsg()} else {that.buildMessage(a)}
 					} catch (e) {
-						alert(e.message);
+						alert(this.responseText);
 					}
 				}
 			};
@@ -47,7 +48,7 @@ class chat
 				var ch = new XMLHttpRequest();
 					ch.onreadystatechange = function () {
 						if (this.readyState === 4) {
-							alert(this.responseText);
+							that.get();
 						}
 					};
 					ch.withCredentials = true;

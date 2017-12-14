@@ -64,7 +64,7 @@ class Chat extends Model
 
     public static function getPrivateConversation($user1, $user2, $offset = 0)
     {
-        $st = DB::prepare("SELECT `a`.`message_id`,`a`.`sender`,`a`.`receiver`,`a`.`type`,`a`.`is_read`,`a`.`reply_to_message_id`,`a`.`created_at`,`a`.`updated_at`,`b`.`text`,`b`.`file` FROM `private_messages` AS `a` INNER JOIN `private_messages_data` AS `b` ON `a`.`message_id`=`b`.`message_id` WHERE `a`.`sender`=:user_1 OR `a`.`receiver`=:user_2 ORDER BY `a`.`created_at` DESC LIMIT {$offset},10;");
+        $st = DB::prepare("SELECT `a`.`message_id`,`a`.`sender`,`a`.`receiver`,`a`.`type`,`a`.`is_read`,`a`.`reply_to_message_id`,`a`.`created_at`,`a`.`updated_at`,`b`.`text`,`b`.`file` FROM `private_messages` AS `a` INNER JOIN `private_messages_data` AS `b` ON `a`.`message_id`=`b`.`message_id` WHERE (`a`.`sender`=:user_1 OR `a`.`receiver`=:user_2) OR (`a`.`sender`=:user_2 OR `a`.`receiver`=:user_1) ORDER BY `a`.`created_at` DESC LIMIT {$offset},10;");
         pc($st->execute(
             [
                 ":user_1" => $user1,

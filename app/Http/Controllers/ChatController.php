@@ -35,12 +35,14 @@ class ChatController extends Controller
             return view('user/chat_end', ["info" => $info, "boundary" => json_encode(
                     [
                         $info['user_id'] => [
-                            "name" => ($info['first_name'].(empty($info['last_name'])?"":" ".$info['last_name'])),
-                            "photo" => $info['photo']
+                            "status" => "party",
+                            "name" => htmlspecialchars($info['first_name'].(empty($info['last_name'])?"":" ".$info['last_name']), ENT_QUOTES, 'UTF-8'),
+                            "photo" => ($info['photo'])
                         ],
                         $selfid     => [
-                            "name" => ($selfinfo['first_name'].(empty($selfinfo['last_name'])?"":" ".$selfinfo['last_name'])),
-                            "photo" => $selfinfo['photo']
+                            "status" => "self",
+                            "name" => htmlspecialchars($selfinfo['first_name'].(empty($selfinfo['last_name'])?"":" ".$selfinfo['last_name']), ENT_QUOTES, 'UTF-8'),
+                            "photo" => ($selfinfo['photo'])
                         ]
                     ]
                 ),
@@ -57,7 +59,7 @@ class ChatController extends Controller
         header("Content-type:application/json");
         $receiverId = User::getUserId($par['username']);
         if ($receiverId !== false) {
-            print json_encode(Chat::getPrivateConversation(Login::getUserId(), $receiverId));
+            print json_encode(array_reverse(Chat::getPrivateConversation(Login::getUserId(), $receiverId)));
         }
     }
 
