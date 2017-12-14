@@ -21,7 +21,7 @@ class chat
 		}
 	}
 
-	get()
+	get(qwr)
 	{
 		var ch = new XMLHttpRequest(), that = this;
 			ch.onreadystatechange = function () {
@@ -32,6 +32,8 @@ class chat
 					} catch (e) {
 						alert(this.responseText);
 					}
+					if (qwr) {var elem = domId('main-chat');
+							elem.scrollTop = elem.scrollHeight;}
 				}
 			};
 			ch.withCredentials = true;
