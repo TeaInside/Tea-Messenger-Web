@@ -36,8 +36,8 @@ class ChangeInfo extends Controller
     		$input['csrf'],
     		$input['cost']
     	)) {
-    		if ($this->csrfValidation($input['csrf'])) {
-    			var_dump("valid");
+    		if (! $this->csrfValidation($input['csrf'])) {
+    			$this->err("Token mismatch", "?err=token_mismatch&w=".urlencode(rstr(64)));
     		}
     	}
     }
