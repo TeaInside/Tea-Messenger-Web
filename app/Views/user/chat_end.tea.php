@@ -4,7 +4,7 @@
 	<title>{{ $name = $info['first_name'] . ($info['last_name'] ? ' ' . $info['last_name'] : '') }}</title>
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chat.css') }}">
 	<script type="text/javascript" src="{{ asset('assets/js/utils/dom.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('assets/js/chat.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/js/chat.js'.'?t='.time()) }}"></script>
 	<script type="text/javascript" src="{{ asset('assets/js/auth/cookies.js') }}"></script>
 </head>
 <body>
