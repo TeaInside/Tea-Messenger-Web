@@ -47,8 +47,11 @@ class chat
 			if (context !== false) {
 				var ch = new XMLHttpRequest();
 					ch.onreadystatechange = function () {
+						domId('txt').disabled = 1;
 						if (this.readyState === 4) {
 							that.get();
+							domId('txt').disabled = 0;
+							domId('txt').value = "";
 							var elem = domId('main-chat');
 							elem.scrollTop = elem.scrollHeight;
 						}
