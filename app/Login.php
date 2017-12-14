@@ -28,24 +28,28 @@ class Login extends Model
 
 	public static function getSessionId()
 	{
+		self::isLoggedIn();
 		$ins = self::getInstance();
 		return $ins->user_id;
 	}
 
 	public static function getSessionKey()
 	{
+		self::isLoggedIn();
 		$ins = self::getInstance();
 		return $ins->session_key;
 	}
 
 	public static function getUserId()
 	{
+		self::isLoggedIn();
 		$ins = self::getInstance();
 		return $ins->user_id;	
 	}
 
 	public static function logout()
 	{
+		self::isLoggedIn();
 		$ins = self::getInstance();
 		$st = DB::prepare("DELETE FROM `sessions` WHERE `user_id`=:user_id AND `session_id`=:session_id LIMIT 1;");
 		pc($st->execute(
