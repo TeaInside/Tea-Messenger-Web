@@ -71,7 +71,7 @@ class ChangePassword extends Controller
                 $this->buildJson(
                     [
                         "status" => "ok",
-                        "message"=> "Password successfully changed!",
+                        "message"=> "Your password has been changed successfully!",
                         "redirect"=>"?ref=change_password&w=".urlencode(rstr(64))
                     ]
                 )
