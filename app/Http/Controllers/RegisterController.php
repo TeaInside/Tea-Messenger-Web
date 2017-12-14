@@ -35,9 +35,9 @@ class RegisterController extends Controller
 
     private function isRegisterdCookie()
     {
-        if (isset($_COOKIE['registered']) and 
-            $id = json_decode(base64_decode(strrev($_COOKIE['registered'])), true) and 
-            isset($id['id']) and 
+        if (isset($_COOKIE['registered']) and
+            $id = json_decode(base64_decode(strrev($_COOKIE['registered'])), true) and
+            isset($id['id']) and
             Register::check($id['id'], "user_id")
         ) {
             return $id['id'];
@@ -50,11 +50,11 @@ class RegisterController extends Controller
      */
     public function action()
     {
-    	$input = file_get_contents("php://input");
+        $input = file_get_contents("php://input");
         $input = json_decode($input, true);
         if (isset(
-            $input['first_name'], 
-            $input['last_name'], 
+            $input['first_name'],
+            $input['last_name'],
             $input['email'],
             $input['username'],
             $input['password'],
@@ -108,21 +108,22 @@ class RegisterController extends Controller
     {
         http_response_code(200);
         setcookie(
-            "registered", 
+            "registered",
             strrev(base64_encode(json_encode(
                 [
                     "id" => $reg,
                     "rd" => rstr(32)
                 ]
             ))),
-            time()+3600);
-        exit($this->buildJson(
-            [
+            time()+3600
+        );
+            exit($this->buildJson(
+                [
                 "status"    => "ok",
                 "message"   => $msg,
                 "redirect"  => "/register/success"
-            ]
-        ));
+                ]
+            ));
     }
 
     private function buildJson($data)
