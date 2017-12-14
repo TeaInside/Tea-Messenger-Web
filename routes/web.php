@@ -20,6 +20,7 @@ Route::get("/logout", "Auth\\LoginController@logout");
 Route::get("/chat", "ChatController@index");
 Route::get("/chat/{username}", "ChatController@to");
 Route::get("/chat/{username}/get", "ChatController@get");
+Route::post("/chat/{username}/post", "ChatController@post");
 Route::get("/profile", "ProfileController@index");
 Route::post("/profile/change_info", "ProfileController@changeInfo");
 Route::get("/profile/change_photo", "ProfileController@changePhotoPage");
