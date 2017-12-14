@@ -20,9 +20,9 @@ final class Config
     {
         $this->cfg = ___viewIsolator(
             basepath(
-                'config/main.php',
-                ['that' => $this]
-            )
+                'config/main.php'
+            ),
+            ['that' => $this]
         );
     }
 
