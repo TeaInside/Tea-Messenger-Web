@@ -14,6 +14,7 @@ use IceTea\Http\Controller;
 use App\Http\Controllers\Auth\CSRFToken;
 use App\Http\Controllers\Auth\Authenticated;
 use App\Http\Controllers\Profile\ChangeInfo;
+use App\Http\Controllers\Profile\ChangePhoto;
 
 class ProfileController extends Controller
 {
@@ -38,6 +39,23 @@ class ProfileController extends Controller
     {
         Authenticated::login();
         $subController = new ChangeInfo();
+        $subController->run();
+    }
+
+    public function changePhotoPage()
+    {
+        Authenticated::login();
+        $this->makeCSRF(600);
+        return view('user/change_photo', [
+            "info" => User::getInfo(Login::getUserId(), "a.user_id"),
+            "that" => $this
+        ]);
+    }
+
+    public function changePhoto()
+    {
+        Authenticated::login();
+        $subController = new ChangePhoto();
         $subController->run();
     }
 }

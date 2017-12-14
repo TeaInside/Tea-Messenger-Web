@@ -51,4 +51,16 @@ class User extends Model
 		), $st);
 		return true;
 	}
+
+	public static function changePhoto($userid, $photoFile)
+	{
+		$st = DB::prepare("UPDATE `users_info` SET `photo`=:photoFile WHERE `user_id`=:user_id LIMIT 1;");
+		pc($st->execute(
+			[
+				":photoFile" => $photoFile,
+				":user_id"	 => $userid
+			]
+		), $st);
+		return true;
+	}
 }
