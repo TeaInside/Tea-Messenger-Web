@@ -36,7 +36,7 @@ class LoginController extends Controller
             setcookie("session_id", null, 0);
             setcookie("session_key", null, 0);
             setcookie("user_id", null, 0);
-            header("location:/?ref=logout&w=".urlencode(base64_encode(rstr(64))));
+            header("location:/?ref=logout&w=".urlencode(rstr(64)));
             exit();
         }
     }
@@ -77,7 +77,7 @@ class LoginController extends Controller
                     [
                         "status"   => "ok",
                         "message"  => null,
-                        "redirect" => "?ref=login&w=".urlencode(base64_encode(rstr(64)))
+                        "redirect" => "?ref=login&w=".urlencode(rstr(64))
                     ]
                 ));
             } else {
