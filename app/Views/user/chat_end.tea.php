@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div class="main-chat" id="main-chat">
-			<div class="brg">
+			<!-- <div class="brg">
 				<div class="wfg nfg">
 					<span>Septian Hari</span>
 					<img src="{{ (! empty($info['photo']) ? asset('assets/img/users/'.$info['photo']) : '') }}" style="width:50px;border-radius:100%;">
@@ -30,8 +30,7 @@
 					<img src="{{ asset('assets/img/users/'.$selfinfo['photo']) }}" style="width:50px;border-radius:100%;">
 				</div>
 				<div class="wfg gra"><p align="left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quod vestri non item. Itaque sensibus rationem adiunxit et ratione effecta sensus non reliquit. Expressa vero in iis aetatibus, quae iam confirmatae sunt. Duo Reges: constructio interrete. Quantum Aristoxeni ingenium consumptum videmus in musicis? Quae similitudo</p></div>
-			</div>
-			
+			</div> -->
 		</div>
 		<div class="input">
 			<form method="post" id="sendbox" action="javascript:void(0);">
