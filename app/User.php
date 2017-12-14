@@ -30,4 +30,25 @@ class User extends Model
 		), $st);
 		return $st->fetch(PDO::FETCH_ASSOC);
 	}
+
+	public static function changeInfo($userid, $data)
+	{
+		$st = DB::prepare("UPDATE `users` SET `username`=:username, `email`=:email WHERE `user_id`=:user_id LIMIT 1;");
+		pc($st->execute(
+			[
+				":username" => $data['username'],
+				":email"	=> $data['email'],
+				":user_id"	=> $userid
+			]
+		), $st);
+		$st = DB::prepare("UPDATE `users_info` SET `first_name`=:first_name, `last_name`=:last_name WHERE `user_id`=:user_id LIMIT 1;");
+		pc($st->execute(
+			[
+				":first_name" => $data['first_name'],
+				":last_name"  => $data['last_name'],
+				":user_id"	  => $userid
+			]
+		), $st);
+		return true;
+	}
 }

@@ -8,15 +8,19 @@
 
 namespace App\Http\Controllers\Profile;
 
+use App\User;
+use App\Login;
 use IceTea\Http\Controller;
 use App\Http\Controllers\Auth\CSRFToken;
+use App\Http\Controllers\Auth\JSONResponse;
 
 class ChangeInfo extends Controller
 {
-	use CSRFToken;
+	use CSRFToken, JSONResponse;
 
 	public function __construct()
 	{
+        header("Content-type:application/json");
 		parent::__construct();
 	}
 
@@ -39,6 +43,33 @@ class ChangeInfo extends Controller
     		if (! $this->csrfValidation($input['csrf'])) {
     			$this->err("Token mismatch", "?err=token_mismatch&w=".urlencode(rstr(64)));
     		}
+            $this->validate($input);
+            $this->update($input);
     	}
+    }
+
+    private function validate($input)
+    {
+        empty($input['first_name']) and $this->err("Invalid first name!");
+        filter_var($input['email'], FILTER_VALIDATE_EMAIL) or $this->err("Invalid email!");
+        $len = strlen($input['username']);
+        $len > 3  or $this->err("Username too short, please provide username more than 4 characters!");
+        $len < 33 or $this->err("Username too long, please provide username less than 32 characters!");
+    }
+
+    public function update($input)
+    {
+        if (User::changeInfo(Login::getUserId(), $input)) {
+            exit($this->buildJson(
+                    [
+                        "status"  => "ok",
+                        "message" => "Success",
+                        "redirect"=> "/profile?ref=change_info&w=".urlencode(rstr(64))
+                    ]
+                )
+            );
+        } else {
+            $this->err("Internal error", "");
+        }
     }
 }
