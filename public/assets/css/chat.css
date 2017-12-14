@@ -2,7 +2,7 @@
 	font-family: Helvetica;
 }
 .main-cage {
-	border: 2px solid black;
+	border: 1px solid black;
 	width: 50%;
 	height: 550px;
 }
@@ -14,13 +14,11 @@
 .banner {
 	border-bottom: 2px solid black;
 }
-.name {
-	margin-top: -1.9%;
-	margin-right: 82%;
-}
 .pp {
-	margin-top: 1%;
+	width: 100%;
+	border: 0px solid black;
 	margin-right: 88%;
+	padding-bottom:2%;
 }
 .sb {
 	margin-left: 1%;
@@ -40,4 +38,38 @@
 .sb:active {
 	background-color: #91b512;
 	border: 2px solid #91b512;
+}
+
+.wfg {
+	display: inline-block;
+}
+
+.arg {
+	margin-top: -12%;
+	margin-left: 10%;
+	width: 500px;
+	word-wrap: break-word;
+}
+
+.nfg {
+	margin-top: -2px;
+	margin-right: 85%;
+}
+
+.gra {
+	margin-top: -11.5%;
+	margin-right: 10%;
+	width: 500px;
+	word-wrap: break-word;
+}
+
+.gfn {
+	margin-top: -2px;
+	margin-left: 85%;
+}
+
+.brg {
+	margin-top: -1px;
+	border-top:0.1px solid black;
+	border-bottom: 0.1px solid black;
 }

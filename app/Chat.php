@@ -36,9 +36,41 @@ class Chat extends Model
 
     public static function getChatRoom($self, $username)
     {
-        // $st = DB::prepare("SELECT ");
-        return [
-            // ["ammarfaizi2", "halo"]
-        ];
+        $a = User::getInfo($username, "a.username");        
+    }
+
+    public static function privatePost($sender, $receiver, $text)
+    {
+        $st = DB::prepare("INSERT INTO `private_messages` (`sender`, `receiver`, `type`, `is_read`, `reply_to_message_id`, `created_at`, `updated_at`) VALUES (:sender, :receiver, :type, 0, :reply_to_message_id, :created_at, NULL);");
+        pc($st->execute(
+            [
+                ":sender"   => $sender,
+                ":receiver" => $receiver,
+                ":type"     => 'text',
+                ":reply_to_message_id"  => null,
+                ":created_at" => date("Y-m-d H:i:s")
+            ]
+        ), $st);
+        $last = DB::pdoInstance()->lastInsertId();
+        $st = DB::prepare("INSERT INTO `private_messages_data` (`message_id`, `text`, `file`) VALUES (:message_id, :txt, :file);");
+        pc($st->execute(
+            [
+                ":message_id" => $last,
+                ":txt"        => $text,
+                ":file"       => null
+            ]
+        ), $st);
+    }
+
+    public static function getPrivateConversation($user1, $user2, $offset = 0)
+    {
+        $st = DB::prepare("SELECT `a`.`message_id`,`a`.`sender`,`a`.`receiver`,`a`.`type`,`a`.`is_read`,`a`.`reply_to_message_id`,`a`.`created_at`,`a`.`updated_at`,`b`.`text`,`b`.`file` FROM `private_messages` AS `a` INNER JOIN `private_messages_data` AS `b` ON `a`.`message_id`=`b`.`message_id` WHERE `a`.`sender`=:user_1 OR `a`.`receiver`=:user_2 ORDER BY `a`.`created_at` DESC LIMIT {$offset},10;");
+        pc($st->execute(
+            [
+                ":user_1" => $user1,
+                ":user_2" => $user2
+            ]
+        ), $st);
+        return $st->fetchAll(PDO::FETCH_ASSOC);
     }
 }

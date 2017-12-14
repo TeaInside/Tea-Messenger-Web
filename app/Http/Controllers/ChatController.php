@@ -12,6 +12,7 @@ use App\User;
 use App\Chat;
 use App\Login;
 use IceTea\Http\Controller;
+use App\Http\Controllers\Auth\Authenticated;
 
 class ChatController extends Controller
 {
@@ -27,16 +28,47 @@ class ChatController extends Controller
 
     public function to($par)
     {
-        Authenticated::login();
-        return view('user/chat_end', [
-            "info" => Chat::getChatInfo(Login::getUserId(), $par['username'])
-        ]);
+        Authenticated::login("", "/login?ref=unauthenticated_chat&w=".urlencode(rstr(64)));
+        $info = Chat::getChatInfo($selfid = Login::getUserId(), $par['username']);
+        $selfinfo = User::getInfo($selfid, "a.user_id");
+        if ($info !== false) {
+            return view('user/chat_end', ["info" => $info, "boundary" => json_encode(
+                    [
+                        $info['user_id'] => [
+                            "name" => ($info['first_name'].(empty($info['last_name'])?"":" ".$info['last_name'])),
+                            "photo" => $info['photo']
+                        ],
+                        $selfid     => [
+                            "name" => ($selfinfo['first_name'].(empty($selfinfo['last_name'])?"":" ".$selfinfo['last_name'])),
+                            "photo" => $selfinfo['photo']
+                        ]
+                    ]
+                ),
+                "selfinfo" => $selfinfo
+            ]
+        );
+        }
+        abort(404);
     }
 
     public function get($par)
     {
         Authenticated::login();
         header("Content-type:application/json");
-        print json_encode(Chat::getChatRoom(Login::getUserId(), $par['username']));
+        $receiverId = User::getUserId($par['username']);
+        if ($receiverId !== false) {
+            print json_encode(Chat::getPrivateConversation(Login::getUserId(), $receiverId));
+        }
+    }
+
+    public function post($par)
+    {
+        Authenticated::login();
+        header("Content-type:application/json");
+        $a = json_decode(file_get_contents("php://input"), true);
+        $receiverId = User::getUserId($par['username']);
+        if ($receiverId !== false) {
+            Chat::privatePost(Login::getUserId(), $receiverId, $a['text']);
+        }
     }
 }

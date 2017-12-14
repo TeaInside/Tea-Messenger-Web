@@ -37,4 +37,9 @@ class DB
     {
         return self::getInstance()->pdo->{$method}(...$parameters);
     }
+
+    public static function pdoInstance()
+    {
+        return self::getInstance()->pdo;
+    }
 }
