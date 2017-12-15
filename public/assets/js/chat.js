@@ -22,11 +22,13 @@ class chat
 				var ch = new XMLHttpRequest();
 					ch.onreadystatechange = function () {
 						if (this.readyState === 4) {
-							domId('main-chat').innerHTML += '<div class="brg"><div class="wfg gfn"><span>'+that.bound[that._self]['name']+'</span><img src="/assets/img/users/'+that.bound[that._self]['photo']+'" style="width:50px;border-radius:100%;"></div><div class="wfg gra"><p align="left">'+context['raw']+'</p></div></div>'
+							var qe = domId('main-chat');
+							qe.innerHTML += '<div class="brg"><div class="wfg gfn"><span>'+that.bound[that._self]['name']+'</span><img src="/assets/img/users/'+that.bound[that._self]['photo']+'" style="width:50px;border-radius:100%;"></div><div class="wfg gra"><p align="left">'+context['raw']+'</p></div></div>';
+							qe.scrollTop = qe.scrollHeight;
 						}
 					};
 					ch.withCredentials = true;
-					ch.open("POST", "/chat/" + this.rex + "/post");
+					ch.open("POST", "/chat/" + that.rex + "/post");
 					ch.send(context['stream']);
 			}
 		});
@@ -62,6 +64,8 @@ class chat
 				if (this.readyState === 4) {
 					try	{
 						that.buildResolvedChat(JSON.parse(this.responseText));
+						var qe = domId('main-chat');
+						qe.scrollTop = qe.scrollHeight;
 					} catch (e) {
 						alert("Error: " + e.message);
 					}
