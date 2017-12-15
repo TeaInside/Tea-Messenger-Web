@@ -60,6 +60,7 @@ class Chat extends Model
                 ":file"       => null
             ]
         ), $st);
+        return "\"ok\"";
     }
 
     public static function getPrivateConversation($user1, $user2, $offset = 0)
@@ -73,8 +74,6 @@ class Chat extends Model
         ), $st);
         $st =  $st->fetchAll(PDO::FETCH_ASSOC);
         if (! empty($st)) {
-            
-            
             $std = DB::prepare("UPDATE `private_messages` SET `is_read`=1 WHERE `sender`=:user_1 AND `receiver`=:user_2 AND `message_id` <= :latest;");
             pc($std->execute(
                 [
@@ -93,7 +92,7 @@ class Chat extends Model
 
     public static function getPrivateConversationRealtimeUpdate($user1, $user2, $offset = 0)
     {
-        $st = DB::prepare("SELECT `a`.`message_id`,`a`.`sender`,`a`.`receiver`,`a`.`type`,`a`.`is_read`,`a`.`reply_to_message_id`,`a`.`created_at`,`a`.`updated_at`,`b`.`text`,`b`.`file` FROM `private_messages` AS `a` INNER JOIN `private_messages_data` AS `b` ON `a`.`message_id`=`b`.`message_id` WHERE ((`a`.`sender`=:user_1 AND `a`.`receiver`=:user_2) OR (`a`.`sender`=:user_2 AND `a`.`receiver`=:user_1)) AND `a`.`is_read`=0 ORDER BY `a`.`created_at` DESC LIMIT {$offset},10;");
+        $st = DB::prepare("SELECT `a`.`message_id`,`a`.`sender`,`a`.`receiver`,`a`.`type`,`a`.`is_read`,`a`.`reply_to_message_id`,`a`.`created_at`,`a`.`updated_at`,`b`.`text`,`b`.`file` FROM `private_messages` AS `a` INNER JOIN `private_messages_data` AS `b` ON `a`.`message_id`=`b`.`message_id` WHERE `a`.`sender`=:user_2 AND `a`.`receiver`=:user_1 AND `is_read`=0 ORDER BY `a`.`created_at`;");
         pc($st->execute(
             [
                 ":user_1" => $user1,
@@ -101,7 +100,15 @@ class Chat extends Model
             ]
         ), $st);
         $st =  $st->fetchAll(PDO::FETCH_ASSOC);
-        if ($st !== false) {
+        if (! empty($st)) {
+            $std = DB::prepare("UPDATE `private_messages` SET `is_read`=1 WHERE `sender`=:user_2 AND `receiver`=:user_1 AND `message_id` <= :latest;");
+            pc($std->execute(
+                [
+                    ":user_1" => $user1,
+                    ":user_2" => $user2,
+                    ":latest"=> $st[0]['message_id']
+                ]
+            ), $std);
             array_walk($st, function (&$a) {
                 $a['text'] = htmlspecialchars($a['text']);
             });
