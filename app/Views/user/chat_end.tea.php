@@ -32,7 +32,7 @@
 			ch.listen();
 			setInterval(function () {
 				ch.getRealtimeUpdate();
-			}, 1000);
+			}, 2000);
 	</script>
 </center>
 </body>
