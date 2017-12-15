@@ -96,7 +96,7 @@ class chat
 	{
 
 		if (data == "") {return false;}
-		var qe = domId('main-chat');
+		var qe = domId('main-chat'), that = this;
 		if (domId('is_empty').value === "1") {
 			qe.innerHTML = "";
 			domId('is_empty').value = "0";
