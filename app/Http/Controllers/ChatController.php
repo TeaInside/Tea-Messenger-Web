@@ -74,7 +74,7 @@ class ChatController extends Controller
         $a = json_decode(file_get_contents("php://input"), true);
         $receiverId = User::getUserId($par['username']);
         if ($receiverId !== false) {
-            Chat::privatePost(Login::getUserId(), $receiverId, $a['text']);
+            print Chat::privatePost(Login::getUserId(), $receiverId, $a['text']);
         }
     }
 }
