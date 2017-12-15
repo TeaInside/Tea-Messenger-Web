@@ -20,6 +20,7 @@
 		</div>
 		<div class="input">
 			<form method="post" id="sendbox" action="javascript:void(0);">
+				<input type="hidden" name="is_empty" id="is_empty" value="0">
 				<input type="hidden" name="bound" value="{{ rawurlencode($boundary) }}" id="bound">
 				<input type="text" name="txt" id="txt" size="80"><button type="submit" class="sb">Send</button>
 			</form>
@@ -30,7 +31,7 @@
 			ch.resolveCurrentChat();
 			ch.listen();
 			setInterval(function () {
-				// ch.getRealtimeUpdate();
+				ch.getRealtimeUpdate();
 			}, 1000);
 	</script>
 </center>
