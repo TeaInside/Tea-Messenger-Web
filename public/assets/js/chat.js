@@ -15,9 +15,9 @@ class chat
 	buildPhotoContext(data)
 	{
 		if (data===null) {
-			return this.asset_dir + "user.png";
+			return this.asset_dir + "img/user.png";
 		} else {
-			return this.asset_dir + "users/" + data;
+			return this.asset_dir + "img/users/" + data;
 		}
 	}
 
