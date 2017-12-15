@@ -27,9 +27,11 @@
 	</div>
 	<script type="text/javascript">
 		var ch = new chat("{{ $info['username'] }}", {{ $selfinfo['user_id'] }});
-			ch.get(1);
+			ch.resolveCurrentChat();
 			ch.listen();
-			setInterval(function(){ ch.get() }, 2000);
+			setInterval(function () {
+				// ch.getRealtimeUpdate();
+			}, 1000);
 	</script>
 </center>
 </body>
