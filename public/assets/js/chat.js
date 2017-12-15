@@ -9,6 +9,16 @@ class chat
 		} catch (e) {
 			alert(e.message);
 		}
+		this.asset_dir = "/assets/";
+	}
+
+	buildPhotoContext(data)
+	{
+		if (data===null) {
+			return this.asset_dir + "user.png";
+		} else {
+			return this.asset_dir + "users/" + data;
+		}
 	}
 
 	listen()
@@ -28,7 +38,7 @@ class chat
 										qe.innerHTML = "";
 										domId('is_empty').value = "0";
 									}
-									qe.innerHTML += '<div class="brg"><div class="wfg gfn"><span>'+that.bound[that._self]['name']+'</span><img src="/assets/img/users/'+that.bound[that._self]['photo']+'" style="width:50px;border-radius:100%;"></div><div class="wfg gra"><p align="left">'+context['raw']+'</p></div></div>';
+									qe.innerHTML += '<div class="brg"><div class="wfg gfn"><span>'+that.bound[that._self]['name']+'</span><img src="'+that.buildPhotoContext(that.bound[that._self]['photo'])+'" style="width:50px;border-radius:100%;"></div><div class="wfg gra"><p align="left">'+context['raw']+'</p></div></div>';
 									qe.scrollTop = qe.scrollHeight;
 									domId('txt').value = '';
 								} else {
@@ -84,10 +94,17 @@ class chat
 
 	buildRealtimeContextRead(data)
 	{
+
 		if (data == "") {return false;}
-		for (var x in data) {
-			domId('main-chat').innerHTML += (this.bound[data[x]['sender']]['status'] === "self" ? '<div class="brg"><div class="wfg gfn"><span>'+this.bound[data[x]['sender']]['name']+'</span><img src="/assets/img/users/'+this.bound[data[x]['sender']]['photo']+'" style="width:50px;border-radius:100%;"></div><div class="wfg gra"><p align="left">'+data[x]['text']+'</p></div></div>' : '<div class="brg"><div class="wfg nfg"><span>'+this.bound[data[x]['sender']]['name']+'</span><img src="/assets/img/users/'+this.bound[data[x]['sender']]['photo']+'" style="width:50px;border-radius:100%;"></div><div class="wfg arg"><p align="left">'+data[x]['text']+'</p></div></div>');
+		var qe = domId('main-chat');
+		if (domId('is_empty').value === "1") {
+			qe.innerHTML = "";
+			domId('is_empty').value = "0";
 		}
+		for (var x in data) {
+			domId('main-chat').innerHTML += (this.bound[data[x]['sender']]['status'] === "self" ? '<div class="brg"><div class="wfg gfn"><span>'+this.bound[data[x]['sender']]['name']+'</span><img src="'+that.buildPhotoContext(that.bound[that._self]['photo'])+'" style="width:50px;border-radius:100%;"></div><div class="wfg gra"><p align="left">'+data[x]['text']+'</p></div></div>' : '<div class="brg"><div class="wfg nfg"><span>'+this.bound[data[x]['sender']]['name']+'</span><img src="'+that.buildPhotoContext(that.bound[that._self]['photo'])+'" style="width:50px;border-radius:100%;"></div><div class="wfg arg"><p align="left">'+data[x]['text']+'</p></div></div>');
+		}
+		qe.scrollTop = qe.scrollHeight;
 	}
 
 	buildResolvedChat(data)
