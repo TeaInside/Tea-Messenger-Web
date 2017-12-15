@@ -59,7 +59,11 @@ class ChatController extends Controller
         header("Content-type:application/json");
         $receiverId = User::getUserId($par['username']);
         if ($receiverId !== false) {
-            print json_encode(array_reverse(Chat::getPrivateConversation(Login::getUserId(), $receiverId)));
+            if (isset($_GET['realtime_update'])) {
+                print json_encode(array_reverse(Chat::getPrivateConversationRealtimeUpdate(Login::getUserId(), $receiverId)));
+            } else {
+                print json_encode(array_reverse(Chat::getPrivateConversation(Login::getUserId(), $receiverId)));
+            }
         }
     }
 
