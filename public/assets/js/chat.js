@@ -38,7 +38,7 @@ class chat
 										qe.innerHTML = "";
 										domId('is_empty').value = "0";
 									}
-									qe.innerHTML += '<div class="brg"><div class="wfg gfn"><span>'+that.bound[that._self]['name']+'</span><img src="'+that.buildPhotoContext(that.bound[that._self]['photo'])+'" style="width:50px;border-radius:100%;"></div><div class="wfg gra"><p align="left">'+context['raw']+'</p></div></div>';
+									qe.innerHTML += '<div class="brg"><div class="wfg gfn"><span>'+that.bound[that._self]['name']+'</span><img src="'+that.buildPhotoContext(that.bound[that._self]['photo'])+'" style="width:50px;border-radius:100%;"></div><div class="wfg gra"><p align="right">'+context['raw']+'</p></div></div>';
 									qe.scrollTop = qe.scrollHeight;
 									domId('txt').value = '';
 								} else {
