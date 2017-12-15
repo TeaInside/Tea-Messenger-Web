@@ -57,11 +57,11 @@ class ChatController extends Controller
     {
         Authenticated::login();
         header("Content-type:application/json");
-        if ($receiverId !== false) {
+        if ($par['username'] !== false) {
             if (isset($_GET['realtime_update'])) {
-                print json_encode(array_reverse($par['username'], $receiverId)));
+                print json_encode(array_reverse(Chat::getPrivateConversationRealtimeUpdate(Login::getUserId(), $par['username'])));
             } else {
-                print json_encode(array_reverse(Chat::getPrivateConversation($par['username'], $receiverId)));
+                print json_encode(array_reverse(Chat::getPrivateConversation(Login::getUserId(), $par['username'])));
             }
         }
     }
@@ -71,7 +71,7 @@ class ChatController extends Controller
         Authenticated::login();
         header("Content-type:application/json");
         $a = json_decode(file_get_contents("php://input"), true);
-        $receiverId = User::getUserId($par['username']);
+        $receiverId = $par['username'];
         if ($receiverId !== false) {
             print Chat::privatePost(Login::getUserId(), $receiverId, $a['text']);
         }

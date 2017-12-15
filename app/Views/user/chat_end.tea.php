@@ -27,7 +27,7 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		var ch = new chat("{{ $info['user_id'] }}", {{ $selfinfo['user_id'] }});
+		var ch = new chat({{ $info['user_id'] }}, {{ $selfinfo['user_id'] }});
 			ch.resolveCurrentChat();
 			ch.listen();
 			setInterval(function () {
