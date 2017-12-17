@@ -26,7 +26,10 @@
         "psr-4": {
             "App\\": "app/",
             "IceTea\\": "framework/IceTea/"
-        }
+        },
+        "files": [
+            "framework/init/composer.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
