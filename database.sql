@@ -7,28 +7,31 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 DROP TABLE IF EXISTS `private_messages`;
 CREATE TABLE `private_messages` (
-  `msg_room_id` varchar(255) NOT NULL,
-  `sender` bigint(20) NOT NULL,
-  `receiver` bigint(20) NOT NULL,
-  `message_id` bigint(20) NOT NULL,
+  `message_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `sender` bigint(20) DEFAULT NULL,
+  `receiver` bigint(20) DEFAULT NULL,
+  `type` enum('text','photo') NOT NULL,
+  `is_read` tinyint(1) NOT NULL DEFAULT '0',
+  `reply_to_message_id` bigint(20) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`msg_room_id`),
+  PRIMARY KEY (`message_id`),
   KEY `sender` (`sender`),
   KEY `receiver` (`receiver`),
-  CONSTRAINT `private_messages_ibfk_1` FOREIGN KEY (`sender`) REFERENCES `users` (`user_id`),
-  CONSTRAINT `private_messages_ibfk_2` FOREIGN KEY (`receiver`) REFERENCES `users` (`user_id`)
+  KEY `reply_to_message_id` (`reply_to_message_id`),
+  CONSTRAINT `private_messages_ibfk_4` FOREIGN KEY (`sender`) REFERENCES `users` (`user_id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `private_messages_ibfk_5` FOREIGN KEY (`receiver`) REFERENCES `users` (`user_id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `private_messages_ibfk_7` FOREIGN KEY (`reply_to_message_id`) REFERENCES `private_messages` (`message_id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 DROP TABLE IF EXISTS `private_messages_data`;
 CREATE TABLE `private_messages_data` (
-  `msg_room_id` varchar(255) NOT NULL,
+  `message_id` bigint(20) NOT NULL,
   `text` text NOT NULL,
-  `type` enum('text','photo') NOT NULL,
-  `reply_to_message_id` bigint(20) NOT NULL,
-  KEY `msg_room_id` (`msg_room_id`),
-  CONSTRAINT `private_messages_data_ibfk_1` FOREIGN KEY (`msg_room_id`) REFERENCES `private_messages` (`msg_room_id`)
+  `file` varchar(255) DEFAULT NULL,
+  KEY `message_id` (`message_id`),
+  CONSTRAINT `private_messages_data_ibfk_2` FOREIGN KEY (`message_id`) REFERENCES `private_messages` (`message_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
@@ -83,4 +86,4 @@ CREATE TABLE `verification` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
--- 2017-12-14 06:12:39
+-- 2017-12-19 10:44:11
