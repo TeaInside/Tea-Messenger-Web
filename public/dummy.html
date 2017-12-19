@@ -1,0 +1,163 @@
+<html>
+<head>
+<title>Septian Hari</title>
+<style type="text/css">
+* {
+	font-family: Helvetica;
+}
+.main-cage {
+	border: 1px solid black;
+	width: 50%;
+	height: 550px;
+}
+.main-chat {
+	background-color: #ede6e6;
+	height: 390px;
+	overflow-x: scroll;
+}
+.banner {
+	border-bottom: 2px solid black;
+}
+.pp {
+	width: 100%;
+	border: 0px solid black;
+	margin-right: 88%;
+	padding-bottom:2%;
+}
+.sb {
+	margin-left: 1%;
+	background-color: #c1ed31;
+	border-radius: 4%;
+	border: 2px solid #c1ed31;
+	padding: 1% 2% 1% 2%;
+	color:black;
+	cursor: pointer;
+}
+.sb:hover {
+	background-color: #abd61d;
+	border: 2px solid #abd61d;
+}
+.sb:active {
+	background-color: #91b512;
+	border: 2px solid #91b512;
+}
+.wfg {
+	display: inline-block;
+}
+.arg {
+	margin-top: -12%;
+	margin-left: 10%;
+	width: 500px;
+	word-wrap: break-word;
+}
+.nfg {
+	margin-top: -2px;
+	margin-right: 85%;
+}
+.gra {
+	margin-top: -11.5%;
+	margin-right: -10%;
+	width: 500px;
+	word-wrap: break-word;
+}
+.gfn {
+	margin-top: -2px;
+	margin-left: 85%;
+}
+.brg {
+	margin-top: -1px;
+	border-top:0.1px solid black;
+	border-bottom: 0.1px solid black;
+}
+</style>
+</head>
+<body cz-shortcut-listen="true">
+<center>
+<div class="main-cage">
+	<div class="banner">
+		<div class="pp" align="left">
+			<img src="https://messenger.teainside.ga/assets/img/users/879c4fef06c62d2f825c205927d4dfa91b5fea09.jpg" style="border-radius:100%;margin-left:2%;" width="50" height="50"><br>
+			<span>Septian Hari (Online)</span>
+		</div>
+	</div>
+	<div class="main-chat" id="main-chat">
+		<div class="brg">
+			<div class="wfg nfg">
+				<span>Septian Hari</span><img src="https://messenger.teainside.ga/assets/img/users/879c4fef06c62d2f825c205927d4dfa91b5fea09.jpg" style="width:50px;border-radius:100%;">
+			</div>
+			<div class="wfg arg">
+				<p align="left">
+					Halo, saya Septian
+				</p>
+			</div>
+		</div>
+		<div class="brg">
+			<div class="wfg gfn">
+				<span>Ammar Faizi</span><img src="https://messenger.teainside.ga/assets/img/users/5f069e673c34052bd30f6862b503c433da199017.jpg" style="width:50px;border-radius:100%;">
+			</div>
+			<div class="wfg gra">
+				<p align="right">
+					Halo, saya Ammar
+				</p>
+			</div>
+		</div>
+		<div class="brg">
+			<div class="wfg nfg">
+				<span>Septian Hari</span><img src="https://messenger.teainside.ga/assets/img/users/879c4fef06c62d2f825c205927d4dfa91b5fea09.jpg" style="width:50px;border-radius:100%;">
+			</div>
+			<div class="wfg arg">
+				<p align="left">
+					Salam kenal
+				</p>
+			</div>
+		</div>
+		<div class="brg">
+			<div class="wfg nfg">
+				<span>Septian Hari</span><img src="https://messenger.teainside.ga/assets/img/users/879c4fef06c62d2f825c205927d4dfa91b5fea09.jpg" style="width:50px;border-radius:100%;">
+			</div>
+			<div class="wfg arg">
+				<p align="left">
+					senang bertemu dengan anda
+				</p>
+			</div>
+		</div>
+		<div class="brg">
+			<div class="wfg gfn">
+				<span>Ammar Faizi</span><img src="https://messenger.teainside.ga/assets/img/users/5f069e673c34052bd30f6862b503c433da199017.jpg" style="width:50px;border-radius:100%;">
+			</div>
+			<div class="wfg gra">
+				<p align="right">
+					saya juga
+				</p>
+			</div>
+		</div>
+		<div class="brg">
+			<div class="wfg nfg">
+				<span>Septian Hari</span><img src="https://messenger.teainside.ga/assets/img/users/879c4fef06c62d2f825c205927d4dfa91b5fea09.jpg" style="width:50px;border-radius:100%;">
+			</div>
+			<div class="wfg arg">
+				<p align="left">
+					terima kasih
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="input">
+		<form method="post" id="sendbox" action="javascript:void(0);">
+			<input name="is_empty" id="is_empty" value="0" type="hidden">
+			<input name="bound" value="%7B%227%22%3A%7B%22status%22%3A%22party%22%2C%22name%22%3A%22Septian%20Hari%22%2C%22photo%22%3A%22879c4fef06c62d2f825c205927d4dfa91b5fea09.jpg%22%7D%2C%221%22%3A%7B%22status%22%3A%22self%22%2C%22name%22%3A%22Ammar%20Faizi%22%2C%22photo%22%3A%225f069e673c34052bd30f6862b503c433da199017.jpg%22%7D%7D" id="bound" type="hidden">
+			<input name="txt" id="txt" size="80" type="text"><button type="submit" class="sb">Send</button>
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+		var ch = new chat(7, 1);
+			ch.resolveCurrentChat();
+			ch.listen();
+			setInterval(function () {
+				ch.getRealtimeUpdate();
+			}, 2000);
+	</script>
+</center>
+</body>
+</html>
