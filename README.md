@@ -17,5 +17,16 @@
 - sesuaikan konfirmasi database anda
 - run service `php icetea serve`
 
+# Penggunaan Framework :
+
+## Helpers
+Icetea Framework dapat menggunaan fungsi global bawaan php, namun Icetea juga mempunya fitur-fitur helper sendiri yang dapat digunakan dalam membangun sebuah aplikasi menggunakan framework Icetea, anda bebas menggunakan untuk kepentingan aplikasi anda.
+
+### Methods yang tersedia antara lain
+1. Urls
+- asset()
+- $route
+- $action
+
 ---
 TeamIside
