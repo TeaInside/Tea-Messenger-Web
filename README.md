@@ -21,7 +21,9 @@
 
 ## Local Development Server
 Jika anda menginstall PHP secara local dan anda ingin menjalankan sever mode development bawaan php anda bisa menggunakan perintah
-'php icetea serve'
+
+`php icetea serve`
+
 dan akan jalan pada pada http://localhost:8000
 
 ## Helpers
