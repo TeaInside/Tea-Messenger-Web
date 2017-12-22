@@ -24,7 +24,7 @@
 		<div class="row">
 			<div class="col-sm-6 col-md-4 col-md-offset-4">
 				<div class="login-wall">
-					<h2 class="text-center login-tile">Tea Messenger</h2>
+					<h3 class="text-center login-title">Tea Messenger</h3>
 					<div class="col-md-12">
 						<img class="profile-img" src="{{ asset('assets/img/logo-ice-tea.png') }}" alt="Tea Messenger">
                  		<p class="text-center ice-tea">Sign in</p>
