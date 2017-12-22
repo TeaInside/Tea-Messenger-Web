@@ -1,3 +1,4 @@
+
 -- Adminer 4.3.1 MySQL dump
 
 SET NAMES utf8;
