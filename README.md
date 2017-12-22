@@ -19,6 +19,11 @@
 
 # Penggunaan Framework :
 
+## Local Development Server
+Jika anda menginstall PHP secara local dan anda ingin menjalankan sever mode development bawaan php anda bisa menggunakan perintah
+'php icetea serve'
+dan akan jalan pada pada http://localhost:8000
+
 ## Helpers
 Icetea Framework dapat menggunaan fungsi global bawaan php, namun Icetea juga mempunya fitur-fitur helper sendiri yang dapat digunakan dalam membangun sebuah aplikasi menggunakan framework Icetea, anda bebas menggunakan untuk kepentingan aplikasi anda.
 
