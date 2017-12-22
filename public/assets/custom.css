@@ -1,0 +1,33 @@
+*{
+  padding : 0;
+  margin: 0;
+}
+body{
+  background-color: #f0f0f0 !important;
+}
+.ai-image, .user-image {
+   border-radius: 50%;
+   display: inline-block;
+   width : 60px;
+   height: 60px;
+   overflow: hidden;
+}
+.ai-image{
+  float: right;
+}
+.user-image{
+  float: left;
+}
+.primary-box {
+    height:600px;
+    max-width:700px;
+    margin:0 auto;
+}
+.text-input{
+  width : 100%;
+}
+.form-chat {
+  height: 400px !important;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
