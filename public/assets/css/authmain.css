@@ -1,8 +1,22 @@
 body {
    /* background-color: #afdd5a; */
+   font-family: 'Open Sans',"Lucida Grande","Lucida Sans Unicode",Arial,Helvetica,Verdana,sans-serif;
    background-color: #efece7;
    background-image: -webkit-linear-gradient(180deg, #efece7 50%, #478262 50%);
    min-height: 250px;
+}
+
+.form-control {
+	border:0;
+	outline:0;
+	border-bottom: 1px solid #93d8b3;
+}
+
+.form-control:focus {
+	border-bottom: 1px solid #478262;
+  	-webkit-box-shadow: 0 1px 0 0 #478262;
+  	-moz-box-shadow: 0 1px 0 0 #478262;
+ 	 box-shadow: 0 1px 0 0 #478262;
 }
 
 .form-signin {
@@ -45,24 +59,31 @@ body {
    margin-bottom: 50px;
 }
 
+.title-wall {
+   background-color: #f7f7f7;
+   -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+   -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+   box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+   border-radius: 20px;
+}
+
 .login-title {
    margin-top: 10px;
-   color: #ffffff;
+   color: #000;
    font-size: 20px;
-   font-weight: 400px;
    display: block;
 }
 
 .ice-tea{
    color = #ffffff;
-   font-size: 18px;
+   font-size: 15px;
    font-weight: 300;
    display: block;
 }
 
 .profile-img {
-   width: 100px;
-   height: 100px;
+   width: 75px;
+   height: 75px;
    display: block;
    margin: 0 auto 10px;
 }
@@ -89,5 +110,10 @@ body {
 }
 .wdg {
     margin-bottom: 0.5%;
+}
+
+@font-face {
+	font-family: "coffe tea";
+	src: url('../fonts/coffe_tea.ttf');
 }
 
