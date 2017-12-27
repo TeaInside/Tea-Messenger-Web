@@ -26,8 +26,11 @@ body{
 .text-input{
   width : 100%;
 }
-.form-chat {
+.main-chat {
   height: 400px !important;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+.is-primary p {
+  text-align: right;
 }
