@@ -24,7 +24,7 @@
 				<div class="c-inner _sender_text">
 					<p>What's your name?</p>
 				</div>
-				<div class="c-inner _photo">
+				<div class="c-inner _photo wd">
 					<img src="{{ empty($selfinfo['photo']) ? asset('assets/img/user.png') : asset('assets/img/users/'.$selfinfo['photo']) }}" class="mini-photo">
 				</div>
 			</div>
@@ -34,9 +34,7 @@
 					<img src="{{ empty($info['photo']) ? asset('assets/img/user.png') : asset('assets/img/users/'.$info['photo']) }}" class="mini-photo">
 				</div>
 				<div class="c-inner _receiver_text">
-					<p>Hey guys, I just have developed a new lib for managing IO in Java: its purpose is making things easier 😉
-
-You can have a look here: 👉🏻 https://goo.gl/6tcVR3</p>
+					<p> I just have developed a new lib for managing IO in Java. Its purpose is making things easier.</p>
 				</div>
 			</div>
 		</div>

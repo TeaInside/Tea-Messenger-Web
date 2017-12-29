@@ -123,27 +123,33 @@
 	width: 50px;
 	height: 50px;
 	border-radius: 100%;
+	border: 1px solid #000;
+}
+
+.wd {
+	margin-left: -29px;
 }
 
 .c-inner {
+	border: 1px solid #000;
 	display: inline-block;
+	word-wrap: break-word;
 }
 
 ._photo {
-	margin-top: -2px;
 	vertical-align: middle;
 	width: 50px;
 	height: 50px;
 }
 
 ._receiver_text {
+	border: 1px solid #000;
 	width: 655px;
-	word-wrap: break-word;
-	font-size: 15px;
+	font-size: 15px;	
 }
 
 ._sender_text {
+	border: 1px solid #000;
 	width: 655px;
-	word-wrap: break-word;
 	font-size: 15px;
 }
