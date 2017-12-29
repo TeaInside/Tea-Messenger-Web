@@ -20,7 +20,25 @@
 			</div>
 		</div>
 		<div id="chat-field">
-			
+			<div class="sender" align="right">
+				<div class="c-inner _sender_text">
+					<p>What's your name?</p>
+				</div>
+				<div class="c-inner _photo">
+					<img src="{{ empty($selfinfo['photo']) ? asset('assets/img/user.png') : asset('assets/img/users/'.$selfinfo['photo']) }}" class="mini-photo">
+				</div>
+			</div>
+
+			<div class="receiver" align="left">
+				<div class="c-inner _photo">
+					<img src="{{ empty($info['photo']) ? asset('assets/img/user.png') : asset('assets/img/users/'.$info['photo']) }}" class="mini-photo">
+				</div>
+				<div class="c-inner _receiver_text">
+					<p>Hey guys, I just have developed a new lib for managing IO in Java: its purpose is making things easier 😉
+
+You can have a look here: 👉🏻 https://goo.gl/6tcVR3</p>
+				</div>
+			</div>
 		</div>
 		<div class="form-field">
 			<form method="post" action="javascript:void(0);" id="poster">
