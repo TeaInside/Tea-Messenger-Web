@@ -26,7 +26,6 @@ class chat
 		var that = this;
 		domId('sendbox').addEventListener('submit', function() {
 			var context = that.buildPostContextStream();
-			console.log(context);
 			if (context !== false) {
 				var ch = new XMLHttpRequest();
 					ch.onreadystatechange = function () {

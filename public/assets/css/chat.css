@@ -1,75 +1,100 @@
 * {
 	font-family: Helvetica;
 }
+
 .main-cage {
-	border: 1px solid black;
-	width: 50%;
-	height: 550px;
-}
-.main-chat {
-	background-color: #ede6e6;
-	height: 390px;
-	overflow-x: scroll;
-}
-.banner {
-	border-bottom: 2px solid black;
-}
-.pp {
-	width: 100%;
-	border: 0px solid black;
-	margin-right: 88%;
-	padding-bottom:2%;
-}
-.sb {
-	margin-left: 1%;
-	background-color: #c1ed31;
-	border-radius: 4%;
-	border: 2px solid #c1ed31;
-	padding: 1% 2% 1% 2%;
-	color:black;
-	cursor: pointer;
+	margin-top: 10px;
+	border: 1px solid #80e200;
+	border-radius: 5px;
+	width: 750px;
+	height: 555px;
+	background-color: #5be58b;
 }
 
-.sb:hover {
-	background-color: #abd61d;
-	border: 2px solid #abd61d;
+.photo {
+	width: 65px;
+	height: 65px;
+	margin: 5px 10px 0px 0px;
+	border-radius: 100%;
 }
 
-.sb:active {
-	background-color: #91b512;
-	border: 2px solid #91b512;
+.name-cage {
+	float: left;
+	margin: 2px 40px;
 }
 
-.wfg {
+.photo-cage {
+	float: right;
+}
+
+.sub-cage {
 	display: inline-block;
 }
 
-.arg {
-	margin-top: -12%;
-	margin-left: 10%;
-	width: 500px;
-	word-wrap: break-word;
+#name {
+	font-weight: bold;
 }
 
-.nfg {
-	margin-top: -2px;
-	margin-right: 85%;
+#last-seen {
+	margin-top: -12px;
+	font-size: 12px;
 }
 
-.gra {
-	margin-top: -11.5%;
-	margin-right: -10%;
-	width: 500px;
-	word-wrap: break-word;
+#chat-field {
+	margin-top: 75px;
+	width: 735px;
+	height: 420px;
+	border-radius: 3px;
 }
 
-.gfn {
-	margin-top: -2px;
-	margin-left: 85%;
+.form-field {
+	float: all;
+	position: absolute;
+	padding: 5px 0px 5px 0px;
+	margin-top: 2px;
 }
 
-.brg {
-	margin-top: -1px;
-	border-top:0.1px solid black;
-	border-bottom: 0.1px solid black;
+.input {
+	float: left;
+	width: 685px;
+	margin-right: -4px;
+}
+
+#chat-field {
+	background-color: #e5ffe0;
+}
+
+#txt {
+	padding: 7px 0px 7px 0px;
+	width: 630px;
+}
+	
+.submit {
+	padding: 0px;
+	background-color: #70f968;
+}
+
+#submit {
+	cursor: pointer;
+	padding: 5.8px 0px 5.8px 0px;
+}
+
+.attachment-icon {
+	cursor: pointer;
+	background-color: inherit;
+	width: 30px;
+	height: 30px;
+	margin-left: 3.5px;
+	vertical-align: middle;
+}
+
+.attachment-icon:hover {
+	background-color: #000;
+}
+
+
+.image-upload > input
+{
+    display: none;
+    vertical-align: middle;
 }
