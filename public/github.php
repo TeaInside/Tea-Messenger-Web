@@ -1,3 +1,3 @@
 <?php
 
-shell_exec("cd .. && sudo -u root git reset --hard && sudo -u root git pull &");
+shell_exec("sudo git reset --hard HEAD && sudo git pull origin master &");
