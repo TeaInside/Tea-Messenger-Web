@@ -24,7 +24,7 @@ class Serve extends ConsoleCommand
 
     public function run()
     {
-        print Color::clr("IceTea development server started:", "green"). " <http://127.0.0.1:8000>" . PHP_EOL;
-        shell_exec(PHP_BINARY." -S 127.0.0.1:8000 -t ".basepath("public"));
+        print Color::clr("IceTea development server started:", "green"). " <http://127.0.0.1:8001>" . PHP_EOL;
+        shell_exec(PHP_BINARY." -S 127.0.0.1:8001 -t ".basepath("public"));
     }
 }

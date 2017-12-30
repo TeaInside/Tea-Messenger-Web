@@ -26,3 +26,7 @@ Route::post("/profile/change_info", "ProfileController@changeInfo");
 Route::get("/profile/change_photo", "ProfileController@changePhotoPage");
 Route::post("/profile/change_photo", "ProfileController@changePhoto");
 Route::post("/profile/change_password", "ProfileController@changePassword");
+Route::get("/groupchat", "GroupChatController@index");
+Route::get("/groupchat/{groupname}", "GroupChatController@to");
+Route::get("/groupchat/{groupname}/get", "GroupChatController@get");
+Route::post("/groupchat/{groupname}/post", "GroupChatController@post");
