@@ -55,6 +55,7 @@ class chat {
 							if (this.responseText === "\"ok\"") {
 								domId('text-field').value = "";
 								that.buildChat('sender', context['text'], that.sender_photo);
+								that.main.scrollTop = that.main.scrollHeight;
 							} else {
 								alert("Error: " + this.responseText);
 							}
@@ -98,6 +99,7 @@ class chat {
 							for (x in q) {
 								that.buildChat('receiver', q[x]['text'], that.receiver_photo);
 							}
+							that.main.scrollTop = that.main.scrollHeight;
 						} catch (e) {
 							alert("Error: " + e.message);
 						}
