@@ -39,6 +39,7 @@ class LoginController extends Controller
             header("location:/?ref=logout&w=".urlencode(rstr(64)));
             exit();
         }
+        header("location:/?ref=no_logout&w=".urlencode(rstr(32)));
     }
 
     public function loginPage()

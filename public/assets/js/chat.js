@@ -1,141 +1,137 @@
-class chat
-{
-	constructor(rex,_self)
+class chat {
+	constructor(receiver, sender)
 	{
-		this._self = _self;
-		this.rex   = rex;
-		try	{
-			this.bound = JSON.parse(decodeURIComponent(domId('bound').value));
-		} catch (e) {
-			alert(e.message);
-		}
-		this.asset_dir = "/assets/";
-	}
-
-	buildPhotoContext(data)
-	{
-		if (data===null) {
-			return this.asset_dir + "img/user.png";
-		} else {
-			return this.asset_dir + "img/users/" + data;
-		}
-	}
-
-	listen()
-	{
-		var that = this;
-		domId('sendbox').addEventListener('submit', function() {
-			var context = that.buildPostContextStream();
-			console.log(context);
-			if (context !== false) {
-				var ch = new XMLHttpRequest();
-					ch.onreadystatechange = function () {
-						if (this.readyState === 4) {
-							try {
-								if (this.responseText === "\"ok\"") {
-									var qe = domId('main-chat');
-									if (domId('is_empty').value === "1") {
-										qe.innerHTML = "";
-										domId('is_empty').value = "0";
-									}
-									qe.innerHTML += '<div class="brg"><div class="wfg gfn"><span>'+that.bound[that._self]['name']+'</span><img src="'+that.buildPhotoContext(that.bound[that._self]['photo'])+'" style="width:50px;border-radius:100%;"></div><div class="wfg gra"><p align="right">'+context['raw']+'</p></div></div>';
-									qe.scrollTop = qe.scrollHeight;
-									domId('txt').value = '';
-								} else {
-									alert("Error while sending a message\n\n" + this.responseText);
-								}
-								domId('txt').disabled = '';
-							} catch (e) {
-								alert(e.message);
-							}
-						} else {
-							domId('txt').disabled = 1;
-						}
-					};
-					ch.withCredentials = true;
-					ch.open("POST", "/chat/" + that.rex + "/post");
-					ch.send(context['stream']);
-			}
-		});
-	}
-
-	getRealtimeUpdate()
-	{
-		var chx = new XMLHttpRequest(), that = this;
-			chx.onreadystatechange = function () {
-				if (this.readyState === 4) {
-					try {
-						var dt = JSON.parse(this.responseText);
-						if (dt == "") {return false}
-						that.buildRealtimeContextRead(dt);
-					} catch (e) {
-						alert(e.message);
-					}
-				}
-			};
-			chx.withCredentials = true;
-			chx.open("GET", "/chat/" + this.rex + "/get?realtime_update=1");
-			chx.send(null);
-	}
-
-	buildPostContextStream()
-	{
-		var rq = {
-			"text": domId('txt').value
-		};
-		if (rq['text']=="") {
-			return false;
-		}
-		return {
-			'stream': JSON.stringify(rq),
-			'raw': rq['text']
-		};
-	}
-
-	buildRealtimeContextRead(data)
-	{
-
-		if (data == "") {return false;}
-		var qe = domId('main-chat'), that = this;
-		if (domId('is_empty').value === "1") {
-			qe.innerHTML = "";
-			domId('is_empty').value = "0";
-		}
-		console.log(that);
-		for (var x in data) {
-			domId('main-chat').innerHTML += (this.bound[data[x]['sender']]['status'] === "self" ? '<div class="brg"><div class="wfg gfn"><span>'+this.bound[data[x]['sender']]['name']+'</span><img src="'+that.buildPhotoContext(that.bound[that._self]['photo'])+'" style="width:50px;border-radius:100%;"></div><div class="wfg gra"><p align="left">'+data[x]['text']+'</p></div></div>' : '<div class="brg"><div class="wfg nfg"><span>'+this.bound[data[x]['sender']]['name']+'</span><img src="'+this.buildPhotoContext(that.bound[that.rex]['photo'])+'" style="width:50px;border-radius:100%;"></div><div class="wfg arg"><p align="left">'+data[x]['text']+'</p></div></div>');
-		}
-		qe.scrollTop = qe.scrollHeight;
-	}
-
-	buildResolvedChat(data)
-	{
-		if (data == "") {
-			domId('main-chat').innerHTML = "<div style=\"margin-top:23%;\"><p style=\"font-size:15px;\">No messages here yet...</p></div>";
-			domId('is_empty').value = "1";
-			return false;
-		}
-		for (var x in data) {
-			domId('main-chat').innerHTML += (this.bound[data[x]['sender']]['status'] === "self" ? '<div class="brg"><div class="wfg gfn"><span>'+this.bound[data[x]['sender']]['name']+'</span><img src="/assets/img/users/'+this.bound[data[x]['sender']]['photo']+'" style="width:50px;border-radius:100%;"></div><div class="wfg gra"><p align="left">'+data[x]['text']+'</p></div></div>' : '<div class="brg"><div class="wfg nfg"><span>'+this.bound[data[x]['sender']]['name']+'</span><img src="/assets/img/users/'+this.bound[data[x]['sender']]['photo']+'" style="width:50px;border-radius:100%;"></div><div class="wfg arg"><p align="left">'+data[x]['text']+'</p></div></div>');
-		}
+		this.receiver = receiver;
+		this.sender = sender;
+		this.info   = JSON.parse(decodeURIComponent(domId('boundary').value));
+		this.main	= domId('chat-field');
+		this.sender_photo   = this.info[this.sender]['photo'] === null ? '/assets/img/user.png' : '/assets/img/users/' + this.info[this.sender]['photo'],
+		this.receiver_photo = this.info[this.receiver]['photo']  === null ? '/assets/img/user.png' : '/assets/img/users/' + this.info[this.receiver]['photo'];
 	}
 
 	resolveCurrentChat()
 	{
-		var chx = new XMLHttpRequest(), that = this;
-			chx.onreadystatechange = function () {
+		var ch = new XMLHttpRequest(), that = this;
+			ch.onreadystatechange = function () {
 				if (this.readyState === 4) {
-					try	{
-						that.buildResolvedChat(JSON.parse(this.responseText));
-						var qe = domId('main-chat');
-						qe.scrollTop = qe.scrollHeight;
-					} catch (e) {
-						alert("Error: " + e.message);
+					that.buildCurrentChat(this.responseText);
+				}
+			};
+			ch.open("GET", "/chat/" + this.receiver +"/get");
+			ch.send(null);
+	}
+
+	buildCurrentChat(data)
+	{
+		try {
+			data = JSON.parse(data);
+			var x, main = domId('chat-field');
+			if (data.length > 0) {
+				this.main.innerHTML = "";
+				for (x in data) {
+					if (data[x]['sender'] == this.sender) {
+						this.buildChat('sender', data[x]['text'], this.sender_photo);
+					} else {
+						this.buildChat('receiver', data[x]['text'], this.receiver_photo);
+					}
+				}
+			} else {
+				domId('is-empty').value = 1;
+			}
+		} catch (e) {
+			alert("Error: " + e.message);
+		}
+	}
+
+	listen() {
+		var that = this;
+		domId('poster').addEventListener('submit', function () {
+			var context = that.buildContextStream();
+			if (context !== false) {
+				domId('text-field').readonly = 1;
+				var ch = new XMLHttpRequest();
+					ch.onreadystatechange = function () {
+						if (this.readyState === 4) {
+							domId('text-field').readonly = 0;
+							if (this.responseText === "\"ok\"") {
+								if (domId('is-empty').value == 1) {
+									that.main.innerHTML = '';
+									domId('is-empty').value = 0;
+								}
+								domId('text-field').value = "";
+								that.buildChat('sender', context['text'], that.sender_photo);
+								that.main.scrollTop = that.main.scrollHeight;
+							} else {
+								alert("Error: " + this.responseText);
+							}
+						}
+					};
+					ch.open("POST", "/chat/" + that.receiver + "/post");
+					ch.send(JSON.stringify(context));
+			}
+		});
+		setInterval(function () {
+			that.getRealtimeUpdate();
+		}, 2000);
+	}
+
+	buildChat(type, text, photo)
+	{
+		if (type === 'sender') {
+			// sender
+			this.main.innerHTML += 
+				'<div class="sender" align="right">' +
+				'<div class="c-inner sender-text">' +
+				'<p>'+text+'</p>' +
+				'</div><div class="c-inner sub-photo wd"><img src="'+photo+'" class="mini-photo"></div></div>';
+		} else {
+			// receiver
+			this.main.innerHTML += 
+				'<div class="receiver" align="left">' +
+				'<div class="c-inner sub-photo">' +
+				'<img src="'+photo+'" class="mini-photo"></div>' +
+				'<div class="c-inner receiver-text"><p>'+text+'</p></div></div>';
+		}
+	}
+
+	getRealtimeUpdate() {
+		var ch = new XMLHttpRequest(), that = this;
+			ch.onreadystatechange = function () {
+				if (this.readyState === 4) {
+					if (this.responseText !== "[]") {
+						try {
+							var q = JSON.parse(this.responseText), x;
+							if (q.length > 0) {
+								if (domId('is-empty').value == 1) {
+									that.main.innerHTML = '';
+									domId('is-empty').value = 0;
+								}
+								for (x in q) {
+									that.buildChat('receiver', q[x]['text'], that.receiver_photo);
+								}
+								that.main.scrollTop = that.main.scrollHeight;
+							}
+						} catch (e) {
+							alert("Error: " + e.message);
+						}
 					}
 				}
 			};
-			chx.withCredentials = true;
-			chx.open("GET", "/chat/" + this.rex + "/get");
-			chx.send(null);
+			ch.open("GET", "/chat/" + this.receiver + "/get?realtime_update=1");
+			ch.send();
+	}
+
+	buildContextStream()
+	{
+		var q = domId('text-field').value.trim();
+		if (q !== "") {
+			q = {
+				"user_id": this.receiver,
+				"text": q
+			};
+			return q;
+		} else {
+			return false;
+		}
 	}
 }
