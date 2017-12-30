@@ -2,6 +2,10 @@
 	font-family: Helvetica;
 }
 
+.wd {
+	margin-left: -29px;
+}
+
 .main-cage {
 	margin-top: 10px;
 	border: 1px solid #80e200;
@@ -57,7 +61,7 @@
 	background-color: #e5ffe0;
 }
 
-#txt {
+#text-field {
 	padding: 7px 0px 7px 0px;
 	width: 630px;
 }
@@ -126,9 +130,6 @@
 	border: 1px solid #000;
 }
 
-.wd {
-	margin-left: -29px;
-}
 
 .c-inner {
 	border: 1px solid #000;
