@@ -47,11 +47,16 @@ class chat {
 		domId('poster').addEventListener('submit', function () {
 			var context = that.buildContextStream();
 			if (context !== false) {
+				domId('text-field').readonly = 1;
 				var ch = new XMLHttpRequest();
 					ch.onreadystatechange = function () {
 						if (this.readyState === 4) {
+							domId('text-field').readonly = 0;
 							if (this.responseText === "\"ok\"") {
+								domId('text-field').value = "";
 								that.buildChat('sender', context['text'], that.sender_photo);
+							} else {
+								alert("Error: " + this.responseText);
 							}
 						}
 					};
@@ -59,6 +64,9 @@ class chat {
 					ch.send(JSON.stringify(context));
 			}
 		});
+		setInterval(function () {
+			that.getRealtimeUpdate();
+		}, 2000);
 	}
 
 	buildChat(type, text, photo)
@@ -78,6 +86,26 @@ class chat {
 				'<img src="'+photo+'" class="mini-photo"></div>' +
 				'<div class="c-inner receiver-text"><p>'+text+'</p></div></div>';
 		}
+	}
+
+	getRealtimeUpdate() {
+		var ch = new XMLHttpRequest(), that = this;
+			ch.onreadystatechange = function () {
+				if (this.readyState === 4) {
+					if (this.responseText !== "[]") {
+						try {
+							var q = JSON.parse(this.responseText), x;
+							for (x in q) {
+								that.buildChat('receiver', q[x]['text'], that.receiver_photo);
+							}
+						} catch (e) {
+							alert("Error: " + e.message);
+						}
+					}
+				}
+			};
+			ch.open("GET", "/chat/" + this.receiver + "/get?realtime_update=1");
+			ch.send();
 	}
 
 	buildContextStream()

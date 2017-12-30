@@ -20,23 +20,7 @@
 			</div>
 		</div>
 		<div id="chat-field">
-			<div class="sender" align="right">
-				<div class="c-inner sender-text">
-					<p>What's your name?</p>
-				</div>
-				<div class="c-inner sub-photo wd">
-					<img src="{{ empty($selfinfo['photo']) ? asset('assets/img/user.png') : asset('assets/img/users/'.$selfinfo['photo']) }}" class="mini-photo">
-				</div>
-			</div>
-
-			<div class="receiver" align="left">
-				<div class="c-inner sub-photo">
-					<img src="{{ empty($info['photo']) ? asset('assets/img/user.png') : asset('assets/img/users/'.$info['photo']) }}" class="mini-photo">
-				</div>
-				<div class="c-inner receiver-text">
-					<p> I just have developed a new lib for managing IO in Java. Its purpose is making things easier.</p>
-				</div>
-			</div>
+			<!-- Chat akan muncul di sini. Cek public/assets/js/chat.js untuk info lebih lanjut -->
 		</div>
 		<div class="form-field">
 			<form method="post" action="javascript:void(0);" id="poster">
