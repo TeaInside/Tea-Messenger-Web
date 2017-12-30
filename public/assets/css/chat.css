@@ -136,19 +136,19 @@
 	word-wrap: break-word;
 }
 
-._photo {
+.sub-photo {
 	vertical-align: middle;
 	width: 50px;
 	height: 50px;
 }
 
-._receiver_text {
+.receiver-text {
 	border: 1px solid #000;
 	width: 655px;
 	font-size: 15px;	
 }
 
-._sender_text {
+.sender-text {
 	border: 1px solid #000;
 	width: 655px;
 	font-size: 15px;
