@@ -3,13 +3,16 @@
 <head>
 	<title>{{ $name = $info['first_name'] . ($info['last_name'] ? ' ' . $info['last_name'] : '') }}</title>
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chat.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/fontawesome.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/tea-messager.css') }}">
 	<script type="text/javascript" src="{{ asset('assets/js/utils/dom.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('assets/js/chat.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('assets/js/auth/cookies.js') }}"></script>
 </head>
 <body>
 <center>
-	<div class="main-cage">
+	<div class="main-cage primary">
 		<div class="user-view">
 			<div class="name-cage sub-cage">
 				<p id="name">{{ $name }}</p>
@@ -39,7 +42,7 @@
 					</div>
 				</div>
 				<div class="submit sub-cage">
-					<button id="submit" type="submit">Send</button>
+					<button id="submit" type="submit" class="btn btn-default"><i class="fa fa-send font-icon"></i></button>
 				</div>
 			</form>
 		</div>
