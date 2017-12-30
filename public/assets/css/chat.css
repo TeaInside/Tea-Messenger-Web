@@ -1,5 +1,5 @@
 * {
-	font-family: Helvetica;
+	font-family: Open Sans;
 }
 
 .wd {
@@ -8,11 +8,10 @@
 
 .main-cage {
 	margin-top: 10px;
-	border: 1px solid #80e200;
+	border: 1px solid #284600;
 	border-radius: 5px;
 	width: 750px;
 	height: 555px;
-	background-color: #5be58b;
 }
 
 .photo {
@@ -68,12 +67,7 @@
 	
 .submit {
 	padding: 0px;
-	background-color: #70f968;
-}
-
-#submit {
-	cursor: pointer;
-	padding: 5.8px 0px 5.8px 0px;
+	background-color: #478262;
 }
 
 .attachment-icon {
