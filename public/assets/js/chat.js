@@ -27,6 +27,7 @@ class chat {
 			data = JSON.parse(data);
 			var x, main = domId('chat-field');
 			if (data.length > 0) {
+				this.main.innerHTML = "";
 				for (x in data) {
 					if (data[x]['sender'] == this.sender) {
 						this.buildChat('sender', data[x]['text'], this.sender_photo);
@@ -35,7 +36,7 @@ class chat {
 					}
 				}
 			} else {
-
+				domId('is-empty').value = 1;
 			}
 		} catch (e) {
 			alert("Error: " + e.message);
@@ -53,6 +54,10 @@ class chat {
 						if (this.readyState === 4) {
 							domId('text-field').readonly = 0;
 							if (this.responseText === "\"ok\"") {
+								if (domId('is-empty').value == 1) {
+									that.main.innerHTML = '';
+									domId('is-empty').value = 0;
+								}
 								domId('text-field').value = "";
 								that.buildChat('sender', context['text'], that.sender_photo);
 								that.main.scrollTop = that.main.scrollHeight;
@@ -96,10 +101,16 @@ class chat {
 					if (this.responseText !== "[]") {
 						try {
 							var q = JSON.parse(this.responseText), x;
-							for (x in q) {
-								that.buildChat('receiver', q[x]['text'], that.receiver_photo);
+							if (q.length > 0) {
+								if (domId('is-empty').value == 1) {
+									that.main.innerHTML = '';
+									domId('is-empty').value = 0;
+								}
+								for (x in q) {
+									that.buildChat('receiver', q[x]['text'], that.receiver_photo);
+								}
+								that.main.scrollTop = that.main.scrollHeight;
 							}
-							that.main.scrollTop = that.main.scrollHeight;
 						} catch (e) {
 							alert("Error: " + e.message);
 						}
