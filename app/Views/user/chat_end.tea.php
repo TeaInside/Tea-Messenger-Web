@@ -19,11 +19,13 @@
 			<img src="{{ empty($info['photo']) ? asset('assets/img/user.png') : asset('assets/img/users/'.$info['photo']) }}" class="photo">
 			</div>
 		</div>
+		<!-- Chat akan muncul di id chat-field. Cek public/assets/js/chat.js untuk info lebih lanjut -->
 		<div id="chat-field">
-			<!-- Chat akan muncul di sini. Cek public/assets/js/chat.js untuk info lebih lanjut -->
+			<p>No messages here yet...</p>
 		</div>
 		<div class="form-field">
 			<form method="post" action="javascript:void(0);" id="poster">
+				<input type="hidden" id="is-empty" value="0">
 				<input type="hidden" name="boundary" value="{{ rawurlencode($boundary) }}" id="boundary">
 				<div class="input sub-cage" align="left">
 					<div class="image-upload sub-cage">

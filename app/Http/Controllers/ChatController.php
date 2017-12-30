@@ -42,7 +42,7 @@ class ChatController extends Controller
                         $selfid     => [
                             "status" => "self",
                             "name" => htmlspecialchars($selfinfo['first_name'].(empty($selfinfo['last_name'])?"":" ".$selfinfo['last_name']), ENT_QUOTES, 'UTF-8'),
-                            "photo" => ($selfinfo['photo'])
+                            "photo" => null//($selfinfo['photo'])
                         ]
                     ]
                 ),
