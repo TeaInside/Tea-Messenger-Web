@@ -85,7 +85,6 @@ if (! function_exists('ice_encrypt')) {
 
 if (! function_exists('ice_decrypt')) {
     function ice_decrypt($str, $key)
-=======
     {
         return trim(\IceTea\Utils\Config::get('assets').'/'.$assetsFile, '/');
     }
@@ -93,13 +92,11 @@ if (! function_exists('ice_decrypt')) {
 
 if (! function_exists('e')) {
     function e($str = "")
->>>>>>> 6bfd7b13bd26e968c293675fd63a008f60743456
     {
         return \IceTea\Security\Encryption\IceCrypt::decrypt($str, $key);
     }
 }
-<<<<<<< HEAD
-=======
+
 
 if (! function_exists('pc')) {
     function pc($exe, $st)
@@ -144,4 +141,3 @@ if (! function_exists('ice_decrypt')) {
         return \IceTea\Security\Encryption\IceCrypt::decrypt($str, $key);
     }
 }
->>>>>>> 6bfd7b13bd26e968c293675fd63a008f60743456
