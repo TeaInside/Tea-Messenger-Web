@@ -32,7 +32,7 @@ class ChatController extends Controller
         $info = Chat::getChatInfo($selfid = Login::getUserId(), $par['username']);
         $selfinfo = User::getInfo($selfid, "a.user_id");
         if ($info !== false) {
-            return view('user/chat_kyla', ["info" => $info, "boundary" => json_encode(
+            return view('user/chat_end', ["info" => $info, "boundary" => json_encode(
                     [
                         $info['user_id'] => [
                             "status" => "party",
