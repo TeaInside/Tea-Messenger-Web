@@ -4,7 +4,7 @@
 	<title>{{ $name = $info['first_name'] . ($info['last_name'] ? ' ' . $info['last_name'] : '') }}</title>
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/chat.css') }}">
 	<script type="text/javascript" src="{{ asset('assets/js/utils/dom.js') }}"></script>
-	<!-- <script type="text/javascript" src="{{ asset('assets/js/chat.js'.'?t='.time()) }}"></script> -->
+	<script type="text/javascript" src="{{ asset('assets/js/chat.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('assets/js/auth/cookies.js') }}"></script>
 </head>
 <body>
@@ -40,7 +40,7 @@
 		</div>
 		<div class="form-field">
 			<form method="post" action="javascript:void(0);" id="poster">
-				<input type="hidden" name="boundary" value="{{ rawurlencode($boundary) }}">
+				<input type="hidden" name="boundary" value="{{ rawurlencode($boundary) }}" id="boundary">
 				<div class="input sub-cage" align="left">
 					<div class="image-upload sub-cage">
 						<label for="file-input">
@@ -49,7 +49,7 @@
 						<input id="file-input" type="file"/>
 					</div>
 					<div class="sub-cage">
-						<input type="text" name="txt" autocomplete="off" id="txt">
+						<input type="text" name="text-field" autocomplete="off" id="text-field">
 					</div>
 				</div>
 				<div class="submit sub-cage">
@@ -59,12 +59,9 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		/*var ch = new chat({{ $info['user_id'] }}, {{ $selfinfo['user_id'] }});
+		var ch = new chat({{ $info['user_id'] }}, {{ $selfinfo['user_id'] }});
 			ch.resolveCurrentChat();
 			ch.listen();
-			setInterval(function () {
-				ch.getRealtimeUpdate();
-			}, 2000);*/
 	</script>
 </center>
 </body>
