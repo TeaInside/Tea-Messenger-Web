@@ -20,7 +20,7 @@ class Route
      */
     public static function get($route, $action)
     {
-       return Collector::collect($route, $action, 'GET');
+        return Collector::collect($route, $action, 'GET');
 
     }
 
