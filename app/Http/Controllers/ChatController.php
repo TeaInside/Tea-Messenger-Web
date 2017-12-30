@@ -71,9 +71,11 @@ class ChatController extends Controller
         Authenticated::login();
         header("Content-type:application/json");
         $a = json_decode(file_get_contents("php://input"), true);
-        $receiverId = $par['username'];
+        $receiverId = $a['user_id'];
         if ($receiverId !== false) {
-            print Chat::privatePost(Login::getUserId(), $receiverId, $a['text']);
+            if (trim($a['text']) !== ""){
+                print Chat::privatePost(Login::getUserId(), $receiverId, trim($a['text']));
+            }
         }
     }
 }
