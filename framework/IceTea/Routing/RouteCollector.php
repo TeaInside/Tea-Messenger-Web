@@ -41,9 +41,22 @@ class RouteCollector
      */
     public static function collect($route, $action, $method)
     {
+    			if (is_array($action)) {
+    				if (! isset($action['uses'])) {
+    					throw new \Exception("Invalid route action.");
+    				}
+    				$ins = self::getInstance();
+        	$ins->routes[$route][$method] = $action['uses'];
+						$c = RouteNameHandler::saveName($route);
+						if (isset($action['as'])) {
+								$c->name($action['as']);
+								return null;
+						} 
+    				return $c;
+    			}
         $ins = self::getInstance();
         $ins->routes[$route][$method] = $action;
-
+					return RouteNameHandler::saveName($route);
     }
 
 

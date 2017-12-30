@@ -34,7 +34,7 @@ if (! function_exists('basepath')) {
 if (! function_exists('asset')) {
     function asset($assetsFile = '')
     {
-        return trim(\IceTea\Utils\Config::get('assets').'/'.$assetsFile."?t=".time(), '/');
+        return trim(\IceTea\Utils\Config::get('assets').'/'.$assetsFile, '/');
     }
 }
 
@@ -86,58 +86,14 @@ if (! function_exists('ice_encrypt')) {
 if (! function_exists('ice_decrypt')) {
     function ice_decrypt($str, $key)
     {
-        return trim(\IceTea\Utils\Config::get('assets').'/'.$assetsFile, '/');
-    }
-}
-
-if (! function_exists('e')) {
-    function e($str = "")
-    {
         return \IceTea\Security\Encryption\IceCrypt::decrypt($str, $key);
     }
 }
 
 
-if (! function_exists('pc')) {
-    function pc($exe, $st)
-    {
-        if (! $exe) {
-            throw new \Exception(get_class($st).": ".json_encode($st->errorInfo()), 1);
-        }
-    }
-}
-
-if (! function_exists('abort')) {
-    function abort($httpCode)
-    {
-        \IceTea\View\View::make(view('errors/'.$httpCode));
-        exit($httpCode);
-    }
-}
-
-if (! function_exists('rstr')) {
-    function rstr($n = 32, $l = null)
-    {
-        $q = "";
-        $l = is_string($l) ? $l : "_____1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
-        $len = strlen($l) - 1;
-        for ($i=0; $i < $n; $i++) {
-            $q .= $l[rand(0, $len)];
-        }
-        return $q;
-    }
-}
-
-if (! function_exists('ice_encrypt')) {
-    function ice_encrypt($str, $key)
-    {
-        return \IceTea\Security\Encryption\IceCrypt::encrypt($str, $key);
-    }
-}
-
-if (! function_exists('ice_decrypt')) {
-    function ice_decrypt($str, $key)
-    {
-        return \IceTea\Security\Encryption\IceCrypt::decrypt($str, $key);
-    }
+if (! function_exists('route')) {
+	function route($name, ...$params)
+	{
+		return str_replace("//", "/", env("APP_URL") . \IceTea\Routing\RouteNameHandler::getRoute($name, ...$params));
+	}
 }

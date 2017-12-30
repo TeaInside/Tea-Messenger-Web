@@ -20,7 +20,7 @@ class Route
      */
     public static function get($route, $action)
     {
-        Collector::collect($route, $action, 'GET');
+       return Collector::collect($route, $action, 'GET');
 
     }
 
@@ -33,7 +33,7 @@ class Route
      */
     public static function post($route, $action)
     {
-        Collector::collect($route, $action, 'POST');
+        return Collector::collect($route, $action, 'POST');
 
     }
 
@@ -46,7 +46,7 @@ class Route
      */
     public static function any($route, $action)
     {
-        Collector::collect($route, $action, true);
+        return Collector::collect($route, $action, true);
 
     }
 }
