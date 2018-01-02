@@ -24,12 +24,17 @@
 
 # Penggunaan Framework :
 
+## Installasi Manual
+- Clone terlebih dahulu repo Master Framework Icetea
+- Jalan kan `composer install`
+- setelah itu copy `.env.example` jadi `.env` dan atur sesuai isi database pada mesin anda
+
 ## Local Development Server
 Jika anda menginstall PHP secara local dan anda ingin menjalankan sever mode development bawaan php anda bisa menggunakan perintah
 
 `php icetea serve`
 
-dan akan jalan pada pada http://localhost:8000
+dan akan jalan pada pada http://localhost:8001
 
 ## Helpers
 Icetea Framework dapat menggunaan fungsi global bawaan php, namun Icetea juga mempunya fitur-fitur helper sendiri yang dapat digunakan dalam membangun sebuah aplikasi menggunakan framework Icetea, anda bebas menggunakan untuk kepentingan aplikasi anda.
