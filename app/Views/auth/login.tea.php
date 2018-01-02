@@ -22,7 +22,7 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-6 col-md-4 col-md-offset-4">
+			<div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
 				<div class="login-wall">
 					<h3 class="text-center login-title">Tea Messenger</h3>
 					<div class="col-md-12">
