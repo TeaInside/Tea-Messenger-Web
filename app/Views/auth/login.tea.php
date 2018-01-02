@@ -38,8 +38,8 @@
 							<input type="hidden" name="cost" value="{{ rstr(32) }}" id="cost">
 						</div>
 						<p class="text-center">
-							<a href="/forgot-password">Forgot Password</a><br>
-							<span>Need an account? <a href="/register">Sign up.</a></span>
+							<a href="{{ route('forgot-password') }}">Forgot Password</a><br>
+							<span>Need an account? <a href="{{ route('register') }}">Sign up.</a></span>
                      	</p>
 					</form>
 				</div>
