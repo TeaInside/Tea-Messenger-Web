@@ -1,3 +1,10 @@
+body {
+	background-color: #478262;
+	background-size: cover;
+}
+/**
+ * Color
+ */
 .primary {
 	background-color: #478262;
 }
@@ -6,11 +13,7 @@
 	background-color: #6c9b81;
 }
 
-.primary-6 {
-	background-color: #91b4a1;
-}
-
-.primary-4 {
+.primary-6 { background-color: #91b4a1; } .primary-4 {
 	background-color: #b4cdc0;
 }
 
@@ -20,4 +23,152 @@
 
 .font-icon {
 	font-size: 25px;
+}
+
+/**
+ * Chat Field
+ */
+#chat-field {
+	margin-top: 75px;
+	width: auto;
+	height: auto;
+	border-radius: 3px;
+	flex: 0 1 auto;
+  	flex-flow: column nowrap;
+  	justify-content: flex-end;
+}
+
+.receiver {
+	width: 100%;
+	height: 50px;
+	margin-top: 4px;
+}
+
+.sender {
+	width: 100%;
+	height: 50px;
+	margin-top: 4px;
+}
+
+/**
+ * Photos
+ */
+.photo-cage {
+	float: right;
+}
+
+.photo {
+	width: 65px;
+	height: 65px;
+	margin: 5px 10px 0px 0px;
+	border-radius: 100%;
+}
+
+.mini-photo {
+	width: 40px;
+	height: 40px;
+	border-radius: 100%;
+}
+
+.sub-photo {
+	width: 50px;
+	height: 50px;
+}
+
+.name-cage {
+	float: left;
+	margin: 2px 40px;
+}
+
+#last-seen {
+	margin-top: -12px;
+	font-size: 12px;
+}
+
+.c-inner {
+	display: inline-block;
+	word-wrap: break-word;
+}
+
+.receiver-text {
+	width: 655px;
+	margin-left: 3px;
+	font-size: 15px;	
+}
+
+.sender-text {
+	width: 655px;
+	margin-right: 33px;
+	font-size: 15px;
+}
+
+.line-break {
+  width: 100%;
+}
+
+/**
+ * Button (Tombol)
+ */
+
+.btn-send {
+	-webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+    opacity: 0.9;
+    margin-left: 26px;
+    margin-bottom: 8px;
+}
+
+button {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/**
+ * Form untuk menulis pesan ( Message )
+ */
+.form-control {
+	border:0;
+	outline:0;
+	border-bottom: 1px solid #93d8b3;
+}
+
+.form-control:focus {
+	border-bottom: 1px solid #478262;
+  	-webkit-box-shadow: 0 1px 0 0 #478262;
+  	-moz-box-shadow: 0 1px 0 0 #478262;
+ 	 box-shadow: 0 1px 0 0 #478262;
+}
+
+
+/**
+ * Input File
+ */
+input[type=file]{
+	width: 30px;
+	height: 30px;
+}
+
+input{
+	display: none;
+	border: 0;
+    padding: 0;
+    margin: 0;
+    background: none;
+    outline: none;
+    font-family: inherit;
+}
+
+.reply-emojis > input {
+	display: none;
+}
+
+img {
+    cursor: pointer;
+	width: 30px;
+	height: 30px;
 }

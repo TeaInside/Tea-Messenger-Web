@@ -31,4 +31,9 @@ class IndexController extends Controller
             return $login->loginPage();
         }
     }
+
+	public function coba()
+	{
+		return view('user/cobacoba');
+	}
 }

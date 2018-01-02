@@ -17,6 +17,11 @@
 - sesuaikan konfirmasi database anda
 - run service `php icetea serve`
 
+##### Ketentuan Css dan Penulisan Front End
+- untuk menambahkan css silahkan taruh sesuai dengan colom komentar
+- untuk untuk mohon hapus name css yang tidak terpakai untuk performa app
+
+
 # Penggunaan Framework :
 
 ## Local Development Server

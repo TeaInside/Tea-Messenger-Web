@@ -9,7 +9,9 @@ use IceTea\Routing\Route;
 | Here is where you can register web routes for your application.
 | This file will be loaded by \App\Providers\RouteServiceProvider.
 */
-
+// sample
+Route::get("/coba", "IndexController@coba");
+// endsampel
 Route::get("/", "IndexController@index");
 Route::post("/login", "Auth\\LoginController@action");
 Route::get("/login", "Auth\\LoginController@indexLogin")->name('login');
