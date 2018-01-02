@@ -39,7 +39,7 @@ final class RouteBinding
     /**
      * @return \IceTea\Routing\BindedValue
      */
-    public function getBindedValue()
+    public static function getBindedValue()
     {
         return new BindedValue(self::getInstance()->binded);
 
