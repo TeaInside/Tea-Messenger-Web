@@ -94,6 +94,6 @@ if (! function_exists('ice_decrypt')) {
 if (! function_exists('route')) {
     function route($name, ...$params)
     {
-        return  rtrim(env("APP_URL"), "/").trim(str_replace("//", "/", \IceTea\Routing\RouteNameHandler::getRoute($name, ...$params)), "/");
+        return  rtrim(env("APP_URL"), "/")."/".trim(\IceTea\Routing\RouteNameHandler::getRoute($name, ...$params), "/");
     }
 }
