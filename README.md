@@ -37,7 +37,7 @@ Icetea Framework dapat menggunaan fungsi global bawaan php, namun Icetea juga me
 ### Methods yang tersedia antara lain
 1. Urls
 - asset()
-- $route
+- route()
 - $action
 
 ---
