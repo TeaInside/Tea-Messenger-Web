@@ -70,6 +70,7 @@ class ForeachTest extends TestCase
 			'.
 			'<?php endforeach; ?>';
 
+
 		$this->assertEquals(
 			static::isolator($context, '\IceTea\View\Compilers\Components\Loops'), $result
 		);
