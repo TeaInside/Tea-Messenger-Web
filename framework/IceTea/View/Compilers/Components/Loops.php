@@ -26,10 +26,8 @@ class Loops extends ComponentFoundation implements Component
             	foreach ($next_string as $string) {
             		if ($string === "(") {
             			$cost++;
-            		} elseif ($string) {
-
             		}
-
+            		
             		if ($flag) {
             			$back .= $string;
             		} else {
