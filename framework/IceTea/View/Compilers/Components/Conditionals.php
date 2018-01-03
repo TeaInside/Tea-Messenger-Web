@@ -83,10 +83,7 @@ class Conditionals extends ComponentFoundation implements Component
     {
         $tmp = explode("\n", $this->skeleton->getRaw());
         foreach ($tmp as $key => &$val) {
-            $_val = explode("@else", $val);
-            if (sizeof($_val) > 1) {
-            	$val = "<?php else: ?>";
-           	}
+            $val = str_replace('@else', '<?php else: ?>', $val);
         }
         $this->skeleton->setRaw(implode("\n", $tmp));
     }
@@ -95,10 +92,7 @@ class Conditionals extends ComponentFoundation implements Component
     {
         $tmp = explode("\n", $this->skeleton->getRaw());
         foreach ($tmp as $key => &$val) {
-            $_val = explode("@endif", $val);
-            if (sizeof($_val) > 1) {
-            	$val = "<?php endif; ?>";
-           	}
+            $val = str_replace('@endif', '<?php endif; ?>', $val);
         }
         $this->skeleton->setRaw(implode("\n", $tmp));
     }
@@ -107,10 +101,7 @@ class Conditionals extends ComponentFoundation implements Component
     {
         $tmp = explode("\n", $this->skeleton->getRaw());
         foreach ($tmp as $key => &$val) {
-            $_val = explode("@endunless", $val);
-            if (sizeof($_val) > 1) {
-            	$val = "<?php endif; ?>";
-           	}
+            $val = str_replace('@endunless', '<?php endif; ?>', $val);
         }
         $this->skeleton->setRaw(implode("\n", $tmp));
     }
@@ -139,10 +130,7 @@ class Conditionals extends ComponentFoundation implements Component
     {
         $tmp = explode("\n", $this->skeleton->getRaw());
         foreach ($tmp as $key => &$val) {
-            $_val = explode("@endisset", $val);
-            if (sizeof($_val) > 1) {
-            	$val = "<?php endif; ?>";
-           	}
+            $val = str_replace('@endisset', '<?php endif; ?>', $val);
         }
         $this->skeleton->setRaw(implode("\n", $tmp));
     }
