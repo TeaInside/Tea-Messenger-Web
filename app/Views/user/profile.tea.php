@@ -33,7 +33,7 @@
 						<tr>
 							<td align="center" colspan="3">
 								<div style="margin-bottom: 10%;">
-									<a href="/profile/change_photo" class="linker" id="change-photo"><span>Change photo</span></a>
+									<a href="{{ route('change_photo') }}" class="linker" id="change-photo"><span>Change photo</span></a>
 								</div>
 							</td>
 						</tr>

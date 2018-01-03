@@ -11,7 +11,7 @@
 <body>
 <center>
 <h1>Register success!</h1>
-<button onclick="window.location='/login';">Login</button>
+<button onclick="window.location='{{ route('login') }}';">Login</button>
 </center>
 </body>
 </html>

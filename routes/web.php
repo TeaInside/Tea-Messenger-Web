@@ -25,7 +25,7 @@ Route::get("/chat/{username}/get", "ChatController@get");
 Route::post("/chat/{username}/post", "ChatController@post");
 Route::get("/profile", "ProfileController@index")->name('profile');
 Route::post("/profile/change_info", "ProfileController@changeInfo");
-Route::get("/profile/change_photo", "ProfileController@changePhotoPage");
+Route::get("/profile/change_photo", "ProfileController@changePhotoPage")->name('change_photo');
 Route::post("/profile/change_photo", "ProfileController@changePhoto");
 Route::post("/profile/change_password", "ProfileController@changePassword");
 Route::get('/forgot-password', "ForgotPasswordController@index")->name('forgot-password');
