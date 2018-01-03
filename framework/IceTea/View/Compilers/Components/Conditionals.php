@@ -29,7 +29,7 @@ class Conditionals extends ComponentFoundation implements Component
                     if ($k > 0) {
                         $a = explode(")", $v, 2);
                         if (sizeof($a) > 1) {
-                            $v = "<?php if(".$a[0]."):?>".$a[1];
+                            $v = "<?php if(".$a[0]."): ?>".$a[1];
                         }
                     }
                 }
@@ -49,7 +49,7 @@ class Conditionals extends ComponentFoundation implements Component
                     if ($k > 0) {
                         $a = explode(")", $v, 2);
                         if (sizeof($a) > 1) {
-                            $v = "<?php if(!".$a[0]."):?>".$a[1];
+                            $v = "<?php if(!".$a[0]."): ?>".$a[1];
                         }
                     }
                 }
@@ -69,7 +69,7 @@ class Conditionals extends ComponentFoundation implements Component
                     if ($k > 0) {
                         $a = explode(")", $v, 2);
                         if (sizeof($a) > 1) {
-                            $v = "<?php elseif(".$a[0]."):?>".$a[1];
+                            $v = "<?php elseif(".$a[0]."): ?>".$a[1];
                         }
                     }
                 }
@@ -116,7 +116,7 @@ class Conditionals extends ComponentFoundation implements Component
                     if ($k > 0) {
                         $a = explode(")", $v, 2);
                         if (sizeof($a) > 1) {
-                            $v = "<?php if(isset(".$a[0].")):?>".$a[1];
+                            $v = "<?php if(isset(".$a[0].")): ?>".$a[1];
                         }
                     }
                 }
