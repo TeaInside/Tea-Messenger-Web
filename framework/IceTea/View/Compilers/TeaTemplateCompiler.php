@@ -6,6 +6,7 @@ use IceTea\Utils\Config;
 use IceTea\View\ViewSkeleton;
 use IceTea\View\Compilers\Components\Layout;
 use IceTea\View\Compilers\Components\CurlyInvoker;
+use IceTea\View\Compilers\Components\Conditionals;
 
 class TeaTemplateCompiler
 {
@@ -98,6 +99,9 @@ class TeaTemplateCompiler
         $comp->compile();
         $this->skeleton = $comp->getSkeleton();
         $comp = new CurlyInvoker($this->skeleton);
+        $comp->compile();
+        $this->skeleton = $comp->getSkeleton();
+        $comp = new Conditionals($this->skeleton);
         $comp->compile();
         $this->skeleton = $comp->getSkeleton();
     }
