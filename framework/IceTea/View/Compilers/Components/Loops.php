@@ -16,10 +16,11 @@ class Loops extends ComponentFoundation implements Component
 	{
 		$tmp = explode("\n", $this->skeleton->getRaw());
         foreach ($tmp as $key => &$val) {
-            $_val = explode("@foreach(", $val);
+            $_val = explode("@foreach", $val);
             if (sizeof($_val) > 1) {
-            	
+            	# code...
             }
+
 		}
         $this->skeleton->setRaw(implode("\n", $tmp));
 	}

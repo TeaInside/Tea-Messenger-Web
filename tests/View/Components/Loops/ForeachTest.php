@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\View;
+namespace Tests\View\Components\Loops\View;
 
 use IceTea\View\ViewSkeleton;
 use IceTea\View\ViewVariables;
@@ -30,6 +30,11 @@ class ForeachTest extends TestCase
 			{
 				$this->raw = $context;
 			}
+
+			public function __toString()
+			{
+				return $this->getRaw();
+			}
 		};
 	}
 
@@ -41,7 +46,7 @@ class ForeachTest extends TestCase
 		$comp = new $class($skeleton);
         $comp->compile();
 
-		return $comp->getSkeleton();
+		return $comp->getSkeleton()->__toString();
 	}
 
 

@@ -12,9 +12,8 @@
         <testsuite name="Security">
             <directory suffix="Test.php">./tests/Security</directory>
         </testsuite>
-
-        <testsuite name="Example">
-            <directory suffix="Test.php">./tests</directory>
+        <testsuite name="View">
+            <directory suffix="Test.php">./tests/View</directory>
         </testsuite>
     </testsuites>
     <filter>
