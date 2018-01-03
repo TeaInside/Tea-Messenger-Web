@@ -22,7 +22,7 @@ class CurlyInvoker extends ComponentFoundation implements Component
                     if ($k > 0) {
                         $a = explode("}}", $v, 2);
                         if (sizeof($a) > 1) {
-                            $v = "<?php e(".$a[0]."); ?>".$a[1];
+                            $v = "<?php echo e(".$a[0]."); ?>".$a[1];
                         }
                     }
                 }

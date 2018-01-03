@@ -54,14 +54,14 @@ class CurlyBracesEscapeHtmlTest extends TestCase
 	{
 
 		$context = '{{ $a }}';
-		$result = '<?php e( $a ); ?>';
+		$result = '<?php echo e( $a ); ?>';
 
 		$this->assertEquals(
 			static::isolator($context, '\IceTea\View\Compilers\Components\CurlyInvoker'), $result
 		);
 
 		$context = '{{sin(30)}}';
-		$result = '<?php e(sin(30)); ?>';
+		$result = '<?php echo e(sin(30)); ?>';
 
 		$this->assertEquals(
 			static::isolator($context, '\IceTea\View\Compilers\Components\CurlyInvoker'), $result
@@ -71,21 +71,21 @@ class CurlyBracesEscapeHtmlTest extends TestCase
 	public function testComplex()
 	{
 		$context = '<a href="{{$a}}">Home</a><a href="{{$b}}">Profile</a><a href="{{route(\'logout\')}}">Profile</a>';
-		$result = '<a href="<?php e($a); ?>">Home</a><a href="<?php e($b); ?>">Profile</a><a href="<?php e(route(\'logout\')); ?>">Profile</a>';
+		$result = '<a href="<?php echo e($a); ?>">Home</a><a href="<?php echo e($b); ?>">Profile</a><a href="<?php echo e(route(\'logout\')); ?>">Profile</a>';
 
 		$this->assertEquals(
 			static::isolator($context, '\IceTea\View\Compilers\Components\CurlyInvoker'), $result
 		);
 
 		$context = '{{ $a === 10 ? "Ten" : "Unknown" }}';
-		$result = '<?php e( $a === 10 ? "Ten" : "Unknown" ); ?>';
+		$result = '<?php echo e( $a === 10 ? "Ten" : "Unknown" ); ?>';
 
 		$this->assertEquals(
 			static::isolator($context, '\IceTea\View\Compilers\Components\CurlyInvoker'), $result
 		);
 
 		$context = '{{ (($a === 10 ? "Ten" : ($a === 9 ? "Nine" : ($a === 8 ? "Eight" : "Unknown")))) }}';
-		$result = '<?php e( (($a === 10 ? "Ten" : ($a === 9 ? "Nine" : ($a === 8 ? "Eight" : "Unknown")))) ); ?>';
+		$result = '<?php echo e( (($a === 10 ? "Ten" : ($a === 9 ? "Nine" : ($a === 8 ? "Eight" : "Unknown")))) ); ?>';
 		$this->assertEquals(
 			static::isolator($context, '\IceTea\View\Compilers\Components\CurlyInvoker'), $result
 		);
