@@ -12,19 +12,37 @@ class ForeachTest extends TestCase
 
 	private static function makeSkeleton($context)
 	{
-		return new ViewSkeleton($context, new ViewVariables([]), "testing");
+		return new class ($context) {
+
+			private $raw;
+
+			public function __construct($context)
+			{
+				$this->raw = $context;
+			}
+
+			public function getRaw()
+			{
+				return $this->raw;
+			}
+
+			public function setRaw($context)
+			{
+				$this->raw = $context;
+			}
+		};
 	}
 
 	private static function isolator($context, $class)
 	{
-		$skeleton = static::makeSkeleton($context);	
+
+		$skeleton = self::makeSkeleton($context);
 
 		$comp = new $class($skeleton);
         $comp->compile();
 
 		return $comp->getSkeleton();
 	}
-
 
 
 	public function testForeachWithArrow()
@@ -82,8 +100,6 @@ class ForeachTest extends TestCase
 
 
 
-
-
 	public function testComplexForeach()
 	{
 
@@ -115,6 +131,23 @@ class ForeachTest extends TestCase
 				<tr><td></td></tr>
 				</table>
 			'.
+			'@endforeach';
+		$result =
+			'<?php foreach(((\App\User::get())) as $value): ?>'."\n".
+			'
+				<table>
+				<tr><td></td></tr>
+				</table>
+			'.
+			'<?php endforeach; ?>';
+		$this->assertEquals(
+			static::isolator($context, '\IceTea\View\Compilers\Components\Loops'), $result
+		);
+
+
+		$context = 
+			'@foreach(((\App\User::get())) as $value)'."\n".
+				'@foreach()'."\n".
 			'@endforeach';
 		$result =
 			'<?php foreach(((\App\User::get())) as $value): ?>'."\n".

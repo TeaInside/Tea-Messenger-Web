@@ -18,7 +18,7 @@ class Loops extends ComponentFoundation implements Component
         foreach ($tmp as $key => &$val) {
             $_val = explode("@foreach(", $val);
             if (sizeof($_val) > 1) {
-            	var_dump($_val);die;
+            	
             }
 		}
         $this->skeleton->setRaw(implode("\n", $tmp));

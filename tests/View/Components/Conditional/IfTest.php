@@ -12,12 +12,31 @@ class IfTest extends TestCase
 
 	private static function makeSkeleton($context)
 	{
-		return new ViewSkeleton($context, new ViewVariables([]), "testing");
+		return new class ($context) {
+
+			private $raw;
+
+			public function __construct($context)
+			{
+				$this->raw = $context;
+			}
+
+			public function getRaw()
+			{
+				return $this->raw;
+			}
+
+			public function setRaw($context)
+			{
+				$this->raw = $context;
+			}
+		};
 	}
 
 	private static function isolator($context, $class)
 	{
-		$skeleton = static::makeSkeleton($context);	
+
+		$skeleton = self::makeSkeleton($context);
 
 		$comp = new $class($skeleton);
         $comp->compile();
@@ -39,7 +58,7 @@ class IfTest extends TestCase
 			'<?php endif; ?>';
 
 		$this->assertEquals(
-			static::isolator($context, '\IceTea\View\Compilers\Components\Conditionals'), $result
+			self::isolator($context, '\IceTea\View\Compilers\Components\Conditionals'), $result
 		);
 	}
 
@@ -56,7 +75,7 @@ class IfTest extends TestCase
 			'<?php endif; ?>';
 
 		$this->assertEquals(
-			static::isolator($context, '\IceTea\View\Compilers\Components\Conditionals'), $result
+			self::isolator($context, '\IceTea\View\Compilers\Components\Conditionals'), $result
 		);
 	}
 
@@ -66,7 +85,7 @@ class IfTest extends TestCase
 		$result = '<?php if($x > 100): ?>ABCDEFG<?php endif; ?>';
 
 		$this->assertEquals(
-			static::isolator($context, '\IceTea\View\Compilers\Components\Conditionals'), $result
+			self::isolator($context, '\IceTea\View\Compilers\Components\Conditionals'), $result
 		);
 	}
 
@@ -88,7 +107,7 @@ class IfTest extends TestCase
 			'<?php endif; ?>';
 
 		$this->assertEquals(
-			static::isolator($context, '\IceTea\View\Compilers\Components\Conditionals'), $result
+			self::isolator($context, '\IceTea\View\Compilers\Components\Conditionals'), $result
 		);
 
 
@@ -97,7 +116,7 @@ class IfTest extends TestCase
 		$result = '<?php if(sizeof($x) > 100 && ($y % 100 === 10) || ($is_superUser === true)): ?>---123123123123---<?php endif; ?>';
 
 		$this->assertEquals(
-			static::isolator($context, '\IceTea\View\Compilers\Components\Conditionals'), $result
+			self::isolator($context, '\IceTea\View\Compilers\Components\Conditionals'), $result
 		);
 
 
@@ -115,7 +134,7 @@ class IfTest extends TestCase
 					'<?php endif; ?>';
 
 		$this->assertEquals(
-			static::isolator($context, '\IceTea\View\Compilers\Components\Conditionals'), $result
+			self::isolator($context, '\IceTea\View\Compilers\Components\Conditionals'), $result
 		);
 	}
 }
