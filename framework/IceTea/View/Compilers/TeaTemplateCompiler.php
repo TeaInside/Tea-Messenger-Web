@@ -5,8 +5,9 @@ namespace IceTea\View\Compilers;
 use IceTea\Utils\Config;
 use IceTea\View\ViewSkeleton;
 use IceTea\View\Compilers\Components\Layout;
-use IceTea\View\Compilers\Components\CurlyInvoker;
+use IceTea\View\Compilers\Components\Comments;
 use IceTea\View\Compilers\Components\Conditionals;
+use IceTea\View\Compilers\Components\CurlyInvoker;
 
 class TeaTemplateCompiler
 {
@@ -98,10 +99,13 @@ class TeaTemplateCompiler
         $comp = new Layout($this->skeleton);
         $comp->compile();
         $this->skeleton = $comp->getSkeleton();
-        $comp = new CurlyInvoker($this->skeleton);
+        $comp = new Comments($this->skeleton);
         $comp->compile();
         $this->skeleton = $comp->getSkeleton();
         $comp = new Conditionals($this->skeleton);
+        $comp->compile();
+        $this->skeleton = $comp->getSkeleton();
+        $comp = new CurlyInvoker($this->skeleton);
         $comp->compile();
         $this->skeleton = $comp->getSkeleton();
     }
