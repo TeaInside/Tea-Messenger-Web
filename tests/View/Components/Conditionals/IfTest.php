@@ -98,8 +98,8 @@ class IfTest extends TestCase
 	{
 
 		// if with space in begining
-		$context = '@if ($x === 1) hello world @endif';
-		$result = '<?php if ($x === 1): ?> hello world <?php endif; ?>';
+		$context = 'aaa @if ($x === 1) hello world @endif bbb';
+		$result = 'aaa <?php if ($x === 1): ?> hello world <?php endif; ?> bbb';
 
 		// complex conditions
 		$context = 
