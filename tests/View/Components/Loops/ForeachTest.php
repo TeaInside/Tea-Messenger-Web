@@ -148,14 +148,14 @@ class ForeachTest extends TestCase
 		$context = 
 			'@foreach(((\App\User::get())) as $value)'."\n".
 				'@foreach($q as $w)'."\n".
-					'hello world'."\n"
-				'@endforeach'."\n"
+					'hello world'."\n".
+				'@endforeach'."\n".
 			'@endforeach';
 		$result =
 			'<?php foreach(((\App\User::get())) as $value): ?>'."\n".
 				'<?php foreach($q as $w): ?>'."\n".
-					'hello world'."\n"
-				'<?php endforeach; ?>'."\n"
+					'hello world'."\n".
+				'<?php endforeach; ?>'."\n".
 			'<?php endforeach; ?>';
 		$this->assertEquals(
 			static::isolator($context, '\IceTea\View\Compilers\Components\Loops'), $result
