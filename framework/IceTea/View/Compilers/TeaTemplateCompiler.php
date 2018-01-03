@@ -8,6 +8,7 @@ use IceTea\View\Compilers\Components\Layout;
 use IceTea\View\Compilers\Components\Comments;
 use IceTea\View\Compilers\Components\Conditionals;
 use IceTea\View\Compilers\Components\CurlyInvoker;
+use IceTea\View\Compilers\Components\RawPhp;
 
 class TeaTemplateCompiler
 {
@@ -106,6 +107,9 @@ class TeaTemplateCompiler
         $comp->compile();
         $this->skeleton = $comp->getSkeleton();
         $comp = new CurlyInvoker($this->skeleton);
+        $comp->compile();
+        $this->skeleton = $comp->getSkeleton();
+        $comp = new RawPhp($this->skeleton);
         $comp->compile();
         $this->skeleton = $comp->getSkeleton();
     }
