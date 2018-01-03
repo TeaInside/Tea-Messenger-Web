@@ -34,7 +34,9 @@ Route::get("/groupchat/{groupname}", "GroupChatController@to");
 Route::get("/groupchat/{groupname}/get", "GroupChatController@get");
 Route::post("/groupchat/{groupname}/post", "GroupChatController@post");
 Route::get("/test/{test_id}", function ($param) {
-	return view("tests/{$param['test_id']}");
+    return view("tests/{$param['test_id']}");
 })->name('test');
-Route::get("/test2/{abc}/{def}", function () {})->name('test2');
-Route::get("/testa", ["uses"=>function(){}, "as"=>"testa"]);
+Route::get("/test2/{abc}/{def}", function () {
+})->name('test2');
+Route::get("/testa", ["uses"=>function () {
+}, "as"=>"testa"]);

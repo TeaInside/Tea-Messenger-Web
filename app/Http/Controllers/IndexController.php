@@ -32,8 +32,8 @@ class IndexController extends Controller
         }
     }
 
-	public function coba()
-	{
-		return view('user/cobacoba');
-	}
+    public function coba()
+    {
+        return view('user/cobacoba');
+    }
 }

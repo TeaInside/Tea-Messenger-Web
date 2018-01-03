@@ -15,12 +15,12 @@ class Authenticated
     public static function login($code = 404, $redir = false)
     {
         if (! Login::isLoggedIn()) {
-        	if (is_string($redir)) {
-        		header("location:".$redir);
-        	} else {
-        		abort($code);
-            	exit($code);
-        	}
+            if (is_string($redir)) {
+                header("location:".$redir);
+            } else {
+                abort($code);
+                exit($code);
+            }
         }
     }
 }

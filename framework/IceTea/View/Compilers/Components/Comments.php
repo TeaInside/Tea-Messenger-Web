@@ -16,7 +16,7 @@ class Comments extends ComponentFoundation implements Component
     {
         $tmp = explode("\n", $this->skeleton->getRaw());
         foreach ($tmp as $key => &$val) {
-        	$val = preg_replace('/{{--(.*?)--}}/s', '', $val);
+            $val = preg_replace('/{{--(.*?)--}}/s', '', $val);
         }
         $this->skeleton->setRaw(implode("\n", $tmp));
     }

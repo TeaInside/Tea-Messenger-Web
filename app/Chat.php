@@ -36,7 +36,7 @@ class Chat extends Model
 
     public static function getChatRoom($self, $username)
     {
-        $a = User::getInfo($username, "a.username");        
+        $a = User::getInfo($username, "a.username");
     }
 
     public static function privatePost($sender, $receiver, $text)

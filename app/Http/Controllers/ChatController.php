@@ -33,7 +33,7 @@ class ChatController extends Controller
         $selfinfo = User::getInfo($selfid, "a.user_id");
         if ($info !== false) {
             return view('user/chat_end', ["info" => $info, "boundary" => json_encode(
-                    [
+                [
                         $info['user_id'] => [
                             "status" => "party",
                             "name" => htmlspecialchars($info['first_name'].(empty($info['last_name'])?"":" ".$info['last_name']), ENT_QUOTES, 'UTF-8'),
@@ -45,10 +45,9 @@ class ChatController extends Controller
                             "photo" => ($selfinfo['photo'])
                         ]
                     ]
-                ),
+            ),
                 "selfinfo" => $selfinfo
-            ]
-        );
+            ]);
         }
         abort(404);
     }
@@ -73,7 +72,7 @@ class ChatController extends Controller
         $a = json_decode(file_get_contents("php://input"), true);
         $receiverId = $a['user_id'];
         if ($receiverId !== false) {
-            if (trim($a['text']) !== ""){
+            if (trim($a['text']) !== "") {
                 print Chat::privatePost(Login::getUserId(), $receiverId, trim($a['text']));
             }
         }
