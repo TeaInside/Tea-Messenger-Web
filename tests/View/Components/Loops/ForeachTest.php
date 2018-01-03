@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\View\Components\Loops\View;
+namespace Tests\View\Components\View\Loops;
 
 use IceTea\View\ViewSkeleton;
 use IceTea\View\ViewVariables;
