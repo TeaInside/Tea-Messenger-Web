@@ -71,7 +71,7 @@
 			<input id="file-input" type="file"/>
           </div>
           <div class="col-sm-9 col-xs-9 reply-main">
-			<input type="text"class="form-control" name="text-field" autocomplete="off" id="text-field">
+			<input type="text" class="form-control" name="text-field" autocomplete="off" id="text-field">
           </div>
           <div class="col-sm-1 col-xs-1 reply-recording">
             <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>
