@@ -77,7 +77,15 @@ class ForeachTest extends TestCase
 	}
 
 
+	public function testOneLine()
+	{
+		$context = 'aaaa @foreach($a as $b => $c) 123 @endforeach';
+		$result  = 'aaaa <?php foreach($a as $b => $c): ?> 123 <?php endforeach; ?>';
 
+		$this->assertEquals(
+			static::isolator($context, '\IceTea\View\Compilers\Components\Loops'), $result
+		);
+	}
 
 	public function testForeachWithoutArrow()
 	{

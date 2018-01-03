@@ -14,34 +14,17 @@ class Loops extends ComponentFoundation implements Component
 
 	private function foreachLoop()
 	{
-		$tmp = explode("\n", $this->skeleton->getRaw());
-        foreach ($tmp as $key => &$val) {
-            $_val = explode("@foreach", $val);
-            if (sizeof($_val) > 1) {
-            	$next_string = str_split($_val[1]);
-            	$arguments = "";
-            	$back = "";
-            	$cost = 2;
-            	$flag = 0;
-            	foreach ($next_string as $string) {
-            		if ($string === "(") {
-            			$cost++;
-            		}
-            		
-            		if ($flag) {
-            			$back .= $string;
-            		} else {
-            			$arguments .= $string;
-            		}
-            	}
-            	$val = $_val[0]."<?php foreach".$arguments.": ?>";
-            } else {
-            	$_val = explode("@endforeach", $val, 2);
-            	if (sizeof($_val) > 1) {
-            		$val  = implode("<?php endforeach; ?>", $_val);
-            	}
+
+            $tmp = explode("\n", $this->skeleton->getRaw());
+
+            foreach ($tmp as $k => &$v) {
+                  if (strpos($v, "@foreach") !== false) {
+                        if (preg_match('/(.*)(foreach(\( *(.*) +as *(.*)\)))(.*)$/is', $v, $matches)) {
+                              $v = substr($matches[1], 0, strlen($matches[1]) - 1)."<?php {$matches[2]}: ?>".$matches[sizeof($matches) - 1];
+                        }
+                  }
+                  $v = str_replace("@endforeach", "<?php endforeach; ?>", $v);
             }
-		}
-        $this->skeleton->setRaw(implode("\n", $tmp));
+            $this->skeleton->setRaw(implode("\n", $tmp));
 	}
 }
