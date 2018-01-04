@@ -20,9 +20,9 @@ class Chat extends Model
         parent::__construct();
     }
 
-    public static function getBuddyList()
+    public static function getBuddyList($offset = 0)
     {
-        $st = DB::prepare("SELECT `a`.`user_id`,`a`.`username`,`b`.`first_name`,`b`.`last_name`,`b`.`photo` FROM `users` AS `a` INNER JOIN `users_info` AS `b` ON `a`.`user_id`=`b`.`user_id` ORDER BY `a`.`registered_at` ASC LIMIT 10;");
+        $st = DB::prepare("SELECT `a`.`user_id`,`a`.`username`,`b`.`first_name`,`b`.`last_name`,`b`.`photo` FROM `users` AS `a` INNER JOIN `users_info` AS `b` ON `a`.`user_id`=`b`.`user_id` ORDER BY `a`.`registered_at` ASC LIMIT 10 OFFSET {$offset};");
         pc($st->execute(), $st);
         return $st->fetchAll(PDO::FETCH_ASSOC);
     }

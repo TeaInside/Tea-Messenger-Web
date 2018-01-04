@@ -1,4 +1,9 @@
+.hd {
+	font-family: Helvetica;
+	font-size: 25px;
+}
 .photo {
+	vertical-align: middle;
 	width: 50px;
 	height: 50px;
 	border-radius: 100%;
@@ -6,11 +11,13 @@
 .ib {
 	display: inline-block;
 }
-
-.photo-cage {
+.name-cage {
 	border: 1px solid #000;
 }
-.name-cage {
-	
+.info-cage {
 	border: 1px solid #000;
+}
+.link {
+	text-decoration: none;
+	color: inherit;
 }

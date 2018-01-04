@@ -20,7 +20,7 @@ Route::post("/register", "RegisterController@action");
 Route::get("/register/success", "RegisterController@success");
 Route::get("/logout", "Auth\\LoginController@logout")->name('logout');
 Route::get("/chat", "ChatController@index")->name('chat');
-Route::get("/chat/{username}", "ChatController@to");
+Route::get("/chat/{username}", "ChatController@to")->name('private_chat');
 Route::get("/chat/{username}/get", "ChatController@get");
 Route::post("/chat/{username}/post", "ChatController@post");
 Route::get("/profile", "ProfileController@index")->name('profile');
