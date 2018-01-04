@@ -29,6 +29,7 @@ Route::get("/profile/change_photo", "ProfileController@changePhotoPage")->name('
 Route::post("/profile/change_photo", "ProfileController@changePhoto");
 Route::post("/profile/change_password", "ProfileController@changePassword");
 Route::get('/forgot-password', "ForgotPasswordController@index")->name('forgot-password');
+Route::get("/friendlist/{page}", "ChatController@friendlist")->name('friendlist');
 Route::get("/groupchat", "GroupChatController@index")->name('group_chat');
 Route::get("/groupchat/{groupname}", "GroupChatController@to");
 Route::get("/groupchat/{groupname}/get", "GroupChatController@get");

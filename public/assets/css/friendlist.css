@@ -12,10 +12,16 @@
 	display: inline-block;
 }
 .name-cage {
-	border: 1px solid #000;
 }
 .info-cage {
-	border: 1px solid #000;
+	padding: 5px 8px 5px 8px;
+	background-color: #57e238;
+}
+.info-cage:hover {
+	background-color: #2cb207;
+}
+.info-cage:active {
+	background-color: #267c09;
 }
 .link {
 	text-decoration: none;
