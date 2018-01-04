@@ -30,7 +30,7 @@ class friendlist
 					photo = 'assets/img' + (data[x]['photo'] == null ? "/user.png" : "/users/" + data[x]['photo']);	
 				this.main.innerHTML += 
 					'<tr><td>' +
-					'<a href="" class="link">' +
+					'<a href="'+this.private_chat_route+data[x]['username']+'" class="link">' +
 					'<div class="info-cage">' +
 					'<img class="photo ib" src="/'+photo+'">' +
 					'<div class="name-cage ib">' +
