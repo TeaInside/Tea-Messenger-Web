@@ -34,7 +34,7 @@ if (! function_exists('basepath')) {
 if (! function_exists('asset')) {
     function asset($assetsFile = '')
     {
-        return trim(\IceTea\Utils\Config::get('assets').'/'.$assetsFile, '/');
+        return trim(\IceTea\Utils\Config::get('assets').'/'.$assetsFile."?t=".time(), '/');
     }
 }
 
