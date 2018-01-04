@@ -14,7 +14,8 @@
 .name-cage {
 }
 .info-cage {
-	padding: 5px 8px 5px 8px;
+	width: 300px;
+	padding: 9px 10px 9px 10px;
 	background-color: #57e238;
 }
 .info-cage:hover {
