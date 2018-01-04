@@ -32,7 +32,7 @@ class friendlist
 					'<tr><td>' +
 					'<a href="'+this.private_chat_route+data[x]['username']+'" class="link">' +
 					'<div class="info-cage">' +
-					'<img class="photo ib" src="/'+photo+'">' +
+					'<img class="photo ib" src="/'+photo+'?t='+(new Date()).getSeconds()+'">' +
 					'<div class="name-cage ib">' +
 					'<p class="name">'+name+'</p>' +
 					'</div>' +
