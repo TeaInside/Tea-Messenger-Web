@@ -4,7 +4,7 @@ class friendlist
 	{
 		this.main = domId('main-list');
 		this.api  = api;
-		this.private_chat_route = pv + "/";
+		this.private_chat_route = pv+"/";
 		this.page = page;
 	}
 
