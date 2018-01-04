@@ -10,6 +10,7 @@ namespace App;
 
 use PDO;
 use App\User;
+use App\Login;
 use IceTea\Database\DB;
 use IceTea\Support\Model;
 
@@ -22,8 +23,8 @@ class Chat extends Model
 
     public static function getBuddyList($offset = 0)
     {
-        $st = DB::prepare("SELECT `a`.`user_id`,`a`.`username`,`b`.`first_name`,`b`.`last_name`,`b`.`photo` FROM `users` AS `a` INNER JOIN `users_info` AS `b` ON `a`.`user_id`=`b`.`user_id` ORDER BY `a`.`registered_at` ASC LIMIT 10 OFFSET {$offset};");
-        pc($st->execute(), $st);
+        $st = DB::prepare("SELECT `a`.`user_id`,`a`.`username`,`b`.`first_name`,`b`.`last_name`,`b`.`photo` FROM `users` AS `a` INNER JOIN `users_info` AS `b` ON `a`.`user_id`=`b`.`user_id` WHERE `a`.`user_id`!=:bind ORDER BY `a`.`registered_at` ASC LIMIT 10 OFFSET {$offset};");
+        pc($st->execute([":bind" => Login::getSessionId()]), $st);
         return $st->fetchAll(PDO::FETCH_ASSOC);
     }
 
