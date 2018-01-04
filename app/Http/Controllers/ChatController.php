@@ -26,6 +26,15 @@ class ChatController extends Controller
         return view('user/chat');
     }
 
+    public function friendlist($data)
+    {
+        header("Content-type: application/json");
+        if (! is_numeric($data['page'])) {
+            throw new \InvalidArgumentException("Invalid page", 1);
+        }
+        print json_encode(Chat::getBuddyList($data['page'] - 1));
+    }
+
     public function to($par)
     {
         Authenticated::login("", "/login?ref=unauthenticated_chat&w=".urlencode(rstr(64)));
