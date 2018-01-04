@@ -1,10 +1,11 @@
 class friendlist
 {
-	constructor(api, pv)
+	constructor(api, pv, page)
 	{
 		this.main = domId('main-list');
 		this.api  = api;
 		this.private_chat_route = pv + "/";
+		this.page = page;
 	}
 
 	listen()
@@ -13,11 +14,10 @@ class friendlist
 			ch.onreadystatechange = function () {
 				if (this.readyState === 4) {
 					that.buildView(this.responseText);
-
 				}
 			};
 			ch.withCredentials = true;
-			ch.open("GET", this.api);
+			ch.open("GET", this.api.replace("{page}", this.page));
 			ch.send(null);
 	}
 

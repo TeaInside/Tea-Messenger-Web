@@ -18,7 +18,7 @@
 		</table>
 	</center>
 	<script type="text/javascript">
-		var ch = new friendlist("{{ route('friendlist', $page) }}", "{{ route('chat') }}");
+		var ch = new friendlist("{{ route('friendlist', '{page}') }}", "{{ route('chat') }}", {{ $page }});
 			ch.listen();
 	</script>
 </body>
