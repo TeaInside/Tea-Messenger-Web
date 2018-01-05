@@ -72,6 +72,7 @@ class friendlist
 
 	changePage(number)
 	{
+		this.main.innerHTML = "";
 		var ch = new XMLHttpRequest(), that = this;
 			ch.onreadystatechange = function () {
 				if (this.readyState === 4) {
