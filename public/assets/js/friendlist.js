@@ -19,6 +19,15 @@ class friendlist
 			ch.withCredentials = true;
 			ch.open("GET", this.api.replace("{page}", this.page));
 			ch.send(null);
+			ch = new XMLHttpRequest(), that = this;
+			ch.onreadystatechange = function () {
+				if (this.readyState === 4) {
+					that.buildPaginator(this.responseText);
+				}
+			};
+			ch.withCredentials = true;
+			ch.open("GET", this.api.replace("{page}", "count"));
+			ch.send(null);
 	}
 
 	buildView(data)
@@ -45,4 +54,47 @@ class friendlist
 			alert(e.message);
 		}
 	}
+
+	buildPaginator(data)
+	{
+		try	{
+			data = Math.floor(JSON.parse(data) / 6);
+			this.main.innerHTML += "<tr><td><div id=\"paginator-wd\"></div></td></tr>";
+			var q = "";
+			var func = [], newob = [];
+			for (var i = [1]; i[0] <= data; i[0]++) {
+				domId('paginator-wd').innerHTML += "<a href=\"javascript:void(0);\" onclick=\"funcx("+i+")\">" + i + "</a>";
+			}
+		} catch (e) {
+			alert(e.message);
+		}
+	}
+
+	changePage(number)
+	{
+		var ch = new XMLHttpRequest(), that = this;
+			ch.onreadystatechange = function () {
+				if (this.readyState === 4) {
+					that.main.innerHTML = "";
+					that.buildView(this.responseText);
+				}
+			};
+			ch.withCredentials = true;
+			ch.open("GET", this.api.replace("{page}", number));
+			ch.send(null);
+			ch = new XMLHttpRequest(), that = this;
+			ch.onreadystatechange = function () {
+				if (this.readyState === 4) {
+					that.buildPaginator(this.responseText);
+				}
+			};
+			ch.withCredentials = true;
+			ch.open("GET", this.api.replace("{page}", "count"));
+			ch.send(null);
+	}
+}
+
+function funcx(q)
+{
+	ch.changePage(q);
 }

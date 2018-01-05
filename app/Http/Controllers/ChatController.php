@@ -29,6 +29,11 @@ class ChatController extends Controller
     public function friendlist($data)
     {
         header("Content-type: application/json");
+        if (isset($data['page']) && $data['page'] === "count") {
+            exit(json_encode(
+                (int) Chat::countBuddyList()[0]
+            ));
+        }
         if (! is_numeric($data['page'])) {
             throw new \InvalidArgumentException("Invalid page", 1);
         }

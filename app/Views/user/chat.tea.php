@@ -11,14 +11,14 @@
 	<center>
 		<table>
 			<thead>
-				<tr><th><p class="hd">People May You Know</p></th></tr>
+				<tr><th><p class="hd">People You May Know</p></th></tr>
 			</thead>
 			<tbody id="main-list">
 			</tbody>
 		</table>
 	</center>
 	<script type="text/javascript">
-		var ch = new friendlist("{{ route('friendlist', '{page}') }}", "{{ route('chat') }}", {{ $page }});
+		const ch = new friendlist("{{ route('friendlist', '{page}') }}", "{{ route('chat') }}", {{ $page }});
 			ch.listen();
 	</script>
 </body>
