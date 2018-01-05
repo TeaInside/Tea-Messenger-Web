@@ -78,19 +78,19 @@ class friendlist
 				if (this.readyState === 4) {
 					that.main.innerHTML = "";
 					that.buildView(this.responseText);
+					var cx = new XMLHttpRequest();
+					cx.onreadystatechange = function () {
+						if (this.readyState === 4) {
+							that.buildPaginator(this.responseText);
+						}
+					};
+					cx.withCredentials = true;
+					cx.open("GET", that.api.replace("{page}", "count"));
+					cx.send(null);
 				}
 			};
 			ch.withCredentials = true;
 			ch.open("GET", this.api.replace("{page}", number));
-			ch.send(null);
-			ch = new XMLHttpRequest(), that = this;
-			ch.onreadystatechange = function () {
-				if (this.readyState === 4) {
-					that.buildPaginator(this.responseText);
-				}
-			};
-			ch.withCredentials = true;
-			ch.open("GET", this.api.replace("{page}", "count"));
 			ch.send(null);
 	}
 }
