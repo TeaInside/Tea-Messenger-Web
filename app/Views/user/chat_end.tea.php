@@ -47,12 +47,13 @@
 
                 <!-- Messenger Text -->
                 <div id="chat-field" class="message-text">
-                	<p>No Message in here...</p>
-                </div>
-                <span id="chat-time-reciver" class="message-time pull-right">
-                	<p></p>
-                </span>
+					<p>No Message in here...</p>
+					<span id="chat-time" class="message-time pull-right">
+                		<p>time</p>
+               	 	</span>
 
+                </div>
+                
             </div>
           </div>
         
@@ -66,7 +67,7 @@
         <div class="row reply">
 		  <div class="col-sm-1 col-xs-1 reply-emojis">
 			<label for="file-input">
-				<img class="attachment-icon" src="{{ asset('assets/img/icon/attachment.png') }}">
+				<i class="fa fa-2x fa-paperclip"></i>
 			</label>
 			<input id="file-input" type="file"/>
           </div>

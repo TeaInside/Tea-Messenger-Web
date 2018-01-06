@@ -45,5 +45,7 @@ Icetea Framework dapat menggunaan fungsi global bawaan php, namun Icetea juga me
 - route()
 - $action
 
+### Templating pada Icetea
+- `@layout('template')` memanggil file template.tea.php pada directory `app/Views/layouts/`
 ---
 TeamIside
