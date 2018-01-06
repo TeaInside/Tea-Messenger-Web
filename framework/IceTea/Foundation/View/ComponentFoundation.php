@@ -2,8 +2,6 @@
 
 namespace IceTea\Foundation\View;
 
-use IceTea\View\ViewSkeleton;
-
 abstract class ComponentFoundation
 {
    
@@ -15,9 +13,9 @@ abstract class ComponentFoundation
     /**
      * Constructor.
      *
-     * @param \IceTea\View\ViewSkeleton $skeleton
+     * @param string $skeleton
      */
-    final public function __construct(ViewSkeleton $skeleton)
+    final public function __construct($skeleton)
     {
         $this->skeleton = $skeleton;
     }

@@ -34,15 +34,14 @@ if (! function_exists('basepath')) {
 if (! function_exists('asset')) {
     function asset($assetsFile = '')
     {
-        return trim(\IceTea\Utils\Config::get('assets').'/'.$assetsFile, '/');
+        return trim(\IceTea\Utils\Config::get('assets').'/'.$assetsFile."?t=".time(), '/');
     }
 }
 
 if (! function_exists('e')) {
     function e($str = "")
     {
-        print $str = htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
-        return $str;
+        return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
     }
 }
 
