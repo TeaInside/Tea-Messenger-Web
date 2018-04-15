@@ -8,7 +8,7 @@ return [
         "cookie_name" => "esteh_csrf",
         "is_secure_cookie" => false,
         "cookie_path" => "/",
-        "cookie_domain" => "localhost",
+        "cookie_domain" => null,
         "cookie_secure" => false,
         "cookie_http_only" => true
     ]
