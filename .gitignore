@@ -1,4 +1,5 @@
-/vendor/
-*.lock
 *.tmp
 *.swp
+*.lock
+/.env
+/vendor/
