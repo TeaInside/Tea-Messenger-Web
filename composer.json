@@ -1,0 +1,11 @@
+{
+    "name": "teainside/teamessenger",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ammar Faizi",
+            "email": "ammarfaizi2@gmail.com"
+        }
+    ],
+    "require": {}
+}
