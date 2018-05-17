@@ -38,6 +38,8 @@ return [
      */
     "key" => env("APP_KEY"),
 
+    "app_path" => realpath(__DIR__."/../app"),
+
     /**
      * Views path.
      */
