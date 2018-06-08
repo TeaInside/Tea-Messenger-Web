@@ -6,18 +6,25 @@
 
 function xhr(d)
 {
-	var ch = new XMLHttpRequest;
-	ch.open(d["url"]);
+	var ch = new XMLHttpRequest, x;
 	ch.onreadystatechange = function () {
 		if (this.readyState === 4) {
 			d["complete"](this);
 		}
 	};
 	ch.withCredentials = true;
+
+	ch.open(d["type"], d["url"]);
+	
 	if (typeof d["before_send"] != "undefined") {
 		d["before_send"](ch);
 	}
-	ch.open(d["type"], d["url"]);
+	if (typeof d["headers"] != "undefined") {
+		for(x in d["headers"]) {
+			ch.setRequestHeader(x, d["headers"][x]);
+		}
+	}
+	
 	ch.send(d["data"]);
 }
 

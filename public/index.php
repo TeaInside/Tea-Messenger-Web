@@ -8,7 +8,7 @@
 <body>
 	<div id="body"></div>
 	<script type="text/javascript">
-		route.handle("index");
+		// route.handle("index");
 	</script>
 </body>
 </html>
