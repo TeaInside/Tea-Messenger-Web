@@ -1,5 +1,0 @@
-*.tmp
-*.swp
-*.lock
-/.env
-/vendor/

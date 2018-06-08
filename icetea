@@ -1,8 +1,0 @@
-#!/usr/bin/env php
-<?php
-
-require __DIR__.'/vendor/autoload.php';
-require __DIR__.'/bootstrap/web.php';
-
-$app = new \EsTeh\Console\ConsoleCommandor();
-$app->run();
