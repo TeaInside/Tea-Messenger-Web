@@ -64,7 +64,8 @@ const
 	view = function (name) {
 		var s = doc().createElement("div"),
 			a = doc().createElement("script"),
-			b = doc().createElement("script");
+			b = doc().createElement("script"),
+			bod = domId("body");
 			s.id =  "view";
 			a.src = "assets/js/app/"+name+".js";
 			a.type = "text/javascript";
@@ -86,7 +87,8 @@ const
 				};
 			}
 			s.appendChild(a);
-			domId("body").appendChild(s);
+			bod.innerHTML = "";
+			bod.appendChild(s);
 	}, 
 	renderer = function (view) {
 		if (typeof view === "string") {
@@ -122,7 +124,7 @@ const
 	loadJs = function (url, callback) {
 		var _ = doc().createElement("script");
 			_.type = "text/javascript";
-			_.href = url;
+			_.src = url;
 		if (typeof callback != "undefined") {
 			if(_.readyState) {
 				_.onreadystatechange = function() {
@@ -147,4 +149,31 @@ const
 			return nx;
 		}
 		return crt("br");
+	},
+	loginAct = function (user, pass, token, callback) {
+		xhr({
+			url: "http://api.teainside.local/login.php",
+			type: "POST",
+			complete: function (a) {
+				var status, x;
+				a = JSON.parse(a.responseText);
+				for(x in a["cookies"]) {
+					setCookie(x, a["cookies"][x][0], a["cookies"][x][1]);
+				}
+				if (typeof a["status"] != "undefined" && a["status"] == "ok") {
+					status = true;
+				} else {
+					status = false;
+				}
+				callback(status);
+			},
+			before_send: function (ch) {
+				ch.setRequestHeader("Content-Type", "application/json");
+			},
+			data: JSON.stringify({username: user, password: pass, _token: token})
+		});
+	},
+	rerouting = function (to) {
+		window.location.hash = "";
+		domId("___router").src = "assets/js/routes.js";
 	};

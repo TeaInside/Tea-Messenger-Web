@@ -5,8 +5,14 @@
 	margin-top: 50px;
 	border: 2px solid #000;
 	width: 400px;
-	height: 300px;
+	height: 315px;
 }
 #btn {
 	cursor: pointer;
+}
+.pp {
+	font-size: 15px;
+}
+.cm {
+	padding-top: 20px;
 }

@@ -45,7 +45,9 @@ class creator {
 	set required(v) {
 		this.el.setAttribute("required", v);
 	}
-
+	set href(v) {
+		this.el.href = v;
+	}
 	set(n,v){
 		this.el.setAttribute(n, v);
 	}

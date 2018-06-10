@@ -1,37 +1,8 @@
 
-function loginAct(user, pass, token, callback)
-{
-	xhr({
-		url: "http://api.teainside.local/login.php",
-		type: "POST",
-		complete: function (a) {
-			var status, x;
-			a = JSON.parse(a.responseText);
-			for(x in a["cookies"]) {
-				setCookie(x, a["cookies"][x][0], a["cookies"][x][1]);
-			}
-			if (typeof a["status"] != "undefined" && a["status"] == "ok") {
-				status = true;
-			} else {
-				status = false;
-			}
-			callback(status);
-		},
-		before_send: function (ch) {
-			ch.setRequestHeader("Content-Type", "application/json");
-		},
-		data: JSON.stringify({username: user, password: pass, _token: token})
-	});
-}
-
-if (true) {
-	view("login");
-} else {
-	login("ammarfaizi2", "test", "123123", function (status) {
-		// if (status) {
-		// 	alert("Login success!");
-		// } else {
-		// 	alert("Login failed!");
-		// }
-	});
-}
+var routes = doc().createElement("script");
+	routes.type = "text/javascript";
+	routes.src 	= "assets/js/routes.js";
+	routes.id   = "___router";
+	routes.onload = function() { route_handle(); };
+domId("head").appendChild(routes);
+window.addEventListener("hashchange", function() { route_handle(); }, false);
