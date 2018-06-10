@@ -12,9 +12,7 @@ const
 			}
 		};
 		ch.withCredentials = true;
-
 		ch.open(d["type"], d["url"]);
-		
 		if (typeof d["before_send"] != "undefined") {
 			d["before_send"](ch);
 		}
@@ -23,7 +21,6 @@ const
 				ch.setRequestHeader(x, d["headers"][x]);
 			}
 		}
-		
 		ch.send(d["data"]);
 	}, 
 	setCookie = function (cname, cvalue, exdays) {

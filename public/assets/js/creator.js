@@ -1,5 +1,8 @@
-
-
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @version 0.0.1
+ * @license MIT
+ */
 class creator {
 	constructor(el, type) {
 		switch(type) {
@@ -11,7 +14,6 @@ class creator {
 			break;
 		}
 	}
-
 	ac(...c) {
 		var cx, dx;
 		for (cx in c) {
@@ -26,7 +28,6 @@ class creator {
 			}
 		}
 	}
-
 	set id(v) {
 		this.el.id = v;
 	}
