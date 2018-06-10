@@ -60,32 +60,39 @@ const
 	},
 	view = function (name) {
 		var s = doc().createElement("div"),
-			a = doc().createElement("script"),
-			b = doc().createElement("script"),
+			b = doc().createElement("script");
 			bod = domId("body");
 			s.id =  "view";
-			a.src = "assets/js/app/"+name+".js";
-			a.type = "text/javascript";
-			b.type = "text/javascript";
-			b.appendChild(doc().createTextNode("props = {}; renderer((new "+name+"(props)).render());"));
 			var viewCallback = function () {
 				s.appendChild(b);
 			};
-			if(a.readyState) {
-				a.onreadystatechange = function() {
-					if ( a.readyState === "loaded" || a.readyState === "complete") {
-						a.onreadystatechange = null;
+			b.type = "text/javascript";
+			b.appendChild(doc().createTextNode("props = {}; renderer((new "+name+"(props)).render());"));
+			if (eval("typeof "+name+" !== \"function\"")) {
+				var a = doc().createElement("script");
+				a.src = "assets/js/app/"+name+".js";
+				a.type = "text/javascript";
+				if(a.readyState) {
+					a.onreadystatechange = function() {
+						if ( a.readyState === "loaded" || a.readyState === "complete") {
+							a.onreadystatechange = null;
+							viewCallback();
+						}
+					};
+				} else {
+					a.onload = function() {
 						viewCallback();
-					}
-				};
+					};
+				}
+				s.appendChild(a);
+				bod.innerHTML = "";
+				bod.appendChild(s);
 			} else {
-				a.onload = function() {
-					viewCallback();
-				};
+				bod.innerHTML = "";
+				bod.appendChild(s);
+				viewCallback();
 			}
-			s.appendChild(a);
-			bod.innerHTML = "";
-			bod.appendChild(s);
+			
 	}, 
 	renderer = function (view) {
 		if (typeof view === "string") {

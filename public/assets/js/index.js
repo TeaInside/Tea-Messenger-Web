@@ -7,6 +7,6 @@ var routes = doc().createElement("script");
 domId("head").appendChild(routes);
 
 window.addEventListener("hashchange", function() {
-	domId("head").innerHTML = "<title></title>";
+	domId("head").innerHTML = " <meta charset=\"UTF-8\"><title></title>";
 	route_handle(); 
 }, false);
