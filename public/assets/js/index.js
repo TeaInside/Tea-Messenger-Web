@@ -5,4 +5,8 @@ var routes = doc().createElement("script");
 	routes.id   = "___router";
 	routes.onload = function() { route_handle(); };
 domId("head").appendChild(routes);
-window.addEventListener("hashchange", function() { route_handle(); }, false);
+
+window.addEventListener("hashchange", function() {
+	domId("head").innerHTML = "<title></title>";
+	route_handle(); 
+}, false);

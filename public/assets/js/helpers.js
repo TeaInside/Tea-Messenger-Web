@@ -121,7 +121,7 @@ const
 	loadJs = function (url, callback) {
 		var _ = doc().createElement("script");
 			_.type = "text/javascript";
-			_.src = url;
+			_.src = url+"?time="+(new Date());
 		if (typeof callback != "undefined") {
 			if(_.readyState) {
 				_.onreadystatechange = function() {

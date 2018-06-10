@@ -26,7 +26,7 @@ class register extends Component
 				g.name = "password";
 				g.type = "password";
 				g.required = "";
-			h.ac(crn("Login"));
+			h.ac(crn("Daftar"));
 				h.id = "btn";
 				h.type = "submit";
 			l.set("class", "pp");
