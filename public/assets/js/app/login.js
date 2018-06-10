@@ -13,7 +13,7 @@ class login extends Component
 	render() {
 		var a = crt("center"), b = crt("div"), c = crt("form"), d = crt("label"),
 		e = crt("input"), f = crt("label"), g = crt("input"), h = crt("button"),
-		i = crt("h1");
+		i = crt("h1"), j = crt("a");
 		c.id = "form"; c.action = "javascript:void(0);"; c.method = "POST";
 			i.ac(crn("Login Tea Inside"));
 			d.ac(crn("Username: "));
