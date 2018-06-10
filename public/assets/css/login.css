@@ -1,0 +1,12 @@
+* {
+	font-family: Arial;
+}
+.cage {
+	margin-top: 50px;
+	border: 2px solid #000;
+	width: 400px;
+	height: 300px;
+}
+#btn {
+	cursor: pointer;
+}

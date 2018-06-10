@@ -1,7 +1,5 @@
 
-
-
-function login(user, pass, token, callback)
+function loginAct(user, pass, token, callback)
 {
 	xhr({
 		url: "http://api.teainside.local/login.php",
@@ -26,10 +24,14 @@ function login(user, pass, token, callback)
 	});
 }
 
-login("ammarfaizi2", "test", "123123", function (status) {
-	if (status) {
-		alert("Login success!");
-	} else {
-		alert("Login failed!");
-	}
-});
+if (true) {
+	view("login");
+} else {
+	login("ammarfaizi2", "test", "123123", function (status) {
+		// if (status) {
+		// 	alert("Login success!");
+		// } else {
+		// 	alert("Login failed!");
+		// }
+	});
+}
