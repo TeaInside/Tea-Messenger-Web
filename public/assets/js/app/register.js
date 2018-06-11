@@ -14,7 +14,7 @@ class register extends Component
 	render() {
 		var a = crt("center"), div = crt("div"), form = crt("form"),
 			table = crt("table"), tbody = crt("tbody"),
-			h11 = crt("h1"), h12 = crt("h1"), div3 = crt("div"),
+			h11 = crt("h3"), h12 = crt("h3"), div3 = crt("div"),
 			tbody1 = crt("tbody"), tbody2 = crt("tbody"), head1 = crt("thead"),
 			tr1 = crt("tr"), tr2 = crt("tr"), valid = crt("input"),
 			td1 = crt("td"), td2 = crt("td"),
@@ -89,7 +89,7 @@ class register extends Component
 			td3.set("align", "center");
 			tr3.ac(td3);
 			tbody2.ac(tr3);
-			h11.ac(crn("Pendaftaran Tea Messenger"));
+			h11.ac(crn("Daftar Tea Messenger"));
 			td1.ac(h11);
 			td1.set("colspan", "3");
 			td1.set("align", "center");

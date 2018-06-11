@@ -3,9 +3,10 @@
 }
 .cage {
 	margin-top: 50px;
+	padding-top: 20px;
 	border: 2px solid #000;
 	width: 400px;
-	height: 315px;
+	height: 335px;
 }
 #btn {
 	cursor: pointer;

@@ -13,9 +13,9 @@ class login extends Component
 	render() {
 		var a = crt("center"), b = crt("div"), c = crt("form"), d = crt("label"),
 		e = crt("input"), f = crt("label"), g = crt("input"), h = crt("button"),
-		i = crt("h1"), j = crt("a"), k = crt("div"), l = crt("p");
+		i = crt("h3"), j = crt("a"), k = crt("div"), l = crt("p");
 		c.id = "form"; c.action = "javascript:void(0);"; c.method = "POST";
-			i.ac(crn("Login Tea Inside"));
+			i.ac(crn("Login Tea Messenger"));
 			d.ac(crn("Username: "));
 				e.id = "username";
 				e.name = "username";
@@ -28,6 +28,7 @@ class login extends Component
 				g.required = "";
 			h.ac(crn("Login"));
 				h.id = "btn";
+				h.set("class", "btn btn-primary");
 				h.type = "submit";
 			l.set("class", "pp");
 			l.ac(crn("Belum punya akun? "));
