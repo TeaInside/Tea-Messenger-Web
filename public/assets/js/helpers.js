@@ -3,8 +3,7 @@
  * @version 0.0.1
  * @license MIT
  */
-const 
-	xhr = function (d) {
+const xhr = function (d) {
 		var ch = new XMLHttpRequest, x;
 		ch.onreadystatechange = function () {
 			if (this.readyState === 4) {
@@ -86,9 +85,11 @@ const
 				}
 				s.appendChild(a);
 				bod.innerHTML = "";
+				console.log(s);
 				bod.appendChild(s);
 			} else {
 				bod.innerHTML = "";
+				console.log(s);
 				bod.appendChild(s);
 				viewCallback();
 			}

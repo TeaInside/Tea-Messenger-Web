@@ -14,5 +14,11 @@ const route_handle = function () {
 			// render /assets/js/app/register.js
 			view("register");
 		break;
+
+
+		case "/test":
+
+			view("test");
+		break;
 	}
 };
