@@ -8,7 +8,7 @@ class login extends Component
 	constructor(props) {
 		super(props);
 		setTitle("Login");
-		loadCss("/assets/css/wsx.css");
+		loadCss("/assets/css/login.css");
 	}
 	render() {
 		var a = crt("center"), b = crt("div"), c = crt("form"), d = crt("label"),
