@@ -8,37 +8,84 @@ class register extends Component
 	constructor(props) {
 		super(props);
 		setTitle("Daftar");
-		loadCss("/assets/css/wsx.css");
+		loadCss("/assets/css/register.css");
 	}
 	render() {
-		var a = crt("center"), b = crt("div"), c = crt("form"), d = crt("label"),
-		e = crt("input"), f = crt("label"), g = crt("input"), h = crt("button"),
-		i = crt("h1"), j = crt("a"), k = crt("div"), l = crt("p");
-		c.id = "form"; c.action = "javascript:void(0);"; c.method = "POST";
-			i.ac(crn("Daftar Tea Inside"));
-			d.ac(crn("Username: "));
-				e.id = "username";
-				e.name = "username";
-				e.type = "text";
-				e.required = "";
-			f.ac(crn("Password: "));
-				g.id = "password";
-				g.name = "password";
-				g.type = "password";
-				g.required = "";
-			h.ac(crn("Daftar"));
-				h.id = "btn";
-				h.type = "submit";
-			l.set("class", "pp");
-			l.ac(crn("Sudah punya akun? "));
-			j.href = "#login";
-			j.ac(crn("Login"));
-			k.set("class", "cm");
-			l.ac(j); k.ac(l);
-		c.ac(i, d, br(), e, br(2), f, br(), g, br(2), h, br(), k);
-		b.set("class", "cage");
-		b.ac(c);
-		a.ac(b);
+		var a = crt("center"), div = crt("div"), form = crt("form"),
+			table = crt("table"),
+			tbody = crt("tbody"),
+			h11 = crt("h1"),
+			h12 = crt("h1"),
+			tbody1 = crt("tbody"),
+			tbody2 = crt("tbody"),
+			head1 = crt("thead"),
+			tr1 = crt("tr"), tr2 = crt("tr"),
+			td1 = crt("td"), td2 = crt("td"),
+			head2 = crt("thead"),
+			col1 = {
+				"Nama Depan": ["Nama Depan", "text", "first_name"],
+				"Nama Belakang": ["Nama Belakang", "text", "last_name"],
+				"Email": ["user@example.com", "email", "email"],
+				"Nomor HP": ["+6285123456789", "text", "phone"],
+			},
+			col2 = {
+				"Username": ["Username", "username", "username"],
+				"Password": ["********", "password", "password"],
+				"Ketik Ulang Password": ["********", "cpassword", "cpassword"]
+			}, ii, tmp = [];
+			for(ii in col1) {
+				tmp = {
+					"tr": crt("tr"),
+					"d1": crt("td"),
+					"d2": crt("td"),
+					"d3": crt("td"),
+					"in": crt("input")
+				};
+				tmp.in.placeholder = col1[ii][0];
+				tmp.in.type = col1[ii][1];
+				tmp.in.id = col1[ii][2];
+				tmp.in.required = "";
+				tmp.d1.ac(crn(ii));
+				tmp.d2.ac(crn(":"));
+				tmp.d3.ac(tmp.in);
+				tmp.tr.ac(tmp.d1, tmp.d2, tmp.d3);
+				tbody1.ac(tmp.tr);
+			}
+			for(ii in col2) {
+				tmp = {
+					"tr": crt("tr"),
+					"d1": crt("td"),
+					"d2": crt("td"),
+					"d3": crt("td"),
+					"in": crt("input")
+				};
+				tmp.in.placeholder = col2[ii][0];
+				tmp.in.type = col2[ii][1];
+				tmp.in.id = col2[ii][2];
+				tmp.in.required = "";
+				tmp.d1.ac(crn(ii));
+				tmp.d2.ac(crn(":"));
+				tmp.d3.ac(tmp.in);
+				tmp.tr.ac(tmp.d1, tmp.d2, tmp.d3);
+				tbody2.ac(tmp.tr);
+			}
+			h11.ac(crn("Pendaftaran Tea Messenger"));
+			td1.ac(h11);
+			td1.set("colspan", "3");
+			td1.set("align", "center");
+			tr1.ac(td1);
+			h12.ac(crn("Buat Akun Tea Messenger"));
+			td2.ac(h12);
+			td2.set("colspan", "3");
+			td2.set("align", "center");
+			tr2.ac(td2);
+			head1.ac(tr1);
+			head2.ac(tr2);
+			table.ac(head1, tbody1, head2, tbody2);
+			form.ac(table);
+			div.ac(form);
+			div.set("class", "cage");
+			a.ac(div);
 		return (
 			a.el
 		);

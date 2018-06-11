@@ -1,0 +1,10 @@
+* {
+	font-family: Arial;
+}
+.cage {
+	margin-top: 60px;
+	margin-bottom: 60px;
+	width: 600px;
+	height: 500px;
+	border: 2px solid #000;
+}

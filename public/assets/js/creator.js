@@ -49,6 +49,9 @@ class creator {
 	set href(v) {
 		this.el.href = v;
 	}
+	set placeholder(v) {
+		this.el.placeholder = v;
+	}
 	set(n,v){
 		this.el.setAttribute(n, v);
 	}
