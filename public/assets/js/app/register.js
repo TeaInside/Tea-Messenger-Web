@@ -7,7 +7,7 @@ class register extends Component
 {
 	constructor(props) {
 		super(props);
-		setTitle("Daftar");
+		setTitle("Daftar Tea Messenger");
 		loadCss("/assets/css/register.css");
 	}
 	render() {
@@ -123,43 +123,47 @@ class register extends Component
 }
 
 const submit_register = function () {
-	var d = {
-		token: domId("_token").value,
-		valid: domId("_valid").value,
-		data: {
-			first_name: domId("first_name").value,
-			last_name: domId("last_name").value,
-			phone: domId("phone").value,
-			email: domId("email").value,
-			username: domId("username").value,
-			password: domId("password").value,
-			cpassword: domId("cpassword").value
-		}
-	};
+	ed(true);
 	xhr({
 		type: "POST",
 		url: "http://api.teainside.local/register.php",
 		complete: function (r) {
+			ed(0);
 			try {
 				r = JSON.parse(r.responseText);
 				if (r["status"] === "error") {
 					alert(r["alert"]);
 				} else {
 					alert(r["info"]);
+					rerouting("login");
 				}
 			} catch (e) {
 				alert("Error: "+e.message);
 			}
 		},
-		data: JSON.stringify(d)
+		data: JSON.stringify({
+			token: domId("_token").value,
+			valid: domId("_valid").value,
+			data: {
+				first_name: domId("first_name").value,
+				last_name: domId("last_name").value,
+				phone: domId("phone").value,
+				email: domId("email").value,
+				username: domId("username").value,
+				password: domId("password").value,
+				cpassword: domId("cpassword").value
+			}
+		})
 	});
 };
 
 const get_token = function () {
+	ed(true);
 	xhr({
 		type: "GET",
 		url: "http://api.teainside.local/register.php",
 		complete: function (r) {
+			ed(0);
 			try {
 				r = JSON.parse(r.responseText);
 				domId("_token").value = r["token"];

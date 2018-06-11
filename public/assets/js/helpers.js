@@ -64,7 +64,9 @@ const xhr = function (d) {
 			s.id =  "view";
 			var viewCallback = function () {
 				s.appendChild(b);
-				callback();
+				if (typeof callback == "function") {
+					callback();
+				}
 			};
 			b.type = "text/javascript";
 			b.appendChild(doc().createTextNode("props = {}; renderer((new "+name+"(props)).render());"));
@@ -86,11 +88,9 @@ const xhr = function (d) {
 				}
 				s.appendChild(a);
 				bod.innerHTML = "";
-				console.log(s);
 				bod.appendChild(s);
 			} else {
 				bod.innerHTML = "";
-				console.log(s);
 				bod.appendChild(s);
 				viewCallback();
 			}
@@ -157,6 +157,25 @@ const xhr = function (d) {
 		return crt("br");
 	},
 	rerouting = function (to) {
-		window.location.hash = "";
-		domId("___router").src = "assets/js/routes.js";
+		window.location.hash = "#"+to;
+		domId("___router").src = "/assets/js/routes.js";
+	},
+	ed = function (e)
+	{
+		var d = doc().getElementsByTagName("input");
+		for (var i = d.length - 1; i >= 0; i--) {
+			d[i].disabled = e;
+		}
+		d = doc().getElementsByTagName("select");
+		for (var i = d.length - 1; i >= 0; i--) {
+			d[i].disabled = e;
+		}
+		d = doc().getElementsByTagName("button");
+		for (var i = d.length - 1; i >= 0; i--) {
+			d[i].disabled = e;
+		}
+		d = doc().getElementsByTagName("textarea");
+		for (var i = d.length - 1; i >= 0; i--) {
+			d[i].disabled = e;
+		}
 	};
