@@ -57,13 +57,14 @@ const xhr = function (d) {
 	domClass = function (cls) {
 		return doc().getElementsByClassName(cls);
 	},
-	view = function (name) {
+	view = function (name, callback) {
 		var s = doc().createElement("div"),
 			b = doc().createElement("script");
 			bod = domId("body");
 			s.id =  "view";
 			var viewCallback = function () {
 				s.appendChild(b);
+				callback();
 			};
 			b.type = "text/javascript";
 			b.appendChild(doc().createTextNode("props = {}; renderer((new "+name+"(props)).render());"));

@@ -12,7 +12,9 @@ const route_handle = function () {
 		case "/register":
 
 			// render /assets/js/app/register.js
-			view("register");
+			view("register", function () {
+				get_token();
+			});
 		break;
 
 

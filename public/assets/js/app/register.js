@@ -15,9 +15,9 @@ class register extends Component
 			table = crt("table"), tbody = crt("tbody"),
 			h11 = crt("h1"), h12 = crt("h1"), div3 = crt("div"),
 			tbody1 = crt("tbody"), tbody2 = crt("tbody"), head1 = crt("thead"),
-			tr1 = crt("tr"), tr2 = crt("tr"),
+			tr1 = crt("tr"), tr2 = crt("tr"), valid = crt("input"),
 			td1 = crt("td"), td2 = crt("td"),
-			tr3 = crt("tr"), td3 = crt("td"),
+			tr3 = crt("tr"), td3 = crt("td"), tkn = crt("input"),
 			head2 = crt("thead"), div2 = crt("div"),
 			btn = crt("button"), p = crt("p"), ah = crt("a"),
 			col1 = {
@@ -105,7 +105,14 @@ class register extends Component
 			form.id = "form";
 			form.method = "POST";
 			form.set("onsubmit", "submit_register();");
-			form.ac(table);
+			tkn.id = "_token";
+			tkn.name = "_token";
+			tkn.value = "";
+			tkn.type = "hidden";
+			valid.name = "_valid";
+			valid.id = "_valid";
+			valid.type = "hidden";
+			form.ac(tkn, valid, table);
 			div.ac(form);
 			div.set("class", "cage");
 			a.ac(div);
@@ -114,3 +121,53 @@ class register extends Component
 		);
 	}
 }
+
+const submit_register = function () {
+	var d = {
+		token: domId("_token").value,
+		valid: domId("_valid").value,
+		data: {
+			first_name: domId("first_name").value,
+			last_name: domId("last_name").value,
+			phone: domId("phone").value,
+			email: domId("email").value,
+			username: domId("username").value,
+			password: domId("password").value,
+			cpassword: domId("cpassword").value
+		}
+	};
+	xhr({
+		type: "POST",
+		url: "http://api.teainside.local/register.php",
+		complete: function (r) {
+			try {
+				r = JSON.parse(r.responseText);
+				if (r["status"] === "error") {
+					alert(r["alert"]);
+				} else {
+					alert(r["info"]);
+				}
+			} catch (e) {
+				alert("Error: "+e.message);
+			}
+		},
+		data: JSON.stringify(d)
+	});
+};
+
+const get_token = function () {
+	xhr({
+		type: "GET",
+		url: "http://api.teainside.local/register.php",
+		complete: function (r) {
+			try {
+				r = JSON.parse(r.responseText);
+				domId("_token").value = r["token"];
+				domId("_valid").value = r["valid"];
+			} catch (e) {
+				alert("Error: "+e.message);
+			}
+		},
+		data: ""
+	});
+};
