@@ -1,7 +1,7 @@
 # Routing.
 Routes defined in the `public/assets/js/routes.js` file.
 ### For Example:
-- Load register controller when the hash location is `#test`. Let's say the url is `http://localhost:8000/#test`.
+- Load register controller when the hash location is `#test`. Let us say the url is <a href="http://localhost:8000/#test">http://localhost:8000/#test</a>.
 - The register controller located at `public/assets/js/app/test.js`
 ```javascript
 	case "/test":
