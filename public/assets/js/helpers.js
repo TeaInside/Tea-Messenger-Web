@@ -168,7 +168,7 @@ const xhr = function (d) {
 	},
 	rerouting = function (to) {
 		window.location.hash = "#"+to;
-		domId("___router").src = "/assets/js/routes.js";
+		route_handle();
 	},
 	ed = function (e)
 	{

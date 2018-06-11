@@ -73,7 +73,7 @@ class register extends Component
 				tbody2.ac(tmp.tr);
 			}
 			btn.type = "submit";
-			btn.id = "btn";
+			btn.set("class", "btn btn-primary");
 			btn.ac(crn("Daftar"));
 			div2.set("class", "btnhd");
 			div2.ac(btn);
@@ -128,7 +128,7 @@ const al = function (msg, rr){
 		message: msg,
 		size: 'small',
 		callback: function() {
-			if (rr !== false) {
+			if (typeof rr == "string") {
 				rerouting(rr);
 			}
 		}
@@ -146,7 +146,7 @@ const submit_register = function () {
 				if (r["status"] === "error") {
 					al(r["alert"]);
 				} else {
-					al(r["info"], "login");
+					al("Pendaftaran berhasil, silahkan cek email Anda untuk verifikasi!", "login");
 				}
 			} catch (e) {
 				al("Error: "+e.message);

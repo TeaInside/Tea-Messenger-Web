@@ -5,7 +5,7 @@
 	margin-top: 50px;
 	margin-bottom: 60px;
 	width: 600px;
-	height: 530px;
+	height: 470px;
 	border: 2px solid #000;
 }
 .btnhd {
@@ -15,6 +15,6 @@
 	cursor: pointer;
 	padding: 2px 5px 2px 5px;
 }
-.lg {
-	padding-bottom: 100px;
+.lg {	
+	margin-top: 10px;
 }
