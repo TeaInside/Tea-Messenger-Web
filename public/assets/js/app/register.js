@@ -8,6 +8,7 @@ class register extends Component
 	constructor(props) {
 		super(props);
 		setTitle("Daftar Tea Messenger");
+		loadJs("/assets/js/third_party/bootbox.min.js");
 		loadCss("/assets/css/register.css");
 	}
 	render() {
@@ -122,6 +123,17 @@ class register extends Component
 	}
 }
 
+const al = function (msg, rr){
+	bootbox.alert({
+		message: msg,
+		size: 'small',
+		callback: function() {
+			if (rr !== false) {
+				rerouting(rr);
+			}
+		}
+	});
+};
 const submit_register = function () {
 	ed(true);
 	xhr({
@@ -132,13 +144,12 @@ const submit_register = function () {
 			try {
 				r = JSON.parse(r.responseText);
 				if (r["status"] === "error") {
-					alert(r["alert"]);
+					al(r["alert"]);
 				} else {
-					alert(r["info"]);
-					rerouting("login");
+					al(r["info"], "login");
 				}
 			} catch (e) {
-				alert("Error: "+e.message);
+				al("Error: "+e.message);
 			}
 		},
 		data: JSON.stringify({
@@ -169,7 +180,7 @@ const get_token = function () {
 				domId("_token").value = r["token"];
 				domId("_valid").value = r["valid"];
 			} catch (e) {
-				alert("Error: "+e.message);
+				al("Error: "+e.message);
 			}
 		},
 		data: ""

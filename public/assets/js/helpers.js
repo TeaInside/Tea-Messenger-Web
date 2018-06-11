@@ -106,7 +106,7 @@ const xhr = function (d) {
 	setTitle = function (title) {
 		document.getElementsByTagName("title")[0].innerHTML = title;
 	},
-	loadCss = function (url, callback) {
+	loadCss = function (url, callback, hard = 0) {
 		var _ = doc().createElement("link");
 			_.rel = "stylesheet";
 			_.type = "text/css";
@@ -125,13 +125,13 @@ const xhr = function (d) {
 				};
 			}
 		}
-		return domId("head").appendChild(_);
+		return domId(hard ? "_pt" : "head").appendChild(_);
 	},
-	loadJs = function (url, callback) {
+	loadJs = function (url, callback, hard) {
 		var _ = doc().createElement("script");
 			_.type = "text/javascript";
-			_.src = url+"?time="+(new Date());
-		if (typeof callback != "undefined") {
+			_.src = url;
+		if (typeof callback == "function") {
 			if(_.readyState) {
 				_.onreadystatechange = function() {
 					if ( _.readyState === "loaded" || _.readyState === "complete") {
@@ -145,7 +145,17 @@ const xhr = function (d) {
 				};
 			}
 		}
-		return domId("head").appendChild(_);
+		return domId(hard ? "_pt" : "head").appendChild(_);
+	},
+	hl = function (type, url, callback) {
+		switch(type) {
+			case "css":
+				loadCss(url, callback, 1);
+			break;
+			case "js":
+				loadJs(url, callback, 1);
+			break;
+		}
 	},
 	br = function (n=1) {
 		if (n > 1) {
