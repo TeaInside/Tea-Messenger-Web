@@ -51,6 +51,9 @@ const xhr = function (d) {
 	doc = function (){
 		return document;
 	}, 
+	asset = function(e) {
+		return "/assets/"+e;
+	}
 	domId =function (id) {
 		return doc().getElementById(id);
 	},

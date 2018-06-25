@@ -8,7 +8,7 @@ var routes = doc().createElement("script");
 	};
 domId("head").appendChild(routes);
 hl("js", "/assets/js/config.js", function () {
-	hl("css", "/assets/css/bootstrap.min.css");
+	// hl("css", "/assets/css/bootstrap.min.css");
 	hl("js", "/assets/js/third_party/jquery.min.js", function () {
 		hl("js", "/assets/js/third_party/bootstrap.min.js");
 	});	
