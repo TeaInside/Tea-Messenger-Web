@@ -53,7 +53,7 @@ const xhr = function (d) {
 	}, 
 	asset = function(e) {
 		return "/assets/"+e;
-	}
+	},
 	domId =function (id) {
 		return doc().getElementById(id);
 	},

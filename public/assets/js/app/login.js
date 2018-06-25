@@ -8,7 +8,6 @@ class login extends Component
 	constructor(props) {
 		super(props);
 		setTitle("Login");
-		loadCss("/assets/css/bootstrap.min.css");
 		loadCss("/assets/css/login.css");
 	}
 	render() {
