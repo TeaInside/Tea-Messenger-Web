@@ -45,7 +45,7 @@ class login extends Component
 			imgLogin.set('class', 'mb-4');
 			imgLogin.set('width', '75');
 			imgLogin.set('height', '75');
-			imgLogin.src ='image.PNG';
+			imgLogin.src = asset('images/image.PNG');
 			adaftar.ac(crn("Daftar"));
 			dcoment.set("class", "cm");
 			dlogin.set('class', 'login-wall')
