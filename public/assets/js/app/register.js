@@ -138,7 +138,7 @@ const submit_register = function () {
 	ed(true);
 	xhr({
 		type: "POST",
-		url: config.api_url,
+		url: config.api_url+"/register.php",
 		complete: function (r) {
 			ed(0);
 			try {
@@ -172,7 +172,7 @@ const get_token = function () {
 	ed(true);
 	xhr({
 		type: "GET",
-		url: "http://api.teainside.local/register.php",
+		url: config.api_url+"/register.php",
 		complete: function (r) {
 			ed(0);
 			try {
