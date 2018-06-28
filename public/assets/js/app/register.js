@@ -8,7 +8,6 @@ class register extends Component
 	constructor(props) {
 		super(props);
 		setTitle("Daftar Tea Messenger");
-		loadJs("/assets/js/third_party/bootbox.min.js");
 		loadCss("/assets/css/register.css");
 	}
 	render() {
@@ -134,8 +133,10 @@ const al = function (msg, rr){
 		}
 	});
 };
+
 const submit_register = function () {
 	ed(true);
+	alert(config.api_url);
 	xhr({
 		type: "POST",
 		url: config.api_url+"/register.php",
@@ -174,8 +175,8 @@ const get_token = function () {
 		type: "GET",
 		url: config.api_url+"/register.php",
 		complete: function (r) {
-			ed(0);
 			try {
+				ed(0);
 				r = JSON.parse(r.responseText);
 				domId("_token").value = r["token"];
 				domId("_valid").value = r["valid"];
