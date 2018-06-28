@@ -50,7 +50,7 @@ class creator {
 		this.el.href = v;
 	}
 	set src(v) {
-		this.el.src = "assets/images/" + v;
+		this.el.src = v;
 	}
 	set placeholder(v) {
 		this.el.placeholder = v;
