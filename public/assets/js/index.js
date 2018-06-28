@@ -4,7 +4,6 @@ const assets_autoload = function () {
 	loadJs("/assets/js/third_party/jquery.min.js", function () {
 		loadJs("/assets/js/third_party/bootstrap.min.js", function () {
 			loadJs("/assets/js/third_party/bootbox.min.js");
-			route_handle();
 		});
 	});
 }
@@ -15,6 +14,7 @@ var routes = doc().createElement("script");
 	routes.id   = "___router";
 	routes.onload = function() {
 		assets_autoload();
+		route_handle();
 	};
 domId("head").appendChild(routes);
 window.addEventListener("hashchange", function() {
