@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET"){
 	);
         msg("Email telah diverifikasi!");
     } else {
-        $pdo->prepare("DELETE FROM `email_verification` WHERE `code` = :code ")->execute([":code" => $code]);
+        $pdo->prepare("DELETE FROM `email_verification` WHERE `code` = :code LIMIT 1;")->execute([":code" => $code]);
         msg("Kode verifikasi telah expired, silahkan meminta kode verifikasi yang baru melalui pengaturan akun Tea Messenge");
     }
 }
