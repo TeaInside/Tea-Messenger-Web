@@ -42,4 +42,3 @@ function msg($msg){
     http_response_code(200);
     die(json_encode(["message" => $msg]));
 }
-
