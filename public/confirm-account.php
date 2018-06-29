@@ -12,16 +12,15 @@ if ($_SERVER["REQUEST_METHOD"] === "GET"){
     }
     
     if($row['expired_at'] > date("Y-m-d H:i:s")){
-        $pdo->prepare("UPDATE `emails` SET `verified` = '1' WHERE id = :email_id")->execute([":email_id" =>$row['email_id']]);
-        $pdo->prepare("DELETE FROM `email_verification` WHERE `code` = :code ")->execute(["code" => $code]);
+        $pdo->prepare("UPDATE `emails` SET `verified` = '1' WHERE id = :email_id LIMIT 1;")->execute([":email_id" =>$row['email_id']]);
         
-        $data = $pdo->prepare("SELECT u.id, u.first_name, e.email FROM users u
+        $st = $pdo->prepare("SELECT u.id, u.first_name, e.email FROM users u
                                INNER JOIN emails e ON u.id = e.user_id
                                INNER JOIN email_verification ev on e.id = ev.email_id
                                WHERE ev.email_id = :email_id");
-        $data->execute([":email_id" => $row['email_id']]);
-        $data = $data->fetch(PDO::FETCH_ASSOC);
-        
+        $st->execute([":email_id" => $row['email_id']]);
+        $data = $st->fetch(PDO::FETCH_ASSOC);
+	$pdo->prepare("DELETE FROM `email_verification` WHERE `code` = :code LIMIT 1;")->execute(["code" => $code]);
         shell_exec(
 		$a = "nohup /usr/bin/env php ".__DIR__."/../../api.teainside.org/mail/verified_account.php \"".
 		urlencode(json_encode(
@@ -31,7 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET"){
 		])).
 		"\" >> ".__DIR__."/../../api.teainside.org/storage/email_logs/verified_".$data['id'].".log 2>&1 &"
 	);
-        msg("Email telah diverifikasi!");
+file_put_contents("a", $a);
+        msg("Email Anda berhasil diverifikasi!");
     } else {
         $pdo->prepare("DELETE FROM `email_verification` WHERE `code` = :code LIMIT 1;")->execute([":code" => $code]);
         msg("Kode verifikasi telah expired, silahkan meminta kode verifikasi yang baru melalui pengaturan akun Tea Messenge");
