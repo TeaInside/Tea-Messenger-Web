@@ -1,5 +1,5 @@
 <?php
-require __DIR__."/../../Tea-Messenger-API/init.php";
+require __DIR__."/../../api.teainside.org/init.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "GET"){
     $code = teaDecrypt($_GET["code"], APP_KEY);
@@ -23,13 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] === "GET"){
         $data = $data->fetch(PDO::FETCH_ASSOC);
         
         shell_exec(
-		$a = "nohup /usr/bin/env php ".__DIR__."/../../Tea-Messenger-API/mail/verified_account.php \"".
+		$a = "nohup /usr/bin/env php ".__DIR__."/../../api.teainside.org/mail/verified_account.php \"".
 		urlencode(json_encode(
 		[
 			"name" => $data["first_name"],
 			"email" => $data["email"],
 		])).
-		"\" >> ".__DIR__."/../../Tea-Messenger-API/storage/email_logs/verified_".$data['id'].".log 2>&1 &"
+		"\" >> ".__DIR__."/../../api.teainside.org/storage/email_logs/verified_".$data['id'].".log 2>&1 &"
 	);
         msg("Email telah diverifikasi!");
     } else {
