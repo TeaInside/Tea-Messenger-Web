@@ -22,6 +22,15 @@ const xhr = function (d) {
 		}
 		ch.send(d["data"]);
 	}, 
+	domId =function (id) {
+		return doc().getElementById(id);
+	},
+	domClass = function (cls) {
+		return doc().getElementsByClassName(cls);
+	},
+	domTag = function (tag)  {
+		return doc().getElementsByTagName(tag);
+	},
 	setCookie = function (cname, cvalue, exdays) {
 	    var d = new Date();
 	    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -52,13 +61,7 @@ const xhr = function (d) {
 		return document;
 	}, 
 	asset = function(e) {
-		return "/assets/"+e;
-	},
-	domId =function (id) {
-		return doc().getElementById(id);
-	},
-	domClass = function (cls) {
-		return doc().getElementsByClassName(cls);
+		return config.assets_url+"/"+e;
 	},
 	view = function (name, callback) {
 		var s = doc().createElement("div"),
@@ -109,28 +112,89 @@ const xhr = function (d) {
 	setTitle = function (title) {
 		document.getElementsByTagName("title")[0].innerHTML = title;
 	},
-	loadCss = function (url, callback, hard = 0) {
+	hashGet = function () {
+		try {
+			return JSON.parse(domId("storage").value);
+		} catch(e) {
+			return {
+				"hash_checker": {},
+				"js_delete_queue": {},
+				"css_delete_queue": {}
+			};
+		}
+	},
+	hashCheck = function (str) {
+		var q = hashGet();
+		return typeof q[str] != "undefined";
+	},
+	hashAdd = function (str) {
+		var q = hashGet();
+		q["hash_checker"][str] = 1;
+		domId("storage").value = JSON.stringify(q);
+	},
+	hashDelete = function (str) {
+		var q = hashGet();
+		q["hash_checker"][str] = null;
+		domId("storage").value = JSON.stringify(q);	
+	},
+	unloadJs = function (url) {
+		var q = domTag("script");
+		for(var i = 0; i < q.length; i++) {
+			if (q[i].src === url) {
+				return q[i].parentNode.removeChild(q[i]);
+			}
+		}
+		return false;
+	},
+	unloadCss = function (url) {
+		var q = domTag("link");
+		for(var i = 0; i < q.length; i++) {
+			if (q[i].href === url) {
+				return q[i].parentNode.removeChild(q[i]);
+			}
+		}
+		return false;
+	},
+	loadCss = function (url, callback, force = 0, tmp = 1, hard = 0) {
+		if (hashCheck(url) && (!force)) {
+			return;
+		}
+		hashAdd(url);
 		var _ = doc().createElement("link");
 			_.rel = "stylesheet";
 			_.type = "text/css";
 			_.href = url;
-		if (typeof callback != "undefined") {
+		if (typeof callback == "function") {
 			if(_.readyState) {
 				_.onreadystatechange = function() {
 					if ( _.readyState === "loaded" || _.readyState === "complete") {
 						_.onreadystatechange = null;
+						hashAdd(url);
 						callback();
 					}
 				};
 			} else {
 				_.onload = function() {
+					hashAdd(url);
 					callback();
 				};
 			}
+		} else {
+			_.onload = function() {
+				hashAdd(url);
+			}
+		}
+		if (tmp) {
+			var hs = hashGet();
+				hs["css_delete_queue"][_.href] = 1;
+				domId("storage").value = JSON.stringify(hs);
 		}
 		return domId(hard ? "_pt" : "head").appendChild(_);
 	},
-	loadJs = function (url, callback, hard) {
+	loadJs = function (url, callback, force = 0, tmp = 1, hard = 0) {
+		if (hashCheck(url) &&  (!force)) {
+			return;
+		}
 		var _ = doc().createElement("script");
 			_.type = "text/javascript";
 			_.src = url;
@@ -139,14 +203,25 @@ const xhr = function (d) {
 				_.onreadystatechange = function() {
 					if ( _.readyState === "loaded" || _.readyState === "complete") {
 						_.onreadystatechange = null;
+						hashAdd(url);
 						callback();
 					}
 				};
 			} else {
 				_.onload = function() {
+					hashAdd(url);
 					callback();
 				};
 			}
+		} else {
+			_.onload = function () {
+				hashAdd(url);
+			}
+		}
+		if (tmp) {
+			var hs = hashGet();
+				hs["js_delete_queue"][_.src] = 1;
+				domId("storage").value = JSON.stringify(hs);
 		}
 		return domId(hard ? "_pt" : "head").appendChild(_);
 	},
@@ -171,6 +246,8 @@ const xhr = function (d) {
 	},
 	rerouting = function (to) {
 		window.location.hash = "#"+to;
+		var hs = hashGet(), x;
+		console.log(hs);
 		route_handle();
 	},
 	ed = function (e)
@@ -191,4 +268,15 @@ const xhr = function (d) {
 		for (var i = d.length - 1; i >= 0; i--) {
 			d[i].disabled = e;
 		}
+	},
+	al = function (msg, rr){
+		bootbox.alert({
+			message: msg,
+			size: 'small',
+			callback: function() {
+				if (typeof rr == "string") {
+					rerouting(rr);
+				}
+			}
+		});
 	};

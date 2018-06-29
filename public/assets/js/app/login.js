@@ -8,15 +8,23 @@ class login extends Component
 	constructor(props) {
 		super(props);
 		setTitle("Login");
-		loadCss("/assets/css/login.css");
+		loadCss(asset("css/login.css"), 0, 1);
 	}
 	render() {
 		var dlogin = crt("div"), flogin = crt("form"), imgLogin = crt('img'),
 		luser = crt("label"), iuser = crt("input"), lpass = crt("label"), ipass = crt("input"), 
 		blogin = crt("button"), hlogin = crt("h3"), adaftar = crt("a"), dcoment = crt("div"), 
-		plogin = crt("p"); 
+		plogin = crt("p"), csrf = crt("input"), valid = crt("input");
 		flogin.id = "form"; flogin.action = "javascript:void(0);"; flogin.method = "POST";
 		flogin.set('class','form-signin');
+			csrf.type = "hidden";
+			csrf.value = "";
+			csrf.id = "_token";
+			valid.type = "hidden";
+			valid.value = "";
+			valid.id = "_valid";
+			flogin.ac(csrf, valid);
+			flogin.set("onsubmit", "submit_login();");
 			hlogin.ac(crn("Login Tea Messenger"));
 			hlogin.set('class', 'h3 mb-3 font-weight-normal')
 			luser.set('class', 'sr-only')
@@ -57,3 +65,55 @@ class login extends Component
 		);
 	}
 }
+
+
+const submit_login = function () {
+	ed(true);
+	xhr({
+		type: "POST",
+		url: config.api_url+"/login.php",
+		complete: function (r) {
+			ed(0);
+			try {
+				r = JSON.parse(r.responseText);
+				if (r["status"] === "error") {
+					al(r["alert"]);
+				} else if(r["status"] == "ok") {
+					setCookie("login_session", r["credentials"], 14);
+					al("Login success!");
+				} else {
+					al("Unknown response");
+				}
+			} catch (e) {
+				al("Error: "+e.message);
+			}
+		},
+		data: JSON.stringify({
+			token: domId("_token").value,
+			valid: domId("_valid").value,
+			data: {
+				username: domId("username").value,
+				password: domId("password").value
+			}
+		})
+	});
+};
+
+const get_login_token = function () {
+	ed(true);
+	xhr({
+		type: "GET",
+		url: config.api_url+"/login.php",
+		complete: function (r) {
+			try {
+				ed(0);
+				r = JSON.parse(r.responseText);
+				domId("_token").value = r["token"];
+				domId("_valid").value = r["valid"];
+			} catch (e) {
+				al("Error: "+e.message);
+			}
+		},
+		data: ""
+	});
+};

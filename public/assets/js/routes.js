@@ -6,14 +6,16 @@ const route_handle = function () {
 		case "/login":
 
 			// render /assets/js/app/login.js
-			view("login");
+			view("login", function () {
+				get_login_token();
+			});
 		break;
 
 		case "/register":
 
 			// render /assets/js/app/register.js
 			view("register", function () {
-				get_token();
+				get_register_token();
 			});
 		break;
 

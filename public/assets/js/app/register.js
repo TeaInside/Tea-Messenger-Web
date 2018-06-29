@@ -8,7 +8,7 @@ class register extends Component
 	constructor(props) {
 		super(props);
 		setTitle("Daftar Tea Messenger");
-		loadCss("/assets/css/register.css");
+		loadCss(asset("css/register.css"), 0, 1);
 	}
 	render() {
 		var a = crt("center"), div = crt("div"), form = crt("form"),
@@ -122,21 +122,8 @@ class register extends Component
 	}
 }
 
-const al = function (msg, rr){
-	bootbox.alert({
-		message: msg,
-		size: 'small',
-		callback: function() {
-			if (typeof rr == "string") {
-				rerouting(rr);
-			}
-		}
-	});
-};
-
 const submit_register = function () {
 	ed(true);
-	alert(config.api_url);
 	xhr({
 		type: "POST",
 		url: config.api_url+"/register.php",
@@ -169,7 +156,7 @@ const submit_register = function () {
 	});
 };
 
-const get_token = function () {
+const get_register_token = function () {
 	ed(true);
 	xhr({
 		type: "GET",

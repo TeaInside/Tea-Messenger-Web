@@ -1,14 +1,20 @@
 
+var i = crt("input");
+	i.type = "hidden";
+	i.value = "";
+	i.id = "storage";
+domId("_pt").appendChild(i.el);
+
 const assets_autoload = function (callback = null) {
-	loadCss("/assets/css/bootstrap.min.css");
+	loadCss("/assets/css/bootstrap.min.css", 0, 0, 0);
 	loadJs("/assets/js/third_party/jquery.min.js", function () {
 		loadJs("/assets/js/third_party/bootstrap.min.js", function () {
-			loadJs("/assets/js/third_party/bootbox.min.js");
+			loadJs("/assets/js/third_party/bootbox.min.js", 0, 0, 0);
 			if (callback !== null) {
 				callback();
 			}
-		});
-	});
+		}, 0, 0);
+	}, 0, 0);
 }
 
 var routes = doc().createElement("script");
@@ -22,8 +28,15 @@ var routes = doc().createElement("script");
 	};
 domId("head").appendChild(routes);
 window.addEventListener("hashchange", function() {
-	domId("head").innerHTML = " <meta charset=\"UTF-8\"><title></title>";
-	assets_autoload(function () {
-		route_handle();
-	});
+	var hs = hashGet();
+	for(x in hs["css_delete_queue"]) {
+		unloadCss(x);
+	}
+	for(x in hs["js_delete_queue"]) {
+		unloadJs(x);
+	}
+	hs["css_delete_queue"] = {};
+	hs["js_delete_queue"] = {};
+	domId("storage").value = JSON.stringify(hs);
+	route_handle();
 }, false);
