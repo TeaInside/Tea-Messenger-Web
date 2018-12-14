@@ -12,7 +12,9 @@
 .btnhd {
 	margin-top: 20px;
 }
-
+#reload_captcha {
+	margin-top: 10px;
+}
 .lg {	
 	margin-top: 10px;
 }
