@@ -16,9 +16,9 @@ class register extends Component
 			h11 = crt("h3"), h12 = crt("h3"), div3 = crt("div"),
 			tbody1 = crt("tbody"), tbody2 = crt("tbody"), head1 = crt("thead"),
 			tr1 = crt("tr"), tr2 = crt("tr"), td1 = crt("td"), td2 = crt("td"),
-			tr3 = crt("tr"), td3 = crt("td"), tkn = crt("input"), 
+			tr3 = crt("tr"), td3 = crt("td"), tkn = crt("input"), rlc = crt("button"),
 			div2 = crt("div"), btn = crt("button"), p = crt("p"), ah = crt("a"),
-			captcha = crt("img"), tdd = crt("td"), P = "**********************",
+			captcha = crt("img"), tdd = crt("td"), P = "**********************", r9,
 			col1 = {
 				"First Name": ["First Name", "text", "first_name"],
 				"Last Name": ["Last Name", "text", "last_name"],
@@ -53,6 +53,17 @@ class register extends Component
 				tmp.tr.ac(tmp.d1, tmp.d2, tmp.d3);
 				tbody1.ac(tmp.tr);
 			}
+			tmp = crt("tr");
+			r9 = crn("Reload Captcha");
+			rlc.set("id", "reload_captcha");
+			rlc.set("class", "btn btn-primary");
+			rlc.ac(r9);
+			tdd.set("colspan", 3);
+			tdd.set("align", "center");
+			tdd.ac(rlc);
+			tmp.ac(tdd);
+			tbody2.ac(tmp);
+			tdd = crt("td");
 			tmp = crt("tr");
 			tdd.set("colspan", 3);
 			tdd.set("align", "center");
