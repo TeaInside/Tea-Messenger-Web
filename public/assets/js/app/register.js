@@ -54,10 +54,10 @@ class register extends Component
 				tbody1.ac(tmp.tr);
 			}
 			tmp = crt("tr");
-			r9 = crn("Reload Captcha");
 			rlc.set("id", "reload_captcha");
 			rlc.set("class", "btn btn-primary");
-			rlc.ac(r9);
+			rlc.set("onclick", "get_register_token();");
+			rlc.ac(crn("Reload Captcha"));
 			tdd.set("colspan", 3);
 			tdd.set("align", "center");
 			tdd.ac(rlc);
@@ -71,6 +71,14 @@ class register extends Component
 			tdd.ac(captcha);
 			tmp.ac(tdd);
 			tbody2.ac(tmp);
+			tmp = crt("tr");
+			tdd = crt("td");
+			tdd.set("align", "center");
+			tdd.set("colspan", 3);
+			tdd.ac(crn("Enter the captcha: "));
+			tmp.ac(tdd);
+			tbody2.ac(tmp);
+			
 			btn.type = "submit";
 			btn.set("class", "btn btn-primary");
 			btn.ac(crn("Submit"));
