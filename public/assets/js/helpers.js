@@ -10,7 +10,7 @@ const xhr = function (d) {
 				d["complete"](this);
 			}
 		};
-		ch.withCredentials = true;
+		ch.withCredentials = false;
 		ch.open(d["type"], d["url"]);
 		if (typeof d["before_send"] != "undefined") {
 			d["before_send"](ch);
