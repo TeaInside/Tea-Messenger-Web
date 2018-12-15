@@ -78,6 +78,9 @@ class register extends Component
 			tdd.ac(crn("Enter the captcha: "));
 			tmp.ac(tdd);
 			tbody2.ac(tmp);
+			tmp = crt("tr");
+			tdd = crt("td");
+			r9 = crt("input");
 			btn.type = "submit";
 			btn.set("class", "btn btn-primary");
 			btn.ac(crn("Submit"));
