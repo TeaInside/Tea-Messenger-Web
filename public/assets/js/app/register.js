@@ -200,6 +200,7 @@ const submit_register = function () {
 };
 
 const get_register_token = function () {
+	domId("captcha_image").src = "";
 	ed(true);
 	xhr({
 		type: "GET",
