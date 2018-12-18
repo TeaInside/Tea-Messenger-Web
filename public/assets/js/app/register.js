@@ -33,6 +33,33 @@ class register extends Component
 				"Ketik Ulang Password": [P, "password", "cpassword"]*/
 			}, ii, tmp = [];
 			for(ii in col1) {
+				if (ii === "Email") {
+					r9 = {
+						a: crt("tr"),
+						b: crt("td"),
+						c: crt("td"),
+						d: crt("td"),
+						e: crt("select")
+					};
+					r9.b.ac(crn("Gender"));
+					r9.c.ac(crn(":"));
+					r9.d.ac(r9.e);
+					r9.a.ac(r9.b,r9.c,r9.d);
+					tbody1.ac(r9.a);
+					P = crt("option");
+					P.set("value", "");
+					r9.e.ac(P);
+					P = crt("option");
+					P.set("value", "male");
+					P.ac(crn("Male"));
+					r9.e.ac(P);
+					P = crt("option");
+					P.set("value", "female");
+					P.ac(crn("Female"));
+					r9.e.ac(P);
+					r9.e.set("required", 1);
+					r9.e.set("id", "gender");
+				}
 				tmp = {
 					"tr": crt("tr"),
 					"d1": crt("td"),
@@ -54,6 +81,7 @@ class register extends Component
 				tbody1.ac(tmp.tr);
 			}
 			tmp = crt("tr");
+			rlc.set("type", "button");
 			rlc.set("id", "reload_captcha");
 			rlc.set("class", "btn btn-primary");
 			rlc.set("onclick", "get_register_token();");
@@ -81,6 +109,15 @@ class register extends Component
 			tmp = crt("tr");
 			tdd = crt("td");
 			r9 = crt("input");
+			r9.set("type", "text");
+			r9.set("id", "captcha_input");
+			r9.set("size", 10);
+			r9.set("required", 1);
+			tdd.ac(r9);
+			tdd.set("align", "center");
+			tdd.set("colspan", 3);
+			tmp.ac(tdd);
+			tbody2.ac(tmp);
 			btn.type = "submit";
 			btn.set("class", "btn btn-primary");
 			btn.ac(crn("Submit"));
@@ -131,16 +168,21 @@ class register extends Component
 const submit_register = function () {
 	ed(true);
 	xhr({
+		before_send: function (ch) {
+			ch.setRequestHeader("Authorization", "Bearer "+domId("_token").value);
+		},
 		type: "POST",
-		url: config.api_url+"/register.php",
+		url: config.api_url+"/register.php?action=submit",
 		complete: function (r) {
 			ed(0);
 			try {
 				r = JSON.parse(r.responseText);
 				if (r["status"] === "error") {
-					al(r["alert"]);
+					al(r["data"]["message"]);
 				} else {
-					al("PenRegisteran berhasil, silahkan cek email Anda untuk verifikasi!", "login");
+					if (r["data"]["message"] === "register_success") {
+						reroute("login");
+					}
 				}
 			} catch (e) {
 				al("Error: "+e.message);
@@ -149,11 +191,12 @@ const submit_register = function () {
 		data: JSON.stringify({
 			first_name: domId("first_name").value,
 			last_name: domId("last_name").value,
-			phone: domId("phone").value,
+			gender: domId("gender").value,
 			email: domId("email").value,
-			username: domId("username").value,
+			phone: domId("phone").value,
 			password: domId("password").value,
-			cpassword: domId("cpassword").value
+			cpassword: domId("cpassword").value,
+			captcha: domId("captcha_input").value
 		})
 	});
 };
