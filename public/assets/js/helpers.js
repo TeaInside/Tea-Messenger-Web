@@ -244,7 +244,7 @@ const xhr = function (d) {
 		}
 		return crt("br");
 	},
-	rerouting = function (to) {
+	reroute = function (to) {
 		window.location.hash = "#"+to;
 		var hs = hashGet(), x;
 		console.log(hs);
