@@ -159,9 +159,7 @@ class register extends Component
 			div.ac(form);
 			div.set("class", "cage");
 			a.ac(div);
-		return (
-			a.el
-		);
+		return (a.el);
 	}
 }
 
