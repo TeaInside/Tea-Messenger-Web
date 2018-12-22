@@ -176,10 +176,15 @@ const submit_register = function () {
 			try {
 				r = JSON.parse(r.responseText);
 				if (r["status"] === "error") {
+					get_register_token();
+					domId("captcha_input").value = "";
 					al(r["data"]["message"]);
 				} else {
 					if (r["data"]["message"] === "register_success") {
 						reroute("login");
+					} else {
+						get_register_token();
+						domId("captcha_input").value = "";
 					}
 				}
 			} catch (e) {

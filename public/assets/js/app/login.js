@@ -48,13 +48,13 @@ class login extends Component
 				blogin.set("class", "btn btn-primary btn-block");
 				blogin.type = "submit";
 			plogin.set("class", "pp");
-			plogin.ac(crn("Belum punya akun? "));
+			plogin.ac(crn("Don't have an account? "));
 			adaftar.href = "#register";
 			imgLogin.set('class', 'mb-4');
 			imgLogin.set('width', '75');
 			imgLogin.set('height', '75');
 			imgLogin.src = asset('images/logo.png');
-			adaftar.ac(crn("Daftar"));
+			adaftar.ac(crn("Register"));
 			dcoment.set("class", "cm");
 			dlogin.set('class', 'login-wall')
 			plogin.ac(adaftar); dcoment.ac(plogin);
@@ -68,52 +68,52 @@ class login extends Component
 
 
 const submit_login = function () {
-	ed(true);
-	xhr({
-		type: "POST",
-		url: config.api_url+"/login.php",
-		complete: function (r) {
-			ed(0);
-			try {
-				r = JSON.parse(r.responseText);
-				if (r["status"] === "error") {
-					al(r["alert"]);
-				} else if(r["status"] == "ok") {
-					setCookie("login_session", r["credentials"], 14);
-					al("Login success!");
-				} else {
-					al("Unknown response");
-				}
-			} catch (e) {
-				al("Error: "+e.message);
-			}
-		},
-		data: JSON.stringify({
-			token: domId("_token").value,
-			valid: domId("_valid").value,
-			data: {
-				username: domId("username").value,
-				password: domId("password").value
-			}
-		})
-	});
+	// ed(true);
+	// xhr({
+	// 	type: "POST",
+	// 	url: config.api_url+"/login.php",
+	// 	complete: function (r) {
+	// 		ed(0);
+	// 		try {
+	// 			r = JSON.parse(r.responseText);
+	// 			if (r["status"] === "error") {
+	// 				al(r["alert"]);
+	// 			} else if(r["status"] == "ok") {
+	// 				setCookie("login_session", r["credentials"], 14);
+	// 				al("Login success!");
+	// 			} else {
+	// 				al("Unknown response");
+	// 			}
+	// 		} catch (e) {
+	// 			al("Error: "+e.message);
+	// 		}
+	// 	},
+	// 	data: JSON.stringify({
+	// 		token: domId("_token").value,
+	// 		valid: domId("_valid").value,
+	// 		data: {
+	// 			username: domId("username").value,
+	// 			password: domId("password").value
+	// 		}
+	// 	})
+	// });
 };
 
 const get_login_token = function () {
-	ed(true);
-	xhr({
-		type: "GET",
-		url: config.api_url+"/login.php",
-		complete: function (r) {
-			try {
-				ed(0);
-				r = JSON.parse(r.responseText);
-				domId("_token").value = r["token"];
-				domId("_valid").value = r["valid"];
-			} catch (e) {
-				al("Error: "+e.message);
-			}
-		},
-		data: ""
-	});
+	// ed(true);
+	// xhr({
+	// 	type: "GET",
+	// 	url: config.api_url+"/login.php",
+	// 	complete: function (r) {
+	// 		try {
+	// 			ed(0);
+	// 			r = JSON.parse(r.responseText);
+	// 			domId("_token").value = r["token"];
+	// 			domId("_valid").value = r["valid"];
+	// 		} catch (e) {
+	// 			al("Error: "+e.message);
+	// 		}
+	// 	},
+	// 	data: ""
+	// });
 };
