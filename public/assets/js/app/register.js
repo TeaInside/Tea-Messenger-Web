@@ -73,7 +73,6 @@ class register extends Component
 				tmp.in.placeholder = col1[ii][0];
 				tmp.in.type = col1[ii][1];
 				tmp.in.id = col1[ii][2];
-				tmp.in.required = "";
 				tmp.d1.ac(crn(ii));
 				tmp.d2.ac(crn(":"));
 				tmp.d3.ac(tmp.in);
@@ -181,6 +180,7 @@ const submit_register = function () {
 					al(r["data"]["message"]);
 				} else {
 					if (r["data"]["message"] === "register_success") {
+						al("Registration success, we have sent a verification URL to your email \""+domId("email").value+"\"");
 						reroute("login");
 					} else {
 						get_register_token();
