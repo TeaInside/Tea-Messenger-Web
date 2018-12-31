@@ -48,8 +48,8 @@ class login extends Component
 			plogin.ac(crn("Don't have an account? "));
 			adaftar.href = "#register";
 			imgLogin.set('class', 'mb-4');
-			imgLogin.set('width', '75');
-			imgLogin.set('height', '75');
+			imgLogin.set('width', '100');
+			imgLogin.set('height', '100');
 			imgLogin.set("style", "border-radius:100%");
 			imgLogin.src = asset('images/hg2.jpg');
 			adaftar.ac(crn("Register"));
