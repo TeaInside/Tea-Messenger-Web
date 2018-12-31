@@ -5,6 +5,7 @@
 	height: 500px;
 	border: 1px solid #000;
 	border-radius: 5px;
+	padding: 30px 3px 3px 3px;
 }
 
 #uimg {
@@ -15,4 +16,8 @@
 
 #profile_info {
 	margin-top: 10px;
+}
+
+#navbar {
+	margin-top: 20px;
 }

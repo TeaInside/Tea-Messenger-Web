@@ -1,11 +1,9 @@
-
-delete home;
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  * @version 0.0.1
  * @license MIT
  */
-class home extends Component
+class profile extends Component
 {
 	constructor(props) {
 		super(props);
@@ -15,8 +13,7 @@ class home extends Component
 	render() {
 		var 
 			rax = crt("center"),
-			rdi = crt("div"), 
-			rsi = crt("h2"),
+			rdi = crt("div"),
 			rdx = crt("div"),
 			r8 = crt("img"),
 			r9 = crt("div"),
@@ -28,6 +25,13 @@ class home extends Component
 				"Phone": "phone",
 				"Registered Date": "registered_at"
 			};
+		r15 = crt("div");
+		r15.id = "navbar";
+		r14 = crt("a");
+		r14.set("href", "#logout");
+		r13 = crt("button").ac(crn("Logout"));
+		r13.set("class", "btn btn-danger");
+		r15.ac(r14.ac(r13));
 		r10.id = "profile_info";
 		r12 = crt("tr");
 		r11 = crt("td");
@@ -45,11 +49,9 @@ class home extends Component
 		r8.src = "";
 		r8.id = "uimg";
 		rdx.ac(r8);
-		rsi.id = "hll";
-		rdi.ac(rsi, rdx, r9);
+		rdi.ac(rdx, r9);
 		rdi.id = "caged";
-		rax.ac(rdi);
-
+		rax.ac(r15, rdi);
 		return (
 			rax.el
 		);
@@ -70,7 +72,6 @@ const get_user_info = function () {
 				r = JSON.parse(r.responseText);
 				if (r["status"] === "success") {
 					r = r["data"];
-					domId("hll").innerHTML = "Hi "+r["first_name"]+" "+r["last_name"]+"!";
 					var i, rbp = ["first_name","last_name","email","phone","registered_at"];
 					for (i in rbp) {
 						domId(rbp[i]).innerHTML = r[rbp[i]];
