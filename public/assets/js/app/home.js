@@ -25,17 +25,22 @@ class home extends Component
 				"First Name": "first_name",
 				"Last Name": "last_name",
 				"Email": "email",
-				"Phone": "phone"
+				"Phone": "phone",
+				"Registered At": "registered_at"
 			};
-
+		r10.id = "profile_info";
+		r12 = crt("tr");
+		r11 = crt("td");
+		r11.set("colspan", 3);
+		r11.set("align","center");
+		r10.ac(r12.ac(r11.ac(crt("h4").ac(crn("Profile Info")))));
 		for(r11 in rbp) {
 			r12 = crt("tr");
 			r13 = crt("td");
 			r13.id = rbp[r11];
-			r12.ac(crt("td").ac(crn(r11)), crt("td").ac(crn(":")), r13);
+			r12.ac(crt("b").ac(crt("td").ac(crn(r11))), crt("td").ac(crn(":")), r13);
 			r10.ac(r12);
 		}
-
 		r9.ac(r10);
 		r8.src = "";
 		r8.id = "uimg";
@@ -66,7 +71,7 @@ const get_user_info = function () {
 				if (r["status"] === "success") {
 					r = r["data"];
 					domId("hll").innerHTML = "Hello "+r["first_name"]+" "+r["last_name"]+"!";
-					var i, rbp = ["first_name","last_name","email","phone"];
+					var i, rbp = ["first_name","last_name","email","phone","registered_at"];
 					for (i in rbp) {
 						domId(rbp[i]).innerHTML = r[rbp[i]];
 					}
