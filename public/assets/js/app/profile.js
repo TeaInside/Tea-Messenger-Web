@@ -74,6 +74,16 @@ const get_user_info = function () {
 					for (i in rbp) {
 						domId(rbp[i]).innerHTML = r[rbp[i]];
 					}
+
+					if (r["photo"] !== "") {
+						domId("uimg").src = r["photo"];
+					} else {
+						if (r["gender"] === "m") {
+							domId("uimg").src = asset("images/default_m_user.png");
+						} else {
+							domId("uimg").src = asset("images/default_m_user.png");
+						}
+					}
 				} else {
 					localStorage.removeItem("token_session");
 					reroute("login");
