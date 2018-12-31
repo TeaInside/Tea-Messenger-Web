@@ -7,7 +7,11 @@ const route_handle = function () {
 
 			// render /assets/js/app/login.js
 			view("login", function () {
-				get_login_token();
+				if (localStorage.getItem("token_session")) {
+					reroute("home");
+				} else {
+					get_login_token();
+				}
 			});
 		break;
 
@@ -19,6 +23,11 @@ const route_handle = function () {
 			});
 		break;
 
+		case "/home":
+			view("home", function () {
+				get_user_info();
+			});
+		break;
 
 		case "/test":
 
