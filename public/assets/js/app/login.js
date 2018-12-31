@@ -46,7 +46,8 @@ class login extends Component
 				blogin.type = "submit";
 			plogin.set("class", "pp");
 			plogin.ac(crn("Don't have an account? "));
-			adaftar.href = "#register";
+			// adaftar.href = "/register";
+			adaftar.set("href", "javascript:movpath('register');");
 			imgLogin.set('class', 'mb-4');
 			imgLogin.set('width', '150');
 			imgLogin.set('height', '150');
@@ -78,7 +79,7 @@ const submit_login = function () {
 				r = JSON.parse(r.responseText);
 				if (r["data"]["message"]["state"] === "login_success") {
 					localStorage.setItem("token_session", r["data"]["message"]["token_session"]);
-					reroute("profile");
+					movpath("profile");
 				} else {
 					al(r["data"]["message"]["state"]);
 					get_login_token();

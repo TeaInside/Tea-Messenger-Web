@@ -28,7 +28,7 @@ class profile extends Component
 		r15 = crt("div");
 		r15.id = "navbar";
 		r14 = crt("a");
-		r14.set("href", "#logout");
+		r14.set("href", "javascript:movpath('logout');");
 		r13 = crt("button").ac(crn("Logout"));
 		r13.set("class", "btn btn-danger");
 		r15.ac(r14.ac(r13));
@@ -58,7 +58,7 @@ class profile extends Component
 	}
 }
 
-const get_user_info = function () {
+const get_user_info = function (id = null) {
 	xhr({
 		before_send: function (ch) {
 			ch.setRequestHeader("Authorization", "Bearer "+localStorage.getItem("token_session"));
@@ -86,7 +86,7 @@ const get_user_info = function () {
 					}
 				} else {
 					localStorage.removeItem("token_session");
-					reroute("login");
+					movpath("login");
 				}
 			} catch (e) {
 				al("Error: "+e.message);

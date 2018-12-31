@@ -28,15 +28,6 @@ var routes = doc().createElement("script");
 	};
 domId("head").appendChild(routes);
 window.addEventListener("hashchange", function() {
-	var hs = hashGet();
-	for(x in hs["css_delete_queue"]) {
-		unloadCss(x);
-	}
-	for(x in hs["js_delete_queue"]) {
-		unloadJs(x);
-	}
-	hs["css_delete_queue"] = {};
-	hs["js_delete_queue"] = {};
-	domId("storage").value = JSON.stringify(hs);
+	cleanAssets();
 	route_handle();
 }, false);

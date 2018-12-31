@@ -124,7 +124,7 @@ class register extends Component
 			div2.ac(btn);
 			p.ac(crn("Already have an account? "));
 			ah.ac(crn("Login"));
-			ah.href = "#login";
+			ah.href = "javascript:movpath('login');";
 			p.ac(ah);
 			div3.set("class", "lg");
 			div3.ac(p);
@@ -181,7 +181,7 @@ const submit_register = function () {
 				} else {
 					if (r["data"]["message"] === "register_success") {
 						al("Registration success, we have sent a verification URL to your email \""+domId("email").value+"\"");
-						reroute("login");
+						movpath("login");
 					} else {
 						get_register_token();
 						domId("captcha_input").value = "";

@@ -21,7 +21,12 @@ const xhr = function (d) {
 			}
 		}
 		ch.send(d["data"]);
-	}, 
+	},
+	movpath = function (path) {
+		window.history.pushState(null, null, path);
+		cleanAssets();
+		route_handle(path);
+	},
 	domId =function (id) {
 		return doc().getElementById(id);
 	},
@@ -79,7 +84,7 @@ const xhr = function (d) {
 
 			if (eval("typeof "+name+" !== \"function\"")) {
 				var a = doc().createElement("script");
-				a.src = "assets/js/app/"+name+".js";
+				a.src = config.assets_url+"/js/app/"+name+".js";
 				a.type = "text/javascript";
 				if(a.readyState) {
 					a.onreadystatechange = function() {
@@ -155,6 +160,18 @@ const xhr = function (d) {
 			}
 		}
 		return false;
+	},
+	cleanAssets = function () {
+			var hs = hashGet();
+			for(x in hs["css_delete_queue"]) {
+				unloadCss(x);
+			}
+			for(x in hs["js_delete_queue"]) {
+				unloadJs(x);
+			}
+			hs["css_delete_queue"] = {};
+			hs["js_delete_queue"] = {};
+			domId("storage").value = JSON.stringify(hs);
 	},
 	loadCss = function (url, callback, force = 0, tmp = 1, hard = 0) {
 		if (hashCheck(url) && (!force)) {
