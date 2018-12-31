@@ -58,12 +58,10 @@ class profile extends Component
 	}
 }
 
-const usrTkn = localStorage.getItem("token_session");
-
 const get_user_info = function () {
 	xhr({
 		before_send: function (ch) {
-			ch.setRequestHeader("Authorization", "Bearer "+usrTkn);
+			ch.setRequestHeader("Authorization", "Bearer "+localStorage.getItem("token_session"));
 		},
 		type: "GET",
 		url: config.api_url+"/profile.php?action=get_user_info",
