@@ -27,6 +27,7 @@ class creator {
 				this.el.appendChild(c[cx].el);
 			}
 		}
+		return this;
 	}
 	set id(v) {
 		this.el.id = v;
