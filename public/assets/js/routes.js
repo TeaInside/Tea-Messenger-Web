@@ -6,13 +6,18 @@ const route_handle = function () {
 		case "/login":
 
 			// render /assets/js/app/login.js
-			view("login", function () {
-				if (localStorage.getItem("token_session")) {
-					reroute("home");
-				} else {
-					get_login_token();
-				}
-			});
+
+			if (localStorage.getItem("token_session")) {
+				reroute("home");
+			} else {
+				view("login", function () {
+					if (localStorage.getItem("token_session")) {
+						reroute("home");
+					} else {
+						get_login_token();
+					}
+				});
+			}
 		break;
 
 		case "/register":
