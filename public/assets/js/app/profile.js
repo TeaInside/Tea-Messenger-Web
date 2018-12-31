@@ -66,7 +66,7 @@ const get_user_info = function () {
 			ch.setRequestHeader("Authorization", "Bearer "+usrTkn);
 		},
 		type: "GET",
-		url: config.api_url+"/home.php?action=get_user_info",
+		url: config.api_url+"/profile.php?action=get_user_info",
 		complete: function (r) {
 			try {
 				r = JSON.parse(r.responseText);
