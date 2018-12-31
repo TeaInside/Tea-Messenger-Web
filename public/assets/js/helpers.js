@@ -76,6 +76,7 @@ const xhr = function (d) {
 			};
 			b.type = "text/javascript";
 			b.appendChild(doc().createTextNode("props = {}; renderer((new "+name+"(props)).render());"));
+
 			if (eval("typeof "+name+" !== \"function\"")) {
 				var a = doc().createElement("script");
 				a.src = "assets/js/app/"+name+".js";
@@ -246,9 +247,6 @@ const xhr = function (d) {
 	},
 	reroute = function (to) {
 		window.location.hash = "#"+to;
-		var hs = hashGet(), x;
-		console.log(hs);
-		route_handle();
 	},
 	ed = function (e)
 	{
@@ -275,7 +273,7 @@ const xhr = function (d) {
 			size: 'small',
 			callback: function() {
 				if (typeof rr == "string") {
-					rerouting(rr);
+					reroute(rr);
 				}
 			}
 		});
