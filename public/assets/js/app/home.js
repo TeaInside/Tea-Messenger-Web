@@ -70,7 +70,7 @@ const get_user_info = function () {
 				r = JSON.parse(r.responseText);
 				if (r["status"] === "success") {
 					r = r["data"];
-					domId("hll").innerHTML = "Hello "+r["first_name"]+" "+r["last_name"]+"!";
+					domId("hll").innerHTML = "Hi "+r["first_name"]+" "+r["last_name"]+"!";
 					var i, rbp = ["first_name","last_name","email","phone","registered_at"];
 					for (i in rbp) {
 						domId(rbp[i]).innerHTML = r[rbp[i]];
