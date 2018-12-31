@@ -81,7 +81,7 @@ const get_user_info = function () {
 						if (r["gender"] === "m") {
 							domId("uimg").src = asset("images/default_m_user.png");
 						} else {
-							domId("uimg").src = asset("images/default_m_user.png");
+							domId("uimg").src = asset("images/default_fm_user.png");
 						}
 					}
 				} else {
