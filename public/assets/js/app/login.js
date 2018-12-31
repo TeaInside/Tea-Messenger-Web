@@ -78,7 +78,7 @@ const submit_login = function () {
 				r = JSON.parse(r.responseText);
 				if (r["data"]["message"]["state"] === "login_success") {
 					localStorage.setItem("token_session", r["data"]["message"]["token_session"]);
-					reroute("home");
+					reroute("profile");
 				} else {
 					al(r["data"]["message"]["state"]);
 					get_login_token();
