@@ -31,8 +31,8 @@ class home extends Component
 		for(r11 in rbp) {
 			r12 = crt("tr");
 			r13 = crt("td");
-			r13.ac(crn(r11));
-			r12.ac(r13, crt("td").ac(crn(":")));
+			r13.id = rbp[r11];
+			r12.ac(crt("td").ac(crn(r11)), crt("td").ac(crn(":")), r13);
 			r10.ac(r12);
 		}
 
@@ -66,6 +66,10 @@ const get_user_info = function () {
 				if (r["status"] === "success") {
 					r = r["data"];
 					domId("hll").innerHTML = "Hello "+r["first_name"]+" "+r["last_name"]+"!";
+					var i, rbp = ["first_name","last_name","email","phone"];
+					for (i in rbp) {
+						domId(rbp[i]).innerHTML = r[rbp[i]];
+					}
 				} else {
 					localStorage.removeItem("token_session");
 					reroute("login");
