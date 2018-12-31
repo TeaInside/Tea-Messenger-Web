@@ -26,7 +26,7 @@ class home extends Component
 				"Last Name": "last_name",
 				"Email": "email",
 				"Phone": "phone",
-				"Registered At": "registered_at"
+				"Registered Date": "registered_at"
 			};
 		r10.id = "profile_info";
 		r12 = crt("tr");
