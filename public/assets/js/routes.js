@@ -33,5 +33,8 @@ const route_handle = function () {
 	if (p === "logout") {
 		localStorage.removeItem("token_session");
 		reroute("login");
+		return;
 	}
+
+	view("not_found");
 };
