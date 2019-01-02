@@ -1,2 +1,11 @@
 /.phpintel/
+/.sass-cache/
+
 /config.js
+
+/node_modules/
+/dist/
+
+package-lock.json
+*.sublime-workspace
+*.sublime-project
