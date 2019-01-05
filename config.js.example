@@ -1,5 +1,0 @@
-const config = {
-	api_url: "http://api.teainside.local",
-	root_url: "http://messenger.teainside.local",
-	assets_url: "http://localhost:3000/assets"
-};

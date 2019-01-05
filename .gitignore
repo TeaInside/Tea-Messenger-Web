@@ -1,11 +1,39 @@
-/.phpintel/
-/.sass-cache/
 
-/config.js
+# config
+/src/config.dev.js
 
-/node_modules/
-/dist/
+# compiled output
+/dist
+/public
+/public_old
+/tmp
 
-package-lock.json
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
 *.sublime-workspace
 *.sublime-project
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/.phpintel
+/coverage
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+package-lock.json
