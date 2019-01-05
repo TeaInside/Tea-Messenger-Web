@@ -1,0 +1,136 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/variables";
+
+.form-signin-wrapper {
+  background-color: #f5f5f5;
+}
+
+.form-signin {
+  padding: 2rem;
+  background-color: #ffffff;
+  font-size: .9rem;
+  width: 70%;
+  display: block;
+
+  .logo-centered {
+    width: 140px;
+    margin: 0 auto;
+
+    img {
+      width: 140px;
+      height: 140px;
+      margin-bottom: 50px;
+    }
+  }
+
+  h3 {
+    color: #2c304d;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+    text-align: left;
+  }
+
+  .checkbox {
+    position: absolute;
+    opacity: 0;
+    font-weight: 400;
+
+    & + label {
+      padding-left: 35px;
+      cursor: pointer;
+    }
+
+    & + label:before {
+      content: '';
+      left: 0;
+      margin-top: -15px;
+      display: inline-block;
+      vertical-align: text-top;
+      width: 25px;
+      height: 25px;
+      background: var(--light);
+      border-radius: 15px;
+      position: absolute;
+      top: 50%;
+    }
+
+    // Box hover
+    &:hover + label:before {
+      background: var(--gray);
+    }
+
+    // Box checked
+    &:checked + label:before {
+      background: var(--primary);
+    }
+    
+    // Disabled state label.
+    &:disabled + label {
+      color: #b8b8b8;
+      cursor: auto;
+    }
+
+    // Disabled box.
+    &:disabled + label:before {
+      box-shadow: none;
+      background: #ddd;
+    }
+
+    // Checkmark. Could be replaced with an image
+    &:checked + label:after {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 10px;
+      background: white;
+      width: 3px;
+      height: 3px;
+      box-shadow: 
+        2px 0 0 white,
+        4px 0 0 white,
+        4px -2px 0 white,
+        4px -4px 0 white,
+        4px -6px 0 white,
+        4px -8px 0 white;
+      transform: rotate(45deg);
+      transition: all 200ms ease-in-out;
+    }
+  }
+
+  .input-group {
+    margin-bottom: 1rem;
+  }
+
+  .input-group-append .input-group-text {
+    background-color: #ffffff;
+    @include border-left-radius(25px);
+  }
+
+  .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 1rem;
+    @include border-right-radius(25px);
+
+    &:focus {
+      
+    }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .form-signin {
+    padding: 2rem;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .form-signin {
+    width: 100%;
+    padding: 2rem;
+  }
+}
