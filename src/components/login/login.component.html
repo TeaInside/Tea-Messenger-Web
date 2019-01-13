@@ -1,12 +1,12 @@
-<div class="form-signin-wrapper container-fluid h-100">
-    <div class="row flex-row h-100 bg-white">
-        <div class="col-md-12 my-auto p-0">
-            <div class="form-signin mx-auto">
+<div class="app-login__wrapper container-fluid">
+    <div class="row">
+        <div class="app-login__form-login-wrapper col-md-12">
+            <div class="app-login__form-login  row align-content-center justify-content-center">
                 <div class="logo-centered">
                     <img class="rounded-circle" src="/assets/images/hg2.jpg" alt="logo" >
+                    <h3>Tea Messenger Login</h3>
                 </div>
-                <h3>Tea Messenger Login</h3>
-                <form>
+                <form class="form-row">
                     <div class="input-group">
                         <label for="inputUsername" class="sr-only">Username</label>
                         <div class="input-group-append">
@@ -14,7 +14,7 @@
                                 <span class="fas fa-user"></span>
                             </div>
                         </div>
-                        <input type="text" id="inputUsername" class="form-control border-left-0" placeholder="Username" name="inputUsername" required autofocus>
+                        <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="inputUsername" required autofocus>
                     </div>
 
                     <div class="input-group">
@@ -24,7 +24,7 @@
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
-                        <input type="password" id="inputPassword" class="form-control border-left-0" placeholder="Password" name="inputPassword" required>
+                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="inputPassword" required>
                     </div>
 
                     <div class="input-group mb-3 justify-content-between">
@@ -32,15 +32,20 @@
                         <label for="rememberme">Remember Me</label>
                         <a href="#">Forgot password ?</a>
                     </div>
-                    <div class="input-group justify-content-center">
-                        <button id="loginButton" class="btn btn-lg btn-primary text-center" type="button">Login</button>
+                    <div class="input-group justify-content-center mb-0">
+                        <button id="loginButton" class="btn btn-block btn-lg btn-primary text-center" type="button">Login</button>
                     </div>
-                    <div class="input-group my-3 justify-content-center">
-                        <p>Don't have an account ? <a href="/register" data-navigo>Register</a></p>
+                    <div class="input-group justify-content-center my-3 header-or">
+                        <h3>OR</h3>
+                    </div>
+                    <div class="input-group justify-content-center">
+                        <a href="/register" class="btn btn-block btn-lg btn-outline-secondary text-center" data-navigo>Register</a>
                     </div>
                 </form>
-                <p class="mt-5 mb-3 text-muted text-center">Made with <i class="fas fa-heart"></i> by TeaInside</p>
             </div>
+        </div>
+        <div class="footer col-md-12">
+            <p class="text-muted text-center">Made with <i class="fas fa-heart"></i> by TeaInside</p>
         </div>
     </div>
 </div>

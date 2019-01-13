@@ -1,31 +1,80 @@
+const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: {
-    app: './src/app.js'
+    vendors: ['bootstrap'],
+    styles: ['./src/scss/styles.scss'],
+    app: ['./src/app.js']
   },
   output: {
     filename: '[name].bundle.js',
     chunkFilename: '[name].bundle.js',
     sourceMapFilename: "[name].bundle.map",
-    path: path.resolve(__dirname, 'public'),
-    library: 'TeaWeb'
+    path: path.resolve(__dirname, 'public')
   },
-  devtool: 'source-map',
+  devtool: 'eval',
   devServer: {
-    contentBase: path.join(__dirname, 'src/assets')
+    contentBase: path.resolve(__dirname, 'src/assets'),
+    publicPath: '/',
+    historyApiFallback: true,
+    watchContentBase: true
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery'
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: '[id].css'
+    }),
+    new CleanWebpackPlugin('./public'),
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    }),
+    new CopyWebpackPlugin(
+      [
+        { from: './src/assets', to: 'assets' },
+        { from: './node_modules/@fortawesome/fontawesome-free/css', to: 'assets/vendors/fontawesome/css'},
+        { from: './node_modules/@fortawesome/fontawesome-free/webfonts', to: 'assets/vendors/fontawesome/webfonts'},
+        { from: './node_modules/animate.css/animate.min.css', to: 'assets/vendors/animate.css/'}
+      ],
+      { debug: false}
+    )
+  ],
   module: {
     rules: [
       {
-        test: /\.(s?)css$/,
+        test: /\.(sa|sc|c)ss$/,
         use: [
-          "style-loader", // creates style nodes from JS strings
-          "css-loader", // translates CSS into CommonJS
-          "sass-loader" // compiles Sass to CSS, using Node Sass by default
+          {
+            loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: false
+            }
+          },
+          {
+            loader: 'sass-loader'
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [
+                require('autoprefixer')
+              ]
+            }
+          }
         ]
       },
       {
@@ -42,40 +91,26 @@ module.exports = {
           ]
         }
       },
+      { 
+        test: /\.js$/, 
+        exclude: /node_modules/, 
+        loader: 'eslint-loader',
+      },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(woff(2)?|ttf|eot|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'assets/webfonts/'
+        }
+      },
+      {
+        test: /\.(png|jp(e)?g|gif)$/,
         loader: 'file-loader',
         options: {
           outputPath: 'assets/images/[name].[ext]'
         }
-      },
-      {
-        test: /\.(png|svg|jpg|gif)$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 8192
-            }
-          }
-        ]
-      },
-      {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'file-loader',
-        options: {
-            name: '[name].[ext]',
-            outputPath: 'assets/fonts/'
-        }
       }
     ]
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'src/index.html'
-    }),
-    new CopyWebpackPlugin([
-      { from: './src/assets', to: 'assets' }
-    ])
-  ]
+  }
 };

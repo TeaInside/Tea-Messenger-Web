@@ -1,25 +1,19 @@
 
-class Component {
-  
-  constructor() {
-
+export class Component {
+  domId(d) {
+    return document.getElementById(d);
   }
 
-  /*create(el) {
-    this.el = document.createElement(el);
-    return this;
+  domClass(d) {
+    return document.getElementsByClassName(d);
   }
 
-  createTextNode(text) {
-    this.el.textNode = document.createTextNode(text);
-    return this;
+  domTag(d) {
+    return document.getElementsByTagName(d);
   }
+}
 
-  setAttr(name, value) {
-    this.el.setAttribute(name, value);
-    return this;
-  }*/
-
+/* const Component = {
   domId(d) {
     return document.getElementById(d);
   }
@@ -37,32 +31,10 @@ class Component {
   }
 
   render(dom, content) {
-    dom.innerHTML = content;    
+    dom.innerHTML = content;
   }
 
   setTitle(title) {
     document.getElementsByTagName("title")[0].innerHTML = title;
   }
-
-  xhr(d) {
-    let ch = new XMLHttpRequest, x;
-    ch.onreadystatechange = function () {
-      if (this.readyState === 4) {
-        d["complete"](this);
-      }
-    };
-    ch.withCredentials = false;
-    ch.open(d["type"], d["url"]);
-    if (typeof d["before_send"] != "undefined") {
-      d["before_send"](ch);
-    }
-    if (typeof d["headers"] != "undefined") {
-      for(x in d["headers"]) {
-        ch.setRequestHeader(x, d["headers"][x]);
-      }
-    }
-    ch.send(d["data"]);
-  }
-}
-
-export default Component;
+} */

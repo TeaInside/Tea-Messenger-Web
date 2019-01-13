@@ -1,15 +1,60 @@
 <!DOCTYPE html>
 <html> 
     <head id="head">
+        <base href="/">
     	<meta charset="UTF-8"/>
     	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="Tea Messager">
         <meta name="author" content="TeaInside">
     	<title>Tea Messenger Web</title>
+        <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css">
+        <link href="assets/vendors/animate.css/animate.min.css" rel="stylesheet">
+        <style>
+        #preloader {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #fff;
+          z-index: 999999;
+        }
+
+        .canvas {
+          position: absolute;
+          margin: auto;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+        }
+
+        .spinner {
+          animation: spinner 1s linear infinite;
+          border: solid 5px transparent;
+          border-top: solid 5px #b2e67b;
+          border-radius: 100%;
+          width: 60px;
+          height: 60px;
+          margin: 0 auto;
+        }
+
+        @keyframes spinner {
+          0% {
+              transform: rotate(0deg)
+          }
+
+          100% {
+              transform: rotate(360deg)
+          }
+        }
+        </style>
     </head>
     <body>
-    	<div id="app">
-             
+        <div id="preloader">
+            <div class="canvas">
+                <div class="spinner"></div>
+            </div>
         </div>
+    	<app-root id="root"></app-root>
     </body>
 </html>
