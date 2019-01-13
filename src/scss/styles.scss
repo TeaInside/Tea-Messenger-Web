@@ -1,0 +1,42 @@
+@import "../../node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/mixins";
+@import "./variables";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+html {
+  font-size: $font-size-base;
+}
+
+body,html {
+  height: 100%;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: $font-size-base;
+  font-weight: $font-weight-base;
+  line-height: $line-height-base;
+  color: $body-color;
+  background-color: $body-bg;
+  overflow-x: hidden;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  transition: all 0.5s ease;
+
+  &:focus, &:hover {
+    color: $link-hover-color;
+    text-decoration: underline;
+  }
+}
+
+a, i, span {
+  display: inline-block;
+  text-decoration: none;
+}
+
+a:hover, a:focus, i:hover, i:focus, span:hover, span:focus {
+  text-decoration: none;
+}

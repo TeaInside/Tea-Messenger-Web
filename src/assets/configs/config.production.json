@@ -1,0 +1,5 @@
+{
+  "apiUrl": "http://messenger-api.teainside.org",
+  "rootUrl": "http://localhost:8080",
+  "assetsUrl": "http://localhost:8080/assets"
+}

@@ -1,0 +1,12 @@
+
+# config
+/webpack.*
+
+# compiled output
+/dist
+/public
+/public_old
+/tmp
+
+# dependencies
+/node_modules/
