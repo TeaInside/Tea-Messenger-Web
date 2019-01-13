@@ -1,49 +1,14 @@
-// Dependencies
-import $ from 'jquery';
-import 'bootstrap';
-import '@fortawesome/fontawesome-free/js/all';
-import 'animate.css';
-import Navigo from 'navigo';
+import AppRouting from './app-routing';
 
-// Main style
-import './styles.scss';
+const origin = location.origin;
+const path = document.getElementsByTagName('base')[0].getAttribute('href');
 
-// Config and Routing
-import config from './config.dev';
+window.onload = () => {
+  AppRouting(origin + path, false, '#!');
 
-// Components
-import LoginComponent from './components/login/login.component';
-import RegisterComponent from './components/register/register.component';
-
-export const app = {
-  "login": new LoginComponent(),
-  "register": new RegisterComponent()
+  let preloader = document.getElementById('preloader');
+  preloader.classList.add('animated', 'fadeOut');
+  setTimeout(() => {
+    preloader.classList.add('d-none');
+  }, 2000);
 }
-
-var router;
-
-var routing = function(host, useHash, hash) {
-  router = new Navigo('http://localhost:8080', useHash, hash);
-
-  router.on({
-    '/register': function() {
-      app.register.view();
-      router.updatePageLinks();
-    },
-    '/login': function() {
-      app.login.view();
-      router.updatePageLinks();
-    }
-  });
-
-  router.on(function() {
-    app.login.view();
-    router.updatePageLinks();
-  });
-
-  router.resolve();
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-  routing(config.root_url, false, '#!');
-});

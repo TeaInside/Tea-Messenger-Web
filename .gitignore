@@ -1,6 +1,7 @@
 
 # config
-/src/config.dev.js
+/src/assets/configs/config.development.json
+webpack.test.js
 
 # compiled output
 /dist
@@ -9,7 +10,7 @@
 /tmp
 
 # dependencies
-/node_modules
+/node_modules/
 
 # IDEs and editors
 /.idea

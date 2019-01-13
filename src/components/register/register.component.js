@@ -1,20 +1,19 @@
-import Component from '../component';
+import {Component} from '../component';
 
-import RegisterView from './register.component.html';
+import RegisterComponentView from './register.component.html';
 import './register.component.scss';
 
-class RegisterComponent extends Component {
-
-	constructor(element) {
-		super(element);
+export default class RegisterComponent extends Component {
+	constructor() {
+		super();
 	}
 
-	view() {
-    let dom = super.appEl();
+	render() {
+    let appRoot = super.domTag('app-root')[0];
 
-    super.setTitle('Tea Messenger Register');
-    super.render(dom, RegisterView);
+    while (appRoot.hasChildNodes()) {
+      appRoot.removeChild(appRoot.firstChild);
+    }
+    appRoot.innerHTML = RegisterComponentView;
   }
 }
-
-export default RegisterComponent;

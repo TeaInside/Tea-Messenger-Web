@@ -1,30 +1,22 @@
-import Component from '../component';
+import { Component } from '../component';
+import ConfigService from '../../config.service';
 
-import LoginView from './login.component.html';
+import LoginComponentView from './login.component.html';
 import './login.component.scss';
 
-class LoginComponent extends Component {
+export default class LoginComponent extends Component {
+  constructor() {
+    super();
 
-	constructor(element) {
-		super(element);
-    super.setTitle(element);
-	}
+    this.configService = new ConfigService();
+  }
 
-	view() {
-    let dom = super.appEl();
+  render() {
+    let appRoot = super.domTag('app-root')[0];
 
-    super.setTitle('Tea Messenger Login');
-    super.render(dom, LoginView);
-    this.submitLogin();
-	}
-
-  submitLogin() {
-    let btn = super.domId('loginButton');
-
-    btn.addEventListener('mouseup', function() {
-      console.log('click');
-    });
+    while (appRoot.hasChildNodes()) {
+      appRoot.removeChild(appRoot.firstChild);
+    }
+    appRoot.innerHTML = LoginComponentView;
   }
 }
-
-export default LoginComponent;
