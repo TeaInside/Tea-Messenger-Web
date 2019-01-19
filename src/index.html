@@ -2,13 +2,11 @@
 <html> 
     <head id="head">
         <base href="/">
-    	<meta charset="UTF-8"/>
-    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="Tea Messager">
         <meta name="author" content="TeaInside">
-    	<title>Tea Messenger Web</title>
-        <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css">
-        <link href="assets/vendors/animate.css/animate.min.css" rel="stylesheet">
+        <title>Tea Messenger Web</title>
         <style>
         #preloader {
           position: fixed;
@@ -27,34 +25,17 @@
           left: 50%;
           transform: translate(-50%,-50%);
         }
-
-        .spinner {
-          animation: spinner 1s linear infinite;
-          border: solid 5px transparent;
-          border-top: solid 5px #b2e67b;
-          border-radius: 100%;
-          width: 60px;
-          height: 60px;
-          margin: 0 auto;
-        }
-
-        @keyframes spinner {
-          0% {
-              transform: rotate(0deg)
-          }
-
-          100% {
-              transform: rotate(360deg)
-          }
-        }
         </style>
+        <link href="assets/vendors/fontawesome/css/all.min.css" rel="stylesheet" >
+        <link href="assets/vendors/animate.css/animate.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
     </head>
     <body>
         <div id="preloader">
             <div class="canvas">
-                <div class="spinner"></div>
+                <div class="spinner-border text-primary"></div>
             </div>
         </div>
-    	<app-root id="root"></app-root>
+        <app-root id="root"></app-root>
     </body>
 </html>

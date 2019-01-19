@@ -7,20 +7,19 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-  mode: 'development',
   entry: {
-    vendors: ['bootstrap'],
     styles: ['./src/scss/styles.scss'],
-    app: ['./src/app.js']
+    app: ['./src/app.js', 'bootstrap']
   },
   output: {
-    filename: '[name].bundle.js',
-    chunkFilename: '[name].bundle.js',
-    sourceMapFilename: "[name].bundle.map",
+    filename: 'assets/js/[name].[hash].js',
+    chunkFilename: 'assets/js/[name].[hash].js',
+    sourceMapFilename: "assets/js/[name].[hash].map",
     path: path.resolve(__dirname, 'public')
   },
   devtool: 'eval',
   devServer: {
+    port: 3000,
     contentBase: path.resolve(__dirname, 'src/assets'),
     publicPath: '/',
     historyApiFallback: true,
@@ -30,10 +29,6 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'
-    }),
-    new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: '[id].css'
     }),
     new CleanWebpackPlugin('./public'),
     new HtmlWebpackPlugin({
@@ -55,7 +50,7 @@ module.exports = {
         test: /\.(sa|sc|c)ss$/,
         use: [
           {
-            loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader
+            loader: 'style-loader'
           },
           {
             loader: 'css-loader',
@@ -84,17 +79,10 @@ module.exports = {
       { 
         test: /\.js$/, 
         exclude: /node_modules/, 
-        loader: 'babel-loader',
-        options: {
-          presets: [
-            ['@babel/preset-env', { modules: false } ]
-          ]
-        }
-      },
-      { 
-        test: /\.js$/, 
-        exclude: /node_modules/, 
-        loader: 'eslint-loader',
+        use: [
+          'babel-loader',
+          'eslint-loader'
+        ]
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)$/,
@@ -112,5 +100,19 @@ module.exports = {
         }
       }
     ]
+  },
+  optimization: {
+    runtimeChunk: false,
+    splitChunks: {
+      cacheGroups: {
+        default: false,
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all',
+          minChunks: 2
+        }
+      }
+    }
   }
 };
