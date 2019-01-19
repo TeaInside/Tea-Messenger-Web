@@ -1,5 +1,6 @@
 import { Component } from '../component';
-import ConfigService from '../../config.service';
+// import { AuthService } from '../../services/auth.service';
+import { ConfigService } from '../../services/config.service';
 
 import LoginComponentView from './login.component.html';
 import './login.component.scss';
@@ -18,5 +19,7 @@ export default class LoginComponent extends Component {
       appRoot.removeChild(appRoot.firstChild);
     }
     appRoot.innerHTML = LoginComponentView;
+
+    console.log(this.configService.get());
   }
 }

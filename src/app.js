@@ -10,5 +10,5 @@ window.onload = () => {
   preloader.classList.add('animated', 'fadeOut');
   setTimeout(() => {
     preloader.classList.add('d-none');
-  }, 2000);
-}
+  }, 1000);
+};

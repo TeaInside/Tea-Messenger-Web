@@ -2,175 +2,130 @@
 @import "node_modules/bootstrap/scss/mixins";
 @import "../../scss/variables";
 
-.app-login__wrapper {
+.app-login {
   height: 100%;
-  overflow-x: hidden;
-  background-color: $white;
+  font-family: "Noto Sans";
+  padding: 0;
 
-  & > .row {
-    height: 100%;
+  .box-wrapper-inner {
+    margin: 56px auto;
+    min-height: 700px;
+    width: 80%;
+    background-color: #93ff99;
+    align-items: center;
   }
 }
 
-.app-login__form-login-wrapper {
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.app-login__form-login {
+.box-title {
   padding: 3rem;
-  font-size: .9rem;
-  width: 70%;
-  align-content: center;
-  justify-content: center;
+  background-color: $primary;
+  color: $white;
 
-  .logo-centered {
-    text-align: center;
-    img {
-      width: 140px;
-      height: 140px;
-      margin-bottom: 50px;
-    }
+  .icon {
+    margin-right: 1rem;
+    font-size: $font-size-lg;
+    width: 20px;
+    height: 20px;
+  }
+
+  .divider {
+    width: 20%;
+    height: 0;
+    margin: 2rem 0;
+    overflow: hidden;
+    border-top: 1px solid $white;
   }
 
   h3 {
-    color: #2c304d;
-    font-size: 1.4rem;
-    font-weight: 500;
-    margin-bottom: 30px;
-    text-align: center;
+    font-weight: bold;
+  }
+}
+
+.box-form {
+  background-color: $white;
+  min-height: inherit;
+
+  .tab-content {
+    padding: 3rem;
   }
 
-  .header-or {
-    width: 100%;
-    text-align: center;
-    position: relative;
-    background-color: $white;
-
-    &:after {
-      content: '';
-      width: 100%;
-      border-bottom: solid 1px $gray-400;
-      position: absolute;
-      left: 0;
-      top: 50%;
-      z-index: 1;
-    }
-
-    & > h3 {
-      background-color: $white;
-      width: auto;
-      display: inline-block;
-      z-index: 3;
-      padding: 0 20px 0 20px;
-      color: $text-muted;
-      position: relative;
-      margin: 0;
-    }
+  .tab-pane {
+    padding: 0;
   }
 
-  .checkbox {
-    position: absolute;
-    opacity: 0;
-    font-weight: 400;
-
-    & + label {
-      padding-left: 35px;
-      cursor: pointer;
-    }
-
-    & + label:before {
-      content: '';
-      left: 0;
-      margin-top: -15px;
-      display: inline-block;
-      vertical-align: text-top;
-      width: 25px;
-      height: 25px;
-      background: var(--light);
-      border-radius: 15px;
-      position: absolute;
-      top: 50%;
-    }
-
-    // Box hover
-    &:hover + label:before {
-      background: var(--gray);
-    }
-
-    // Box checked
-    &:checked + label:before {
-      background: var(--primary);
-    }
-    
-    // Disabled state label.
-    &:disabled + label {
-      color: #b8b8b8;
-      cursor: auto;
-    }
-
-    // Disabled box.
-    &:disabled + label:before {
-      box-shadow: none;
-      background: #ddd;
-    }
-
-    // Checkmark. Could be replaced with an image
-    &:checked + label:after {
-      content: '';
-      position: absolute;
-      left: 7px;
-      top: 10px;
-      background: white;
-      width: 3px;
-      height: 3px;
-      box-shadow: 
-        2px 0 0 white,
-        4px 0 0 white,
-        4px -2px 0 white,
-        4px -4px 0 white,
-        4px -6px 0 white,
-        4px -8px 0 white;
-      transform: rotate(45deg);
-      transition: all 200ms ease-in-out;
-    }
+  label {
+    font-weight: 900;
+    display: block;
   }
+}
 
-  .input-group {
+.captcha {
+  text-align: center;
+
+  & > img {
     margin-bottom: 1rem;
   }
 
-  .input-group-append .input-group-text {
-    background-color: #ffffff;
-    @include border-left-radius(25px);
+  input {
+    width: 50%;
+    margin: auto;
+  }
+}
+
+.form-tabs {
+  &, .nav-item {
+    padding: 0;
+    border: 0;
   }
 
-  .form-control {
-    position: relative;
-    box-sizing: border-box;
-    height: auto;
-    padding: 10px;
-    font-size: 1rem;
-    @include border-right-radius(25px);
+  .nav-link {
+    padding: 1rem;
+    font-size: $font-size-base;
+    text-align: center;
+    @include border-radius(0);
+    border: 0;
+    border-bottom: $border-width solid $border-color;
 
-    &:focus {
-      
+    &[aria-selected="true"] {
+      background-color: $gray-100;
+      font-weight: 900;
+      color: $primary;
+      border-bottom: $border-width solid $primary;
     }
   }
 }
 
-@include media-breakpoint-down(lg) {
-  .app-login__form-login {
-    padding: 1.75rem;
+.footer {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+
+  p {
+    margin: 0;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .app-login {
+    .box-wrapper-outer {
+      height: auto;
+    }
+
+    .box-wrapper-inner {
+      margin: 0;
+      width: 100%;
+    }
   }
 }
 
 @include media-breakpoint-down(sm) {
-  .app-login__form-login {
-    width: 100%;
+  .box-title {
     padding: 2rem;
+  }
+
+  .box-form {
+    .tab-content {
+      padding: 3rem 2rem;
+    }
   }
 }

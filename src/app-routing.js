@@ -1,9 +1,5 @@
-// Config
+// Router library
 import Navigo from 'navigo';
-
-// Components
-import LoginComponent from './components/login/login.component';
-import RegisterComponent from './components/register/register.component';
 
 var router;
 
@@ -13,23 +9,20 @@ export default function AppRouting(host, useHash, hash) {
   router = new Navigo(host, useHash, hash);
 
   router.on({
-    '/register': () => {
-      const app = new RegisterComponent();
-      app.render();
-      router.updatePageLinks();
-    },
     '/login': () => {
-      const app = new LoginComponent();
-      app.render();
-      router.updatePageLinks();
+      import(/* webpackChunkName: 'login.component' */ './components/login/login.component')
+      .then(LoginComponent => {
+        const app = new LoginComponent.default();
+
+        app.render();
+        router.updatePageLinks();
+      });
     }
   });
 
   // Index page
   router.on(() => {
-    const app = new LoginComponent();
-    app.render();
-    router.updatePageLinks();
+    router.navigate('/login');
   });
 
   router.notFound(() => {

@@ -7,17 +7,29 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = merge(baseConfig, {
   mode: 'production',
   devtool: 'cheap-module-source-map',
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      },
+    })
+  ],
   optimization: {
     minimize: true,
     minimizer: [
       new OptimizeCSSAssetsPlugin(),
       new UglifyJsPlugin({
-        sourceMap: true
+        sourceMap: true,
+        uglifyOptions: {
+          compress: {
+            inline: false
+          }
+        }
       })
     ]
   },
   performance: {
-    hints: 'warning',
-    maxAssetSize: 500000
+    hints: false,
+    maxAssetSize: 200000
   }
 });

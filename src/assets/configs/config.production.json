@@ -1,5 +1,7 @@
 {
-  "apiUrl": "http://messenger-api.teainside.org",
-  "rootUrl": "http://localhost:8080",
-  "assetsUrl": "http://localhost:8080/assets"
+  "apiUrl": "http://messenger-api.tea.localhost/",
+  "apiEndpoints": {
+    "login": "login.php",
+    "register": "register.php"
+  }
 }
