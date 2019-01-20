@@ -1,6 +1,6 @@
 
 # config
-/src/assets/configs/config.development.json
+/src/config.js
 webpack.test.js
 
 # compiled output
