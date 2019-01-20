@@ -1,7 +1,0 @@
-{
-  "apiUrl": "http://messenger-api.tea.localhost/",
-  "apiEndpoints": {
-    "login": "login.php",
-    "register": "register.php"
-  }
-}

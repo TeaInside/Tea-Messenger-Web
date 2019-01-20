@@ -8,8 +8,8 @@ const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
   entry: {
-    styles: ['./src/scss/styles.scss'],
-    app: ['./src/app.js', 'bootstrap']
+    styles: './src/scss/styles.scss',
+    app: './src/app.js'
   },
   output: {
     filename: 'assets/js/[name].[hash].js',
@@ -23,7 +23,8 @@ module.exports = {
     contentBase: path.resolve(__dirname, 'src/assets'),
     publicPath: '/',
     historyApiFallback: true,
-    watchContentBase: true
+    watchContentBase: true,
+    compress: true
   },
   plugins: [
     new webpack.ProvidePlugin({
@@ -39,7 +40,8 @@ module.exports = {
         { from: './src/assets', to: 'assets' },
         { from: './node_modules/@fortawesome/fontawesome-free/css', to: 'assets/vendors/fontawesome/css'},
         { from: './node_modules/@fortawesome/fontawesome-free/webfonts', to: 'assets/vendors/fontawesome/webfonts'},
-        { from: './node_modules/animate.css/animate.min.css', to: 'assets/vendors/animate.css/'}
+        { from: './node_modules/animate.css/animate.min.css', to: 'assets/vendors/animate.css/'},
+        { from: './node_modules/noty/lib', to: 'assets/vendors/noty'}
       ],
       { debug: false}
     )

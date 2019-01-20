@@ -23,7 +23,7 @@
                     <!-- Begin Tab panes -->
                     <div class="tab-content row">
                         <div class="col-12 tab-pane animated fadeIn active" id="login" role="tabpanel" aria-labelledby="login-tab">
-                            <form>
+                            <form id="login-form">
                                 <div class="form-group">
                                     <label for="login-username">Username</label>
                                     <input type="text" id="login-username" class="form-control" name="loginUsername" required autofocus>
@@ -42,11 +42,11 @@
                                         </label>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-block btn-lg btn-primary">Sign in</button>
+                                <button type="button" id="login-button" class="btn btn-block btn-lg btn-primary">Sign in</button>
                             </form>
                         </div>
                         <div class="col-12 tab-pane animated fadeIn" id="register" role="tabpanel" aria-labelledby="register-tab">
-                            <form>
+                            <form id="register-form">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="register-firstname">First Name</label>
@@ -85,8 +85,8 @@
                                     <input type="phone" id="register-phone" class="form-control" name="registerPhone" required>
                                 </div>
 
-                                <div class="form-group captcha">
-                                    <img src="https://messenger-api.teainside.org/captcha.php?token=gARO5Iz9pR9AuDKs6nwSYdSkLsbuCyDzjemuShy%2FeNSSMHnlzThAgYFGLw%3D%3D">
+                                <div class="form-group captcha" id="captcha">
+                                    
                                     <label for="register-captcha">Enter the captcha</label>
                                     <input type="text" id="register-captcha" class="form-control" name="registerCaptcha" required>
                                 </div>
