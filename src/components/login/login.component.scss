@@ -14,14 +14,14 @@
     margin: 56px auto;
     min-height: 700px;
     width: 80%;
-    background-color: #93ff99;
+    background-color: #24e00b;
     align-items: center;
   }
 }
 
 .box-title {
   padding: 3rem;
-  background-color: $primary;
+  background-color: #13c100;
   color: $white;
 
   .icon {
@@ -134,4 +134,12 @@
       padding: 3rem 2rem;
     }
   }
+}
+
+.btn-lg {
+  color: $white;
+}
+
+.btn-lg:hover {
+  color: $white;
 }
