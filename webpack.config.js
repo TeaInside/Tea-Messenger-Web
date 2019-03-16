@@ -2,8 +2,6 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
@@ -31,20 +29,9 @@ module.exports = {
       $: 'jquery',
       jQuery: 'jquery'
     }),
-    new CleanWebpackPlugin('./public'),
     new HtmlWebpackPlugin({
       template: './src/index.html'
-    }),
-    new CopyWebpackPlugin(
-      [
-        { from: './src/assets', to: 'assets' },
-        { from: './node_modules/@fortawesome/fontawesome-free/css', to: 'assets/vendors/fontawesome/css'},
-        { from: './node_modules/@fortawesome/fontawesome-free/webfonts', to: 'assets/vendors/fontawesome/webfonts'},
-        { from: './node_modules/animate.css/animate.min.css', to: 'assets/vendors/animate.css/'},
-        { from: './node_modules/noty/lib', to: 'assets/vendors/noty'}
-      ],
-      { debug: false}
-    )
+    })
   ],
   module: {
     rules: [
