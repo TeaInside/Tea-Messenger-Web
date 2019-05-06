@@ -10,15 +10,16 @@ module.exports = {
     app: './src/app.js'
   },
   output: {
-    filename: 'assets/js/[name].[hash].js',
-    chunkFilename: 'assets/js/[name].[hash].js',
-    sourceMapFilename: "assets/js/[name].[hash].map",
-    path: path.resolve(__dirname, 'public')
+    filename: 'assets/js/[name].[contenthash].js',
+    chunkFilename: 'assets/js/[name].[contenthash].js',
+    sourceMapFilename: "assets/js/[name].[contenthash].map",
+    path: path.join(__dirname, 'public'),
+    publicPath: '/'
   },
   devtool: 'eval',
   devServer: {
     port: 3000,
-    contentBase: path.resolve(__dirname, 'src/assets'),
+    contentBase: path.join(__dirname, 'src/assets'),
     publicPath: '/',
     historyApiFallback: true,
     watchContentBase: true,
@@ -31,6 +32,10 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './src/index.html'
+    }),
+    new MiniCssExtractPlugin({
+      filename: "assets/css/styles.[contenthash].css",
+      chunkFilename: "assets/css/[name].[contenthash].css"
     })
   ],
   module: {
@@ -38,17 +43,12 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          {
-            loader: 'style-loader'
-          },
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader ,
           {
             loader: 'css-loader',
             options: {
               sourceMap: false
             }
-          },
-          {
-            loader: 'sass-loader'
           },
           {
             loader: 'postcss-loader',
@@ -58,6 +58,9 @@ module.exports = {
                 require('autoprefixer')
               ]
             }
+          },
+          {
+            loader: 'sass-loader'
           }
         ]
       },
