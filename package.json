@@ -44,7 +44,7 @@
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions",
+    "last 10 versions",
     "Firefox ESR"
   ],
   "scripts": {
