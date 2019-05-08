@@ -2,6 +2,8 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
@@ -22,8 +24,7 @@ module.exports = {
     contentBase: path.join(__dirname, 'src/assets'),
     publicPath: '/',
     historyApiFallback: true,
-    watchContentBase: true,
-    compress: true
+    watchContentBase: true
   },
   plugins: [
     new webpack.ProvidePlugin({
@@ -36,6 +37,31 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "assets/css/styles.[contenthash].css",
       chunkFilename: "assets/css/[name].[contenthash].css"
+    }),
+    new CleanWebpackPlugin(),
+    new CopyWebpackPlugin(
+    [{ 
+      from: './src/assets', 
+      to: 'assets' 
+    },
+    { 
+      from: './node_modules/@fortawesome/fontawesome-free/css', 
+      to: 'assets/vendors/fontawesome/css'
+    },
+    { 
+      from: './node_modules/@fortawesome/fontawesome-free/webfonts', 
+      to: 'assets/vendors/fontawesome/webfonts'
+    },
+    { 
+      from: './node_modules/animate.css/animate.min.css', 
+      to: 'assets/vendors/animate.css/animate.min.css'
+    },
+    { 
+      from: './node_modules/noty/lib', 
+      to: 'assets/vendors/noty'
+    }], 
+    { 
+      debug: false 
     })
   ],
   module: {
@@ -60,7 +86,10 @@ module.exports = {
             }
           },
           {
-            loader: 'sass-loader'
+            loader: 'sass-loader',
+            options: {
+              implementation: require('sass')
+            }
           }
         ]
       },
@@ -92,19 +121,5 @@ module.exports = {
         }
       }
     ]
-  },
-  optimization: {
-    runtimeChunk: false,
-    splitChunks: {
-      cacheGroups: {
-        default: false,
-        commons: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendor',
-          chunks: 'all',
-          minChunks: 2
-        }
-      }
-    }
   }
 };
