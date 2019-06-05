@@ -55,6 +55,10 @@ module.exports = {
       from: './src/assets', 
       to: 'assets' 
     },
+    {
+      from: './src/manifest.json',
+      to: 'manifest.json'
+    },
     { 
       from: './node_modules/@fortawesome/fontawesome-free/css', 
       to: 'assets/vendors/fontawesome/css'
@@ -132,7 +136,7 @@ module.exports = {
         }
       },
       {
-        test: /\.txt$/,
+        test: /\.(txt|json)$/,
         use: 'raw-loader'
       },
     ]

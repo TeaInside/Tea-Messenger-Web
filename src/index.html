@@ -4,27 +4,26 @@
         <base href="/">
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Tea Messager">
+        <meta name="description" content="Tea Messager Web Application">
         <meta name="author" content="TeaInside">
+        <link rel="apple-touch-icon" sizes="57x57" href="assets/images/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="assets/images/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="assets/images/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="assets/images/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="assets/images/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="assets/images/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="assets/images/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="assets/images/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="assets/images/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="msapplication-TileColor" content="#27ae60">
+        <meta name="msapplication-TileImage" content="assets/images/ms-icon-144x144.png">
+        <meta name="theme-color" content="#27ae60">
         <title>Tea Messenger Web</title>
-        <style>
-        #preloader {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #fff;
-        z-index: 999999;
-        }
-        .canvas {
-        position: absolute;
-        margin: auto;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        }
-        </style>
         <link href="assets/vendors/noty/noty.css" rel="stylesheet">
         <link href="assets/vendors/noty/themes/mint.css" rel="stylesheet">
         <link href="assets/vendors/fontawesome/css/all.min.css" rel="stylesheet" >
@@ -32,11 +31,6 @@
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
     </head>
     <body>
-        <div id="preloader">
-            <div class="canvas">
-                <div class="spinner-border text-primary"></div>
-            </div>
-        </div>
-        <app-root id="root"></app-root>
+        <app-root id="app-root"></app-root>
     </body>
 </html>
