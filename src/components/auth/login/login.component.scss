@@ -1,0 +1,128 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/mixins";
+@import "../../../scss/variables";
+
+/*.box-title {
+  padding: 3rem;
+  background-color: #13c100;
+  color: $white;
+
+  .icon {
+    margin-right: 1rem;
+    font-size: $font-size-lg;
+    width: 20px;
+    height: 20px;
+  }
+
+  .divider {
+    width: 20%;
+    height: 0;
+    margin: 2rem 0;
+    overflow: hidden;
+    border-top: 1px solid $white;
+  }
+
+  h3 {
+    font-weight: bold;
+  }
+}
+
+.box-form {
+  background-color: $white;
+  min-height: inherit;
+
+  .tab-content {
+    padding: 3rem;
+  }
+
+  .tab-pane {
+    padding: 0;
+  }
+
+  label {
+    font-weight: 900;
+    display: block;
+  }
+}
+
+.captcha {
+  text-align: center;
+
+  & > img {
+    margin-bottom: 1rem;
+  }
+
+  input {
+    width: 50%;
+    margin: auto;
+  }
+}
+
+.form-tabs {
+  &, .nav-item {
+    padding: 0;
+    border: 0;
+  }
+
+  .nav-link {
+    padding: 1rem;
+    font-size: $font-size-base;
+    text-align: center;
+    @include border-radius(0);
+    border: 0;
+    border-bottom: $border-width solid $border-color;
+
+    &[aria-selected="true"] {
+      background-color: $gray-100;
+      font-weight: 900;
+      color: $primary;
+      border-bottom: $border-width solid $primary;
+    }
+  }
+}
+
+.footer {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+  width: 100%;
+
+  p {
+    margin: 0;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .app-login {
+    .box-wrapper-outer {
+      height: auto;
+      margin: 0;
+      border: 0;
+    }
+
+    .box-wrapper-inner {
+      margin: 0;
+      width: 100%;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .box-title {
+    padding: 2rem;
+  }
+
+  .box-form {
+    .tab-content {
+      padding: 3rem 2rem;
+    }
+  }
+}
+
+.btn-lg {
+  color: $white;
+}
+
+.btn-lg:hover {
+  color: $white;
+}*/
