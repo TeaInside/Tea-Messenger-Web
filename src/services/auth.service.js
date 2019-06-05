@@ -1,3 +1,9 @@
+/**
+ * @author TeaInside <admin@teainside.org>
+ * @version 0.0.1
+ * @license MIT
+ */
+ 
 import { Configs } from '../config.js';
 
 export class AuthService {
@@ -40,10 +46,11 @@ export class AuthService {
     return fetch(request);
   }
 
-  /*
-  * @param token string
-  * @return Promise
-  */
+  /**
+   * @param token string
+   *
+   * @return Promise
+   */
   getCaptcha(token) {
     let params = new URLSearchParams(this.apiUrl);
     params.append('token', token);
@@ -58,25 +65,19 @@ export class AuthService {
     return fetch(request);
   }
 
-  /*
-  * @param username string
-  * @param password string
-  * @param remember boolean
-  * @param token    string
-  * @return Promise
-  */
-  login(username, password, remember = false, token) {
+  /**
+   * @param formElement HTMLElement
+   *
+   * @return Promise
+   */
+  login(formElement) {
     let params = new URLSearchParams(this.apiUrl);
     params.append('action', 'login');
     this.apiUrl.pathname = this.apiEp.login;
     this.apiUrl.search = params;
 
-    let data = {
-      username: username,
-      password: password,
-      rememberme: remember
-    }
-
+    let fd = new FormData(formElement);
+    let data = objectFromFormData(fd);
     let request = new Request(this.apiUrl.href, {
       method: 'POST',
       mode: 'cors',
@@ -84,11 +85,77 @@ export class AuthService {
       credentials: "same-origin",
       headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
+          "Authorization": `Bearer ${data.token}`
       },
       body: JSON.stringify(data)
     });
 
     return fetch(request);
   }
+
+  /**
+   * @param formElement HTMLElement
+   *
+   * @return Promise
+   */
+  register(formElement) {
+    let params = new URLSearchParams(this.apiUrl);
+    params.append('action', 'submit');
+    this.apiUrl.pathname = this.apiEp.register;
+    this.apiUrl.search = params;
+
+    let fd = new FormData(formElement);
+    let data = objectFromFormData(fd);
+    let request = new Request(this.apiUrl.href, {
+      method: 'POST',
+      mode: 'cors',
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${data.token}`
+      },
+      body: JSON.stringify(data)
+    });
+
+    return fetch(request);
+  }
+
+  /**
+   * @return boolean
+   */
+  isLoggedIn() {
+    let token = localStorage.getItem('token_session');
+    //eslint-disable-next-line no-unused-expressions
+    return (token !== null) ? true : false;
+  }
+
+  /**
+   * @return void
+   */
+  logout() {
+    localStorage.removeItem('token_session');
+  }
+}
+
+/**
+ * @param formData FormData
+ *
+ * @return Object
+ */
+const objectFromFormData = (formData) => {
+  let values = {};
+  for (let pair of formData.entries()) {
+    let key = pair[0];
+    let value = pair[1];
+    if (values[key]) {
+      if ( ! (values[key] instanceof Array) ) {
+        values[key] = new Array(values[key]);
+      }
+      values[key].push(value);
+    } else {
+      values[key] = value;
+    }
+  }
+  return values;
 }
