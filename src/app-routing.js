@@ -1,34 +1,45 @@
-// Router library
-import Navigo from 'navigo';
+/**
+ * @author TeaInside <admin@teainside.org>
+ * @version 0.0.1
+ * @license MIT
+ */
+ 
+import { RouterModule } from 'Modules/router';
+import { AppComponent } from 'Components/app.component';
+import { NotFoundComponent } from 'Components/not-found/not-found.component';
+import { AuthComponent } from 'Components/auth/auth.component';
+import { LoginComponent } from 'Components/auth/login/login.component';
+import { RegisterComponent } from 'Components/auth/register/register.component';
+import { ProfileComponent } from 'Components/profile/profile.component';
 
-var router;
+const routes = [
+  {
+    path: '/',
+    component: AppComponent
+  },
+  {
+    path: 'auth',
+    component: AuthComponent,
+    redirectTo: 'auth/login',
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
+      }
+    ]
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
+  }
+];
 
-const path = document.getElementsByTagName('base')[0].getAttribute('href');
-
-export default function AppRouting(host, useHash, hash) {
-  router = new Navigo(host, useHash, hash);
-
-  router.on({
-    '/login': () => {
-      import(/* webpackChunkName: 'login.component' */ './components/login/login.component')
-      .then(LoginComponent => {
-        const app = new LoginComponent.default();
-
-        app.render();
-        router.updatePageLinks();
-      });
-    }
-  });
-
-  // Index page
-  router.on(() => {
-    router.navigate('/login');
-  });
-
-  router.notFound(() => {
-    // Redirect to base path
-    router.navigate(path);
-  });
-
-  router.resolve();
-}
+export const router = new RouterModule(routes);
