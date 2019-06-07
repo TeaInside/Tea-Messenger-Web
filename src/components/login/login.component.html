@@ -1,0 +1,107 @@
+<div class="app-login container-fluid">
+    <div class="box-wrapper-outer row">
+        <div class="col-md-12 p-0">
+            <div class="box-wrapper-inner row">
+                <div class="box-title col-lg-6 col-md-12">
+                    <h3>Tea Messenger Web</h3>
+                    <p>Web based Tea Messenger Client</p>
+                    <div class="divider"></div>
+                    <p><span class="icon fas fa-lock"></span>Secure</p>
+                    <p><span class="icon fas fa-rocket"></span>Fast</p>
+                    <p><span class="icon fas fa-star"></span>Simple</p>
+                </div>
+                <!-- Begin box form -->
+                <div class="box-form col-lg-6 col-md-12">
+                    <ul class="form-tabs row nav nav-tabs" id="myTab" role="tablist">
+                        <li class="col-6 nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#login" role="tab" aria-controls="home" aria-selected="true">Login</a>
+                        </li>
+                        <li class="col-6 nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#register" role="tab" aria-controls="profile" aria-selected="false">Register</a>
+                        </li>
+                    </ul>
+                    <!-- Begin Tab panes -->
+                    <div class="tab-content row">
+                        <div class="col-12 tab-pane animated fadeIn active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                            <form id="login-form">
+                                <div class="form-group">
+                                    <label for="login-username">Username</label>
+                                    <input type="text" id="login-username" class="form-control" name="loginUsername" required autofocus>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="login-password">Password</label>
+                                    <input type="password" id="login-password" class="form-control" name="loginPassword" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="login-remember-me" name="loginRememberMe">
+                                        <label class="form-check-label" for="login-remember-me">
+                                        Remember me
+                                        </label>
+                                    </div>
+                                </div>
+                                <button type="button" id="login-button" class="btn btn-block btn-lg btn-primary">Sign in</button>
+                            </form>
+                        </div>
+                        <div class="col-12 tab-pane animated fadeIn" id="register" role="tabpanel" aria-labelledby="register-tab">
+                            <form id="register-form">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="register-firstname">First Name</label>
+                                        <input type="text" id="register-firstname" class="form-control" name="registerFirstName" required autofocus>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label for="register-lastname">Last Name</label>
+                                        <input type="text" id="register-lastname" class="form-control" name="registerLastName" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="register-gender">Gender</label>
+                                    <select id ="register-gender" class="form-control">
+                                        <option value>Select your gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="register-email">Email Address</label>
+                                        <input type="text" id="register-email" class="form-control" name="registerEmail" required>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label for="register-password">Password</label>
+                                        <input type="password" id="register-password" class="form-control" name="registerPassword" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="register-phone">Phone Number</label>
+                                    <input type="phone" id="register-phone" class="form-control" name="registerPhone" required>
+                                </div>
+
+                                <div class="form-group captcha" id="captcha">
+                                    
+                                    <label for="register-captcha">Enter the captcha</label>
+                                    <input type="text" id="register-captcha" class="form-control" name="registerCaptcha" required>
+                                </div>
+                                <button type="submit" class="btn btn-block btn-lg btn-primary">Register</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- End of tab panes -->
+                </div>
+                <!-- End box form -->
+            </div>
+            <div class="footer row">
+                <p class="text-muted">Made with <i class="fas fa-heart"></i> by TeaInside</p>
+            </div>
+        </div>
+    </div>
+</div>
+
