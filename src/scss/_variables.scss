@@ -34,15 +34,15 @@ $grays: map-merge(
   $grays
 );
 
-$blue:    #3498db ;
+$blue:    #95c8e7 ;
 $indigo:  #7c97ee ;
-$purple:  #8e44ad ;
+$purple:  #c99ae5 ;
 $pink:    #f4a4b1 ;
-$red:     #c0392b ;
-$orange:  #e67e22 ;
-$yellow:  #f1c40f ;
-$green:   #27ae60 ;
-$teal:    ‎#008080 ;
+$red:     #d48a8f ;
+$orange:  #ffba69 ;
+$yellow:  #ffc107 ;
+$green:   #15d328 ;
+$teal:    #20c997 ;
 $cyan:    #17a2b8 ;
 
 $colors: () ;
@@ -98,8 +98,8 @@ $theme-color-interval:      8% ;
 $yiq-contrasted-threshold:  150 ;
 
 // Customize the light and dark text colors for use in our YIQ color contrast function.
-$yiq-text-dark:             $gray-900 ;
-$yiq-text-light:            $white ;
+$yiq-text-dark:             $white ;
+$yiq-text-light:            $gray-500 ;
 
 
 // Options
