@@ -9,15 +9,7 @@ const devMode = process.env.NODE_ENV !== 'production';
 module.exports = {
   entry: {
     styles: './src/scss/styles.scss',
-    custom: './src/scss/custom.scss',
     app: './src/app.js'
-  },
-  resolve: {
-    alias: {
-      Modules: path.resolve(__dirname, 'src/modules'),
-      Components: path.resolve(__dirname, 'src/components'),
-      Services: path.resolve(__dirname, 'src/services')
-    }
   },
   output: {
     filename: 'assets/js/[name].[contenthash].js',
@@ -25,9 +17,6 @@ module.exports = {
     sourceMapFilename: "assets/js/[name].[contenthash].map",
     path: path.join(__dirname, 'public'),
     publicPath: '/'
-  },
-  node: {
-    __dirname: true
   },
   devtool: 'eval',
   devServer: {
@@ -46,7 +35,7 @@ module.exports = {
       template: './src/index.html'
     }),
     new MiniCssExtractPlugin({
-      filename: "assets/css/[name].[contenthash].css",
+      filename: "assets/css/styles.[contenthash].css",
       chunkFilename: "assets/css/[name].[contenthash].css"
     }),
     new CleanWebpackPlugin(),
@@ -130,11 +119,7 @@ module.exports = {
         options: {
           outputPath: 'assets/images/[name].[ext]'
         }
-      },
-      {
-        test: /\.txt$/,
-        use: 'raw-loader'
-      },
+      }
     ]
   }
 };
