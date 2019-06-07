@@ -1,0 +1,138 @@
+.input-group {
+  position: relative;
+  margin-bottom: 2rem;
+  background-color: $gray-200;
+  border-radius: 5px;
+
+  input {
+    position: relative;
+    font-size: 16px;
+    padding: 20px 0px 10px;
+    margin: 0px 20px;
+    margin-right: 50px;
+    display: block;
+    width: 100%;
+    border: none;
+    transition: border 0.2s ease;
+    background-color: transparent;
+  }
+
+  input:focus { 
+    outline:none;
+  }
+
+  .input-label {
+    color: $gray-800; 
+    font-size: 16px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 20px;
+    top: 15px;
+    transition: 0.2s ease all; 
+  }
+
+  input:focus ~ .input-label,
+  input:valid ~ .input-label {
+    top: 6px;
+    font-size: 12px;
+  }
+
+  input:focus ~ .input-label {
+    color: $green;
+  }
+
+  input.has-prepend ~ .input-label {
+    left: 50px;
+  }
+
+  input.has-prepend {
+    margin-left: 50px;
+    z-index: 2;
+  }
+
+  .bar { 
+    position:relative; 
+    display:block; 
+    width:100%; 
+  }
+   
+  .bar:before, .bar:after {
+    content: '';
+    height: 2px; 
+    width: 0;
+    bottom: 1px; 
+    position: absolute;
+    background: $green;
+    transition: 0.2s ease all; 
+  }
+
+  .bar:before {
+    left: 50%;
+  }
+
+  .bar:after {
+    right: 50%;
+  }
+
+  /* active state */
+  input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width: 50%;
+  }
+
+  .form-control {
+    font-size: 16px;
+    padding: 10px 0px 10px 20px;
+    display: block;
+    width: 85%;
+    border: none;
+    transition: border 0.2s ease;
+    background-color: transparent;
+  }
+}
+
+.helper-text {
+  position: absolute;
+  padding: 5px 0px 0px 20px;
+  font-size: 12px;
+  color: $gray-600;
+  top: 100%;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 0;
+  .form-control {
+    @extend .input-group;
+    @extend .form-control;
+  }
+}
+
+.input-group-append {
+  position: absolute;
+  top: 18px;
+  right: 30px;
+  color: #757575;
+  font-size: 18px;
+  transition: all 0.2s ease;
+}
+
+.input-group-prepend {
+  @extend .input-group-append;
+  right: 0;
+  left: 20px;
+}
+
+.has-error {
+  .input-group-prepend,
+  .input-group-append,
+  .input-label,
+  .helper-text {
+    color: $red !important;
+  }
+
+  .bar:before,
+  .bar:after {
+    background-color: $red;
+  }
+}
