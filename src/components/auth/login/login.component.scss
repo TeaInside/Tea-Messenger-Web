@@ -1,25 +1,8 @@
 @import "node_modules/bootstrap/scss/functions";
 @import "node_modules/bootstrap/scss/mixins";
-@import "../../scss/variables";
+@import "../../../scss/variables";
 
-.app-login {
-  height: 100%;
-  font-family: "Noto Sans";
-  padding: 0;
-
-  .box-wrapper-outer {
-    border: 1px solid $gray-300;
-  }
-  .box-wrapper-inner {
-    margin: 56px auto;
-    min-height: 700px;
-    width: 80%;
-    background-color: #24e00b;
-    align-items: center;
-  }
-}
-
-.box-title {
+/*.box-title {
   padding: 3rem;
   background-color: #13c100;
   color: $white;
@@ -142,4 +125,4 @@
 
 .btn-lg:hover {
   color: $white;
-}
+}*/
