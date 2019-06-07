@@ -22,7 +22,6 @@
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^2.0.1",
     "copy-webpack-plugin": "^5.0.1",
-    "cross-env": "^5.2.0",
     "css-loader": "^2.1.1",
     "eslint": "^5.15.1",
     "eslint-loader": "^2.1.2",
@@ -48,10 +47,10 @@
     "Firefox ESR"
   ],
   "scripts": {
-    "build:prod": "cross-env NODE_ENV=production webpack --config=webpack.prod.js",
-    "build:dev": "cross-env NODE_ENV=development webpack --config=webpack.dev.js",
-    "prod": "cross-env NODE_ENV=production webpack-dev-server --config=webpack.prod.js",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config=webpack.dev.js",
+    "build:prod": "webpack --config=webpack.prod.js",
+    "build:dev": "webpack --config=webpack.dev.js",
+    "prod": "webpack-dev-server --config=webpack.prod.js --open",
+    "dev": "webpack-dev-server --config=webpack.dev.js --open",
     "lint": "eslint --ignore-path .eslintignore .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
