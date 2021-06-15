@@ -9,7 +9,7 @@
     "bootstrap": "^4.3.1",
     "dompurify": "^2.0.17",
     "jquery": "^3.5.0",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "navigo": "^7.1.2",
     "noty": "^3.2.0-beta",
     "path-browserify": "^1.0.0",
